@@ -2,6 +2,8 @@
 
 Refer: https://blog.securitybreached.org/2017/11/25/guide-to-basic-recon-for-bugbounty/
 
+Refer: https://hussnainfareed.wordpress.com/2017/11/25/guide-to-basic-reconnaissance-bug-bounties/
+
 ### No.1. Most Important
 
 Properly read the terms for the bounty and clearly understand which domains are in scope and which forms of vulnerabilities are 
