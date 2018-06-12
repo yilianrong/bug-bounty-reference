@@ -110,6 +110,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [IDOR inf Facebook's Acquisition - Parse](http://www.pranav-venkat.com/2016/12/idor-in-facebooks-acquisition-parse.html) by Venkat S
 - [Delete any video from Facebook](https://pranavhivarekar.in/2016/06/23/facebooks-bug-delete-any-video-from-facebook/) by PRANAV HIVAREKAR
 - [Delete Any Video on Facebook](https://danmelamed.blogspot.com/2017/01/facebook-vulnerability-delete-any-video.html) by Dan Melamed
+- [Facebook Page Takeover by Manipulating the Parameter](https://arunsureshkumar.me/index.php/2016/09/16/facebook-page-takeover-zero-day-vulnerability/) by Arun Sureshkumar
 - [Vulnerability in Youtube allowed moving comments from any video to another](https://www.secgeek.net/youtube-vulnerability/) by secgeek
   - It's *Google* Vulnerability, so it's worth reading, as generally it is more difficult to find Google vulnerability
 - [Microsoft-careers.com Remote Password Reset](http://yasserali.com/microsoft-careers-com-remote-password-reset/) by Yaaser Ali
@@ -122,15 +123,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Trello bug bounty: Payments informations are sent to the webhook when a team changes its visibility](https://hethical.io/trello-bug-bounty-payments-informations-are-sent-to-the-webhook-when-a-team-changes-its-visibility/) by Florian Courtial
 - [Trello bug bounty: The websocket receives data when a public company creates a team visible board](https://hethical.io/trello-bug-bounty-the-websocket-receives-data-when-a-public-company-creates-a-team-visible-board/) by Florian Courtia
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
+- [Mass Assignment, Response to Request Injection, Admin Escalation](https://seanmelia.wordpress.com/2017/06/01/privilege-escalation-in-a-django-application/) by sean
 
 - [Response To Request Injection (RTRI)](https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?, be honest, thanks to this article, I have found quite a few bugs because of using his method, respect to the author!
-- [Uber Enum UUID](http://www.rohk.xyz/uber-uuid/)
-- [Facebook Page Takeover by Manipulating the Parameter](https://arunsureshkumar.me/index.php/2016/09/16/facebook-page-takeover-zero-day-vulnerability/) by arunsureshkumar
-- [IDOR tweet as any user](http://kedrisec.com/twitter-publish-by-any-user/) by kedrisec
-- [Classic IDOR endpoints in Twitter](http://www.anandpraka.sh/2017/05/how-i-took-control-of-your-twitter.html) 
-- [Mass Assignment, Response to Request Injection, Admin Escalation](https://seanmelia.wordpress.com/2017/06/01/privilege-escalation-in-a-django-application/) by sean
-- [Getting any Facebook user's friend list and partial payment card details](https://www.josipfranjkovic.com/blog/facebook-friendlist-paymentcard-leak)
-- [Manipulation of ETH balance](https://www.vicompany.nl/magazine/from-christmas-present-in-the-blockchain-to-massive-bug-bounty)
 
 ### Sensitive Data Exposure
 
@@ -145,7 +140,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Authentication Bypass
 
 - [How I could have hacked all Facebook accounts](http://www.anandpraka.sh/2016/03/how-i-could-have-hacked-your-facebook.html) by Anand Prakash
+- [Facebook Account Take Over](https://arunsureshkumar.me/index.php/2016/04/24/facebook-account-take-over/) by Arun Sureshkumar
 - [Taking over Facebook Accounts using Free Basics Partner Portal](https://www.josipfranjkovic.com/blog/facebook-partners-portal-account-takeover) by JOSIP FRANJKOVIĆ
+
 - [Decoding a .htpasswd to Earn a Payload of Money](https://blog.it-securityguard.com/bugbounty-decoding-a-%F0%9F%98%B1-00000-htpasswd-bounty/) by Patrik Fehrenbach
 - [Use XSS and Bug Chain to Bypass Google Account Recovery Restriction](https://sites.google.com/site/bughunteruniversity/best-reports/account-recovery-xss) by Ramzes
 - [OneLogin authentication bypass on WordPress sites via XMLRPC in Uber](https://hackerone.com/reports/138869) by Jouko Pynnönen (jouko)
@@ -247,9 +244,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Race Condition
 
 - [Race conditions on Facebook, DigitalOcean and others (fixed)](http://josipfranjkovic.blogspot.hk/2015/04/race-conditions-on-facebook.html) by Josip Franjković
-- [Race Conditions in Popular reports feature in HackerOne](https://hackerone.com/reports/146845) by Fábio Pires (shmoo)
 - [Hacking Starbuck for unlimited money](https://sakurity.com/blog/2015/05/21/starbucks.html) by Egor Homakov
 - [Race Conditions on Web](https://www.josipfranjkovic.com/blog/race-conditions-on-web) by JOSIP FRANJKOVIĆ
+- [Manipulation of ETH balance](https://www.vicompany.nl/magazine/from-christmas-present-in-the-blockchain-to-massive-bug-bounty) by Jesse Lakerveld
 
 ### SQL Injection
 - [SQL injection in Wordpress Plugin Huge IT Video Gallery in Uber](https://hackerone.com/reports/125932) by glc
