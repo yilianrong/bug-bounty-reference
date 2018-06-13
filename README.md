@@ -73,6 +73,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Facebookmarketingdevelopers.com: Proxies, CSRF Quandry and API Fun](https://philippeharewood.com/facebookmarketingdevelopers-com-proxies-csrf-quandry-and-api-fun/) by phwd
 - [Facebook GraphQL CSRF](https://philippeharewood.com/facebook-graphql-csrf/) by phwd
 - [Hacking Facebook accounts using CSRF in Oculus-Facebook integration](https://www.josipfranjkovic.com/blog/hacking-facebook-oculus-integration-csrf) by JOSIP FRANJKOVIĆ
+- [Add Credit Card to Any Uber account Through eats.uber.com](http://www.indohack.com/2017/07/add-credit-card-to-any-uber-account.html) by Vijay Kumar
 - [Paypal bug bounty: Updating the Paypal.me profile picture without consent (CSRF attack)](https://hethical.io/paypal-bug-bounty-updating-the-paypal-me-profile-picture-without-consent-csrf-attack/) by Florian Courtial
 - [Hacking PayPal Accounts with one click (Patched)](http://yasserali.com/hacking-paypal-accounts-with-one-click/) by Yasser Ali
 - [How i Hacked your Beats account ? Apple Bug Bounty](https://aadityapurani.com/2016/07/20/how-i-hacked-your-beats-account-apple-bug-bounty/) by Additya Purani
@@ -119,6 +120,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Airbnb – Web to App Phone Notification IDOR to view Everyone’s Airbnb Messages](https://buer.haus/2017/03/31/airbnb-web-to-app-phone-notification-idor-to-view-everyones-airbnb-messages/) by Brett Buerhaus
 - [Twitter Vulnerability Could Credit Cards from Any Twitter Account](https://www.secgeek.net/twitter-vulnerability/) by secgeek
 - [How I took control of your Twitter account (tweeting, viewing/deleting photos and other media)](http://www.anandpraka.sh/2017/05/how-i-took-control-of-your-twitter.html) by Anand Prakash
+- [UnAuth Access to Twitter Private Tweets and messages Media Content Access](http://www.indohack.com/2017/07/unauth-access-to-twitter-private-tweets.html) by Vijay Kumar
 - [How I could change your eBay password](http://yasserali.com/how-i-could-change-your-ebay-password/) by Yaaser Ali
 - [How I could have hacked 62.5 million Zomato Users](http://www.anandpraka.sh/2015/06/how-i-hacked-zomatocom-to-see-data-of.html) by Anand Prakash
 - [Trello bug bounty: Payments informations are sent to the webhook when a team changes its visibility](https://hethical.io/trello-bug-bounty-payments-informations-are-sent-to-the-webhook-when-a-team-changes-its-visibility/) by Florian Courtial
@@ -152,10 +154,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Uber Bug Bounty: Gaining Access To An Internal Chat System](https://mishresec.wordpress.com/2017/10/13/uber-bug-bounty-gaining-access-to-an-internal-chat-system/) by mishre
 - [2FA PayPal Bypass](https://henryhoggard.co.uk/blog/Paypal-2FA-Bypass) by henryhoggard
 - [Decoding a .htpasswd to Earn a Payload of Money](https://blog.it-securityguard.com/bugbounty-decoding-a-%F0%9F%98%B1-00000-htpasswd-bounty/) by Patrik Fehrenbach
-
-- [Administrative Panel Access](http://c0rni3sm.blogspot.hk/2017/08/accidentally-typo-to-bypass.html?m=1) by c0rni3sm
 - [Slack SAML authentication bypass](http://blog.intothesymmetry.com/2017/10/slack-saml-authentication-bypass.html) by Antonio Sanso
-
+- [From JS to another JS files lead to authentication bypass](http://c0rni3sm.blogspot.com/2017/06/from-js-to-another-js-files-lead-to.html) by c0rni3sm
+- [Accidentally typo to bypass administration access](http://c0rni3sm.blogspot.com/2017/08/accidentally-typo-to-bypass.html) by c0rni3sm
 - [Response To Request Injection (RTRI)](http://web.archive.org/web/20160907083447/https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?
   - be honest, thanks to this article, I have found quite a few bugs because of using his method, respect to the author!
 
@@ -255,7 +256,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Yahoo – Root Access SQL Injection – tw.yahoo.com](http://buer.haus/2015/01/15/yahoo-root-access-sql-injection-tw-yahoo-com/) by Brett Buerhaus
 - [GitHub Enterprise SQL Injection](http://blog.orange.tw/2017/01/bug-bounty-github-enterprise-sql-injection.html) by Orange
 - [Yahoo SQL Injection to Remote Code Exection to Root Privilege](http://www.sec-down.com/wordpress/?p=494) by Ebrahim Hegazy
-- [Blind SQL Injection in er..I'm not sure what's the DBMS is](http://c0rni3sm.blogspot.com/2017/03/blind-sql-injection-in-erim-not-sure.html) by corn clone
+- [Blind SQL Injection in er..I'm not sure what's the DBMS is](http://c0rni3sm.blogspot.com/2017/03/blind-sql-injection-in-erim-not-sure.html) by c0rni3sm
 
 ### Remote Code Execution
 - [Command Injection in Google Console](http://www.pranav-venkat.com/2016/03/command-injection-which-got-me-6000.html) by Venkat S
