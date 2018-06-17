@@ -109,6 +109,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [0day in Code42 - XXE in uber.com to read local files](https://httpsonly.blogspot.com/2017/01/0day-writeup-xxe-in-ubercom.html) by httpsonly
 - [Out of Band XML External Entity Injection via SAML SSO](https://seanmelia.files.wordpress.com/2016/01/out-of-band-xml-external-entity-injection-via-saml-redacted.pdf) by seanmelia
 - [XXE by SVG in Lithium Community Platform](http://esoln.net/Research/2017/03/30/xxe-in-lithium-community-platform/) by Vibhuti Nath
+- [XML Entity Cheatsheet](https://www.silentrobots.com/blog/2015/12/14/xe-cheatsheet-update/) by silentrobots
 
 ### Direct Object Reference (IDOR)
 
@@ -153,15 +154,20 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Taking over Facebook Accounts using Free Basics Partner Portal](https://www.josipfranjkovic.com/blog/facebook-partners-portal-account-takeover) by JOSIP FRANJKOVIĆ
 - [Hacking Facebook’s Legacy API, Part 1: Making Calls on Behalf of Any User](https://stephensclafani.com/2014/07/08/hacking-facebooks-legacy-api-part-1-making-calls-on-behalf-of-any-user/) by Stephen Sclafani
 - [Hacking Facebook’s Legacy API, Part 2: Stealing User Sessions](https://stephensclafani.com/2014/07/29/hacking-facebooks-legacy-api-part-2-stealing-user-sessions/) by Stephen Sclafani
+- [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/blog-facebook-originull/) by cynet
 - [Use XSS and Bug Chain to Bypass Google Account Recovery Restriction](https://sites.google.com/site/bughunteruniversity/best-reports/account-recovery-xss) by Ramzes
 - [Bypassing Google Authentication on Periscope's Administration Panel](https://whitton.io/articles/bypassing-google-authentication-on-periscopes-admin-panel/) By Jack Whitton
 - [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
 - [I got emails - G Suite Vulnerability](http://blog.pentestnepal.tech/post/156707088037/i-got-emails-g-suite-vulnerability) by uranium238
 - [This domain is my domain - G Suite A record vulnerability](http://blog.pentestnepal.tech/post/156959105292/this-domain-is-my-domain-g-suite-a-record) by uranium238
+- [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
+- [Messing with the Google Buganizer System for $15,600 in Bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
 - [Office365 Auth Bypass - The road to hell is paved with SAML Assertions](http://www.economyofmechanism.com/office365-authbypass.html) by Yiannis Kakavas
 - [Github SAML - The road to your codebase is paved with forged assertions](http://www.economyofmechanism.com/github-saml.html) by Yiannis Kakavas
+- [Unauthorized Access to Unisphere Management Server Debugging Facility on https://bf1-uaddbcx-002.data.bf1.yahoo.com/Debug/](https://medium.com/@zk34911/yahoo-bug-bounty-unauthorized-access-to-unisphere-management-server-debugging-facility-on-448aeb6d0c94) by zk34911
 - [Authentication bypass on Uber’s Single Sign-On via subdomain takeover](https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/) by Arne Swinnen
 - [Uber Bug Bounty: Gaining Access To An Internal Chat System](https://mishresec.wordpress.com/2017/10/13/uber-bug-bounty-gaining-access-to-an-internal-chat-system/) by mishre
+- [Twitter's Vine Source code dump - $10080](https://avicoder.me/2016/07/22/Twitter-Vine-Source-code-dump/) by avicoder
 - [How I gained access to chef, docker, AWS, and MongoDB instances in a single request](https://samcurry.net/how-i-gained-access-to-chef-docker-aws-and-mongodb-instances-in-a-single-request/) by samwcyo
 - [2FA PayPal Bypass](https://henryhoggard.co.uk/blog/Paypal-2FA-Bypass) by henryhoggard
 - [Decoding a .htpasswd to Earn a Payload of Money](https://blog.it-securityguard.com/bugbounty-decoding-a-%F0%9F%98%B1-00000-htpasswd-bounty/) by Patrik Fehrenbach
@@ -169,9 +175,11 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [From JS to another JS files lead to authentication bypass](http://c0rni3sm.blogspot.com/2017/06/from-js-to-another-js-files-lead-to.html) by c0rni3sm
 - [Accidentally typo to bypass administration access](http://c0rni3sm.blogspot.com/2017/08/accidentally-typo-to-bypass.html) by c0rni3sm
 - [How I hacked hundreds of companies through their helpdesk](https://medium.com/@intideceukelaire/how-i-hacked-hundreds-of-companies-through-their-helpdesk-b7680ddc2d4c) by Inti De Ceukelaire
+- [GraphQL abuse: Bypass account level permissions through parameter smuggling](https://labs.detectify.com/2018/03/14/graphql-abuse/) by Jon Bottarini
 - [Response To Request Injection (RTRI)](http://web.archive.org/web/20160907083447/https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?
   - be honest, thanks to this article, I have found quite a few bugs because of using his method, respect to the author!
-- [SAML Pen Test Good Paper](http://research.aurainfosec.io/bypassing-saml20-SSO/) by Tim Goddard
+- [Attacking SSO: Common SAML Vulnerabilities and Ways to Find Them](https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/) by Jem Jensen
+- [Bypassing SAML 2.0 SSO with XML Signature Attacks](https://research.aurainfosec.io/bypassing-saml20-SSO/) by Tim Goddard
 
 ### Stealing Access Token
 
@@ -233,6 +241,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Facebook Account Take Over by using SMS verification code](https://arunsureshkumar.me/index.php/2016/04/24/facebook-account-take-over/) by Arun Sureshkumar
 - [How I Could Compromise 4% (Locked) Instagram Accounts](https://www.arneswinnen.net/2016/03/how-i-could-compromise-4-locked-instagram-accounts/) by Arne Swinnen
 - [InstaBrute: Two Ways to Brute-force Instagram Account Credentials](https://www.arneswinnen.net/2016/05/instabrute-two-ways-to-brute-force-instagram-account-credentials/) by Arne Swinnen
+- [How I was able to enumerate Instagram Accounts who had enabled 2FA (Two Step Verification) for additional protection](https://medium.com/@zk34911/facebook-bug-bounty-how-i-was-able-to-enumerate-instagram-accounts-who-had-enabled-2fa-two-step-fddba9e9741c) by zk34911
 - [How I could have mass uploaded from every Flickr account](https://ret2got.wordpress.com/2017/10/05/how-i-could-have-mass-uploaded-from-every-flickr-account/) by Jazzy
 
 ### Race Condition
@@ -288,38 +297,17 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Miscellaneous
 
-- [Web App Methodologies](https://blog.zsec.uk/ltr101-method-to-madness/)
-- [HACKING NODEJS AND MONGODB](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecurify
-- [Exploiting Misconfigured CORS](http://www.geekboy.ninja/blog/exploiting-misconfigured-cors-cross-origin-resource-sharing/) by geekboy
-- [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](http://www.cynet.com/blog-facebook-originull/) by cynet
-- [XXE Cheatsheet](https://www.silentrobots.com/blog/2015/12/14/xe-cheatsheet-update/)
-- [Study this if you like to learn Mongo SQL Injection](https://cirw.in/blog/hash-injection) by cirw
-- [Mongo DB Injection again](http://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecrify
-- [w3af speech about modern vulnerability](https://www.youtube.com/watch?v=GNU0_Uzyvl0) by w3af
-- [Web cache attack that lead to account takeover](http://omergil.blogspot.co.il/2017/02/web-cache-deception-attack.html)
-- [A talk to teach you how to use SAML Raider](https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/somorovsky)
-- [XSS Checklist when you have no idea how to exploit the bug](http://d3adend.org/xss/ghettoBypass)
 - [CTF write up, Great for Bug Bounty](https://ctftime.org/writeups?tags=web200&hidden-tags=web%2cweb100%2cweb200)
-- [It turns out every site uses jquery mobile with Open Redirect is vulnerable to XSS](http://sirdarckcat.blogspot.com/2017/02/unpatched-0day-jquery-mobile-xss.html) by sirdarckcat
-- [Browser Exploitation in Chinese](http://paper.seebug.org/)
-- [XSS bypass filter](https://t.co/0Kpzo52ycb)
-- [Markup Impropose Sanitization](https://github.com/ChALkeR/notes/blob/master/Improper-markup-sanitization.md)
-- [Breaking XSS mitigations via Script Gadget](https://www.blackhat.com/docs/us-17/thursday/us-17-Lekies-Dont-Trust-The-DOM-Bypassing-XSS-Mitigations-Via-Script-Gadgets.pdf)
-- [X41 Browser Security White Paper](https://browser-security.x41-dsec.de/X41-Browser-Security-White-Paper.pdf)
-- [Bug Bounty Cheatsheets](https://github.com/EdOverflow/bugbounty-cheatsheet) By EdOverflow
-- [Messing with the Google Buganizer System for $15,600 in Bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5)
-- [Electron Security White Paper](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf)
-- [Twitter's Vine Source code dump - $10080](https://avicoder.me/2016/07/22/Twitter-Vine-Source-code-dump/)
-- [SAML Bible](https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/)
-- [Bypassing Google’s authentication to access their Internal Admin panels — Vishnu Prasad P G](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3)
 - [Smart Contract Vulnerabilities](http://www.dasp.co/)
-- [SLACK, A BRIEF JOURNEY TO MISSION CONTROL](http://web.archive.org/web/20171119161953/http://secalert.net/#ssabgod) - by David Vieira-Kurz
+- [HACKING NODEJS AND MONGODB](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecurify
+- [Mongo DB Injection again](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecrify
 
 ### Exclusive Bugbounty Writeup Blog
 
 - [10 Interesting Vulnerabilities in Instagram](https://www.arneswinnen.net/2016/02/the-tales-of-a-bug-bounty-hunter-10-interesting-vulnerabilities-in-instagram/) by Arne Swinnen
 - [A list of FB writeup collected by phwd](http://web.archive.org/web/20171220084758/https://www.facebook.com/notes/phwd/facebook-bug-bounties/707217202701640) by phwd
 - [Facebook Bugbounty Writeup Blog](https://philippeharewood.com) by phwd
+- [Google Bugbouty Writeup](https://sites.google.com/site/testsitehacking/write-ups) by eze2307
 
 ### Interesting but Seems Not Applicable Now
 - [RPO that lead to information leakage in Google](http://blog.innerht.ml/rpo-gadgets/) by filedescriptor
