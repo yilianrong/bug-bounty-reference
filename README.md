@@ -9,27 +9,27 @@ I have been reading for Bug Bounty write-ups for a few months, I found it extrem
 My intention is to make a full and complete list of common vulnerability that are publicly disclosed bug bounty write-up, and let Bug Bounty Hunter to use this page as a reference when they want to gain some insight for a particular kind of vulnerability during Bug Hunting, feel free to submit pull request. Okay, enough for chit-chatting, let's get started. 
 
 
-- [XSSI](#xssi)
 - [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
-- [Brute Force](#brute-force)
-- [SQL Injection (SQLi)](#sql-injection)
-- [External XML Entity Attack (XXE)](#xxe)
-- [Remote Code Execution (RCE)](#remote-code-execution)
-  - [Deserialization](#deserialization)
-  - [Image Tragick](#image-tragick)
-- [Cross-Site Request Forgery (CSRF)](#csrf)
+- [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf)
+- [Cross-Site Script Inclusion (XSSI)](#cross-site-script-inclusion-xssi)
+- [Server Side Request Forgery (SSRF)](#server-site-request-forgery-ssrf)
+- [XML External Entity (XXE)](#xml-external-entify-xxe)
 - [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor)
-- [Stealing Access Token](#stealing-access-token)
-  - [Google Oauth Login Bypass](#google-oauth-bypass)
-- [Server Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
-- [Unrestricted File Upload](#unrestricted-file-upload)
-- [Race Condition](#race-condition)
-- [Business Logic Flaw](#business-logic-flaw)
+- [Sensitive Information Exposure](#sensitive-information-exposure)
 - [Authentication Bypass](#authentication-bypass)
+- [Stealing Access Token](#stealing-access-token)
+- [Business Logic Flaw](#business-logic-flaw)
 - [HTTP Header Injection](#http-header-injection)
-- [Email Related](#email-related)
-- [Money Stealing](#money-stealing)
+- [Subdomain Takeover](#subdomain-takeover)
+- [Local File Inclusion](#local-file-inclusion)
+- [Unrestricted File Upload](#unrestricted-file-upload)
+- [Brute Force](#brute-force)
+- [Race Condition](#race-condition)
+- [SQL Injection](#sql-injection)
+- [Remote Code Execution](#remote-code-execution)
 - [Miscellaneous](#miscellaneous)
+- [Exclusive Bugbounty Writeup Blog](#exclusive-bugbounty-writeup-blog)
+- [Interesting but Seems Not Applicable Now](#interesting-but-seems-not-applicable-now)
 
 
 ### Cross-Site Scripting (XSS)
@@ -102,7 +102,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Plotly AWS EC2 Metadata Disclosure via SSRF and a Stored XSS via Presentation Link)](https://ysx.me.uk/a-pair-of-plotly-bugs-stored-xss-and-aws-metadata-ssrf/) by Yasin Soliman
 - [Blog post: Cracking the Lens: Targeting HTTP’s Hidden Attack-Surface ](https://portswigger.net/blog/cracking-the-lens-targeting-https-hidden-attack-surface) by James Kettle
 
-### XXE
+### XML External Entity (XXE)
 
 - [How we got read access on Google’s production servers](https://blog.detectify.com/2014/04/11/how-we-got-read-access-on-googles-production-servers/) by  detectify
 - [Blind OOB XXE At UBER 26+ Domains Hacked](http://nerdint.blogspot.hk/2016/08/blind-oob-xxe-at-uber-26-domains-hacked.html) by Raghav Bisht
@@ -111,7 +111,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [XXE by SVG in Lithium Community Platform](http://esoln.net/Research/2017/03/30/xxe-in-lithium-community-platform/) by Vibhuti Nath
 - [XML Entity Cheatsheet](https://www.silentrobots.com/blog/2015/12/14/xe-cheatsheet-update/) by silentrobots
 
-### Direct Object Reference (IDOR)
+### Insecure Direct Object Reference (IDOR)
 
 - [Hacking Facebook.com/thanks Posting on behalf of your friends!](http://www.anandpraka.sh/2014/11/hacking-facebookcomthanks-posting-on.html) by Anand Prakash
 - [Change the description of a video without publish_actions permission in Facebook](https://philippeharewood.com/change-the-description-of-a-video-without-publish_actions-permission/) by phwd
@@ -138,7 +138,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
 - [Mass Assignment, Response to Request Injection, Admin Escalation](https://seanmelia.wordpress.com/2017/06/01/privilege-escalation-in-a-django-application/) by sean
 
-### Sensitive Data Exposure
+### Sensitive Information Exposure
 
 - [FB users birth year disclosed via FB Timeline profile source code “data attribute”](https://medium.com/@rajsek/curiosity-and-passion-to-your-profession-might-lead-to-make-your-dream-come-true-7d9be3c6029a) by Raja Sekar Durairaj
 - [FB user birth year Disclosure via “IDOR in m.facebook.com”](https://medium.com/@rajsek/my-2nd-facebook-bounty-poc-fb-data-of-birth-disclosure-d02e1bec50) by Raja Sekar Durairaj
