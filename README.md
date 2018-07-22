@@ -37,7 +37,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Three Interesting Stored XSS in Facebook](http://www.breaksec.com/?p=6129) by Nirgoldshlager
 - [An XSS on Facebook via PNGs & Wonky Content Types](https://whitton.io/articles/xss-on-facebook-via-png-content-types/) by Jack Whitton
   - he is able to make stored XSS from a irrelevant domain to main facebook domain 
-- [Stored XSSes in Facebook Wall by Embedding an External Video with Open Graph](https://opnsec.com/2018/03/stored-xss-on-facebook/) by opnsec
+- [Stored XSSes in Facebook Wall by Embedding an External Video with Open Graph](https://opnsec.com/2018/03/stored-xss-on-facebook/) by Enguerran Gillier
 - [Stored XSS in Google Drive (Folder Name)](https://pwnrules.com/google-drive-stored-xss/)
 - [XSS in Youtube, Google Translate, Google Docs](https://labs.detectify.com/2015/06/06/google-xss-turkey/) by fransrosen
 - [Drag-Drop XSS in Google Docs Drawing Moudle](http://c0rni3sm.blogspot.com/2016/04/drag-drop-xss-in-google.html) by p0pc0rn
@@ -52,6 +52,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Stored XSS at Google firebase via Google Cloud IAM](http://panchocosil.blogspot.com/2017/04/stored-xss-at-google-firebase-via.html) by panchocosil
 - [Stored XSS in Google Adwords](https://medium.com/@Alra3ees/google-adwords-3133-7-stored-xss-27bb083b8d27) by Emad Shanab
 - [Stored XSS, and SSRF in Google using the Dataset Publishing Language](https://s1gnalcha0s.github.io/dspl/2018/03/07/Stored-XSS-and-SSRF-Google.html) by Signal Chaos
+- [Google Assistant XSS Bug Worth $3133.7](https://medium.com/bug-bounty-hunting/google-assistant-bug-worth-3133-7-830a03724a04) by Circle Ninja
 - [Yahoo Mail stored XSS](https://klikki.fi/adv/yahoo.html) by Jouko Pynnönen
 - [xss in Yahoo Mail Again, worth $10000](https://klikki.fi/adv/yahoo2.html) by Jouko Pynnönen
 - [xss in Yahoo Fantasy Sport](https://web.archive.org/web/20161228182923/http://dawgyg.com/2016/12/07/stored-xss-affecting-all-fantasy-sports-fantasysports-yahoo-com-2/) by thedawgyg
@@ -70,6 +71,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Stored XSS on Snapchat](https://medium.com/@mrityunjoy/stored-xss-on-snapchat-5d704131d8fd) by Mrityunjoy
 - [XSS on Bugcrowd and so many other website's main Domain](http://witcoat.blogspot.com/2017/06/xss-on-bugcrowd-and-so-many-other.html) by Bull
 - [The $12,000 Intersection between Clickjacking, XSS, and Denial of Service](https://samcurry.net/the-12000-intersection-between-clickjacking-xss-and-denial-of-service/) by samwcyo
+- [Story of Parameter Specific XSS](https://www.noob.ninja/2017/09/story-of-parameter-specific-xss.html) by Noob Ninja
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -92,6 +94,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Server Side Request Forgery (SSRF)
 
 - [SSRF to query google internal server](https://www.rcesecurity.com/2017/03/ok-google-give-me-all-your-internal-dns-information/) by rcesecurity
+- [Into the Borg – SSRF inside Google production network](https://opnsec.com/2018/07/into-the-borg-ssrf-inside-google-production-network/) by Enguerran Gillier
 - [Yahoo! When Server Side Request Forgery combine with Cross Site Scripting](http://web.archive.org/web/20170218205059/http://ngailong.com/what-could-happen-when-server-side-request-forgery-combine-with-cross-site-scripting/) by Ron Chan
 - [How i found an SSRF in Yahoo! Guesthouse (Recon Wins)](https://medium.com/@th3g3nt3l/how-i-found-an-ssrf-in-yahoo-guesthouse-recon-wins-8722672e41d4) by Th3G3nt3lman
 - [Airbnb – Chaining Third-Party Open Redirect into Server-Side Request Forgery (SSRF) via LivePerson Chat](https://buer.haus/2017/03/09/airbnb-chaining-third-party-open-redirect-into-server-side-request-forgery-ssrf-via-liveperson-chat/) by Brett Buerhaus
@@ -176,6 +179,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/blog-facebook-originull/) by cynet
 - [How I hacked Tinder accounts using Facebook’s Account Kit](https://medium.freecodecamp.org/hacking-tinder-accounts-using-facebook-accountkit-d5cc813340d1) by Anand Prakash
 - [How I Was Able to Takeover Facebook Account](https://blog.securitybreached.org/2017/12/10/how-i-was-able-to-takeover-facebook-account-bug-bounty-poc/) by Ameer Hamza
+- [Bypass Admin approval, Mute Member and Posting Permissions for Only admins in Facebook groups](https://medium.com/bugbountywriteup/bypass-admin-approval-mute-member-and-posting-permissions-for-only-admins-in-facebook-groups-ef476cb3d524) by Sarmad Hassan
 - [Use XSS and Bug Chain to Bypass Google Account Recovery Restriction](https://sites.google.com/site/bughunteruniversity/best-reports/account-recovery-xss) by Ramzes
 - [Bypassing Google Authentication on Periscope's Administration Panel](https://whitton.io/articles/bypassing-google-authentication-on-periscopes-admin-panel/) By Jack Whitton
 - [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
@@ -209,6 +213,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How to Detect HTTP Parameter Pollution Attacks](https://www.acunetix.com/blog/whitepaper-http-parameter-pollution/) by ?
 - [Bypassing Captcha Like a Boss](https://medium.com/bugbountywriteup/bypassing-captcha-like-a-boss-d0edcc3a1c1) by Ak1T4
 - [Chaining Multiple Vulnerabilities to Gain Admin Access](https://nahamsec.com/chaining-multiple-vulnerabilities-to-gain-admin-access/) by NahamSec
+- [ORACLE WEBLOGIC - MULTIPLE SAML VULNERABILITIES (CVE-2018-2998/CVE-2018-2933)](https://pulsesecurity.co.nz/advisories/WebLogic-SAML-Vulnerabilities) by Denis Andzakovic
 
 ### Stealing Access Token
 
@@ -307,6 +312,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Command Injection in Yahoo Acquisition](http://samcurry.net/how-i-couldve-taken-over-the-production-server-of-a-yahoo-acquisition-through-command-injection/) by samwcyo
 - [Remote Code Execution by struct2 Yahoo Server](https://medium.com/@th3g3nt3l/how-i-got-5500-from-yahoo-for-rce-92fffb7145e6) by Th3G3nt3lman
 - [Yahoo! RCE via Spring Engine SSTI, Recon Pay Off](https://hawkinsecurity.com/2017/12/13/rce-via-spring-engine-ssti/) by tghawkins
+- [RCE on Yahoo Luminate](https://sites.google.com/securifyinc.com/secblogs/yahoo-luminate-rce) by Rojan Rijal
 - [Airbnb – Ruby on Rails String Interpolation led to Remote Code Execution](https://buer.haus/2017/03/13/airbnb-ruby-on-rails-string-interpolation-led-to-remote-code-execution/) by Brett Buerhaus
 - [How we broke PHP, hacked Pornhub and earned $20,000](https://www.evonide.com/how-we-broke-php-hacked-pornhub-and-earned-20000-dollar/) by Ruslan Habalov
   - *Alert*, God-like Write-up, make sure you know what is ROP before clicking, which I don't =(
@@ -318,6 +324,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [$20k RCE in Jenkin Instance](http://nahamsec.com/secure-your-jenkins-instance-or-hackers-will-force-you-to/) by Ben Sadeghipour
 - [$50k RCE in JetBrains IDE](http://blog.saynotolinux.com/blog/2016/08/15/jetbrains-ide-remote-code-execution-and-local-file-disclosure-vulnerability-analysis/) by Jordan Milne
 - [Pentest: 0day in iTop 2.4.0 gave me Domain Admin Priviledges](https://httpsonly.blogspot.com/2018/04/pentest-0day-in-itop-240-gave-me-domain.html) by httpsonly
+- [RCE due to ShowExceptions](https://sites.google.com/view/harshjaiswalblog/rce-due-to-showexceptions) by Harsh Jaiswal
 
 ####  Deserialization
 
@@ -340,9 +347,11 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [HACKING NODEJS AND MONGODB](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecurify
 - [Mongo DB Injection again](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecrify
 - [How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by bo0om
+- [Evading CSP with DOM-based dangling markup](https://portswigger.net/blog/evading-csp-with-dom-based-dangling-markup) by Gareth Heyes
 - [Jumping to The Hell With 10 Attempts to Bypass Devil's WAF](https://medium.com/bugbountywriteup/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd) by Ak1T4
 - [High Risk Vulnerabilities within the DoD - Exploiting Coldfusion, Dotnet Nuke, Oracle, and more](https://medium.com/@alyssa.o.herrera/high-risk-vulnerabilities-within-the-dod-from-coldfusion-dotnet-nuke-oracle-and-more-cc730f748c69) by Alyssa Herrera
 - [A penetration tester’s guide to sub-domain enumeration](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) by Bharath
+- [Escalating low severity bugs to high](https://www.noob.ninja/2018/07/escalating-low-severity-bugs-to-high.html) by Noob Ninja
 
 ### Exclusive Bugbounty Writeup Blog
 
