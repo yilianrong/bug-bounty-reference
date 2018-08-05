@@ -72,6 +72,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [XSS on Bugcrowd and so many other website's main Domain](http://witcoat.blogspot.com/2017/06/xss-on-bugcrowd-and-so-many-other.html) by Bull
 - [The $12,000 Intersection between Clickjacking, XSS, and Denial of Service](https://samcurry.net/the-12000-intersection-between-clickjacking-xss-and-denial-of-service/) by samwcyo
 - [Story of Parameter Specific XSS](https://www.noob.ninja/2017/09/story-of-parameter-specific-xss.html) by Noob Ninja
+- [Coinbase AngularJS DOM XSS via Kiteworks](http://www.paulosyibelo.com/2017/07/coinbase-angularjs-dom-xss-via-kiteworks.html) by Paulos Yibelo
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -90,6 +91,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 - [OWASP XSSI](https://www.owasp.org/images/f/f3/Your_Script_in_My_Page_What_Could_Possibly_Go_Wrong_-_Sebastian_Lekies%2BBen_Stock.pdf) by Sebastian Lekies and Ben Stock
 - [Backdoor of All Flickr API Calls by XSSI](https://ngailong.wordpress.com/2017/08/11/open-door-to-all-flickr-api-calls-by-xssi/) by Ron Chan
+- [Yahoo — Two XSSi vulnerabilities chained to steal user information](https://medium.com/@0xHyde/yahoo-two-xssi-vulnerabilities-chained-to-steal-user-information-750-bounty-e9bc6a41a40a) by hyde
 
 ### Server Side Request Forgery (SSRF)
 
@@ -109,6 +111,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Server-Side Request Forgery (SSRF) Attacks — Part 2: Fun with IPv4 addresses](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-attacks-part-2-fun-with-ipv4-addresses-eb51971e476d) by Maxime Leblanc
 - [Server-Side Request Forgery (SSRF) — Part 3: Other advanced techniques](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-part-3-other-advanced-techniques-3f48cbcad27e) by Maxime Leblanc
 - [SSRF bible. Cheatsheet](https://docs.google.com/document/d/1v1TkWZtrhzRLy0bYXBcdLUedXGb9njTNIJXa3u9akHM/mobilebasic) by d0znpp
+- [Bypassing SSRF](http://www.infosec-research.com/bypassing-ssrf-bugbounty-tip/) by infosec
+- [SSRF on DigitalOcean site](http://www.infosec-research.com/ssrf-on-digitalocean-site-bugbounty-tip/) by infosec
 
 ### XML External Entity (XXE)
 
@@ -133,6 +137,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Facebook Page Takeover by Manipulating the Parameter](https://arunsureshkumar.me/index.php/2016/09/16/facebook-page-takeover-zero-day-vulnerability/) by Arun Sureshkumar
 - [A Simple Bug On Facebook That Is Worth $8000 - Page Download](https://medium.com/@ajdumanhug/a-simple-bug-on-facebook-that-is-worth-8000-b77f7e01b064) by Aj Dumanhug
 - [Disclose Private Video Thumbnail from Facebook WorkPlace](https://medium.com/bugbountywriteup/disclose-private-video-thumbnail-from-facebook-workplace-52b6ec4d73b7) by Sarmad Hassan
+- [View Insights for Any Facebook Marketplace Product](https://jmw.fyi/post/view-insights-for-any-fb-marketplace-product) by Jane Manchun Wong
+- [Dox Facebook Employees Behind “Did You Know” Questions](https://jmw.fyi/post/reveal-fb-employee-behind-funfact) by Jane Manchun Wong
+- [Disclose Facebook Internal Server Information With A Strange Poll](https://jmw.fyi/post/disclose-fb-intern-server-info-with-a-strange-poll) by Jane Manchun Wong
 - [Vulnerability in Youtube allowed moving comments from any video to another](https://www.secgeek.net/youtube-vulnerability/) by secgeek
   - It's *Google* Vulnerability, so it's worth reading, as generally it is more difficult to find Google vulnerability
 - [Microsoft-careers.com Remote Password Reset](http://yasserali.com/microsoft-careers-com-remote-password-reset/) by Yaaser Ali
@@ -214,6 +221,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Bypassing Captcha Like a Boss](https://medium.com/bugbountywriteup/bypassing-captcha-like-a-boss-d0edcc3a1c1) by Ak1T4
 - [Chaining Multiple Vulnerabilities to Gain Admin Access](https://nahamsec.com/chaining-multiple-vulnerabilities-to-gain-admin-access/) by NahamSec
 - [ORACLE WEBLOGIC - MULTIPLE SAML VULNERABILITIES (CVE-2018-2998/CVE-2018-2933)](https://pulsesecurity.co.nz/advisories/WebLogic-SAML-Vulnerabilities) by Denis Andzakovic
+- [Bypassing and exploiting Bucket Upload Policies and Signed URLs](https://labs.detectify.com/2018/08/02/bypassing-exploiting-bucket-upload-policies-signed-urls/) by Frans Rosén
 
 ### Stealing Access Token
 
