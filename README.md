@@ -177,6 +177,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Sensitive data exposure by requesting a resource with a different content type](https://medium.com/@yogendra_h1/sensitive-data-exposure-by-requesting-a-resource-with-a-different-content-type-27412a9d6e2f) by Yogendra Jaiswal
 - [How I used a simple Google query to mine passwords from dozens of public Trello boards](https://medium.freecodecamp.org/discovering-the-hidden-mine-of-credentials-and-sensitive-information-8e5ccfef2724) by Kushagra Pathak
 - [Find Leaked Sensitive Data](https://sites.google.com/securifyinc.com/rojanrijal/finding-leaked-sensitive-data) by Rojan Rijal
+- [Misconfigured JSON endpoint on ads.twitter.com lead to Access control issue and Information Disclosure of role privileged users](https://medium.com/@zk34911/twitter-bug-bounty-misconfigured-json-endpoint-on-ads-twitter-com-2771ec83a82) by zk34911
 
 ### Authentication Bypass
 
@@ -194,6 +195,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [This domain is my domain - G Suite A record vulnerability](http://blog.pentestnepal.tech/post/156959105292/this-domain-is-my-domain-g-suite-a-record) by uranium238
 - [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
 - [Messing with the Google Buganizer System for $15,600 in Bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
+- [Unauth meetings access - Google](https://sites.google.com/securifyinc.com/vrp-writeups/google-meet/authorization-bugs) by Rojan Rijal
 - [Office365 Auth Bypass - The road to hell is paved with SAML Assertions](http://www.economyofmechanism.com/office365-authbypass.html) by Yiannis Kakavas
 - [Github SAML - The road to your codebase is paved with forged assertions](http://www.economyofmechanism.com/github-saml.html) by Yiannis Kakavas
 - [Using a GitHub app to escalate to an organization owner for a $10,000 bounty](https://medium.com/@cachemoney/using-a-github-app-to-escalate-to-an-organization-owner-for-a-10-000-bounty-4ec307168631) by Tanner
@@ -335,6 +337,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [$50k RCE in JetBrains IDE](http://blog.saynotolinux.com/blog/2016/08/15/jetbrains-ide-remote-code-execution-and-local-file-disclosure-vulnerability-analysis/) by Jordan Milne
 - [Pentest: 0day in iTop 2.4.0 gave me Domain Admin Priviledges](https://httpsonly.blogspot.com/2018/04/pentest-0day-in-itop-240-gave-me-domain.html) by httpsonly
 - [RCE due to ShowExceptions](https://sites.google.com/view/harshjaiswalblog/rce-due-to-showexceptions) by Harsh Jaiswal
+- [How I Chained 4 Bugs(Features?) into RCE on Amazon Collaboration System](http://blog.orange.tw/2018/08/how-i-chained-4-bugs-features-into-rce-on-amazon.html) by Orange Tsai
 
 ####  Deserialization
 
@@ -370,6 +373,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [A list of FB writeup collected by phwd](http://web.archive.org/web/20171220084758/https://www.facebook.com/notes/phwd/facebook-bug-bounties/707217202701640) by phwd
 - [Facebook Bugbounty Writeup Blog](https://philippeharewood.com) by phwd
 - [Google Bugbouty Writeup](https://sites.google.com/site/testsitehacking/write-ups) by eze2307
+- [Clickjackings in Google](https://medium.com/@raushanraj_65039/google-clickjacking-6a04132b918a) by Raushan Raj
 
 ### Interesting but Seems Not Applicable Now
 - [RPO that lead to information leakage in Google](http://blog.innerht.ml/rpo-gadgets/) by filedescriptor
