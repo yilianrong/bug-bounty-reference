@@ -188,6 +188,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I hacked Tinder accounts using Facebook’s Account Kit](https://medium.freecodecamp.org/hacking-tinder-accounts-using-facebook-accountkit-d5cc813340d1) by Anand Prakash
 - [How I Was Able to Takeover Facebook Account](https://blog.securitybreached.org/2017/12/10/how-i-was-able-to-takeover-facebook-account-bug-bounty-poc/) by Ameer Hamza
 - [Bypass Admin approval, Mute Member and Posting Permissions for Only admins in Facebook groups](https://medium.com/bugbountywriteup/bypass-admin-approval-mute-member-and-posting-permissions-for-only-admins-in-facebook-groups-ef476cb3d524) by Sarmad Hassan
+- [Facebook Bug Bounty! {Permission Bug}](https://medium.com/@alicanact60/facebook-bug-bounty-permission-bug-19c9358d2297) by alicanact60
 - [Use XSS and Bug Chain to Bypass Google Account Recovery Restriction](https://sites.google.com/site/bughunteruniversity/best-reports/account-recovery-xss) by Ramzes
 - [Bypassing Google Authentication on Periscope's Administration Panel](https://whitton.io/articles/bypassing-google-authentication-on-periscopes-admin-panel/) By Jack Whitton
 - [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
@@ -338,6 +339,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Pentest: 0day in iTop 2.4.0 gave me Domain Admin Priviledges](https://httpsonly.blogspot.com/2018/04/pentest-0day-in-itop-240-gave-me-domain.html) by httpsonly
 - [RCE due to ShowExceptions](https://sites.google.com/view/harshjaiswalblog/rce-due-to-showexceptions) by Harsh Jaiswal
 - [How I Chained 4 Bugs(Features?) into RCE on Amazon Collaboration System](http://blog.orange.tw/2018/08/how-i-chained-4-bugs-features-into-rce-on-amazon.html) by Orange Tsai
+- [Server-Side Template Injection](https://portswigger.net/blog/server-side-template-injection) by James Kettle
 
 ####  Deserialization
 
@@ -354,9 +356,12 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Miscellaneous
 
+- [Top 10 Web Hacking Techniques of 2017 - Nominations Open](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2017-nominations-open) by James Kettle
+- [Web Application Penetration Testing Course](https://docs.google.com/document/d/101EsKlu41ICdeE7mEv189SS8wMtcdXfRtua0ClYjP1M/edit)
 - [List of bug bounty writeups](https://pentester.land/list-of-bug-bounty-writeups.html)
 - [CTF write up, Great for Bug Bounty](https://ctftime.org/writeups?tags=web200&hidden-tags=web%2cweb100%2cweb200)
 - [Smart Contract Vulnerabilities](http://www.dasp.co/)
+- [Tutorials](https://securityidiots.com/) by Security Idiots
 - [HACKING NODEJS AND MONGODB](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecurify
 - [Mongo DB Injection again](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecrify
 - [How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by bo0om
@@ -366,6 +371,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [A penetration tester’s guide to sub-domain enumeration](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) by Bharath
 - [Escalating low severity bugs to high](https://www.noob.ninja/2018/07/escalating-low-severity-bugs-to-high.html) by Noob Ninja
 - [How I earned 60K+ from private program](https://medium.com/@sivakrishnasamireddi/how-i-earned-60k-from-private-program-71bd51554490) by Siva Krishna Samireddi
+- [Practical Web Cache Poisoning](https://portswigger.net/blog/practical-web-cache-poisoning) by James Kettle
+- [How to Hack WebSockets and Socket.io](https://www.blackhillsinfosec.com/how-to-hack-websockets-and-socket-io/) by Ethan Robish
 
 ### Exclusive Bugbounty Writeup Blog
 
@@ -374,6 +381,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Facebook Bugbounty Writeup Blog](https://philippeharewood.com) by phwd
 - [Google Bugbouty Writeup](https://sites.google.com/site/testsitehacking/write-ups) by eze2307
 - [Clickjackings in Google](https://medium.com/@raushanraj_65039/google-clickjacking-6a04132b918a) by Raushan Raj
+- [Google VRP Writeups](https://sites.google.com/securifyinc.com/vrp-writeups/home?authuser=0) by securifyinc
 
 ### Interesting but Seems Not Applicable Now
 - [RPO that lead to information leakage in Google](http://blog.innerht.ml/rpo-gadgets/) by filedescriptor
