@@ -57,6 +57,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [xss in Yahoo Mail Again, worth $10000](https://klikki.fi/adv/yahoo2.html) by Jouko Pynnönen
 - [xss in Yahoo Fantasy Sport](https://web.archive.org/web/20161228182923/http://dawgyg.com/2016/12/07/stored-xss-affecting-all-fantasy-sports-fantasysports-yahoo-com-2/) by thedawgyg
 - [900$ XSS in yahoo ( Recon Wins )](https://medium.com/bugbountywriteup/900-xss-in-yahoo-recon-wins-65ee6d4bfcbd) by Th3G3nt3lman
+- [Love Story, From Closed As Informative to $3,500 USD, XSS Stored in Yahoo! iOS Mail App](http://omespino.com/write-up-lovestory-from-closed-as-informative-to-xx00-usd-in-yahoo-ios-mail-app/) by Omespino
 - [Login-Logout-Login: Turning Self-XSS into Good XSS in Uber](https://whitton.io/articles/uber-turning-self-xss-into-good-xss/) by Jack Whitton
 - [Turning Self-XSS into Good XSS in Uber v2: Chanllenge Completed but Not Rewarded](https://httpsonly.blogspot.hk/2016/08/turning-self-xss-into-good-xss-v2.html) by httpsonly
 - [DOM XSS - auth.uber.com](http://stamone-bug-bounty.blogspot.com/2017/10/dom-xss-auth_14.html) by StamOne
@@ -162,6 +163,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Hunting Insecure Direct Object Reference Vulnerabilities for Fun and Profit (PART 2)](https://codeburst.io/hunting-insecure-direct-object-reference-vulnerabilities-for-fun-and-profit-part-2-af832d1c0bb6) by Mohammed Abdul Raheem
 - [How I Get the Name of the Hotel (and other Data) that you ever Stay](https://medium.com/@YoKoKho/idor-at-private-bug-bounty-program-that-could-leads-to-personal-data-leaks-d2536d026bf5) by YoKo Kho
 - [How I hacked 23.900.000 tumblr domains at once](https://medium.com/bugbountywriteup/how-i-hack-23-900-000-tumblr-domains-at-once-341edad6e7cc) by Ak1T4
+- [IDOR User Account Takeover By Connecting My Facebook Account with victims Account](https://blog.securitybreached.org/2018/09/16/idor-account-takeover-using-facebook/) by babayaga47
+- [Paytm Customer Information is at risk — India’s largest digital wallet company](https://medium.com/@logicbomb_1/bugbounty-paytm-customer-information-is-at-risk-indias-largest-digital-wallet-company-6f7116d4b2d5) by Avinash Jain
+- [How Naaptol (India’s popular home shopping company) Kept their Millions of User Data at Risk](https://medium.com/@logicbomb_1/bugbounty-how-naaptol-indias-popular-home-shopping-company-kept-their-millions-of-user-data-e414cd4151c) by Avinash Jain
 
 ### Sensitive Information Exposure
 
@@ -178,6 +182,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I used a simple Google query to mine passwords from dozens of public Trello boards](https://medium.freecodecamp.org/discovering-the-hidden-mine-of-credentials-and-sensitive-information-8e5ccfef2724) by Kushagra Pathak
 - [Find Leaked Sensitive Data](https://sites.google.com/securifyinc.com/rojanrijal/finding-leaked-sensitive-data) by Rojan Rijal
 - [Misconfigured JSON endpoint on ads.twitter.com lead to Access control issue and Information Disclosure of role privileged users](https://medium.com/@zk34911/twitter-bug-bounty-misconfigured-json-endpoint-on-ads-twitter-com-2771ec83a82) by zk34911
+- [How I could download the source code of an Indian e-commerce website](https://medium.com/bugbountywriteup/how-i-could-download-the-source-code-of-an-indian-e-commerce-website-30cb8310b6e4) by Minali Arora
 
 ### Authentication Bypass
 
@@ -275,6 +280,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I took over a uber subdomain by doing recon](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
 - [How I snooped into your private Slack messages - Slack Bug bounty worth $2,500](http://blog.pentestnepal.tech/post/150381068912/how-i-snooped-into-your-private-slack-messages) by uranium238
 - [Hundreds of hundreds sub-secdomains hack3d! (including Hacker0ne)](https://medium.com/bugbountywriteup/hundreds-of-hundreds-subdomains-hack3d-including-hacker0ne-ad3acd1c0a44) by Ak1T4
+- [Netlify - Subdomain Takeover worth 200$](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe) by Ali Razzaq
+- [Shopify - How to do 55.000+ Subdomain Takeover in a Blink of an Eye](https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75) by buckhacker
 
 ### Local File Inclusion
 
@@ -312,11 +319,13 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Blind SQL Injection in er..I'm not sure what's the DBMS is](http://c0rni3sm.blogspot.com/2017/03/blind-sql-injection-in-erim-not-sure.html) by c0rni3sm
 - [Anonymous SQL Execution in Oracle Advanced Support](https://blog.netspi.com/anonymous-sql-execution-oracle-advanced-support/) by Eric Gruber
 - [Making a Blind SQL Injection a Little Less Blind](https://medium.com/@tomnomnom/making-a-blind-sql-injection-a-little-less-blind-428dcb614ba8) by TomNomNom
+- [SQL Injection Vulnerability bootcamp.nutanix.com](https://blog.securitybreached.org/2018/09/08/sqli-bootcampnutanix-com-bug-bounty-poc/) by babayaga47
 
 ### Remote Code Execution
 
 - [Facebaook Acquisition: Popping a shell on the Oculus developer portal](https://bitquark.co.uk/blog/2014/08/31/popping_a_shell_on_the_oculus_developer_portal) by Bitquark
 - [How I Hacked Facebook, and Found Someone's Backdoor Script](http://devco.re/blog/2016/04/21/how-I-hacked-facebook-and-found-someones-backdoor-script-eng-ver/) by Orange Tsai
+- [Remote Code Execution on a Facebook server](https://blog.scrt.ch/2018/08/24/remote-code-execution-on-a-facebook-server/) by Daniel Le Gall
 - [Command Injection in Google Console](http://www.pranav-venkat.com/2016/03/command-injection-which-got-me-6000.html) by Venkat S
 - [GitHub Enterprise Remote Code Execution](https://www.exablue.de/blog/2017-03-15-github-enterprise-remote-code-execution.html) by iblue
 - [How I Chained 4 vulnerabilities on GitHub Enterprise, From SSRF Execution Chain to RCE](http://blog.orange.tw/2017/07/how-i-chained-4-vulnerabilities-on.html) by Orange Tsai
@@ -340,6 +349,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [RCE due to ShowExceptions](https://sites.google.com/view/harshjaiswalblog/rce-due-to-showexceptions) by Harsh Jaiswal
 - [How I Chained 4 Bugs(Features?) into RCE on Amazon Collaboration System](http://blog.orange.tw/2018/08/how-i-chained-4-bugs-features-into-rce-on-amazon.html) by Orange Tsai
 - [Server-Side Template Injection](https://portswigger.net/blog/server-side-template-injection) by James Kettle
+- [RCE due to ShowExceptions](https://sites.google.com/view/harshjaiswalblog/rce-due-to-showexceptions) by Harsh Jaiswal
+- [RCE Unsecure Jenkins Instance](https://blog.securitybreached.org/2018/09/07/rce-jenkins-instance-dosomething-org-bug-bounty-poc/) by babayaga47
 
 ####  Deserialization
 
@@ -382,6 +393,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Google Bugbouty Writeup](https://sites.google.com/site/testsitehacking/write-ups) by eze2307
 - [Clickjackings in Google](https://medium.com/@raushanraj_65039/google-clickjacking-6a04132b918a) by Raushan Raj
 - [Google VRP Writeups](https://sites.google.com/securifyinc.com/vrp-writeups/home?authuser=0) by securifyinc
+- [Bug Bounty: Fastmail](https://medium.com/bugbountywriteup/bug-bounty-fastmail-feeda67905f5) by hyde
 
 ### Interesting but Seems Not Applicable Now
 - [RPO that lead to information leakage in Google](http://blog.innerht.ml/rpo-gadgets/) by filedescriptor
