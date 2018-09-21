@@ -74,6 +74,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [The $12,000 Intersection between Clickjacking, XSS, and Denial of Service](https://samcurry.net/the-12000-intersection-between-clickjacking-xss-and-denial-of-service/) by samwcyo
 - [Story of Parameter Specific XSS](https://www.noob.ninja/2017/09/story-of-parameter-specific-xss.html) by Noob Ninja
 - [Coinbase AngularJS DOM XSS via Kiteworks](http://www.paulosyibelo.com/2017/07/coinbase-angularjs-dom-xss-via-kiteworks.html) by Paulos Yibelo
+- [https://mike-n1.github.io/Unusual_XSS](https://mike-n1.github.io/Unusual_XSS) by Script Kiddie
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -117,13 +118,14 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### XML External Entity (XXE)
 
+- [XML Entity Cheatsheet](https://www.silentrobots.com/blog/2015/12/14/xe-cheatsheet-update/) by silentrobots
 - [How we got read access on Google’s production servers](https://blog.detectify.com/2014/04/11/how-we-got-read-access-on-googles-production-servers/) by  detectify
 - [Blind OOB XXE At UBER 26+ Domains Hacked](http://nerdint.blogspot.hk/2016/08/blind-oob-xxe-at-uber-26-domains-hacked.html) by Raghav Bisht
 - [0day in Code42 - XXE in uber.com to read local files](https://httpsonly.blogspot.com/2017/01/0day-writeup-xxe-in-ubercom.html) by httpsonly
 - [Out of Band XML External Entity Injection via SAML SSO](https://seanmelia.files.wordpress.com/2016/01/out-of-band-xml-external-entity-injection-via-saml-redacted.pdf) by seanmelia
 - [XXE by SVG in Lithium Community Platform](http://esoln.net/Research/2017/03/30/xxe-in-lithium-community-platform/) by Vibhuti Nath
 - [Gainning Filesystem Access Via Blind OOB XXE](https://hawkinsecurity.com/2018/03/24/gaining-filesystem-access-via-blind-oob-xxe/) by tghawkins
-- [XML Entity Cheatsheet](https://www.silentrobots.com/blog/2015/12/14/xe-cheatsheet-update/) by silentrobots
+- [XXE at Bol.com](https://medium.com/@jonathanbouman/xxe-at-bol-com-7d331186de54) by Jonathan Bouman
 
 ### Insecure Direct Object Reference (IDOR)
 
@@ -230,6 +232,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Chaining Multiple Vulnerabilities to Gain Admin Access](https://nahamsec.com/chaining-multiple-vulnerabilities-to-gain-admin-access/) by NahamSec
 - [ORACLE WEBLOGIC - MULTIPLE SAML VULNERABILITIES (CVE-2018-2998/CVE-2018-2933)](https://pulsesecurity.co.nz/advisories/WebLogic-SAML-Vulnerabilities) by Denis Andzakovic
 - [Bypassing and exploiting Bucket Upload Policies and Signed URLs](https://labs.detectify.com/2018/08/02/bypassing-exploiting-bucket-upload-policies-signed-urls/) by Frans Rosén
+- [How I hijacked your account when you opened my cat picture](https://medium.com/intigriti/how-i-hijacked-your-account-when-you-opened-my-cat-picture-9a0a0acca9e8) by Matti Bijnens
 
 ### Stealing Access Token
 
@@ -320,6 +323,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Anonymous SQL Execution in Oracle Advanced Support](https://blog.netspi.com/anonymous-sql-execution-oracle-advanced-support/) by Eric Gruber
 - [Making a Blind SQL Injection a Little Less Blind](https://medium.com/@tomnomnom/making-a-blind-sql-injection-a-little-less-blind-428dcb614ba8) by TomNomNom
 - [SQL Injection Vulnerability bootcamp.nutanix.com](https://blog.securitybreached.org/2018/09/08/sqli-bootcampnutanix-com-bug-bounty-poc/) by babayaga47
+- [Authentication Bypass Using SQL Injection AutoTrader Webmail](https://blog.securitybreached.org/2018/09/10/sqli-login-bypass-autotraders/) by babayaga47
 
 ### Remote Code Execution
 
@@ -375,8 +379,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Tutorials](https://securityidiots.com/) by Security Idiots
 - [HACKING NODEJS AND MONGODB](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecurify
 - [Mongo DB Injection again](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecrify
-- [How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by bo0om
-- [Evading CSP with DOM-based dangling markup](https://portswigger.net/blog/evading-csp-with-dom-based-dangling-markup) by Gareth Heyes
 - [Jumping to The Hell With 10 Attempts to Bypass Devil's WAF](https://medium.com/bugbountywriteup/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd) by Ak1T4
 - [High Risk Vulnerabilities within the DoD - Exploiting Coldfusion, Dotnet Nuke, Oracle, and more](https://medium.com/@alyssa.o.herrera/high-risk-vulnerabilities-within-the-dod-from-coldfusion-dotnet-nuke-oracle-and-more-cc730f748c69) by Alyssa Herrera
 - [A penetration tester’s guide to sub-domain enumeration](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) by Bharath
