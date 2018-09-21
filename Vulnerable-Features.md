@@ -24,8 +24,16 @@ Some features are more vulnerable than others or could be exploited by exclusive
 
 ### CORS
 
+- [The Complete Guide to CORS (In)Security](https://www.bedefended.com/papers/cors-security-guide) by  Davide Danelon
 - [Exploiting CORS misconfigurations for Bitcoins and bounties](https://portswigger.net/blog/exploiting-cors-misconfigurations-for-bitcoins-and-bounties) by James Kettle
 - [Exploiting Misconfigured CORS](http://www.geekboy.ninja/blog/exploiting-misconfigured-cors-cross-origin-resource-sharing/) by geekboy
 - [CORS Misconfigurations Explained](https://blog.detectify.com/2018/04/26/cors-misconfigurations-explained/) by Linus Särud
 - [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/blog-facebook-originull/) by cynet
 - [Tricky CORS Bypass in Yahoo! View](http://web.archive.org/web/20171202055144/https://www.sxcurity.pro/2017/11/27/tricky-CORS/) by sxcurity
+- [Full Account Takeover through CORS with connection Sockets](https://medium.com/@saamux/full-account-takeover-through-cors-with-connection-sockets-179133384815) by Samuel
+
+### CSP
+
+- [How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by bo0om
+- [Evading CSP with DOM-based dangling markup](https://portswigger.net/blog/evading-csp-with-dom-based-dangling-markup) by Gareth Heyes
+- [How to use Google’s CSP Evaluator to bypass CSP](https://blog.thomasorlita.cz/vulns/google-csp-evaluator/) by Thomas Orlita
