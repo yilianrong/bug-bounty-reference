@@ -37,3 +37,9 @@ Some features are more vulnerable than others or could be exploited by exclusive
 - [How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by bo0om
 - [Evading CSP with DOM-based dangling markup](https://portswigger.net/blog/evading-csp-with-dom-based-dangling-markup) by Gareth Heyes
 - [How to use Google’s CSP Evaluator to bypass CSP](https://blog.thomasorlita.cz/vulns/google-csp-evaluator/) by Thomas Orlita
+
+### Web Cache
+
+- [Web Caching](https://si9int.sh/article/6) by SI9INT
+- [Practical Web Cache Poisoning](https://portswigger.net/blog/practical-web-cache-poisoning) by James Kettle
+- [Web Cache Deception Attack](https://omergil.blogspot.com/2017/02/web-cache-deception-attack.html) by Omer Gil
