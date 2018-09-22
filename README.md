@@ -53,6 +53,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Stored XSS in Google Adwords](https://medium.com/@Alra3ees/google-adwords-3133-7-stored-xss-27bb083b8d27) by Emad Shanab
 - [Stored XSS, and SSRF in Google using the Dataset Publishing Language](https://s1gnalcha0s.github.io/dspl/2018/03/07/Stored-XSS-and-SSRF-Google.html) by Signal Chaos
 - [Google Assistant XSS Bug Worth $3133.7](https://medium.com/bug-bounty-hunting/google-assistant-bug-worth-3133-7-830a03724a04) by Circle Ninja
+- [XSS in Google Colaboratory + CSP bypass](https://blog.bentkowski.info/2018/06/xss-in-google-colaboratory-csp-bypass.html) by Michał Bentkowski
+- [Another XSS in Google Colaboratory](https://blog.bentkowski.info/2018/09/another-xss-in-google-colaboratory.html) by  Michał Bentkowski
 - [Yahoo Mail stored XSS](https://klikki.fi/adv/yahoo.html) by Jouko Pynnönen
 - [xss in Yahoo Mail Again, worth $10000](https://klikki.fi/adv/yahoo2.html) by Jouko Pynnönen
 - [xss in Yahoo Fantasy Sport](https://web.archive.org/web/20161228182923/http://dawgyg.com/2016/12/07/stored-xss-affecting-all-fantasy-sports-fantasysports-yahoo-com-2/) by thedawgyg
@@ -125,7 +127,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Out of Band XML External Entity Injection via SAML SSO](https://seanmelia.files.wordpress.com/2016/01/out-of-band-xml-external-entity-injection-via-saml-redacted.pdf) by seanmelia
 - [XXE by SVG in Lithium Community Platform](http://esoln.net/Research/2017/03/30/xxe-in-lithium-community-platform/) by Vibhuti Nath
 - [Gainning Filesystem Access Via Blind OOB XXE](https://hawkinsecurity.com/2018/03/24/gaining-filesystem-access-via-blind-oob-xxe/) by tghawkins
-- [XXE at Bol.com](https://medium.com/@jonathanbouman/xxe-at-bol-com-7d331186de54) by Jonathan Bouman
 
 ### Insecure Direct Object Reference (IDOR)
 
@@ -203,7 +204,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [This domain is my domain - G Suite A record vulnerability](http://blog.pentestnepal.tech/post/156959105292/this-domain-is-my-domain-g-suite-a-record) by uranium238
 - [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
 - [Messing with the Google Buganizer System for $15,600 in Bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
-- [Unauth meetings access - Google](https://sites.google.com/securifyinc.com/vrp-writeups/google-meet/authorization-bugs) by Rojan Rijal
+- [Bypassing Firebase authorization to create custom goo.gl subdomains](https://blog.thomasorlita.cz/vulns/bypassing-firebase-authorization-to-create-custom-goo-gl-subdomains/) by ThomasOrlita
 - [Office365 Auth Bypass - The road to hell is paved with SAML Assertions](http://www.economyofmechanism.com/office365-authbypass.html) by Yiannis Kakavas
 - [Github SAML - The road to your codebase is paved with forged assertions](http://www.economyofmechanism.com/github-saml.html) by Yiannis Kakavas
 - [Using a GitHub app to escalate to an organization owner for a $10,000 bounty](https://medium.com/@cachemoney/using-a-github-app-to-escalate-to-an-organization-owner-for-a-10-000-bounty-4ec307168631) by Tanner
@@ -384,7 +385,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [A penetration tester’s guide to sub-domain enumeration](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) by Bharath
 - [Escalating low severity bugs to high](https://www.noob.ninja/2018/07/escalating-low-severity-bugs-to-high.html) by Noob Ninja
 - [How I earned 60K+ from private program](https://medium.com/@sivakrishnasamireddi/how-i-earned-60k-from-private-program-71bd51554490) by Siva Krishna Samireddi
-- [Practical Web Cache Poisoning](https://portswigger.net/blog/practical-web-cache-poisoning) by James Kettle
 - [How to Hack WebSockets and Socket.io](https://www.blackhillsinfosec.com/how-to-hack-websockets-and-socket-io/) by Ethan Robish
 
 ### Exclusive Bugbounty Writeup Blog
@@ -395,7 +395,10 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Google Bugbouty Writeup](https://sites.google.com/site/testsitehacking/write-ups) by eze2307
 - [Clickjackings in Google](https://medium.com/@raushanraj_65039/google-clickjacking-6a04132b918a) by Raushan Raj
 - [Google VRP Writeups](https://sites.google.com/securifyinc.com/vrp-writeups/home?authuser=0) by securifyinc
+- [Uber - Another "TicketTrick" story](https://sites.google.com/securifyinc.com/secblogs/uber-business-support-bug?authuser=0) by securifyinc
+- [Shopify Athena Bug](https://sites.google.com/securifyinc.com/secblogs/shopify-athena-bug?authuser=0) by securifyinc
 - [Bug Bounty: Fastmail](https://medium.com/bugbountywriteup/bug-bounty-fastmail-feeda67905f5) by hyde
+- [Extreme details in vulnerablities detecting](https://medium.com/@jonathanbouman) by Jonathan Bouman
 
 ### Interesting but Seems Not Applicable Now
 - [RPO that lead to information leakage in Google](http://blog.innerht.ml/rpo-gadgets/) by filedescriptor
