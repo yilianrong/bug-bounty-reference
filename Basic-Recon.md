@@ -1,55 +1,95 @@
 # Guide to Basic Recon
 
-Refer: https://blog.securitybreached.org/2017/11/25/guide-to-basic-recon-for-bugbounty/
+### 1. read rules and scope, understand the function of the website
 
-Refer: https://hussnainfareed.wordpress.com/2017/11/25/guide-to-basic-reconnaissance-bug-bounties/
+#### 1.1. sitemap
 
-### No.1. Most Important
+public pages, we can access without a user account
 
-Properly read the terms for the bounty and clearly understand which domains are in scope and which forms of vulnerabilities are considered valid reposrts.
+private pages, only accessible with a user account
 
-> **NOTE:** Submitting things that aren't within scope of the bounty program, tells the people running the program that you haven't properly read the terms, and it will lead to them not taking your future reports seriously.
+- [visualsitemapper](http://www.visualsitemapper.com/)
 
-### No.2. Map out the Target
+### 2. for scope
 
-Effectively map out most of the things you can do to get to know more about your target, how everything is structed and how everything works on the target.
+#### 2.1. www.domain.com
 
-> **NOTE:** You shold make notes during the recon to avoid confusion. Take them in whatever manner you want, but since participation in bug bounty programs involves mainly black box testing, it is really important to get a feel of how the site is structured and to map it all out in order to be able to effectively find bugs.
+2.1.1. check robots.txt
 
-- Take the information like **Whois**, **Social Accounts**.
+2.1.2. enumerate subdirectory
 
-- Enumerate valid **subdomains**.
+- [dirsearch](https://github.com/maurosoria/dirsearch) + [SecLists](https://github.com/danielmiessler/SecLists)
 
-- **Port** scanning. Run a scan through nmap for limited ports, selected one or maybe 1-50000.
+#### 2.2. **.domain.com
 
-- Look for any **services** running on unusual ports or any service running on default ports which could be vulnerable (FTP, SSH, etc). You're also going to want to look for the **version info** on services running in order to determine whether anything is outdeated and potentially vulnerable.
+2.2.1. enumerate subdomain
 
-- Try extracting **vhosts**.
+- [Sublist3r](https://github.com/aboul3la/Sublist3r)
+- [crt.sh](https://crt.sh/)
 
-- Look at the **headers** to see which security options are in place, for example, looking for presence of X-XSS-Protection: or X-Frame-Options: deny. Knowing what security measures are in place means you know your limitations.
+2.2.2. subdomain takeover
 
-- Also look out for **WAFs**.
+- [Fingerprint for specific engine](https://github.com/EdOverflow/can-i-take-over-xyz)
 
-- Use **robots.txt** to determine the directories which may contain useful info, look for the disallow rules.
+### 3. for asserts
 
-- **Burp Suite**, **spider** is going to be your best friend. Just make sure that your scope is set correctly so that you're not wasting time spidering unneeded domains. Also, **intruder** is completely necessary for directory brute-forcing. If you have **Burp Suite Pro**, I highly recommend utilizing the **Reflector extension**. This will show you any parameters that are reflected into the response as Burp is spidering.
+#### 3.1. S3 buckets
 
-- Also spider the host for **API endpoints**.
+query S3 buckets and search sensitive information or try to replace resource
 
-- Extracting **S3 buckets** during recon is really nice idea, look for them manually or use tools.
+- [bucket-stream](https://github.com/eth0izzle/bucket-stream)
+- [AWSBucketDump](https://github.com/jordanpotti/AWSBucketDump)
 
-> **NOTE:** Until now, stepwise notes typically contains:  **Whois Information**, **Subdomains**, **Dir info**, **S3 Buckets**, **Social Accounts**, **API Endpoints**, **Emails**, **Vhosts**, **Backend IP address**, **Open Ports / Services Running**, **Service Version Ifo**, **Server Banners**, **Directory Listings**, **Presence Security Headers**, **WAF (+ WAF type)**.
+#### 3.2. github
 
-- Make and capture requests and responses.
+query github and search sensitive information suck as keys
 
-- Use google dorks, you can make your own or use made by others.
+- [truffleHog](https://github.com/dxa4481/truffleHog)
 
-- Search github or pastebin for the company name and stumble across some random source that ended up online after some sloppy dev wrote it.
+#### 3.3. JS
 
-- Look deep into js files, manually or use tools.
+use burpsuite to extract all JS scripts
 
-- Look for older content that can give you ideas of site structure or maybe vuln endpoints.
+extract URL endpoints stored in JS scripts
 
-- Maybe reversewhois lookup will help to discover more potential targets but make sure that they are in scope.
+#### 3.4. hidden Get & Post parameters
 
-- Take a few minutes to look around PunkSpider.
+find hidden Get & Post parameters
+
+- [Arjun](https://github.com/s0md3v/Arjun)
+
+### 4. figer out WAF / CMS / Framework / template engine
+
+- plugin Wappalyzer
+- [wafw00f](https://github.com/EnableSecurity/wafw00f)
+
+### 5. google docker
+
+most useful: identify interesting files
+
+if files is document type, use tools to extract metadata
+
+### 6. whois
+
+#### 6.1. whois lookup
+
+- [domaintool](http://whois.domaintools.com/)
+- [arintool](https://www.arin.net/resources/services/whois_guide.html)
+- [radbtool](http://www.radb.net/support/query1.php)
+
+#### 6.2. reverse ip lookup
+
+- bing search: ip:192.239.213.197
+- [yougetsignal](https://www.yougetsignal.com/tools/web-sites-on-web-server/)
+- [ipaddress](https://www.ip-address.org/reverse-lookup/reverse-ip.php)
+- [ipapi](http://ip-api.com/)
+
+### 7. SSL/TLS certificates information
+
+- [certificates information](https://www.certificate-transparency.org/known-logs)
+- [censys-enumeration](https://github.com/yamakira/censys-enumeration)
+- [CloudFlair](https://github.com/christophetd/CloudFlair)
+
+### 8. shodan.io / censys.io
+
+search device, like WAF
