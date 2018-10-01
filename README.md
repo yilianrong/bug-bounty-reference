@@ -63,6 +63,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Login-Logout-Login: Turning Self-XSS into Good XSS in Uber](https://whitton.io/articles/uber-turning-self-xss-into-good-xss/) by Jack Whitton
 - [Turning Self-XSS into Good XSS in Uber v2: Chanllenge Completed but Not Rewarded](https://httpsonly.blogspot.hk/2016/08/turning-self-xss-into-good-xss-v2.html) by httpsonly
 - [DOM XSS - auth.uber.com](http://stamone-bug-bounty.blogspot.com/2017/10/dom-xss-auth_14.html) by StamOne
+- [How I XSS’ed Uber and Bypassed CSP](https://medium.com/@efkan162/how-i-xssed-uber-and-bypassed-csp-9ae52404f4c5) by Efkan
 - [AirBnb Bug Bounty: Turning Self-XSS in Ture-Client-IP Header into Good-XSS #2](http://www.geekboy.ninja/blog/airbnb-bug-bounty-turning-self-xss-into-good-xss-2/) by geekboy
 - [XSS due to Improper Regex in Third Party JS in Uber](http://zhchbin.github.io/2016/09/10/A-Valuable-XSS/) by Chaobin Zhang
 - [XSS in Uber via Cookie](http://zhchbin.github.io/2017/08/30/Uber-XSS-via-Cookie/) by Chaobin Zhang
@@ -356,6 +357,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Server-Side Template Injection](https://portswigger.net/blog/server-side-template-injection) by James Kettle
 - [RCE due to ShowExceptions](https://sites.google.com/view/harshjaiswalblog/rce-due-to-showexceptions) by Harsh Jaiswal
 - [RCE Unsecure Jenkins Instance](https://blog.securitybreached.org/2018/09/07/rce-jenkins-instance-dosomething-org-bug-bounty-poc/) by babayaga47
+- [FROM SHODAN TO REMOTE CODE EXECUTION #1 – HACKING JENKINS](https://the-infosec.com/2017/06/22/from-shodan-to-remote-code-execution-1-hacking-jenkins/) by emenalf
+- [FROM SHODAN TO REMOTE CODE EXECUTION #2 – HACKING OPENDREAMBOX 2.0.0](https://the-infosec.com/2017/05/12/from-shodan-to-rce-opendreambox-2-0-0-code-execution/) by emenalf
+- [From finding Jenkins instance to Command Execution](https://medium.com/@logicbomb_1/bugbounty-from-finding-jenkins-instance-to-command-execution-secure-your-jenkins-instance-9bd1e75c2288) by Avinash Jain
 
 ####  Deserialization
 
@@ -385,6 +389,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [A penetration tester’s guide to sub-domain enumeration](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) by Bharath
 - [Escalating low severity bugs to high](https://www.noob.ninja/2018/07/escalating-low-severity-bugs-to-high.html) by Noob Ninja
 - [How I earned 60K+ from private program](https://medium.com/@sivakrishnasamireddi/how-i-earned-60k-from-private-program-71bd51554490) by Siva Krishna Samireddi
+- [Just another tale of severe bugs on a private program](https://medium.com/@sivakrishnasamireddi/just-another-tale-of-severe-bugs-on-a-private-program-405870b03532) by Siva Krishna Samireddi
 - [How to Hack WebSockets and Socket.io](https://www.blackhillsinfosec.com/how-to-hack-websockets-and-socket-io/) by Ethan Robish
 
 ### Exclusive Bugbounty Writeup Blog
