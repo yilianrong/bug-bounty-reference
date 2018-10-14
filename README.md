@@ -69,6 +69,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [XSS in Uber via Cookie](http://zhchbin.github.io/2017/08/30/Uber-XSS-via-Cookie/) by Chaobin Zhang
 - [Airbnb – When Bypassing JSON Encoding, XSS Filter, WAF, CSP, and Auditor turns into Eight Vulnerabilities](https://buer.haus/2017/03/08/airbnb-when-bypassing-json-encoding-xss-filter-waf-csp-and-auditor-turns-into-eight-vulnerabilities/) by Brett Buerhaus
 - [Twitter XSS by Stopping Redirection and Javascript Scheme](http://blog.blackfan.ru/2017/09/devtwittercom-xss.html) by Sergey Bobrov
+- [Making an XSS triggered by CSP bypass on Twitter](https://medium.com/@tbmnull/making-an-xss-triggered-by-csp-bypass-on-twitter-561f107be3e5) by tbmnull
 - [Persistent XSS to Steal Passwords in Paypal](https://wesecureapp.com/blog/persistent-xss-to-steal-passwords-paypal/) by Akhil Reni
 - [Stored XSS on myworld.ebay.com](https://whitton.io/archive/persistent-xss-on-myworld-ebay-com/) by Jack Whitton
 - [Use CSRF to Turn Self-XSS into XSS in A Browser's Extention by Indeed.com](http://c0rni3sm.blogspot.com/) by p0pc0rn
@@ -145,6 +146,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [View Insights for Any Facebook Marketplace Product](https://jmw.fyi/post/view-insights-for-any-fb-marketplace-product) by Jane Manchun Wong
 - [Dox Facebook Employees Behind “Did You Know” Questions](https://jmw.fyi/post/reveal-fb-employee-behind-funfact) by Jane Manchun Wong
 - [Disclose Facebook Internal Server Information With A Strange Poll](https://jmw.fyi/post/disclose-fb-intern-server-info-with-a-strange-poll) by Jane Manchun Wong
+- [Add description to Instagram Posts on behalf of other users - 6500$](https://medium.com/bugbountywriteup/add-description-to-instagram-posts-on-behalf-of-other-users-6500-7d55b4a24c5a) by Sarmad Hassan
 - [Vulnerability in Youtube allowed moving comments from any video to another](https://www.secgeek.net/youtube-vulnerability/) by secgeek
   - It's *Google* Vulnerability, so it's worth reading, as generally it is more difficult to find Google vulnerability
 - [Microsoft-careers.com Remote Password Reset](http://yasserali.com/microsoft-careers-com-remote-password-reset/) by Yaaser Ali
@@ -170,6 +172,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [IDOR User Account Takeover By Connecting My Facebook Account with victims Account](https://blog.securitybreached.org/2018/09/16/idor-account-takeover-using-facebook/) by babayaga47
 - [Paytm Customer Information is at risk — India’s largest digital wallet company](https://medium.com/@logicbomb_1/bugbounty-paytm-customer-information-is-at-risk-indias-largest-digital-wallet-company-6f7116d4b2d5) by Avinash Jain
 - [How Naaptol (India’s popular home shopping company) Kept their Millions of User Data at Risk](https://medium.com/@logicbomb_1/bugbounty-how-naaptol-indias-popular-home-shopping-company-kept-their-millions-of-user-data-e414cd4151c) by Avinash Jain
+- [Get as image function pulls any Insights/NRQL data from any New Relic account (IDOR)](https://jonbottarini.com/2018/10/09/get-as-image-function-pulls-any-insights-nrql-data-from-any-new-relic-account-idor/) by Jon Bottarini
 
 ### Sensitive Information Exposure
 
