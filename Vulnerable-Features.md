@@ -31,12 +31,14 @@ Some features are more vulnerable than others or could be exploited by exclusive
 - [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/blog-facebook-originull/) by cynet
 - [Tricky CORS Bypass in Yahoo! View](http://web.archive.org/web/20171202055144/https://www.sxcurity.pro/2017/11/27/tricky-CORS/) by sxcurity
 - [Full Account Takeover through CORS with connection Sockets](https://medium.com/@saamux/full-account-takeover-through-cors-with-connection-sockets-179133384815) by Samuel
+- [CORS, SOP & crossdomain.xml For Dummies](https://somdev.me/sop-and-cors/) by SOMDEV SANGWAN
 
 ### CSP
 
 - [Neatly bypassing CSP - How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by Wallarm
 - [Evading CSP with DOM-based dangling markup](https://portswigger.net/blog/evading-csp-with-dom-based-dangling-markup) by Gareth Heyes
 - [How to use Google’s CSP Evaluator to bypass CSP](https://blog.thomasorlita.cz/vulns/google-csp-evaluator/) by Thomas Orlita
+- [Using Google Analytics for data extraction](https://labs.detectify.com/2018/01/19/google-analytics-data-extraction/) by Linus Särud
 
 ### Web Cache
 
@@ -44,3 +46,4 @@ Some features are more vulnerable than others or could be exploited by exclusive
 - [Web Cache Deception Attack](https://omergil.blogspot.com/2017/02/web-cache-deception-attack.html) by Omer Gil
 - [Practical Web Cache Poisoning](https://portswigger.net/blog/practical-web-cache-poisoning) by James Kettle
 - [Bypassing Web Cache Poisoning Countermeasures](https://portswigger.net/blog/bypassing-web-cache-poisoning-countermeasures) by James Kettle
+- [Defacement of catalog.data.gov via web cache poisoning to stored DOMXSS ](https://www.bugbountynotes.com/explore/viewbug?id=5870) by albinowax
