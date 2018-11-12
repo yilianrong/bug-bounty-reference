@@ -83,6 +83,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Coinbase AngularJS DOM XSS via Kiteworks](http://www.paulosyibelo.com/2017/07/coinbase-angularjs-dom-xss-via-kiteworks.html) by Paulos Yibelo
 - [https://mike-n1.github.io/Unusual_XSS](https://mike-n1.github.io/Unusual_XSS) by Script Kiddie
 - [Hostinger bug bounty: Reflected XSS via angularJS template injection](https://blog.ibrahimdraidia.com/xss-via-angularjs-template-injection_hostinger/) by Taha Ibrahim DRAIDIA
+- [Self-XSS + CSRF to Stored XSS](https://medium.com/@renwa/self-xss-csrf-to-stored-xss-54f9f423a7f1) by Renwa
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -126,6 +127,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [SSRF on DigitalOcean site](http://www.infosec-research.com/ssrf-on-digitalocean-site-bugbounty-tip/) by infosec
 - [Exploiting a Single Parameter](https://medium.com/@hisham.mir/exploiting-a-single-parameter-6f4ba2acf523) by Hisham Mir
 - [Piercing the Veil: Server Side Request Forgery to NIPRNet access](https://medium.com/bugbountywriteup/piercing-the-veil-server-side-request-forgery-to-niprnet-access-c358fd5e249a) by Alyssa Herrera
+- [GETTING READ ACCESS ON EDMODO PRODUCTION SERVER BY EXPLOITING SSRF](https://www.shawarkhan.com/2018/05/getting-read-access-on-edmodo.html) by SHAWAR KHAN
 
 ### XML External Entity (XXE)
 
