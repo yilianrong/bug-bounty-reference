@@ -129,6 +129,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [SSRF on DigitalOcean site](http://www.infosec-research.com/ssrf-on-digitalocean-site-bugbounty-tip/) by infosec
 - [Exploiting a Single Parameter](https://medium.com/@hisham.mir/exploiting-a-single-parameter-6f4ba2acf523) by Hisham Mir
 - [Piercing the Veil: Server Side Request Forgery to NIPRNet access](https://medium.com/bugbountywriteup/piercing-the-veil-server-side-request-forgery-to-niprnet-access-c358fd5e249a) by Alyssa Herrera
+- [How i converted SSRF TO XSS in jira](https://medium.com/@D0rkerDevil/how-i-convert-ssrf-to-xss-in-a-ssrf-vulnerable-jira-e9f37ad5b158) by Ashish Kunwar
+- [How I found XSS via SSRF vulnerability](https://medium.com/@adeshkolte/how-i-found-xss-via-ssrf-vulnerability-adesh-kolte-873b30a6b89f) by Adesh Kolte
 - [GETTING READ ACCESS ON EDMODO PRODUCTION SERVER BY EXPLOITING SSRF](https://www.shawarkhan.com/2018/05/getting-read-access-on-edmodo.html) by SHAWAR KHAN
 
 ### XML External Entity (XXE)
@@ -416,6 +418,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [No RCE? Then SSH to the box!](http://blog.jr0ch17.com/2018/No-RCE-then-SSH-to-the-box/) by Jasmin Landry
 - ["Journey from LFI to RCE"-How I was able to get the same in one of the India’s popular property buy/sell company](https://medium.com/bugbountywriteup/bugbounty-journey-from-lfi-to-rce-how-a69afe5a0899) by Avinash Jain
 - [How I was able to bypass firewall to get RCE and then went from server shell to get root user account](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-bypass-firewall-to-get-rce-and-then-went-from-server-shell-to-get-783f71131b94) by Avinash Jain
+- [GETTING PHP CODE EXECUTION AND LEVERAGE ACCESS TO PANELS,DATABASES,SERVER](https://www.shawarkhan.com/2018/06/getting-php-code-execution-and-leverage.html) by SHAWAR KHAN
 
 ####  Deserialization
 
