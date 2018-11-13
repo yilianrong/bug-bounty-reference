@@ -85,6 +85,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Hostinger bug bounty: Reflected XSS via angularJS template injection](https://blog.ibrahimdraidia.com/xss-via-angularjs-template-injection_hostinger/) by Taha Ibrahim DRAIDIA
 - [Self-XSS + CSRF to Stored XSS](https://medium.com/@renwa/self-xss-csrf-to-stored-xss-54f9f423a7f1) by Renwa
 - [ACCOUNT TAKEOVER AND BLIND XSS! GO PRO, GET BUGS!](https://blog.witcoat.com/2018/05/30/account-takeover-and-blind-xss-go-pro-get-bugs/) by Tabahi
+- [How I found 5 store XSS on a private program. Each worth "1,016.66$"](http://cybristerboy.blogspot.com/2018/05/how-i-found-5-store-xss-on-private.html) by CybristerBoy
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -269,6 +270,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I could book cab using your wallet money in India’s largest auto transportation company](https://medium.com/bugbountywriteup/bugbounty-how-i-could-book-cab-using-your-wallet-money-in-indias-largest-auto-transportation-e0c4252ca1a3) by Avinash Jain
 - [How I was able to Compromise any User Account via Reset Password Functionality](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-compromise-any-user-account-via-reset-password-functionality-a11bb5f863b3) by Avinash Jain
 - [How I was able to hack any user account via password reset](https://medium.com/@BgxDoc/bugbounty-how-i-was-able-to-hack-any-user-account-via-password-reset-9009d84d94ff) by Bikash Gupta
+- [How i was able to get admin panel on a private program](http://cybristerboy.blogspot.com/2018/05/how-i-was-able-to-get-admin-panel-on.html) by CybristerBoy
 
 ### Stealing Access Token
 
@@ -309,6 +311,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I Could Have Promoted Any Facebook Page For Free](https://medium.com/bugbountywriteup/how-i-could-have-promoted-any-facebook-page-for-free-70b0f4fc0feb) by AneesKhan
 - [How I was able to get subscription of $120/year For Free](https://blog.securitybreached.org/2018/05/18/get-subscription-of-120-year-for-free-bug-bounty-poc/) by babayaga47
 - [Reject a to-be users invitation via their notification](https://medium.com/@absstbh/simple-idor-to-reject-a-to-be-users-invitation-via-their-notification-ae3b919b0fef) by Abss TBH
+- [How I booked a rental house for just 1.00 INR — Price Manipulation in Citrus Pay](https://medium.com/@raghav2039/bug-bounty-how-i-booked-a-rental-house-for-just-1-00-inr-price-manipulation-in-citrus-pay-318ff6e0d8a8) by Raghavendra
 
 ### HTTP Header Injection
 
@@ -409,6 +412,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [FROM SHODAN TO REMOTE CODE EXECUTION #1 – HACKING JENKINS](https://the-infosec.com/2017/06/22/from-shodan-to-remote-code-execution-1-hacking-jenkins/) by emenalf
 - [FROM SHODAN TO REMOTE CODE EXECUTION #2 – HACKING OPENDREAMBOX 2.0.0](https://the-infosec.com/2017/05/12/from-shodan-to-rce-opendreambox-2-0-0-code-execution/) by emenalf
 - [From finding Jenkins instance to Command Execution](https://medium.com/@logicbomb_1/bugbounty-from-finding-jenkins-instance-to-command-execution-secure-your-jenkins-instance-9bd1e75c2288) by Avinash Jain
+- [How I got hall of fame in two fortune 500 companies — An RCE story](https://medium.com/@emenalf/how-i-got-hall-of-fame-in-two-fortune-500-companies-an-rce-story-9c89cead81ff) by Alfie
 - [No RCE? Then SSH to the box!](http://blog.jr0ch17.com/2018/No-RCE-then-SSH-to-the-box/) by Jasmin Landry
 - ["Journey from LFI to RCE"-How I was able to get the same in one of the India’s popular property buy/sell company](https://medium.com/bugbountywriteup/bugbounty-journey-from-lfi-to-rce-how-a69afe5a0899) by Avinash Jain
 - [How I was able to bypass firewall to get RCE and then went from server shell to get root user account](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-bypass-firewall-to-get-rce-and-then-went-from-server-shell-to-get-783f71131b94) by Avinash Jain
