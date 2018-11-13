@@ -32,6 +32,7 @@ Some features are more vulnerable than others or could be exploited by exclusive
 - [Tricky CORS Bypass in Yahoo! View](http://web.archive.org/web/20171202055144/https://www.sxcurity.pro/2017/11/27/tricky-CORS/) by sxcurity
 - [Full Account Takeover through CORS with connection Sockets](https://medium.com/@saamux/full-account-takeover-through-cors-with-connection-sockets-179133384815) by Samuel
 - [CORS, SOP & crossdomain.xml For Dummies](https://somdev.me/sop-and-cors/) by SOMDEV SANGWAN
+- [How To Test Cross Origin Resource Sharing Vulnerability](http://cybristerboy.blogspot.com/2018/06/hope-to-test-cross-origin-resource.html) by CybristerBoy
 
 ### CSP
 
