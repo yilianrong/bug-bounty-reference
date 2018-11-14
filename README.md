@@ -121,6 +121,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Pivoting fromm Blind SSRF to RCE](http://www.kernelpicnic.net/2017/05/29/Pivoting-from-blind-SSRF-to-RCE-with-Hashicorp-Consul.html) by Peter Adkins
 - [Plotly AWS EC2 Metadata Disclosure via SSRF and a Stored XSS via Presentation Link)](https://ysx.me.uk/a-pair-of-plotly-bugs-stored-xss-and-aws-metadata-ssrf/) by Yasin Soliman
 - [Blog post: Cracking the Lens: Targeting HTTP’s Hidden Attack-Surface ](https://portswigger.net/blog/cracking-the-lens-targeting-https-hidden-attack-surface) by James Kettle
+- [How I Found CVE-2018-8819: Out-of-Band (OOB) XXE in WebCTRL](https://www.coalfire.com/The-Coalfire-Blog/June-2018/How-I-Found-CVE-2018-8819-Out-of-Band-(OOB)-XXE?feed=blogs) by Darrell Damstedt
 - [Server-Side Request Forgery (SSRF) Attacks - Part 1: The basics](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-attacks-part-1-the-basics-a42ba5cc244a) by Maxime Leblanc
 - [Server-Side Request Forgery (SSRF) Attacks — Part 2: Fun with IPv4 addresses](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-attacks-part-2-fun-with-ipv4-addresses-eb51971e476d) by Maxime Leblanc
 - [Server-Side Request Forgery (SSRF) — Part 3: Other advanced techniques](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-part-3-other-advanced-techniques-3f48cbcad27e) by Maxime Leblanc
@@ -378,6 +379,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [SQL injection with load file and into outfile](https://medium.com/bugbountywriteup/sql-injection-with-load-file-and-into-outfile-c62f7d92c4e2) by NoGe
 - [Union Based Sql injection Write up ->A private Company Site](https://medium.com/@nuraalamdipu/union-based-sql-injection-write-up-a-private-company-site-273f89a49ed9) by Nur A Alam Dipu
 -[A Five Minute SQL-I](https://medium.com/bugbountywriteup/a-five-minute-sql-i-16ab75b20fe4) by Ashish Jha
+- [Bypassing Host Header to SQL injection to dumping Database — An unusual case of SQL injection](https://blog.usejournal.com/bugbounty-database-hacked-of-indias-popular-sports-company-bypassing-host-header-to-sql-7b9af997c610) by Avinash Jain
 
 ### Remote Code Execution
 
