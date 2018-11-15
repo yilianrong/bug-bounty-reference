@@ -62,6 +62,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [900$ XSS in yahoo ( Recon Wins )](https://medium.com/bugbountywriteup/900-xss-in-yahoo-recon-wins-65ee6d4bfcbd) by Th3G3nt3lman
 - [Love Story, From Closed As Informative to $3,500 USD, XSS Stored in Yahoo! iOS Mail App](http://omespino.com/write-up-lovestory-from-closed-as-informative-to-xx00-usd-in-yahoo-ios-mail-app/) by Omespino
 - [Stored XSS in Yahoo!](https://medium.com/@TheShahzada/stored-xss-in-yahoo-b0878ecc97e2) by Shahzada AL Shahriar Khan
+- [Filter Bypass to Reflected XSS on https://finance.yahoo.com (mobile version)](https://medium.com/@saamux/filter-bypass-to-reflected-xss-on-https-finance-yahoo-com-mobile-version-22b854327b27) by Samuel
 - [Login-Logout-Login: Turning Self-XSS into Good XSS in Uber](https://whitton.io/articles/uber-turning-self-xss-into-good-xss/) by Jack Whitton
 - [Turning Self-XSS into Good XSS in Uber v2: Chanllenge Completed but Not Rewarded](https://httpsonly.blogspot.hk/2016/08/turning-self-xss-into-good-xss-v2.html) by httpsonly
 - [DOM XSS - auth.uber.com](http://stamone-bug-bounty.blogspot.com/2017/10/dom-xss-auth_14.html) by StamOne
@@ -86,6 +87,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Self-XSS + CSRF to Stored XSS](https://medium.com/@renwa/self-xss-csrf-to-stored-xss-54f9f423a7f1) by Renwa
 - [ACCOUNT TAKEOVER AND BLIND XSS! GO PRO, GET BUGS!](https://blog.witcoat.com/2018/05/30/account-takeover-and-blind-xss-go-pro-get-bugs/) by Tabahi
 - [How I found 5 store XSS on a private program. Each worth "1,016.66$"](http://cybristerboy.blogspot.com/2018/05/how-i-found-5-store-xss-on-private.html) by CybristerBoy
+- [Reflected Client XSS at Amazon.com](https://medium.com/@jonathanbouman/reflected-client-xss-amazon-com-7b0d3cec787) by Jonathan Bouman
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -98,6 +100,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Add Credit Card to Any Uber account Through eats.uber.com](http://www.indohack.com/2017/07/add-credit-card-to-any-uber-account.html) by Vijay Kumar
 - [Paypal bug bounty: Updating the Paypal.me profile picture without consent (CSRF attack)](https://hethical.io/paypal-bug-bounty-updating-the-paypal-me-profile-picture-without-consent-csrf-attack/) by Florian Courtial
 - [Hacking PayPal Accounts with one click (Patched)](http://yasserali.com/hacking-paypal-accounts-with-one-click/) by Yasser Ali
+- [PayPal BBP - I could’ve deleted All SMC messages](https://blog.ayoubaitelmokhtar.com/2018/06/paypal-bbp-i-couldve-deleted-all-smc.html) by Ayoub AIT ELMOKHTAR
 - [How i Hacked your Beats account ? Apple Bug Bounty](https://aadityapurani.com/2016/07/20/how-i-hacked-your-beats-account-apple-bug-bounty/) by Additya Purani
 - [How I was able to delete anyone’s account in an Online Car Rental Company](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-delete-anyones-account-in-an-online-car-rental-company-8a4022cc611) by Avinash Jain
 
@@ -208,6 +211,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [An interesting Google vulnerability that got me 3133.7 reward](http://www.sec-down.com/wordpress/?p=809) by zigoo
 - [Exploiting Directory Traversal to View Customer Credit Card Information on Yahoo’s Small Business Platform](https://samcurry.net/exploiting-directory-traversal-on-a-yahoo-acquisition/) by samwcyo
 - [Chaining Bugs (an XSS and a CORS misconfiguration) to Steal Yahoo Contacts](http://web.archive.org/web/20180112014611/https://www.sxcurity.pro/2018/01/11/chaining-yahoo-bugs/) by sxcurity
+- [How I was able to list some internal information from PayPal](https://medium.com/@adrien_jeanneau/how-i-was-able-to-list-some-internal-information-from-paypal-bugbounty-ca8d217a397c) by Adrien
 - [Sensitive data exposure by requesting a resource with a different content type](https://medium.com/@yogendra_h1/sensitive-data-exposure-by-requesting-a-resource-with-a-different-content-type-27412a9d6e2f) by Yogendra Jaiswal
 - [How I used a simple Google query to mine passwords from dozens of public Trello boards](https://medium.freecodecamp.org/discovering-the-hidden-mine-of-credentials-and-sensitive-information-8e5ccfef2724) by Kushagra Pathak
 - [Find Leaked Sensitive Data](https://sites.google.com/securifyinc.com/rojanrijal/finding-leaked-sensitive-data) by Rojan Rijal
@@ -274,6 +278,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I was able to Compromise any User Account via Reset Password Functionality](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-compromise-any-user-account-via-reset-password-functionality-a11bb5f863b3) by Avinash Jain
 - [How I was able to hack any user account via password reset](https://medium.com/@BgxDoc/bugbounty-how-i-was-able-to-hack-any-user-account-via-password-reset-9009d84d94ff) by Bikash Gupta
 - [How i was able to get admin panel on a private program](http://cybristerboy.blogspot.com/2018/05/how-i-was-able-to-get-admin-panel-on.html) by CybristerBoy
+- [Password reset to full account takeover](https://medium.com/@hamzabet/password-reset-to-full-account-takeover-8a1e0a395987) by Hamza Bettache
 
 ### Stealing Access Token
 
@@ -315,6 +320,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I was able to get subscription of $120/year For Free](https://blog.securitybreached.org/2018/05/18/get-subscription-of-120-year-for-free-bug-bounty-poc/) by babayaga47
 - [Reject a to-be users invitation via their notification](https://medium.com/@absstbh/simple-idor-to-reject-a-to-be-users-invitation-via-their-notification-ae3b919b0fef) by Abss TBH
 - [How I booked a rental house for just 1.00 INR — Price Manipulation in Citrus Pay](https://medium.com/@raghav2039/bug-bounty-how-i-booked-a-rental-house-for-just-1-00-inr-price-manipulation-in-citrus-pay-318ff6e0d8a8) by Raghavendra
+- [How I got paid premium plan for free on many popular websites](https://medium.com/@khaled.hassan/how-i-got-paid-premium-plan-for-free-on-many-popular-websites-90e62a52416a) by Khaled Hassan
 
 ### HTTP Header Injection
 
@@ -466,6 +472,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Google Bugbouty Writeup](https://sites.google.com/site/testsitehacking/write-ups) by eze2307
 - [Clickjackings in Google](https://medium.com/@raushanraj_65039/google-clickjacking-6a04132b918a) by Raushan Raj
 - [Clickjacking in Google Docs and Voice typing feature](https://medium.com/@raushanraj_65039/clickjacking-in-google-docs-and-voice-typing-feature-c481d00b020a) by Raushan Raj
+- [Clickjacking on Google MyAccount Worth 7,500$](https://apapedulimu.click/clickjacking-on-google-myaccount-worth-7500/) by Apapedulimu
 - [Google VRP Writeups](https://sites.google.com/securifyinc.com/vrp-writeups/home?authuser=0) by securifyinc
 - [Uber - Another "TicketTrick" story](https://sites.google.com/securifyinc.com/secblogs/uber-business-support-bug?authuser=0) by securifyinc
 - [Shopify Athena Bug](https://sites.google.com/securifyinc.com/secblogs/shopify-athena-bug?authuser=0) by securifyinc
