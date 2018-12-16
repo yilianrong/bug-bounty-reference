@@ -55,7 +55,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Google Assistant XSS Bug Worth $3133.7](https://medium.com/bug-bounty-hunting/google-assistant-bug-worth-3133-7-830a03724a04) by Circle Ninja
 - [XSS in Google Colaboratory + CSP bypass](https://blog.bentkowski.info/2018/06/xss-in-google-colaboratory-csp-bypass.html) by Michał Bentkowski
 - [Another XSS in Google Colaboratory](https://blog.bentkowski.info/2018/09/another-xss-in-google-colaboratory.html) by  Michał Bentkowski
-- [Google Assistant Bug Worth $3133.7](https://medium.com/bug-bounty-hunting/google-assistant-bug-worth-3133-7-830a03724a04) by Circle Ninja
+- [XSSing Google Code-in thanks to improperly escaped JSON data](https://blog.thomasorlita.cz/vulns/google-code-in-xss/) by Thomas Orlita
 - [Yahoo Mail stored XSS](https://klikki.fi/adv/yahoo.html) by Jouko Pynnönen
 - [xss in Yahoo Mail Again, worth $10000](https://klikki.fi/adv/yahoo2.html) by Jouko Pynnönen
 - [xss in Yahoo Fantasy Sport](https://web.archive.org/web/20161228182923/http://dawgyg.com/2016/12/07/stored-xss-affecting-all-fantasy-sports-fantasysports-yahoo-com-2/) by thedawgyg
@@ -146,6 +146,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Out of Band XML External Entity Injection via SAML SSO](https://seanmelia.files.wordpress.com/2016/01/out-of-band-xml-external-entity-injection-via-saml-redacted.pdf) by seanmelia
 - [XXE by SVG in Lithium Community Platform](http://esoln.net/Research/2017/03/30/xxe-in-lithium-community-platform/) by Vibhuti Nath
 - [Gainning Filesystem Access Via Blind OOB XXE](https://hawkinsecurity.com/2018/03/24/gaining-filesystem-access-via-blind-oob-xxe/) by tghawkins
+- [Exploiting XXE with local DTD files](https://mohemiv.com/all/exploiting-xxe-with-local-dtd-files/) by Arseniy Sharoglazov
+- [From blind XXE to root-level file read access](https://www.honoki.net/2018/12/from-blind-xxe-to-root-level-file-read-access/) by Honoki
 
 ### Insecure Direct Object Reference (IDOR)
 
@@ -216,6 +218,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I used a simple Google query to mine passwords from dozens of public Trello boards](https://medium.freecodecamp.org/discovering-the-hidden-mine-of-credentials-and-sensitive-information-8e5ccfef2724) by Kushagra Pathak
 - [Find Leaked Sensitive Data](https://sites.google.com/securifyinc.com/rojanrijal/finding-leaked-sensitive-data) by Rojan Rijal
 - [Misconfigured JSON endpoint on ads.twitter.com lead to Access control issue and Information Disclosure of role privileged users](https://medium.com/@zk34911/twitter-bug-bounty-misconfigured-json-endpoint-on-ads-twitter-com-2771ec83a82) by zk34911
+- [Twitter's OAuth Mistakes - $3k Bug Bounty](https://shkspr.mobi/blog/2018/12/twitter-bug-bounty/) [hackerone report](https://hackerone.com/reports/434763) by edent
 - [How I was able to read chat of users in an Indian Online travel portal](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-read-chat-of-users-in-an-online-travel-portal-c55a1787f999) by Avinash Jain
 - [How I was able to download the Source Code of India’s Largest Telecom Service Provider including dozens of more popular websites](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-download-the-source-code-of-indias-largest-telecom-service-52cf5c5640a1) by Avinash Jain
 - [How I could download the source code of an Indian e-commerce website](https://medium.com/bugbountywriteup/how-i-could-download-the-source-code-of-an-indian-e-commerce-website-30cb8310b6e4) by Minali Arora
@@ -259,6 +262,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [From JS to another JS files lead to authentication bypass](http://c0rni3sm.blogspot.com/2017/06/from-js-to-another-js-files-lead-to.html) by c0rni3sm
 - [Accidentally typo to bypass administration access](http://c0rni3sm.blogspot.com/2017/08/accidentally-typo-to-bypass.html) by c0rni3sm
 - [How I hacked hundreds of companies through their helpdesk](https://medium.com/@intideceukelaire/how-i-hacked-hundreds-of-companies-through-their-helpdesk-b7680ddc2d4c) by Inti De Ceukelaire
+- [How i hacked help desk of a Company](https://medium.com/@alirazzaq/how-i-hacked-help-desk-of-a-company-55dc22448446) by Ali Razzaq
 - [How signing up for an account with an @company.com email can have unexpected results](https://medium.com/@zseano/how-signing-up-for-an-account-with-an-company-com-email-can-have-unexpected-results-7f1b700976f5) by Sean
 - [GraphQL abuse: Bypass account level permissions through parameter smuggling](https://labs.detectify.com/2018/03/14/graphql-abuse/) by Jon Bottarini
 - [Response To Request Injection (RTRI)](http://web.archive.org/web/20160907083447/https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?
@@ -279,6 +283,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I was able to hack any user account via password reset](https://medium.com/@BgxDoc/bugbounty-how-i-was-able-to-hack-any-user-account-via-password-reset-9009d84d94ff) by Bikash Gupta
 - [How i was able to get admin panel on a private program](http://cybristerboy.blogspot.com/2018/05/how-i-was-able-to-get-admin-panel-on.html) by CybristerBoy
 - [Password reset to full account takeover](https://medium.com/@hamzabet/password-reset-to-full-account-takeover-8a1e0a395987) by Hamza Bettache
+- [User Account Takeover-I just need your email id to login into your shopping portal account](https://medium.com/@logicbomb_1/bugbounty-user-account-takeover-i-just-need-your-email-id-to-login-into-your-shopping-portal-7fd4fdd6dd56) by Avinash Jain
 
 ### Stealing Access Token
 
@@ -427,6 +432,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - ["Journey from LFI to RCE"-How I was able to get the same in one of the India’s popular property buy/sell company](https://medium.com/bugbountywriteup/bugbounty-journey-from-lfi-to-rce-how-a69afe5a0899) by Avinash Jain
 - [How I was able to bypass firewall to get RCE and then went from server shell to get root user account](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-bypass-firewall-to-get-rce-and-then-went-from-server-shell-to-get-783f71131b94) by Avinash Jain
 - [GETTING PHP CODE EXECUTION AND LEVERAGE ACCESS TO PANELS,DATABASES,SERVER](https://www.shawarkhan.com/2018/06/getting-php-code-execution-and-leverage.html) by SHAWAR KHAN
+- [Second bite on GitLab, and some interesting Ruby functions/features](https://blog.nyangawa.me/jekyll/update/2018/12/12/CVE-2018-18649-Gitlab-RCE.html) by Nyangawa
 
 ####  Deserialization
 
