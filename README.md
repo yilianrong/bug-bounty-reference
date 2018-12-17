@@ -38,6 +38,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [An XSS on Facebook via PNGs & Wonky Content Types](https://whitton.io/articles/xss-on-facebook-via-png-content-types/) by Jack Whitton
   - he is able to make stored XSS from a irrelevant domain to main facebook domain 
 - [Stored XSSes in Facebook Wall by Embedding an External Video with Open Graph](https://opnsec.com/2018/03/stored-xss-on-facebook/) by Enguerran Gillier
+- [XSS without HTML: Client-Side Template Injection with AngularJS](https://portswigger.net/blog/xss-without-html-client-side-template-injection-with-angularjs) by Gareth Heyes
 - [Stored XSS in Google Drive (Folder Name)](https://pwnrules.com/google-drive-stored-xss/)
 - [XSS in Youtube, Google Translate, Google Docs](https://labs.detectify.com/2015/06/06/google-xss-turkey/) by fransrosen
 - [Drag-Drop XSS in Google Docs Drawing Moudle](http://c0rni3sm.blogspot.com/2016/04/drag-drop-xss-in-google.html) by p0pc0rn
@@ -88,6 +89,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [ACCOUNT TAKEOVER AND BLIND XSS! GO PRO, GET BUGS!](https://blog.witcoat.com/2018/05/30/account-takeover-and-blind-xss-go-pro-get-bugs/) by Tabahi
 - [How I found 5 store XSS on a private program. Each worth "1,016.66$"](http://cybristerboy.blogspot.com/2018/05/how-i-found-5-store-xss-on-private.html) by CybristerBoy
 - [Reflected Client XSS at Amazon.com](https://medium.com/@jonathanbouman/reflected-client-xss-amazon-com-7b0d3cec787) by Jonathan Bouman
+- [Blind XSS for beginners](https://medium.com/bugbountywriteup/blind-xss-for-beginners-c88e48083071) by Syntax Error
+- [DOM based XSS - or why you should not rely on Cloudflare too much](https://medium.com/bugbountywriteup/dom-based-xss-or-why-you-should-not-rely-on-cloudflare-too-much-a1aa9f0ead7d) by KatsuragiCSL
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -136,6 +139,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How i converted SSRF TO XSS in jira](https://medium.com/@D0rkerDevil/how-i-convert-ssrf-to-xss-in-a-ssrf-vulnerable-jira-e9f37ad5b158) by Ashish Kunwar
 - [How I found XSS via SSRF vulnerability](https://medium.com/@adeshkolte/how-i-found-xss-via-ssrf-vulnerability-adesh-kolte-873b30a6b89f) by Adesh Kolte
 - [GETTING READ ACCESS ON EDMODO PRODUCTION SERVER BY EXPLOITING SSRF](https://www.shawarkhan.com/2018/05/getting-read-access-on-edmodo.html) by SHAWAR KHAN
+- [AWS takeover through SSRF in JavaScript](http://10degres.net/aws-takeover-ssrf-javascript/) by Gwen
 
 ### XML External Entity (XXE)
 
@@ -433,6 +437,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I was able to bypass firewall to get RCE and then went from server shell to get root user account](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-bypass-firewall-to-get-rce-and-then-went-from-server-shell-to-get-783f71131b94) by Avinash Jain
 - [GETTING PHP CODE EXECUTION AND LEVERAGE ACCESS TO PANELS,DATABASES,SERVER](https://www.shawarkhan.com/2018/06/getting-php-code-execution-and-leverage.html) by SHAWAR KHAN
 - [Second bite on GitLab, and some interesting Ruby functions/features](https://blog.nyangawa.me/jekyll/update/2018/12/12/CVE-2018-18649-Gitlab-RCE.html) by Nyangawa
+- [Pivoting from blind SSRF to RCE with HashiCorp Consul](http://www.kernelpicnic.net/2017/05/29/Pivoting-from-blind-SSRF-to-RCE-with-Hashicorp-Consul.html) by Peter Adkins
 
 ####  Deserialization
 
@@ -469,6 +474,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How to perform the static analysis of website source code with the browser — the beginner’s bug bounty hunters guide](https://medium.com/@_bl4de/how-to-perform-the-static-analysis-of-website-source-code-with-the-browser-the-beginners-bug-d674828c8d9a) by bl4de
 - [ZERO-DAY RCE VIA XXE & SSRF ON NETGEAR STORA, SEAGATE HOME, AND MEDION LIFECLOUD NAS](http://www.paulosyibelo.com/2018/11/zero-day-rce-via-xxe-ssrf-on-netgear.html) by Paulos Yibelo
 - [Google bug bounty for security exploit that influences search results](http://www.tomanthony.co.uk/blog/google-xml-sitemap-auth-bypass-black-hat-seo-bug-bounty/) by Tom
+- [Why Facebook's api starts with a for loop](https://dev.to/antogarand/why-facebooks-api-starts-with-a-for-loop-1eob) by Antony Garand
 
 ### Exclusive Bugbounty Writeup Blog
 
