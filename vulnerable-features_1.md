@@ -17,6 +17,7 @@ Some features are more vulnerable than others or could be exploited by exclusive
 - [The Mystery of postMessage](https://ngailong.wordpress.com/2018/02/13/the-mystery-of-postmessage/) by Ron Chan
 - [postMessage XSS on a million sites](https://labs.detectify.com/2016/12/15/postmessage-xss-on-a-million-sites/) by Mathias Karlsson
 - [Hacking Slack using postMessage and WebSocket-reconnect to steal your precious token](https://labs.detectify.com/2017/02/28/hacking-slack-using-postmessage-and-websocket-reconnect-to-steal-your-precious-token/) by Frans Rosen
+- [Exploiting post message to steal and replace user’s cookies](https://medium.com/bugbountywriteup/exploiting-post-message-to-steal-users-cookies-7df43a00289a) by Yasser Gersy
 
 ### Open Graph Protocol
 
