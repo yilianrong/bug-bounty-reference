@@ -19,6 +19,8 @@
         }
       </script>
 ```
+- You can bypass a lot of XSS filters using HTML comments. They bypass it because they don't look/act like other tags. You can sometimes insert additional HTML too.
+  - Example: `<!----><script>alert(0);</script>`
 - If you open the url in the browser and see nothing but blank page, do not assume there is nothing there.
   - ALWAYS check the source code. There might be a bunch of JavaScript or e.g. some commented source code from server.
 - ALWAYS check the full response on any request. Errors can sometimes give u the keys to the kingdom if u actually figure out what ur looking at witin the error response.
@@ -40,6 +42,7 @@
 
 - a = Find fixed SSRF. b = Find open redirection in whitelisted domains. C = Amazon Aws metadata API.
   - a+b+C = Boom.
+- Just had a weird SSRF 'bypass' which would only pull data from their domain so anything you queried would be `hxxps://www.theirdomain.com/reflectedhere/`. Weirdly using `/%2F//mysite.com/` caused it to hit external sites.
 
 ### LFI
 
@@ -68,6 +71,12 @@
 ### HTTP Methods
 
 - If server only allows GET and POST method, then try adding "X-HTTP-Method -Override: PUT to achieve RCE via PUT method.
+
+### Open Redirection
+
+- For Open Redirects you can bypass a lot of WAF using a special character which a lot of browsers (such as FireFox) convert into a '.' which will complete your URL.
+  - The character is: 。
+  - Usage: redirecthere。com
 
 ### TOOLS
   
