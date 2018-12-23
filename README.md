@@ -77,6 +77,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Airbnb – When Bypassing JSON Encoding, XSS Filter, WAF, CSP, and Auditor turns into Eight Vulnerabilities](https://buer.haus/2017/03/08/airbnb-when-bypassing-json-encoding-xss-filter-waf-csp-and-auditor-turns-into-eight-vulnerabilities/) by Brett Buerhaus
 - [Twitter XSS by Stopping Redirection and Javascript Scheme](http://blog.blackfan.ru/2017/09/devtwittercom-xss.html) by Sergey Bobrov
 - [Making an XSS triggered by CSP bypass on Twitter](https://medium.com/@tbmnull/making-an-xss-triggered-by-csp-bypass-on-twitter-561f107be3e5) by tbmnull
+- [dev.twitter.com - XSS and Open Redirect](https://blog.blackfan.ru/2017/09/devtwittercom-xss.html) [hackerone report](https://hackerone.com/reports/260744) by Sergey Bobrov
 - [Persistent XSS to Steal Passwords in Paypal](https://wesecureapp.com/blog/persistent-xss-to-steal-passwords-paypal/) by Akhil Reni
 - [Turning Self-XSS into non-Self Stored-XSS via Authorization Issue at "PayPal Tech-Support and Brand Central Portal"](https://medium.com/@YoKoKho/turning-self-xss-into-non-self-stored-xss-via-authorization-issue-at-paypal-tech-support-and-brand-3046f52ac16b) by YoKo Kho
 - [Stored XSS on myworld.ebay.com](https://whitton.io/archive/persistent-xss-on-myworld-ebay-com/) by Jack Whitton
