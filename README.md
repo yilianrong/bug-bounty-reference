@@ -34,17 +34,12 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Cross-Site Scripting (XSS)
 
-- [Three Interesting Stored XSS in Facebook](http://www.breaksec.com/?p=6129) by Nirgoldshlager
 - [An XSS on Facebook via PNGs & Wonky Content Types](https://whitton.io/articles/xss-on-facebook-via-png-content-types/) by Jack Whitton
   - he is able to make stored XSS from a irrelevant domain to main facebook domain 
 - [Stored XSSes in Facebook Wall by Embedding an External Video with Open Graph](https://opnsec.com/2018/03/stored-xss-on-facebook/) by Enguerran Gillier
-- [XSS on Facebook-Instagram CDN Server bypassing signature protection](https://www.amolbaikar.com/xss-on-facebook-instagram-cdn-server-bypassing-signature-protection/) by Amol Baikar
-- [XSS on Facebook’s acquisition Oculus CDN](https://www.amolbaikar.com/xss-on-facebooks-acquisition-oculus-cdn/) by Amol Baikar
-- [XSS without HTML: Client-Side Template Injection with AngularJS](https://portswigger.net/blog/xss-without-html-client-side-template-injection-with-angularjs) by Gareth Heyes
-- [Stored XSS in Google Drive (Folder Name)](https://pwnrules.com/google-drive-stored-xss/)
 - [XSS in Youtube, Google Translate, Google Docs](https://labs.detectify.com/2015/06/06/google-xss-turkey/) by fransrosen
 - [Drag-Drop XSS in Google Docs Drawing Moudle](http://c0rni3sm.blogspot.com/2016/04/drag-drop-xss-in-google.html) by p0pc0rn
-- [Stored, Reflected and DOM XSS in Google for Work Connect (GWC)](http://respectxss.blogspot.com/2016/02/stored-reflected-and-dom-xss-in-google.html) by Ashar Javed
+
 - [Sleeping stored Google XSS Awakens a $5000 Bounty](https://blog.it-securityguard.com/bugbounty-sleeping-stored-google-xss-awakens-a-5000-bounty/) by Patrik Fehrenbach
 - [Subdomain Clickjacking in Google Trigger DOM XSS](http://sasi2103.blogspot.sg/2016/09/combination-of-techniques-lead-to-dom.html) by Sasi
 - [How I found a $5,000 Google Maps XSS (by fiddling with Protobuf)](https://medium.com/@marin_m/how-i-found-a-5-000-google-maps-xss-by-fiddling-with-protobuf-963ee0d9caff#.cktt61q9g) by Marin MoulinierFollow
@@ -93,8 +88,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [ACCOUNT TAKEOVER AND BLIND XSS! GO PRO, GET BUGS!](https://blog.witcoat.com/2018/05/30/account-takeover-and-blind-xss-go-pro-get-bugs/) by Tabahi
 - [How I found 5 store XSS on a private program. Each worth "1,016.66$"](http://cybristerboy.blogspot.com/2018/05/how-i-found-5-store-xss-on-private.html) by CybristerBoy
 - [Reflected Client XSS at Amazon.com](https://medium.com/@jonathanbouman/reflected-client-xss-amazon-com-7b0d3cec787) by Jonathan Bouman
-- [Blind XSS for beginners](https://medium.com/bugbountywriteup/blind-xss-for-beginners-c88e48083071) by Syntax Error
-- [Blind XSS AngularJS Payloads](https://ardern.io/2018/12/07/angularjs-bxss/) by ardern
 - [DOM based XSS - or why you should not rely on Cloudflare too much](https://medium.com/bugbountywriteup/dom-based-xss-or-why-you-should-not-rely-on-cloudflare-too-much-a1aa9f0ead7d) by KatsuragiCSL
 - [How I found a persistent XSS affecting thousands of career sites](https://labs.detectify.com/2017/06/28/how-i-found-a-persistent-xss-affecting-thousands-of-career-sites/) by ak1t4
 - [Persistent Cross-Site Scripting on redacted worth $2,000](https://medium.com/@protector47/persistent-cross-site-scripting-on-redacted-worth-2-000-1e760617ccab) by M.Asim Shahzad
