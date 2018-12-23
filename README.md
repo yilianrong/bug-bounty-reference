@@ -223,6 +223,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Responsible disclosure: retrieving a user's private Facebook friends](https://rpadovani.com/facebook-responsible-disclosure) by Riccardo Padovani
 - [FACEBOOK BUG BOUNTY: "GETTING ACCESS TO PROMPT DEBUG DIALOG AND SERIALIZED TOOL ON MAIN WEBSITE FACEBOOK.COM"](http://omespino.com/facebook-bug-bounty-getting-access-to-prompt-debug-dialog-and-serialized-tool-on-main-website-facebook-com/) by OMESPINO
 - [Facebook Source Code Disclosure in ads API](https://www.amolbaikar.com/facebook-source-code-disclosure-in-ads-api/) by Amol Baikar
+- [Facebook BugBounty — Disclosing page members](https://medium.com/@tnirmalz/facebook-bugbounty-disclosing-page-members-1178595cc520) by Nirmal Thapa
 - [An interesting Google vulnerability that got me 3133.7 reward](http://www.sec-down.com/wordpress/?p=809) by zigoo
 - [Exploiting Directory Traversal to View Customer Credit Card Information on Yahoo’s Small Business Platform](https://samcurry.net/exploiting-directory-traversal-on-a-yahoo-acquisition/) by samwcyo
 - [Chaining Bugs (an XSS and a CORS misconfiguration) to Steal Yahoo Contacts](http://web.archive.org/web/20180112014611/https://www.sxcurity.pro/2018/01/11/chaining-yahoo-bugs/) by sxcurity
@@ -238,6 +239,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [AWS S3 added to my "Bucket" list](https://medium.com/bugbountywriteup/bugbounty-aws-s3-added-to-my-bucket-list-f68dd7d0d1ce) by Avinash Jain
 - [Directory Listing To Sensitive Files Exposure](https://blog.hx01.me/2018/04/directory-listing-to-sensitive-files.html) by Hx01
 - [From an error message to DB disclosure](https://medium.com/@YumiSec/from-an-error-message-to-db-diclosure-1af879c74474) by Yumi
+- [Reading ASP secrets for $17,000](https://samcurry.net/reading-asp-secrets-for-17000/) by samwcyo
 
 ### Authentication Bypass
 
@@ -369,7 +371,10 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Hundreds of hundreds sub-secdomains hack3d! (including Hacker0ne)](https://medium.com/bugbountywriteup/hundreds-of-hundreds-subdomains-hack3d-including-hacker0ne-ad3acd1c0a44) by Ak1T4
 - [Netlify - Subdomain Takeover worth 200$](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe) by Ali Razzaq
 - [Shopify - How to do 55.000+ Subdomain Takeover in a Blink of an Eye](https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75) by buckhacker
--[$4500 Bounty — How I got lucky](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
+- [$4500 Bounty — How I got lucky](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
+- [Subdomain Takeover: Starbucks points to Azure](https://0xpatrik.com/subdomain-takeover-starbucks/) by Patrik Hudak
+- [Subdomain Takeover: Finding Candidates](https://0xpatrik.com/subdomain-takeover-candidates/) by Patrik Hudak
+- [Subdomain Takeover: Second Order Bugs](https://0xpatrik.com/second-order-bugs/) by Patrik Hudak
 
 ### Local File Inclusion
 
