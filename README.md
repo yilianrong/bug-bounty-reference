@@ -46,7 +46,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Stored XSS at Google firebase via Google Cloud IAM](http://panchocosil.blogspot.com/2017/04/stored-xss-at-google-firebase-via.html) by panchocosil
   - Two google products: `console.cloud.google.com` and `console.firebase.google.com`.
 
-- [XSSing Google Code-in thanks to improperly escaped JSON data](https://blog.thomasorlita.cz/vulns/google-code-in-xss/) by Thomas Orlita
 - [Yahoo Mail stored XSS](https://klikki.fi/adv/yahoo.html) by Jouko Pynnönen
 - [xss in Yahoo Mail Again, worth $10000](https://klikki.fi/adv/yahoo2.html) by Jouko Pynnönen
 - [xss in Yahoo Fantasy Sport](https://web.archive.org/web/20161228182923/http://dawgyg.com/2016/12/07/stored-xss-affecting-all-fantasy-sports-fantasysports-yahoo-com-2/) by thedawgyg
