@@ -6,6 +6,9 @@ Some specific topics about bug hunting.
 
 - [XSS without HTML: Client-Side Template Injection with AngularJS](https://portswigger.net/blog/xss-without-html-client-side-template-injection-with-angularjs) by Gareth Heyes
   - The author ananlysed AngularJS in details (what it is, the sandbox and the sanitizer), there is also some source code to help the reader understand this writeup. 
+  - There is a list of sandbox bypasses payloads.
+- [DOM based AngularJS sandbox escapes](https://portswigger.net/blog/dom-based-angularjs-sandbox-escapes) by Gareth Heyes
+  - There is a list of DOM based Angular sandbox escapes payloads.
 - [Adapting AngularJS payloads to exploit real world applications](https://portswigger.net/blog/adapting-angularjs-payloads-to-exploit-real-world-applications) by Gareth Heyes
   - Getting round the restriction (convert input to lower case) by using unicode escapes.
   - Bypassing no quotes or constructor allowed restrictions.
@@ -24,7 +27,13 @@ Some specific topics about bug hunting.
   - Some fixed suggestions.
 - [Stored XSS in New Relic via Angular Expression Sandbox Escape](https://ryhanson.com/stored-xss-in-new-relic-via-angular-expression-sandbox-escape/) by Ryan
   - The admin of an account was able to set the Name of the Account to an Angular expression.
+- [Reflected XSS through AngularJS sandbox bypass causes password exposure of McDonald users](https://finnwea.com/blog/stealing-passwords-from-mcdonalds-users/) by Tijme Gommers
+  - Finding the AngularJS version by executing `angular.verion` in the console.
+  - The difference between "Remember me" and "Remember the password" (the author found code decrypting passwords on clint side) when signing in.
+  - The payload in this writeup is worth to study and explore.
 - [Angular 1.6 - Expression Sandbox Removal](https://blog.angularjs.org/2016/09/angular-16-expression-sandbox-removal.html) by Pete Bacon Darwin
   - What is the expression sandbox, why added the sandbox, why removed the sandbox, what are the security implications.
+- [AngularJS 1.6: Life outside the sandbox](https://www.synopsys.com/blogs/software-security/angularjs-1-6-0-sandbox/) by David Johansson
+  - A seemed harmless function (orderBy) controlled by attacker could cause large damage than you think.
 - [Blind XSS AngularJS Payloads](https://ardern.io/2018/12/07/angularjs-bxss/) by Lewis Ardern
-  - There is ...
+  - There is a list of blind XSS AngularJS payloads.
