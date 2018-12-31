@@ -24,6 +24,7 @@
 ```
 - You can bypass a lot of XSS filters using HTML comments. They bypass it because they don't look/act like other tags. You can sometimes insert additional HTML too.
   - Example: `<!----><script>alert(0);</script>`
+- By removing the "Content Security Policy" header from the response, we could check if the alert box not popping because of CSP.
 - If you open the url in the browser and see nothing but blank page, do not assume there is nothing there.
   - ALWAYS check the source code. There might be a bunch of JavaScript or e.g. some commented source code from server.
 - ALWAYS check the full response on any request. Errors can sometimes give u the keys to the kingdom if u actually figure out what ur looking at witin the error response.
@@ -80,6 +81,7 @@
 - For Open Redirects you can bypass a lot of WAF using a special character which a lot of browsers (such as FireFox) convert into a '.' which will complete your URL.
   - The character is: 。
   - Usage: redirecthere。com
+- There is no redirect using location header and the response code is 200 but the author still got redirected, which can mean only one thing, the redirect performed using javascript in the browser. Usually it means something like this: `window.location.href = nextURL;`. In theory if someone can control the `nextURL` parameter, he can perform XSS: `window.location.href = javascript:alert(1);//` or `window.location.href = data:text/html;HTML_CODE`.
 
 ### TOOLS
   
