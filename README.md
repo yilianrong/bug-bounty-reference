@@ -49,11 +49,9 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Don't stop when you see the response forbidden/not found on the target you are testing, run dirsearch or any tool you prefer to find endpoints.
   - The author used Knoxss to identify the this XSS.
 - [Love Story, From Closed As Informative to $3,500 USD, XSS Stored in Yahoo! iOS Mail App](http://omespino.com/write-up-lovestory-from-closed-as-informative-to-xx00-usd-in-yahoo-ios-mail-app/) by Omespino
+- [DOM XSS - auth.uber.com](http://web.archive.org/web/20180331193745/http://stamone-bug-bounty.blogspot.com/2017/10/dom-xss-auth_14.html) by StamOne
 
-- [Login-Logout-Login: Turning Self-XSS into Good XSS in Uber](https://whitton.io/articles/uber-turning-self-xss-into-good-xss/) by Jack Whitton
-- [Turning Self-XSS into Good XSS in Uber v2: Chanllenge Completed but Not Rewarded](https://httpsonly.blogspot.hk/2016/08/turning-self-xss-into-good-xss-v2.html) by httpsonly
-- [DOM XSS - auth.uber.com](http://stamone-bug-bounty.blogspot.com/2017/10/dom-xss-auth_14.html) by StamOne
-- [How I XSS’ed Uber and Bypassed CSP](https://medium.com/@efkan162/how-i-xssed-uber-and-bypassed-csp-9ae52404f4c5) by Efkan
+
 - [AirBnb Bug Bounty: Turning Self-XSS in Ture-Client-IP Header into Good-XSS #2](http://www.geekboy.ninja/blog/airbnb-bug-bounty-turning-self-xss-into-good-xss-2/) by geekboy
 - [XSS due to Improper Regex in Third Party JS in Uber](http://zhchbin.github.io/2016/09/10/A-Valuable-XSS/) by Chaobin Zhang
 - [XSS in Uber via Cookie](http://zhchbin.github.io/2017/08/30/Uber-XSS-via-Cookie/) by Chaobin Zhang
