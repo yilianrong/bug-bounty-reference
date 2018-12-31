@@ -49,13 +49,13 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Don't stop when you see the response forbidden/not found on the target you are testing, run dirsearch or any tool you prefer to find endpoints.
   - The author used Knoxss to identify the this XSS.
 - [Love Story, From Closed As Informative to $3,500 USD, XSS Stored in Yahoo! iOS Mail App](http://omespino.com/write-up-lovestory-from-closed-as-informative-to-xx00-usd-in-yahoo-ios-mail-app/) by Omespino
-- [DOM XSS - auth.uber.com](http://web.archive.org/web/20180331193745/http://stamone-bug-bounty.blogspot.com/2017/10/dom-xss-auth_14.html) by StamOne
-
-
-- [AirBnb Bug Bounty: Turning Self-XSS in Ture-Client-IP Header into Good-XSS #2](http://www.geekboy.ninja/blog/airbnb-bug-bounty-turning-self-xss-into-good-xss-2/) by geekboy
 - [XSS due to Improper Regex in Third Party JS in Uber](http://zhchbin.github.io/2016/09/10/A-Valuable-XSS/) by Chaobin Zhang
 - [XSS in Uber via Cookie](http://zhchbin.github.io/2017/08/30/Uber-XSS-via-Cookie/) by Chaobin Zhang
+- [Hijack the JS File of Uber's Website](http://zhchbin.github.io/2018/12/03/Hijack-the-JS-File-of-Uber-s-Website/) by Chaobin Zhang
+  - Three writeups writen by Chaobin Zhang showed us "code review wins".
 - [How I Discovered XSS that Affects around 20 Uber Subdomains](https://blog.fadyothman.com/how-i-discovered-xss-that-affects-over-20-uber-subdomains/) by Fady Othman
+  - Using tool `https://www.samltool.com/decode.php`.
+
 - [Airbnb – When Bypassing JSON Encoding, XSS Filter, WAF, CSP, and Auditor turns into Eight Vulnerabilities](https://buer.haus/2017/03/08/airbnb-when-bypassing-json-encoding-xss-filter-waf-csp-and-auditor-turns-into-eight-vulnerabilities/) by Brett Buerhaus
 - [Twitter XSS by Stopping Redirection and Javascript Scheme](http://blog.blackfan.ru/2017/09/devtwittercom-xss.html) by Sergey Bobrov
 - [Making an XSS triggered by CSP bypass on Twitter](https://medium.com/@tbmnull/making-an-xss-triggered-by-csp-bypass-on-twitter-561f107be3e5) by tbmnull
