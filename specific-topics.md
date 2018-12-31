@@ -37,3 +37,7 @@ Some specific topics about bug hunting.
   - A seemed harmless function (orderBy) controlled by attacker could cause large damage than you think.
 - [Blind XSS AngularJS Payloads](https://ardern.io/2018/12/07/angularjs-bxss/) by Lewis Ardern
   - There is a list of blind XSS AngularJS payloads.
+
+### JSONP
+
+- [What is JSONP all about](https://stackoverflow.com/questions/2067472/what-is-jsonp-all-about/2067584) by stackoverflow
