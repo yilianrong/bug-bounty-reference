@@ -28,9 +28,11 @@ Some specific topics about bug hunting.
 - [Stored XSS in New Relic via Angular Expression Sandbox Escape](https://ryhanson.com/stored-xss-in-new-relic-via-angular-expression-sandbox-escape/) by Ryan
   - The admin of an account was able to set the Name of the Account to an Angular expression.
 - [Reflected XSS through AngularJS sandbox bypass causes password exposure of McDonald users](https://finnwea.com/blog/stealing-passwords-from-mcdonalds-users/) by Tijme Gommers
-  - Finding the AngularJS version by executing `angular.verion` in the console.
+  - Find the AngularJS version by executing `angular.verion` in the "Console" in Chrome debug tool.
   - The difference between "Remember me" and "Remember the password" (the author found code decrypting passwords on clint side) when signing in.
   - The payload in this writeup is worth to study and explore.
+- [Hostinger bug bounty: Reflected XSS via angularJS template injection](https://blog.ibrahimdraidia.com/xss-via-angularjs-template-injection_hostinger/) by Taha Ibrahim DRAIDIA
+  - Just find the AngularJS version by executing `angular.verion` in the "Console" in Chrome debug tool, then apply the known payload.
 - [Angular 1.6 - Expression Sandbox Removal](https://blog.angularjs.org/2016/09/angular-16-expression-sandbox-removal.html) by Pete Bacon Darwin
   - What is the expression sandbox, why added the sandbox, why removed the sandbox, what are the security implications.
 - [AngularJS 1.6: Life outside the sandbox](https://www.synopsys.com/blogs/software-security/angularjs-1-6-0-sandbox/) by David Johansson
