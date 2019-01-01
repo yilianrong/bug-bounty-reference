@@ -72,13 +72,16 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Some thoeries about AngularJS seem difficult for a green to understand.
 - [Unusual cases of reflected XSS](https://mike-n1.github.io/Unusual_XSS) by Script Kiddie
   - As the title stated, this writeup is about two unusual reflected XSSes.
-
 - [How I found 5 store XSS on a private program. Each worth "1,016.66$"](http://cybristerboy.blogspot.com/2018/05/how-i-found-5-store-xss-on-private.html) by CybristerBoy
+  - Intruder wins.
 - [Reflected Client XSS at Amazon.com](https://medium.com/@jonathanbouman/reflected-client-xss-amazon-com-7b0d3cec787) by Jonathan Bouman
-- [DOM based XSS - or why you should not rely on Cloudflare too much](https://medium.com/bugbountywriteup/dom-based-xss-or-why-you-should-not-rely-on-cloudflare-too-much-a1aa9f0ead7d) by KatsuragiCSL
+  - Extract the code from apk by using online decompiler: `http://www.javadecompilers.com/apk`, look around in the different files for urls to product pages.
+  - Complicated.
 - [How I found a persistent XSS affecting thousands of career sites](https://labs.detectify.com/2017/06/28/how-i-found-a-persistent-xss-affecting-thousands-of-career-sites/) by ak1t4
+  - This is highly related to the bussiness logic, at this moment, I can't understand (because I didn't use the target's services).
 - [Persistent Cross-Site Scripting on redacted worth $2,000](https://medium.com/@protector47/persistent-cross-site-scripting-on-redacted-worth-2-000-1e760617ccab) by M.Asim Shahzad
-- [2 Dom Based XSS in ucweb.com ( Alibaba’s Bug Bounty Programme) - Story about my first bug bounty](https://medium.com/@sudhanshur705/story-about-my-first-bug-bounty-9fe710be8241) by Sudhanshu Raj
+  - The target website was a CRM (what is CRM?). CRM based on Users and Admins, in case if the user-initiated XSS attack that affects admins and all users, that will be high-level XSS.
+  - The author just searched for the *payloads and polyglots* to bypass the XSS filter.
 
 ### Cross-Site Request Forgery (CSRF)
 
