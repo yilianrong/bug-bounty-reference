@@ -57,20 +57,22 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Using tool `https://www.samltool.com/decode.php`.
 - [Airbnb – When Bypassing JSON Encoding, XSS Filter, WAF, CSP, and Auditor turns into Eight Vulnerabilities](https://buer.haus/2017/03/08/airbnb-when-bypassing-json-encoding-xss-filter-waf-csp-and-auditor-turns-into-eight-vulnerabilities/) by Brett Buerhaus
   - There are many tricks for bypassing.
-
 - [Persistent XSS to Steal Passwords in Paypal](https://wesecureapp.com/blog/persistent-xss-to-steal-passwords-paypal/) by Akhil Reni
+  - This vulnerability was found while tested different applications with third party integrations such as payment gateways, logging etc.
+  - The author managed to exploit the worst case scenario.
+  - The proc in this writeup is worth to study.
 - [Turning Self-XSS into non-Self Stored-XSS via Authorization Issue at "PayPal Tech-Support and Brand Central Portal"](https://medium.com/@YoKoKho/turning-self-xss-into-non-self-stored-xss-via-authorization-issue-at-paypal-tech-support-and-brand-3046f52ac16b) by YoKo Kho
-- [Stored XSS on myworld.ebay.com](https://whitton.io/archive/persistent-xss-on-myworld-ebay-com/) by Jack Whitton
+  - Complicated.
+  - Two useful references by Brute: [File Upload XSS](https://brutelogic.com.br/blog/file-upload-xss/) and [Leveraging Self-XSS](https://brutelogic.com.br/blog/leveraging-self-xss/).
 - [Use CSRF to Turn Self-XSS into XSS in A Browser's Extention by Indeed.com](http://c0rni3sm.blogspot.com/) by p0pc0rn
-- [Stored XSS on Snapchat](https://medium.com/@mrityunjoy/stored-xss-on-snapchat-5d704131d8fd) by Mrityunjoy
-- [XSS on Bugcrowd and so many other website's main Domain](http://witcoat.blogspot.com/2017/06/xss-on-bugcrowd-and-so-many-other.html) by Bull
+  - A vulnerability in a browser's extention.
 - [The $12,000 Intersection between Clickjacking, XSS, and Denial of Service](https://samcurry.net/the-12000-intersection-between-clickjacking-xss-and-denial-of-service/) by samwcyo
-- [Story of Parameter Specific XSS](https://www.noob.ninja/2017/09/story-of-parameter-specific-xss.html) by Noob Ninja
-- [Coinbase AngularJS DOM XSS via Kiteworks](http://www.paulosyibelo.com/2017/07/coinbase-angularjs-dom-xss-via-kiteworks.html) by Paulos Yibelo
-- [https://mike-n1.github.io/Unusual_XSS](https://mike-n1.github.io/Unusual_XSS) by Script Kiddie
-- [Hostinger bug bounty: Reflected XSS via angularJS template injection](https://blog.ibrahimdraidia.com/xss-via-angularjs-template-injection_hostinger/) by Taha Ibrahim DRAIDIA
-- [Self-XSS + CSRF to Stored XSS](https://medium.com/@renwa/self-xss-csrf-to-stored-xss-54f9f423a7f1) by Renwa
-- [ACCOUNT TAKEOVER AND BLIND XSS! GO PRO, GET BUGS!](https://blog.witcoat.com/2018/05/30/account-takeover-and-blind-xss-go-pro-get-bugs/) by Tabahi
+  - The target itself is difficult to understand.
+- [Coinbase AngularJS DOM XSS via Kiteworks](http://web.archive.org/web/20180410142546/http://www.paulosyibelo.com/2017/07/coinbase-angularjs-dom-xss-via-kiteworks.html) by Paulos Yibelo
+  - Some thoeries about AngularJS seem difficult for a green to understand.
+- [Unusual cases of reflected XSS](https://mike-n1.github.io/Unusual_XSS) by Script Kiddie
+  - As the title stated, this writeup is about two unusual reflected XSSes.
+
 - [How I found 5 store XSS on a private program. Each worth "1,016.66$"](http://cybristerboy.blogspot.com/2018/05/how-i-found-5-store-xss-on-private.html) by CybristerBoy
 - [Reflected Client XSS at Amazon.com](https://medium.com/@jonathanbouman/reflected-client-xss-amazon-com-7b0d3cec787) by Jonathan Bouman
 - [DOM based XSS - or why you should not rely on Cloudflare too much](https://medium.com/bugbountywriteup/dom-based-xss-or-why-you-should-not-rely-on-cloudflare-too-much-a1aa9f0ead7d) by KatsuragiCSL
@@ -286,6 +288,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Bypassing Authentication Using Javascript Debugger](https://mohitdabas.wordpress.com/2018/09/18/bypassing-authentication-using-javascript-debugger/) by mohitdabas
 - [How I was Able To Bypass Email Verification](https://blog.securitybreached.org/2018/12/08/how-i-was-able-to-bypass-email-verification/) by Muzammil Kayani
 - [How i was able to pwned application by Bypassing Cloudflare WAF](https://medium.com/bugbountywriteup/bypass-cloudflare-waf-to-pwned-application-2c9e4f862319) by Gujjuboy10x00
+- [How we tookover shopify accounts with one single click](https://wesecureapp.com/blog/how-we-tookover-shopify-accounts-with-one-single-click/) by Akhil Reni
 
 ### Stealing Access Token
 
