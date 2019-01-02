@@ -40,6 +40,13 @@ Some specific topics about bug hunting.
 - [Blind XSS AngularJS Payloads](https://ardern.io/2018/12/07/angularjs-bxss/) by Lewis Ardern
   - There is a list of blind XSS AngularJS payloads.
 
+### CSP
+
+- [Content Security Policy Reference](https://content-security-policy.com/) by Foundeo Inc
+  - A table with keywords-vulues-meaning, we can use this as a manual.
+- [Neatly bypassing CSP - How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by Wallarm
+  - Try to understand this blog.
+
 ### JSONP
 
 - [What is JSONP all about](https://stackoverflow.com/questions/2067472/what-is-jsonp-all-about/2067584) by stackoverflow
