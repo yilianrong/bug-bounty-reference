@@ -45,7 +45,10 @@ Some specific topics about bug hunting.
 - [Content Security Policy Reference](https://content-security-policy.com/) by Foundeo Inc
   - A table with keywords-vulues-meaning, we can use this as a manual.
 - [Neatly bypassing CSP - How to trick CSP in letting you run whatever you want](https://lab.wallarm.com/how-to-trick-csp-in-letting-you-run-whatever-you-want-73cb5ff428aa) by Wallarm
-  - Try to understand this blog.
+  - CSP lists and describes paths and sources, from which the browser and safely load resources. The resources may include images, frames, javascripts and more. CSP policy is commonly used to block untrusted JS and minimize the chace of a successful XSS exploit.
+  - A security policy implies "prohibited unless explicitly allowed".
+  - `Content-Security-Policy: default-src 'self' 'unsafe-inline';`.
+  - Despite the limitations, we can still upload scenarios, create freames and put together images because `self` does not prevent working with the resources governed by Self Origin Policy (SOP) (I think the author means "Same Origin Policy"). Since CSP also applies to frames, the same policy gorverns frames that may include data, blob or files formed with srcdoc as protocols. (what this means?)
 
 ### JSONP
 
