@@ -79,6 +79,32 @@ Some specific topics about bug hunting.
   - Allow browser pages to work around the same-origin policy via `script` element injection.
   - Including `script` tags from remote servers allows the remote servers to inject any content into a website. If the remote servers have vulnerabilities that allow Javascript injection, the page served from the original server is exposed to an increased risk.
 - [Practical JSONP Injection](https://securitycafe.ro/2017/01/18/practical-jsonp-injection/) by Petre Popescu
+  - The callback function is hardcoded within the response:
+    - basic function call
+    - object method call
+  - The callback function is dynamic:
+    - completely controllable from the URL (GET variable)
+    - partially controllable from the URL (GET variable), but appended with a number
+    - controllable from the URL (GET variable), but initially not displayed in the request
+  - Make sure you define your function before including the response, otherwise an undefined function will be called and you won't get any data.
+  - When seeing an API call without callback, especially if the JSON formatted data is already between parentheses, manually add the "callback" to the request. If our "callback" is added to the response, we could grab some data.
+  - If we have API call `http://verysecurebank.ro/getAccountTransactions`, we might try to guess the callback variable:
+    - `http://verysecurebank.ro/getAccountTransactions?callback=test`
+    - `http://verysecurebank.ro/getAccountTransactions?cb=test`
+    - `http://verysecurebank.ro/getAccountTransactions?jsonp=test`
+    - `http://verysecurebank.ro/getAccountTransactions?jsonpcallback=test`
+    - `http://verysecurebank.ro/getAccountTransactions?jcb=test`
+    - `http://verysecurebank.ro/getAccountTransactions?call=test`
+  - List common issues we might encounter while hunting web applications for JSONP vulnerabilities.
+  - Referer check bypass - We can abuse data URI scheme in order to make the request without a HTTP Referer. Since we are dealing with code, which include quotes, double quotes and other syntax breaking character, we are going to base64 encode our payload (callback definition and script inclusion).
+  - Three main HTML tags that allow us to use the data URI scheme:
+    - `iframe` (in the `src` attribute)
+    - `embed` (in the `src` attribute)
+    - `object` (in the `data` attribute)
+
+### CORS
+
+
 
 ### S3 Bucket
 
