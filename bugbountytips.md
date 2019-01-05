@@ -57,6 +57,7 @@
 ### CSRF
 
 - When testing for CSRF, send the POST parameters using GET method, eg: `GET /[post endpoint]?postprm1=value&postprm2=value2`. You will be surprised how many developers forget to add csrf protection on GET methods of the same endpoints.
+- I'm going to tell you about the coolest CSRF 'bypass' I found (/sarcasm). CSRF token was sent with the POST request. Change to GET and remove the CSRF token => request works. 
   
 ### Higher Privilege
 
