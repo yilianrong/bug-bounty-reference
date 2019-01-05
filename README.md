@@ -82,6 +82,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Persistent Cross-Site Scripting on redacted worth $2,000](https://medium.com/@protector47/persistent-cross-site-scripting-on-redacted-worth-2-000-1e760617ccab) by M.Asim Shahzad
   - The target website was a CRM (what is CRM?). CRM based on Users and Admins, in case if the user-initiated XSS attack that affects admins and all users, that will be high-level XSS.
   - The author just searched for the *payloads and polyglots* to bypass the XSS filter.
+- [Cookie Based Self-XSS to Good XSS](https://medium.com/@0xHyde/cookie-based-self-xss-to-good-xss-d0d1ca16dd0e) by hyde
+  - The parenthesis characters were being filtered - bypass.
+  - The payload couldn't be too many characters - bypass.
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -468,6 +471,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 - [Top 10 Web Hacking Techniques of 2017 - Nominations Open](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2017-nominations-open) by James Kettle
 - [Top 10 Web Hacking Techniques of 2017](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2017)  by James Kettle
+- [Top 10 web hacking techniques of 2018 - nominations open](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2018-nominations-open) by James Kettle
 - [Web Application Penetration Testing Course](https://docs.google.com/document/d/101EsKlu41ICdeE7mEv189SS8wMtcdXfRtua0ClYjP1M/edit)
 - [List of bug bounty writeups](https://pentester.land/list-of-bug-bounty-writeups.html)
 - [CTF write up, Great for Bug Bounty](https://ctftime.org/writeups?tags=web200&hidden-tags=web%2cweb100%2cweb200)
@@ -491,6 +495,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [WEB APPLICATION PENETRATION TESTING NOTES](https://techvomit.net/web-application-penetration-testing-notes/) by Tech Vomit
 - [Extreme details in vulnerablities detecting](https://medium.com/@jonathanbouman) by Jonathan Bouman
 - [Advanced JavaScript Injections](https://brutelogic.com.br/blog/advanced-javascript-injections/) by Brute
+- [Bypass CSP by Abusing XSS Filter in Edge](https://medium.com/bugbountywriteup/bypass-csp-by-abusing-xss-filter-in-edge-43e9106a9754) by Xiaoyin Liu
 
 ### Exclusive Bugbounty Writeup Blog
 
