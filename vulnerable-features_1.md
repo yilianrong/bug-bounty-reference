@@ -35,14 +35,6 @@ Some features are more vulnerable than others or could be exploited by exclusive
 - [CORS, SOP & crossdomain.xml For Dummies](https://somdev.me/sop-and-cors/) by SOMDEV SANGWAN
 - [How To Test Cross Origin Resource Sharing Vulnerability](http://cybristerboy.blogspot.com/2018/06/hope-to-test-cross-origin-resource.html) by CybristerBoy
 
-### CSP
-
-- [Bypass CSP by Abusing XSS Filter in Edge](https://medium.com/bugbountywriteup/bypass-csp-by-abusing-xss-filter-in-edge-43e9106a9754) by Xiaoyin Liu
-
-- [Evading CSP with DOM-based dangling markup](https://portswigger.net/blog/evading-csp-with-dom-based-dangling-markup) by Gareth Heyes
-- [How to use Google’s CSP Evaluator to bypass CSP](https://blog.thomasorlita.cz/vulns/google-csp-evaluator/) by Thomas Orlita
-- [Using Google Analytics for data extraction](https://labs.detectify.com/2018/01/19/google-analytics-data-extraction/) by Linus Särud
-
 ### Web Cache
 
 - [Web Caching](https://si9int.sh/article/6) by SI9INT
