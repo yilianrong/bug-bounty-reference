@@ -23,11 +23,6 @@ Some features are more vulnerable than others or could be exploited by exclusive
 
 - [SSRF tips from BugBountyHQ of Images - Open Graph Protocol is a good case for Blind SSRF / Extract of Meta Data](https://twitter.com/BugBountyHQ/status/868242771617792000) by BugBountyHQ
 
-### CORS
-
-- [Tricky CORS Bypass in Yahoo! View](https://www.corben.io/tricky-CORS/) by Corben Leo
-- [Full Account Takeover through CORS with connection Sockets](https://medium.com/@saamux/full-account-takeover-through-cors-with-connection-sockets-179133384815) by Samuel
-
 ### Web Cache
 
 - [Web Caching](https://si9int.sh/article/6) by SI9INT
