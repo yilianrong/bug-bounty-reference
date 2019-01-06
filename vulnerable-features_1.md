@@ -25,7 +25,6 @@ Some features are more vulnerable than others or could be exploited by exclusive
 
 ### CORS
 
-- [The Complete Guide to CORS (In)Security](https://www.bedefended.com/papers/cors-security-guide) by  Davide Danelon
 - [Exploiting CORS misconfigurations for Bitcoins and bounties](https://portswigger.net/blog/exploiting-cors-misconfigurations-for-bitcoins-and-bounties) by James Kettle
 - [Exploiting Misconfigured CORS](http://www.geekboy.ninja/blog/exploiting-misconfigured-cors-cross-origin-resource-sharing/) by geekboy
 - [CORS Misconfigurations Explained](https://blog.detectify.com/2018/04/26/cors-misconfigurations-explained/) by Linus Särud
