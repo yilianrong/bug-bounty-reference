@@ -169,6 +169,15 @@ Some specific topics about bug hunting.
   - It was also possible to use the data scheme in order to send requests with the origin `null`. When a data scheme is used, the browser sets the origin to `null` for security purposes.
   - Facebook uses a continually repeated XHR request to the server to receive newly arrived messages. The server responds only when a message arrives, or at timeout. Using this method means that there is always an XHR request waiting for a server response. When the server responds to a request, Javascript code opens a new request to the server.
   - The poc in this writeup is worth to learn. 
+- [Tricky CORS Bypass in Yahoo! View](https://www.corben.io/tricky-CORS/) by Corben Leo
+  - The author showed how he managed to bypass `Origin` header check.
+  - The payload only worked in Safari.
+- [Full Account Takeover through CORS with connection Sockets](https://medium.com/@saamux/full-account-takeover-through-cors-with-connection-sockets-179133384815) by Samuel
+  - Once the whole website was mapped, the author tried to see if he could exploit a CORS type bug.
+  - Response: `Access-Control-Allow-Origin: http://evilwebsite.com` `Access-Control-Allow-Credentials: true`
+  - Every time the author tried to extract anything from the site, it was not possible, since connections were being made by sockets that only worked once. It is not possible to reuse the same URL, or if it was possible, but you had to wait about 10 minutes for that socket connection to die to be able to use it again, and therefore that does not make sense (if we put ourselves on the attacker's side).
+  - Modifying the URI by any other value, it was possible to use the socket again as a new one.
+  - The poc in this writeup is worth to learn.
 
 ### S3 Bucket
 
