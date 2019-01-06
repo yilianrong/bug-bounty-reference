@@ -150,10 +150,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Insecure Direct Object Reference (IDOR)
 
-- [Hacking Facebook.com/thanks Posting on behalf of your friends!](http://www.anandpraka.sh/2014/11/hacking-facebookcomthanks-posting-on.html) by Anand Prakash
-- [Change the description of a video without publish_actions permission in Facebook](https://philippeharewood.com/change-the-description-of-a-video-without-publish_actions-permission/) by phwd
-- [How I could have removed all your Facebook notes](http://www.anandpraka.sh/2015/12/summary-this-blog-post-is-about.html) by Anand Prakash
-- [Overwriting/Removing Cover Photos on Facebook Event Pages](http://roy-castillo.blogspot.com/2016/02/overwritingremoving-cover-photos-on.html) by Roy Castillo
 - [IDOR inf Facebook's Acquisition - Parse](http://www.pranav-venkat.com/2016/12/idor-in-facebooks-acquisition-parse.html) by Venkat S
 - [Delete any video from Facebook](https://pranavhivarekar.in/2016/06/23/facebooks-bug-delete-any-video-from-facebook/) by PRANAV HIVAREKAR
 - [Delete Any Video on Facebook](https://danmelamed.blogspot.com/2017/01/facebook-vulnerability-delete-any-video.html) by Dan Melamed
