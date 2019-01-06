@@ -132,9 +132,43 @@ Some specific topics about bug hunting.
     - Usually servers configure CORS headers only if they receive the request containting the `Origin` header, thus it could be easy to miss this type of vulnerabilities.
     - Otherwise, if the responses received from the server contain any `Access-Control-*` headers, but no `Origin` is declared, it is possible that the server will generate the header base on the `Origin` input.
   - After mapping the candidates' handler, it is possible to send requests with the `Origin` header set. The tester should try with different `Origin` values, such as the original domain name of `null`. In this phase it could be useful to use some scripts to automate the process.
-  - Two exploitable CORS configurations:
+  - Two exploitable CORS configurations with `Access-Control-Allow-Credentials: true`:
     - `Access-Control-Allow-Origin: https://attacker.com` `Access-Control-Allow-Credentials: true`
     - `Access-Control-Allow-Origin: null` `Access-Control-Allow-Credentials: true`
+  - Three exploitable CORS configurations without `Access-Control-Allow-Credentials`:
+    - `Access-Control-Allow-Origin: https://attacker.com`
+    - `Access-Control-Allow-Origin: null`
+    - `Access-Control-Allow-Origin: *`
+  - The CORS specification mentions also the `null` origin. This origin is triggered for example by redirects or from local HTML files. The target application may accept the `null` origin, and this could be exploited by attackers, since any website can easily obtain the `null` origin using a sandboxed iframe.
+    - `<iframe sandbox="allow-scripts allow-top-navigation allow-forms" src='data:text/html,<script>**CORS request here**</script>'></iframe>`
+  - List a series of `Origin` that can be used to bypass certain validation controls implemented to verify the validity of the `Origin` header.
+- [Exploiting CORS misconfigurations for Bitcoins and bounties](https://portswigger.net/blog/exploiting-cors-misconfigurations-for-bitcoins-and-bounties) by James Kettle
+  - Websites enable CORS by sending the following HTTP response header:
+    - `Access-Control-Allow-Origin: https://example.com` `Access-Control-Allow-Credentials: true`
+    - This creates a trust relationship, an XSS vulnerability on `example.com` is bad news for this site.
+  - Many parts of the previous writeup refers this writeup.
+- [Exploiting Misconfigured CORS](http://www.geekboy.ninja/blog/exploiting-misconfigured-cors-cross-origin-resource-sharing/) by geekboy
+  - Poorly implemented, best case for attack:
+    - `Access-Control-Allow-Origin: https://attacker.com` `Access-Control-Allow-Credentials: true`
+  - Poorly implemented, exploitabel:
+    - `Access-Control-Allow-Origin: null` `Access-Control-Allow-Credentials: true`
+  - Bad implementation but not exploitable:
+    - `Access-Control-Allow-Origin: *` `Access-Control-Allow-Credentials: true`
+    - `Access-Control-Allow-Origin: *`
+  - When we can't exploit even if above misconfigurations are present:
+    - Presence of any custom header in the request which is getting used to authenticate the user.
+    - Presence of any unique / authentication / key in the request URI.
+  - The poc in this writeup is worth to learn.
+- [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/wp-content/uploads/2016/12/Blog-Post-BugSec-Cynet-Facebook-Originull.pdf) by cynet
+  - Facebook also allows normal "GET" requests to the chat domain. But normal "GET" requests do not come with an `Origin` header. The `Origin` header is a special header sent by the browser only with XHR (XML HTTP Request) requests.
+  - When the server receives a "GET" request, it does not include the `Origin` header. In many development languages, nonexistent headers are represented by the "null" vaule. If Facebook expected to receive `null` in the `Origin` header, it would not block requests from this `Origin`.
+  - Most likely, the filtering mechanism is separated from the responder mechanism, and the responder assumes that the value in the `Origin` header is allowed, because if not, the filter would already have dropped the request. This development design allows Facebook to add authorized origins by changing code in one position only.
+  - In conclusion, the `null` origin passes the filter check, allowing it to pass as a normal "GET" request. The responder took the value of the `Origin` header from the request, and placed it as the value for `Access-Control-Allow-Origin` header in the response.
+  - In this manner, we ascertained that were we to send a request from the page with a `null` origin, we would most likely get the `Access-Control-Allow-Origin` header in response to the `null` origin.
+  - When we sent the request with the origin `null`, Facebook responded with a `null` value on `Access-Control-Allow-Origin`. This meant that if we could cause the browser to send `null` in the `origin` header, we would get a `null` value in the `Access-Control-Allow-Origin`.
+  - It was also possible to use the data scheme in order to send requests with the origin `null`. When a data scheme is used, the browser sets the origin to `null` for security purposes.
+  - Facebook uses a continually repeated XHR request to the server to receive newly arrived messages. The server responds only when a message arrives, or at timeout. Using this method means that there is always an XHR request waiting for a server response. When the server responds to a request, Javascript code opens a new request to the server.
+  - The poc in this writeup is worth to learn. 
 
 ### S3 Bucket
 
