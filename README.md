@@ -152,8 +152,17 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 - [IDOR inf Facebook's Acquisition - Parse](http://www.pranav-venkat.com/2016/12/idor-in-facebooks-acquisition-parse.html) by Venkat S
 - [Delete any video from Facebook](https://pranavhivarekar.in/2016/06/23/facebooks-bug-delete-any-video-from-facebook/) by PRANAV HIVAREKAR
+  - "video comment" feature allowed users to upload a video in comments.
+  - The author started playing around and testing this feature to find out how it works after it was out 8 hrs.
+  - When we upload a video as a comment, then this video gets uploaded onto user / page 's timeline and then it gets attached to the post as a "video comment" using it's `video_id`. e.g. When any user comments using a video on any random post, then video will first get uploaded to the user's timeline and then `video_id` will be returned. This `video_id` gets attached to the post as a video comment.
+  - Two simple flaws:
+    - The author was able to attach anyone's "video" to his comment using it's `video_id`.
+    - When the author deleted his "comment", then attached "video" got deleted. As it used only `video_id` and there were no permission checks placed to verify if the "user" owned the "video".
+  - The author used `GraphAPI` to write a proc.
 - [Delete Any Video on Facebook](https://danmelamed.blogspot.com/2017/01/facebook-vulnerability-delete-any-video.html) by Dan Melamed
 - [Image removal vulnerability in Facebook polling feature](https://blog.darabi.me/2017/11/image-removal-vulnerability-in-facebook.html) by Pouya Darabi
+  - The author noticed that "polling feature" was added to the posts while he was checking out Facebook's new features.
+  - Whenever a user tries to create a poll, a request containing "gif URL" or "image id" will be sent; when this field value changes to any other "image id", that image will be shown in poll; after sending request with another user's "image id", a poll containing that image would be created; when we try to delete the poll, victim's image would be deleted.
 - [Facebook Page Takeover by Manipulating the Parameter](https://arunsureshkumar.me/index.php/2016/09/16/facebook-page-takeover-zero-day-vulnerability/) by Arun Sureshkumar
 - [A Simple Bug On Facebook That Is Worth $8000 - Page Download](https://medium.com/@ajdumanhug/a-simple-bug-on-facebook-that-is-worth-8000-b77f7e01b064) by Aj Dumanhug
 - [Disclose Private Video Thumbnail from Facebook WorkPlace](https://medium.com/bugbountywriteup/disclose-private-video-thumbnail-from-facebook-workplace-52b6ec4d73b7) by Sarmad Hassan
