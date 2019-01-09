@@ -150,35 +150,21 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Insecure Direct Object Reference (IDOR)
 
-- [IDOR inf Facebook's Acquisition - Parse](http://www.pranav-venkat.com/2016/12/idor-in-facebooks-acquisition-parse.html) by Pranav Venkat
-  - Parse is a backend as a service providing company which was acquired by Facebook in 2013. In other words, they provide you with an application development platform in the cloud.
-  - Apps created in Parse have a feature to export the reports in csv format. Clicked "download option", a request containing `appname` was generated, changed the `appname` to other app's, you could download other app's reports.
-- [Delete any video from Facebook](https://pranavhivarekar.in/2016/06/23/facebooks-bug-delete-any-video-from-facebook/) by PRANAV HIVAREKAR
-  - "video comment" feature allowed users to upload a video in comments.
-  - The author started playing around and testing this feature to find out how it works after it was out 8 hrs.
-  - When we upload a video as a comment, then this video gets uploaded onto user / page 's timeline and then it gets attached to the post as a "video comment" using it's `video_id`. e.g. When any user comments using a video on any random post, then video will first get uploaded to the user's timeline and then `video_id` will be returned. This `video_id` gets attached to the post as a video comment.
-  - Two simple flaws:
-    - The author was able to attach anyone's "video" to his comment using it's `video_id`.
-    - When the author deleted his "comment", then attached "video" got deleted. As it used only `video_id` and there were no permission checks placed to verify if the "user" owned the "video".
-  - The author used `GraphAPI` to write a proc.
-- [Delete Any Video on Facebook](https://danmelamed.blogspot.com/2017/01/facebook-vulnerability-delete-any-video.html) by Dan Melamed
-  - This vulnerability is similar to the previous one, instead of attaching the victim's video to a comment, the author discovered a way to attach the video to an event post, when you delete an event post it also deletes the attached video.
-  - The author could created an event post by uploading a photo or video in the "Discussion" of a public event. You could upload victim's video by changing `video_id`. The attached video was deleted when you deleted the event post.
-- [Image removal vulnerability in Facebook polling feature](https://blog.darabi.me/2017/11/image-removal-vulnerability-in-facebook.html) by Pouya Darabi
-  - The author noticed that "polling feature" was added to the posts while he was checking out Facebook's new features.
-  - Whenever a user tries to create a poll, a request containing "gif URL" or "image id" will be sent; when this field value changes to any other "image id", that image will be shown in poll; after sending request with another user's "image id", a poll containing that image would be created; when we try to delete the poll, victim's image would be deleted.
 - [Facebook Page Takeover by Manipulating the Parameter](https://arunsureshkumar.me/index.php/2016/09/16/facebook-page-takeover-zero-day-vulnerability/) by Arun Sureshkumar
-- [A Simple Bug On Facebook That Is Worth $8000 - Page Download](https://medium.com/@ajdumanhug/a-simple-bug-on-facebook-that-is-worth-8000-b77f7e01b064) by Aj Dumanhug
   - 
+- [A Simple Bug On Facebook That Is Worth $8000 - Page Download](https://medium.com/@ajdumanhug/a-simple-bug-on-facebook-that-is-worth-8000-b77f7e01b064) by Aj Dumanhug
 - [Disclose Private Video Thumbnail from Facebook WorkPlace](https://medium.com/bugbountywriteup/disclose-private-video-thumbnail-from-facebook-workplace-52b6ec4d73b7) by Sarmad Hassan
-- [View Insights for Any Facebook Marketplace Product](https://jmw.fyi/post/view-insights-for-any-fb-marketplace-product) by Jane Manchun Wong
-- [Dox Facebook Employees Behind “Did You Know” Questions](https://jmw.fyi/post/reveal-fb-employee-behind-funfact) by Jane Manchun Wong
-- [Disclose Facebook Internal Server Information With A Strange Poll](https://jmw.fyi/post/disclose-fb-intern-server-info-with-a-strange-poll) by Jane Manchun Wong
+- [View Insights for Any Facebook Marketplace Product](https://wongmjane.com/post/view-insights-for-any-fb-marketplace-product/) by Jane Manchun Wong
+- [Dox Facebook Employees Behind “Did You Know” Questions](https://wongmjane.com/post/reveal-fb-employee-behind-funfact/) by Jane Manchun Wong
+- [Disclose Facebook Internal Server Information With A Strange Poll](https://wongmjane.com/post/disclose-fb-intern-server-info-with-a-strange-poll/) by Jane Manchun Wong
+  - In the previous three writeups the author used `GraphAPI` to extract sensitive information.
 - [Add description to Instagram Posts on behalf of other users - 6500$](https://medium.com/bugbountywriteup/add-description-to-instagram-posts-on-behalf-of-other-users-6500-7d55b4a24c5a) by Sarmad Hassan
 - [How I was able to delete any image in Facebook community question forum](https://medium.com/@JubaBaghdad/how-i-was-able-to-delete-any-image-in-facebook-community-question-forum-a03ea516e327) by Sarmad Hassan
 - [Facebook: Creating Test Conversion using any App](https://medium.com/bugbountywriteup/creating-test-conversion-using-any-app-8b32ee0a735) by Joshua Regio
 - [Vulnerability in Youtube allowed moving comments from any video to another](https://www.secgeek.net/youtube-vulnerability/) by secgeek
-  - It's *Google* Vulnerability, so it's worth reading, as generally it is more difficult to find Google vulnerability
+  - The author wanted to think a little bit outside the box and find something in Youtube that not many bug hunters have tested, so he has decided to test the feature of "reviewing comments". Usually, the comments get posted immediately to the uploaded videos, but the author of the channel can control this by changing the settings to hold the comments for review before it gets posted. The author thought that not many researchers have tested that feature since it is not the default option.
+  - When you approved the a comment on your video, a request containing `comment_id` and `video_id` (in the "POST" parameters) was generated. If you changed the `video_id` to any other video id, you would get an error. Yet, if you kept the `video_id` untouched and changed only the `comment_id` to any other comment id on any Youtube video, the request would get accepted and that comment would be copied and appear on you video.
+  - The original comment from the original video didn't get removed, and the author of the commnent didn't get nonified that his comment is copied onto another video.
 - [Microsoft-careers.com Remote Password Reset](http://yasserali.com/microsoft-careers-com-remote-password-reset/) by Yaaser Ali
 - [One Vulnerability allowed deleting comments of any user in all Yahoo sites](https://www.secgeek.net/yahoo-comments-vulnerability/) by secgeek
 - [Airbnb – Web to App Phone Notification IDOR to view Everyone’s Airbnb Messages](https://buer.haus/2017/03/31/airbnb-web-to-app-phone-notification-idor-to-view-everyones-airbnb-messages/) by Brett Buerhaus
