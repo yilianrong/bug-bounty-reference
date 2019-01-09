@@ -150,9 +150,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Insecure Direct Object Reference (IDOR)
 
-- [Facebook Page Takeover by Manipulating the Parameter](https://arunsureshkumar.me/index.php/2016/09/16/facebook-page-takeover-zero-day-vulnerability/) by Arun Sureshkumar
-  - 
-- [A Simple Bug On Facebook That Is Worth $8000 - Page Download](https://medium.com/@ajdumanhug/a-simple-bug-on-facebook-that-is-worth-8000-b77f7e01b064) by Aj Dumanhug
 - [Disclose Private Video Thumbnail from Facebook WorkPlace](https://medium.com/bugbountywriteup/disclose-private-video-thumbnail-from-facebook-workplace-52b6ec4d73b7) by Sarmad Hassan
 - [View Insights for Any Facebook Marketplace Product](https://wongmjane.com/post/view-insights-for-any-fb-marketplace-product/) by Jane Manchun Wong
 - [Dox Facebook Employees Behind “Did You Know” Questions](https://wongmjane.com/post/reveal-fb-employee-behind-funfact/) by Jane Manchun Wong
