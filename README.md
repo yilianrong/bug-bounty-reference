@@ -150,15 +150,15 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Insecure Direct Object Reference (IDOR)
 
-- [Disclose Private Video Thumbnail from Facebook WorkPlace](https://medium.com/bugbountywriteup/disclose-private-video-thumbnail-from-facebook-workplace-52b6ec4d73b7) by Sarmad Hassan
-  - The author decided to test "Facebook Pages", because he knew through reading a lot of writeups, that Facebook pay good bounty when hunters find valid bugs on "Pages".
-  - He created a test Page for himself and checked every option on it. After a little while he got "CANVAS", basically "Page Admin" or even an "advertiser" can create "CANVAS" and there is some options like upload photo or video inside of it.
-  - The author uploaded
 - [View Insights for Any Facebook Marketplace Product](https://wongmjane.com/post/view-insights-for-any-fb-marketplace-product/) by Jane Manchun Wong
 - [Dox Facebook Employees Behind “Did You Know” Questions](https://wongmjane.com/post/reveal-fb-employee-behind-funfact/) by Jane Manchun Wong
 - [Disclose Facebook Internal Server Information With A Strange Poll](https://wongmjane.com/post/disclose-fb-intern-server-info-with-a-strange-poll/) by Jane Manchun Wong
   - In the previous three writeups the author used `GraphAPI` to extract sensitive information.
 - [Add description to Instagram Posts on behalf of other users - 6500$](https://medium.com/bugbountywriteup/add-description-to-instagram-posts-on-behalf-of-other-users-6500-7d55b4a24c5a) by Sarmad Hassan
+  - "IGTV" was a new feature on Instagram for watching long-form, vertical video from your favorite Instagram creators.
+  - Once the author created an "IGTV video", he clicked on the edit option, a request containing `media_id` (you could get any `media_id` for other users posts by just visiting their posts and viewing the source code), `caption` and `title` (you could put description to that video or photo in these two parameters) was generated.
+  - By replacing his `media_id` to other users post's `media_id`, the author could add description to their posts if they didn't put any description there. It worked in all kind of posts like photos, videos and IGTV videos. It worked only on public accounts.
+  - The response was an "Internal Server error" with an error message "Oops an error occured", but instead the bug worked.
 - [How I was able to delete any image in Facebook community question forum](https://medium.com/@JubaBaghdad/how-i-was-able-to-delete-any-image-in-facebook-community-question-forum-a03ea516e327) by Sarmad Hassan
 - [Facebook: Creating Test Conversion using any App](https://medium.com/bugbountywriteup/creating-test-conversion-using-any-app-8b32ee0a735) by Joshua Regio
 - [Vulnerability in Youtube allowed moving comments from any video to another](https://www.secgeek.net/youtube-vulnerability/) by secgeek
