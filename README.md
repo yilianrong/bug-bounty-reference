@@ -191,9 +191,10 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Trello bug bounty: The websocket receives data when a public company creates a team visible board](https://hethical.io/trello-bug-bounty-the-websocket-receives-data-when-a-public-company-creates-a-team-visible-board/) by Florian Courtia
   - A vulnerability about websocket which I don't understand.
 - [Mass Assignment, Response to Request Injection, Admin Escalation](https://seanmelia.wordpress.com/2017/06/01/privilege-escalation-in-a-django-application/) by Sean Melia
-  - I don't understand, was this about guessing parameters or parameter pollution?
+  - I don't understand, was this about guessing parameters?
 - [IDOR While Connecting Social Account in Hackster.io](https://medium.com/@arbazhussain/idor-while-connecting-social-account-in-hackster-io-2296b316b7a7) by Arbaz Hussain
 - [Bypassing IDOR via Parameter pollution](http://blog.gaurangbhatnagar.com/2017/12/02/Hacking-a-dating-app.html) by Gaurang Bhatnagar
+  - This writeup listed seven vulnerabilities found in a mobile dating app. This app was terrible.
 - [Hunting Insecure Direct Object Reference Vulnerabilities for Fun and Profit (PART-1)](https://codeburst.io/hunting-insecure-direct-object-reference-vulnerabilities-for-fun-and-profit-part-1-f338c6a52782) by Mohammed Abdul Raheem
 - [Hunting Insecure Direct Object Reference Vulnerabilities for Fun and Profit (PART 2)](https://codeburst.io/hunting-insecure-direct-object-reference-vulnerabilities-for-fun-and-profit-part-2-af832d1c0bb6) by Mohammed Abdul Raheem
 - [How I Get the Name of the Hotel (and other Data) that you ever Stay](https://medium.com/@YoKoKho/idor-at-private-bug-bounty-program-that-could-leads-to-personal-data-leaks-d2536d026bf5) by YoKo Kho
