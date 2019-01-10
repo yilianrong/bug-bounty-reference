@@ -179,6 +179,9 @@ Some specific topics about bug hunting.
   - Modifying the URI by any other value, it was possible to use the socket again as a new one.
   - The poc in this writeup is worth to learn.
 
+### JSON Web Token
+- [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
+
 ### S3 Bucket
 
 - [S3 Bucket Misconfiguration: From Basics to Pawn](https://bugbountypoc.com/s3-bucket-misconfiguration-from-basics-to-pawn/) by JAY JANI
