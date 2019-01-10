@@ -151,6 +151,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Insecure Direct Object Reference (IDOR)
 
 - [Disclose Private Video Thumbnail from Facebook WorkPlace](https://medium.com/bugbountywriteup/disclose-private-video-thumbnail-from-facebook-workplace-52b6ec4d73b7) by Sarmad Hassan
+  - The author decided to test "Facebook Pages", because he knew through reading a lot of writeups, that Facebook pay good bounty when hunters find valid bugs on "Pages".
+  - He created a test Page for himself and checked every option on it. After a little while he got "CANVAS", basically "Page Admin" or even an "advertiser" can create "CANVAS" and there is some options like upload photo or video inside of it.
+  - The author uploaded
 - [View Insights for Any Facebook Marketplace Product](https://wongmjane.com/post/view-insights-for-any-fb-marketplace-product/) by Jane Manchun Wong
 - [Dox Facebook Employees Behind “Did You Know” Questions](https://wongmjane.com/post/reveal-fb-employee-behind-funfact/) by Jane Manchun Wong
 - [Disclose Facebook Internal Server Information With A Strange Poll](https://wongmjane.com/post/disclose-fb-intern-server-info-with-a-strange-poll/) by Jane Manchun Wong
