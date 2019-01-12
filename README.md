@@ -88,6 +88,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Cross-Site Request Forgery (CSRF)
 
+- [10 Methods to Bypass Cross Site Request Forgery (CSRF)](https://haiderm.com/10-methods-to-bypass-cross-site-request-forgery-csrf/) by Haider Mahmood
 - [How I bypassed Facebook CSRF Protection](https://blog.darabi.me/2015/04/bypass-facebook-csrf.html) by Pouya Darabi
 - [How I bypassed Facebook CSRF once again](https://blog.darabi.me/2016/05/how-i-bypassed-facebook-csrf-in-2016.html) by Pouya Darabi
 - [Messenger.com CSRF that show you the steps when you check for CSRF](https://whitton.io/articles/messenger-site-wide-csrf/) by Jack Whitton
@@ -164,35 +165,16 @@ My intention is to make a full and complete list of common vulnerability that ar
   - A vulnerability about websocket which I don't understand.
 - [Mass Assignment, Response to Request Injection, Admin Escalation](https://seanmelia.wordpress.com/2017/06/01/privilege-escalation-in-a-django-application/) by Sean Melia
   - I don't understand, was this about guessing parameters?
-
-- [IDOR While Connecting Social Account in Hackster.io](https://medium.com/@arbazhussain/idor-while-connecting-social-account-in-hackster-io-2296b316b7a7) by Arbaz Hussain
 - [Bypassing IDOR via Parameter pollution](http://blog.gaurangbhatnagar.com/2017/12/02/Hacking-a-dating-app.html) by Gaurang Bhatnagar
   - This writeup listed seven vulnerabilities found in a mobile dating app. This app was terrible.
-- [Hunting Insecure Direct Object Reference Vulnerabilities for Fun and Profit (PART-1)](https://codeburst.io/hunting-insecure-direct-object-reference-vulnerabilities-for-fun-and-profit-part-1-f338c6a52782) by Mohammed Abdul Raheem
-- [Hunting Insecure Direct Object Reference Vulnerabilities for Fun and Profit (PART 2)](https://codeburst.io/hunting-insecure-direct-object-reference-vulnerabilities-for-fun-and-profit-part-2-af832d1c0bb6) by Mohammed Abdul Raheem
-- [How I Get the Name of the Hotel (and other Data) that you ever Stay](https://medium.com/@YoKoKho/idor-at-private-bug-bounty-program-that-could-leads-to-personal-data-leaks-d2536d026bf5) by YoKo Kho
-- [Ribose — IDOR with Simple CSRF Bypass — Unrestricted Changes and Deletion to other Photo Profile](https://medium.com/@YoKoKho/ribose-idor-with-simple-csrf-bypass-unrestricted-changes-and-deletion-to-other-photo-profile-e4393305274e) by YoKo Kho
-- [How I hacked 23.900.000 tumblr domains at once](https://medium.com/bugbountywriteup/how-i-hack-23-900-000-tumblr-domains-at-once-341edad6e7cc) by Ak1T4
-- [IDOR User Account Takeover By Connecting My Facebook Account with victims Account](https://blog.securitybreached.org/2018/09/16/idor-account-takeover-using-facebook/) by Muhammad Khizer Javed
-  - An IDOR issue in a Web where changing the "User ID" in Facebook auth callback linking request actually connected the author's "Facebook Account" to the "Victims Site Account", so by this he could get complete access to "User Account".
-  - When the author tested a web app, he realised that the website idefified a user from a unique `_user_id`, the value for this ID was something like `aff20-33f3-4c8e-b3cb-77b2`. So he checked in which request this `_user_id` got passed and came accross Facebook auth callback linking request. Changed the `_user_id` to another user's account, the author could connect his Facebook account to another user's account and tookover that account.
-  - But how an attacker got victim's `_user_id`. The author tested many public endpoints to check if any contained the `_user_id` but couldn't find any, then he opened an image shared by the user (victim) and opend the actual URL of the image, ita was hosted on an "S3 Bucket" and the image always had the `_user_id` in the URL.
-- [Paytm Customer Information is at risk — India’s largest digital wallet company](https://medium.com/@logicbomb_1/bugbounty-paytm-customer-information-is-at-risk-indias-largest-digital-wallet-company-6f7116d4b2d5) by Avinash Jain
-- [How Naaptol (India’s popular home shopping company) Kept their Millions of User Data at Risk](https://medium.com/@logicbomb_1/bugbounty-how-naaptol-indias-popular-home-shopping-company-kept-their-millions-of-user-data-e414cd4151c) by Avinash Jain
-- [Abusing internal API to achieve IDOR in New Relic](https://www.jonbottarini.com/2018/01/02/abusing-internal-api-to-achieve-idor-in-new-relic/) by Jon Bottarini
-  - The author usually test for IDOR's this way, by having one browser (usually Chrome) setup as "victim account" and another browser (usually Firefox) as the "attacker account", where he route everything throught Burp and check the responses after he change values here and there.
-  - New Relic implemented an "internal API" which occured on both their "infrastructure product" (`infrastructure.newrelic.com`) and "alerts product" (`alerts.newrelic.com`). There were multiple version of the "internal API", the bug only worked on version 1.
-  - The vulnerable endpoint contained "account number" which increases by 1 every time a new account is created. The application didn't ensure that the "account number" being requested through the "internal APT" GET request matched the "account number" of the authenticated user.
 - [Get as image function pulls any Insights/NRQL data from any New Relic account (IDOR)](https://jonbottarini.com/2018/10/09/get-as-image-function-pulls-any-insights-nrql-data-from-any-new-relic-account-idor/) by Jon Bottarini
-  - This writeup was very specific about the product. 
-- [Rewarded by securing vulnerabilities in Bookmyshow (India’s largest online movie & event booking portal)](https://medium.com/@logicbomb_1/bugbounty-rewarded-by-securing-vulnerabilities-in-bookmyshow-indias-largest-online-movie-bb81dba9b82) by Avinash Jain
+  - This writeup was very specific about the product.
 
 ### Sensitive Information Exposure
 
 - [FB users birth year disclosed via FB Timeline profile source code “data attribute”](https://medium.com/@rajsek/curiosity-and-passion-to-your-profession-might-lead-to-make-your-dream-come-true-7d9be3c6029a) by Raja Sekar Durairaj
-- [FB user birth year Disclosure via “IDOR in m.facebook.com”](https://medium.com/@rajsek/my-2nd-facebook-bounty-poc-fb-data-of-birth-disclosure-d02e1bec50) by Raja Sekar Durairaj
-- [DOB disclosed using “Facebook Graph API Reverse Engineering”](https://medium.com/@rajsek/my-3rd-facebook-bounty-hat-trick-chennai-tcs-er-name-listed-in-facebook-hall-of-fame-47f57f2a4f71#.9gbtbv42q) by Raja Sekar Durairaj
-- [Abusing Facebook Graph Search using GraphQL](https://philippeharewood.com/abusing-facebook-graph-search/) by phwd
+- [FB user birth year Disclosure via "IDOR in m.facebook.com"](https://medium.com/@rajsek/my-2nd-facebook-bounty-poc-fb-data-of-birth-disclosure-d02e1bec50) by Raja Sekar Durairaj
+- [DOB disclosed using "Facebook Graph API Reverse Engineering"](https://medium.com/@rajsek/my-3rd-facebook-bounty-hat-trick-chennai-tcs-er-name-listed-in-facebook-hall-of-fame-47f57f2a4f71#.9gbtbv42q) by Raja Sekar Durairaj
 - [Facebook's Bug - Fooling Graph Search to Bypass Privacy Restrictions & Extract Private Information](https://pranavhivarekar.in/2016/02/20/facebooks-bug-fooling-graph-search-to-bypass-privacy-restrictions/) by PRANAV HIVAREKAR
 - [Facebook: Unauthorized access to credit/prepaid card details (limited) of any user](https://pranavhivarekar.in/2017/02/11/facebooks-bug-unauthorized-access-to-credit-card-details-limited-of-any-user/) by PRANAV HIVAREKAR
 - [Getting any Facebook User's Friend List and Partial Payment Card Details](https://www.josipfranjkovic.com/blog/facebook-friendlist-paymentcard-leak) by JOSIP FRANJKOVIĆ
