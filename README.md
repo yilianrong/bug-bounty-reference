@@ -88,31 +88,14 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Cross-Site Request Forgery (CSRF)
 
-- [10 Methods to Bypass Cross Site Request Forgery (CSRF)](https://haiderm.com/10-methods-to-bypass-cross-site-request-forgery-csrf/) by Haider Mahmood
-- [How I bypassed Facebook CSRF Protection](https://blog.darabi.me/2015/04/bypass-facebook-csrf.html) by Pouya Darabi
-  - Normally, `fb_dtsg` (anti-CSRF token) is supposed to get validated at server-side and if an action request doesn't contain that token, Facebook will drop that request withour any process on it.
-  - When updated gray account to personal account, a request containing `account_id=XXXX` in URL and body in POST parameters was generated. Changed `account_id=XXXX` to `aaaa=XXXX`, the author could bypass Facebook CSRF protection (what was the logic behind the scene?).
-  - All action could be used here, example list:
-    - change language: `/ads/manage/home/?show_dialog_uri=/ajax/settings/account/language.php?new_language=fa_IR`
-    - add email: `/ads/manage/home/?show_dialog_uri=/settings/email/add/submit/?new_email=pouya@darabi.me`
-    - turn off login approval: `/ads/manage/home/?show_dialog_uri=/ajax/settings/security/approvals.php?just_enabled_approvals=0`
-    - logout all mobile: `/ads/manage/home/?show_dialog_uri=/ajax/settings/mobile/lost_phone.php`
-    - logout all sessions: `/ads/manage/home/?show_dialog_uri=/ajax/settings/security/sessions/stop_all.php`
-  - The author couldn't change prefix after Facebook fixed this issue, `show_dialog_uri` should have prefix `/ads/manage/error/graydisabled/?`.
-  - The author bypassed the fix with double encoding (`?` -> `%253F`), added email:
-    - `https://www.facebook.com/ads/manage/home/?account_id&show_dialog_uri=%2Fads%2Fmanage%2Ferror%2Fgraydisabled%2F%253F%2F..%2F..%2F..%2F..%2F..%2Fsettings%2Femail%2Fadd%2Fsubmit%2F%3Fnew_email%3Dpouya%40darabi.me`
-  - Facebook security fianlly removed `show_dialog_uri`.
-- [How I bypassed Facebook CSRF once again](https://blog.darabi.me/2016/05/how-i-bypassed-facebook-csrf-in-2016.html) by Pouya Darabi
-  - A "continued flow lead ad" means the final step is completed on the advertiser's website. The "lead ad" will collect all of the data provided and pass it to a destination URL using a hash or POST request. This is valuable for flows where you need data that Facebook is unwilling to collect (e.g. password for creating an account).
-  - Facebook's POST method was used in "continued flow" and `fb_dtsg` was added to every request.
-  - 
-- [Messenger.com CSRF that show you the steps when you check for CSRF](https://whitton.io/articles/messenger-site-wide-csrf/) by Jack Whitton
 - [Hacking Facebook accounts using CSRF in Oculus-Facebook integration](https://www.josipfranjkovic.com/blog/hacking-facebook-oculus-integration-csrf) by JOSIP FRANJKOVIĆ
-- [Paypal bug bounty: Updating the Paypal.me profile picture without consent (CSRF attack)](https://hethical.io/paypal-bug-bounty-updating-the-paypal-me-profile-picture-without-consent-csrf-attack/) by Florian Courtial
-- [Hacking PayPal Accounts with one click (Patched)](http://yasserali.com/hacking-paypal-accounts-with-one-click/) by Yasser Ali
-- [PayPal BBP - I could’ve deleted All SMC messages](https://blog.ayoubaitelmokhtar.com/2018/06/paypal-bbp-i-couldve-deleted-all-smc.html) by Ayoub AIT ELMOKHTAR
+  - Oculus enables users to connect their Facebook accounts for more "social" experience, this can be done using both the native Windows Oculus application and using browsers.
+  - The author found a CSRF vulnerability in the native Windows flow which allowed him to connect a victim's Facebook account to attacker's Oculus account. Once connected, the attacker could extract the victim's access token, and use Facebook's GraphQL queries to take over the account.
+  - This vulenerability is complicated.
 - [How i Hacked your Beats account ? Apple Bug Bounty](https://aadityapurani.com/2016/07/20/how-i-hacked-your-beats-account-apple-bug-bounty/) by Additya Purani
+  - Complicated.
 - [How I was able to delete anyone’s account in an Online Car Rental Company](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-delete-anyones-account-in-an-online-car-rental-company-8a4022cc611) by Avinash Jain
+  - The author went through "Update Profile" functionality and a request containing `_method=put` in POST parameters was generated. By
 
 ## Cross-Site Script Inclusion (XSSI)
 
