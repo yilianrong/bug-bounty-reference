@@ -43,7 +43,22 @@ Some specific topics about bug hunting.
 ### SSTI (Server-Side Template Injection)
 
 - [Server-Side Template Injection](https://portswigger.net/blog/server-side-template-injection) by James Kettle
+  - Template engines are widely used by web applications to present dynamic data via web pages and emails. Template injection can be used to directly attack web server's internals and often obtain Remote Code Execution (RCE).
+  - Two outputs hint at a server-side vulnerability.
+  - Plaintext context: the presence of XSS can be used as a cue for more thorough template injection probes.
+  - Code context: user input may also be placed within a template statement, then breaking out of the template statement and injecting HTML tag after it maybe work.
+  - Identify the template engine in use is sometimes as trivial as submitting invalid syntax, as template engines may identify themselves in the resulting error messages. However, this technique fails when error messages are supressed.
+  - The first step after finding template injection and identifying the template engine is to read the documentation.
+  - Assuming no exploits have presented themselves, the next step is to explore the environment to find out exactly what you have access to. You can expect to find both default objects provided by the template engine, and application-specific objects passed in to the template by the developer. Many template system expose a `self` or namespace object containing everything in scope, and an idiomatic way to list an object's attributes and methods.
+  - At this point you should have a firm idea of the attack surface available to you and be able to proceed with traditional security audit techniques, reviewing each function for exploitable vulnerabilities.
+  - Some examples use template injection to trigger arbitrary object creation, arbitrary file read / write, remote file include, information disclosure and privilege escalation vulnerabilities.
 - [Yahoo! RCE via Spring Engine SSTI, Recon Pay Off](https://hawkinsecurity.com/2017/12/13/rce-via-spring-engine-ssti/) by tghawkins
+  - First, the author did some subdomain discovery, using a combination online tools such as `shodan.io`, `censys.io`, `crt.sh`, `dnsdumpster.com`, and also scripts on github such as `dirsearch`, `aquatone`, `massdns`, etc.
+  - The author came across `datax.yahoo.com`, he was interested in this subdomain as the root directory sould redirect to `https://datax.yahoo.com/swagger-ui.html`, a 403 error page.
+  - The author ran `dirsearch` scan and found `https://datax.yahoo.com/%20/swagger-ui.html` included some API endpoints.
+  - `https://datax.yahooapis.com/v2/taxonomy?active=7*7`, this displayed a "Whitelabel Error Page", but the parameter vaules were reflected within the error. The author tried some XSS payloads, but couldn't work.
+  - `https://datax.yahooapis.com/v2/taxonomy?active=${7*7}`, the arithmetic expression was successfully evaluated within the response. This can usually indicates that some sort of template engine / server side evaluation is involved when processing the expression.
+  - After a bit more research, the author guessed that was the "Spring Engine Template". He finally found a payload to retrieve system information from the vulnerability.
 
 ### CSP
 
