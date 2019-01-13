@@ -40,6 +40,11 @@ Some specific topics about bug hunting.
 - [Blind XSS AngularJS Payloads](https://ardern.io/2018/12/07/angularjs-bxss/) by Lewis Ardern
   - There is a list of blind XSS AngularJS payloads.
 
+### SSTI (Server-Side Template Injection)
+
+- [Server-Side Template Injection](https://portswigger.net/blog/server-side-template-injection) by James Kettle
+- [Yahoo! RCE via Spring Engine SSTI, Recon Pay Off](https://hawkinsecurity.com/2017/12/13/rce-via-spring-engine-ssti/) by tghawkins
+
 ### CSP
 
 - [Content Security Policy Reference](https://content-security-policy.com/) by Foundeo Inc
