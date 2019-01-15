@@ -9,27 +9,27 @@ I have been reading for Bug Bounty write-ups for a few months, I found it extrem
 My intention is to make a full and complete list of common vulnerability that are publicly disclosed bug bounty write-up, and let Bug Bounty Hunter to use this page as a reference when they want to gain some insight for a particular kind of vulnerability during Bug Hunting, feel free to submit pull request. Okay, enough for chit-chatting, let's get started. 
 
 
-- [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
-- [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf)
+- [Cross-Site Scripting (XSS)](#cross-site-scripting-xss) done
+- [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf) done
 - [Cross-Site Script Inclusion (XSSI)](#cross-site-script-inclusion-xssi)
 - [Server Side Request Forgery (SSRF)](#server-site-request-forgery-ssrf)
-- [XML External Entity (XXE)](#xml-external-entify-xxe)
-- [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor)
+- [XML External Entity (XXE)](#xml-external-entify-xxe) done
+- [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor) done
 - [Sensitive Information Exposure](#sensitive-information-exposure)
 - [Authentication Bypass](#authentication-bypass)
 - [Stealing Access Token](#stealing-access-token)
 - [Business Logic Flaw](#business-logic-flaw)
 - [HTTP Header Injection](#http-header-injection)
 - [Subdomain Takeover](#subdomain-takeover)
-- [Local File Inclusion](#local-file-inclusion)
-- [Unrestricted File Upload](#unrestricted-file-upload)
+- [Local File Inclusion](#local-file-inclusion) done
+- [Unrestricted File Upload](#unrestricted-file-upload) done
 - [Brute Force](#brute-force)
-- [Race Condition](#race-condition)
-- [SQL Injection](#sql-injection)
-- [Remote Code Execution](#remote-code-execution)
+- [Race Condition](#race-condition) done
+- [SQL Injection](#sql-injection) done
+- [Remote Code Execution](#remote-code-execution) done
 - [Miscellaneous](#miscellaneous)
 - [Exclusive Bugbounty Writeup Blog](#exclusive-bugbounty-writeup-blog)
-- [Interesting but Seems Not Applicable Now](#interesting-but-seems-not-applicable-now)
+- [Interesting but Seems Not Applicable Now](#interesting-but-seems-not-applicable-now) done
 
 
 ### Cross-Site Scripting (XSS)
@@ -141,6 +141,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Exploiting XXE with local DTD files](https://mohemiv.com/all/exploiting-xxe-with-local-dtd-files/) by Arseniy Sharoglazov
 - [From blind XXE to root-level file read access](https://www.honoki.net/2018/12/from-blind-xxe-to-root-level-file-read-access/) by Honoki
 - [Exploitation: XML External Entity (XXE) Injection](https://depthsecurity.com/blog/exploitation-xml-external-entity-xxe-injection) by Faisal Tameesh
+  - I can't understand this type vulnerability so far.
 
 ### Insecure Direct Object Reference (IDOR)
 
@@ -376,6 +377,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Union Based Sql injection Write up ->A private Company Site](https://medium.com/@nuraalamdipu/union-based-sql-injection-write-up-a-private-company-site-273f89a49ed9) by Nur A Alam Dipu
 -[A Five Minute SQL-I](https://medium.com/bugbountywriteup/a-five-minute-sql-i-16ab75b20fe4) by Ashish Jha
 - [Bypassing Host Header to SQL injection to dumping Database — An unusual case of SQL injection](https://blog.usejournal.com/bugbounty-database-hacked-of-indias-popular-sports-company-bypassing-host-header-to-sql-7b9af997c610) by Avinash Jain
+  - I can't understand this type vulnerability so far.
 
 ### Remote Code Execution
 
