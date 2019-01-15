@@ -66,6 +66,12 @@
 ### Hiden Endpoints
 
 - A redirect to SSO does not always mean that every endpoints are behind the SSO. Specially if it is a popular instance like JIRA, Confluence etc, check to see if you can still hit endpoints like search sections, filters etc.
+- If you ran into an API subdomain with an empty response, You may get lucky and fetch the full API spec by hitting the following endpoints:
+  - `/swagger-ui.html`
+  - `/swagger/swagger-ui.html`
+  - `/api/swagger-ui.html`
+  - `/v1.x/swagger-ui.html`
+  - `/swagger/index.html`
 
 ### Jenkins
 
@@ -84,6 +90,8 @@
   - Usage: redirecthere。com
 - There is no redirect using location header and the response code is 200 but the author still got redirected, which can mean only one thing, the redirect performed using javascript in the browser. Usually it means something like this: `window.location.href = nextURL;`. In theory if someone can control the `nextURL` parameter, he can perform XSS: `window.location.href = javascript:alert(1);//` or `window.location.href = data:text/html;HTML_CODE`.
 - Using "Content Security Policy" to define which sources are allowed to be loaded could stop browser following 302 redirection (If this works, CSP violation error message will show in "Console" in Chrome debug tool). As show in [this writeup](https://whitton.io/articles/uber-turning-self-xss-into-good-xss/).
+- In some cases you can have an Open Redirect using %0d%0a and two "/" directly on the main url.
+  - `http://victim//%0d%0ahttp://google.com/`
 
 ### TOOLS
   
