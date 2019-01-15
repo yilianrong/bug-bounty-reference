@@ -334,15 +334,17 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Local File Inclusion
 
 - [Multiple Company LFI](http://panchocosil.blogspot.com/2017/05/one-cloud-based-local-file-inclusion.html) by panchocosil
+  - An email from `bdev@em.facebookmail.com` got the author interested on the subdomain `em.facebookmail.com`.
+  - The author didn't show how he found that LFI vulnerability.
 - [How we got LFI in apache Drill (Recon like a boss)](https://medium.com/bugbountywriteup/how-we-got-lfi-in-apache-drill-recon-like-a-boss-6f739a79d87d) by Gujjuboy10x00
-- [CVV #1: Local File Inclusion](https://medium.com/bugbountywriteup/cvv-1-local-file-inclusion-ebc48e0e479a) by SI9INT
-- [API keys leakage, Source code disclosure in India’s largest e-commerce health care company](https://medium.com/bugbountywriteup/bugbounty-api-keys-leakage-source-code-disclosure-in-indias-largest-e-commerce-health-care-c75967392c7e) by Avinash Jain
+  - Exploit LFI by using syntax defined in Dill's docs. Complicated.
 
 ### Unrestricted File Upload
 
 - [Arbitrary file upload in ubernihao.com](https://medium.com/@daksh_/arbitrary-file-upload-in-ubernihao-com-77ad40a4850a) by Daksh Patel
 - [How i Hacked into a PayPal's Server - Unrestricted File Upload to Remote Code Execution](http://web.archive.org/web/20170721135642/http://blog.pentestbegins.com/2017/07/21/hacking-into-paypal-server-remote-code-execution-2017/) by Vikas Anil Sharma
 - [RBookFresh Tricky File Upload Bypass to RCE](https://www.secgeek.net/bookfresh-vulnerability/) by secgeek
+  - Complicated, maybe I can understand this method later.
 
 ### Brute Force
 
