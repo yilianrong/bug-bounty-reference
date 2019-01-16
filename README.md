@@ -108,7 +108,7 @@ My intention is to make a full and complete list of common vulnerability that ar
   - "G-Suite Toolbox" can be used to perform all kinds of trouble-shooting. Among all the availabe tools, there is one called "Dig" which on Linux can be used to query a DNS server for its records of a given domain, just like A- or MX records.
   - If you filled "Name server" with `127.0.0.1`, you were trying to query `127.0.0.1` for DNS records, the web application simply responds with a "Server did not respond" message. So it really looks like the tool is trying to connect to `127.0.0.1:53` to fetch the DNS information for his domain, this smells like a SSRF (Think twice on error message).
   - Used Burpsuite's intruder to brute-force IP addresses ("nameserver" in POST parameter), the author found one promising internal IP, which responded to the request, however just with an empty A recored for his domain. Since the author knew about his own domain very well, it's even more interesting to find out whether it's possible to extract some internal information from Google, which are not publicly available.
-  - 
+  - Google is using `corp.google.com` as their corporate domain. Now you could brute-force all subdomains of `corp.google.com` using the very sam POST request to discover more subdomains.
   - The author used his own domain to brute-forece IP address and found a Google internal DNS, then used the Google internal DNS to extract Google internal information.
   - The product feature is related to this vulnerability.
 - [Into the Borg – SSRF inside Google production network](https://opnsec.com/2018/07/into-the-borg-ssrf-inside-google-production-network/) by Enguerran Gillier
@@ -120,9 +120,13 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How i found an SSRF in Yahoo! Guesthouse (Recon Wins)](https://medium.com/@th3g3nt3l/how-i-found-an-ssrf-in-yahoo-guesthouse-recon-wins-8722672e41d4) by Th3G3nt3lman
   - "Yahoo Guesthouse" is a set of administration tools use by Yahoo on a daily basis. They allow Yahoo administrators to control all aspects of the Yahoo network, from mail and hosting accounts to server settings and hosting management. Certain parts of the system, such as error reporting tools, are also available to Yahoo's customer services team.
   - The auhor found a subdomain `https://alpha.keyserver.yahoo.com/`, when opened it got "Not Found" response. So he did "dirsearch" and found a SAML endpoint `https://alpha.keyserver.yahoo.com/saml` that redirected him to the "Yahoo Guesthouse" login page. The author couldn't break the SAML, but he decided to stay and dig more and mor in this.
-  - When the author checked the request in burp, he found something special in the GET request for the above endpoint. There was a cookie `BouncerSAMLRemoteSessionHost=bouncer12-os.gh.bf2.yahoo.com;`, 
+  - When the author checked the request in burp, he found something special in the GET request for the above endpoint. There was a cookie `BouncerSAMLRemoteSessionHost=bouncer12-os.gh.bf2.yahoo.com;`, the cookie value was a website / yahoo subdomain, so ther was a high chance for an SSRF here. The auhor added his own server IP address in the `BouncerSAMLRemoteSessionHost` cookie, then received a request from `dip2.gq1.yahoo.com`.
+  - The author tried to read files or escalate this SSRF but he couldn't.
 - [Airbnb – Chaining Third-Party Open Redirect into Server-Side Request Forgery (SSRF) via LivePerson Chat](https://buer.haus/2017/03/09/airbnb-chaining-third-party-open-redirect-into-server-side-request-forgery-ssrf-via-liveperson-chat/) by Brett Buerhaus
+  - The author found some endpoints in a JS file.
+  - A a bit of fuzzing, he discovered
 - [SSRF tips from BugBountyHQ of Images - Open Graph Protocol is a good case for Blind SSRF / Extract of Meta Data](https://twitter.com/BugBountyHQ/status/868242771617792000) by BugBountyHQ
+  - [The Open Graph protocol](http://ogp.me/)
 - [SSRF to LFI](https://seanmelia.wordpress.com/2015/12/23/various-server-side-request-forgery-issues/) by seanmelia
 - [SSRF to pivot internal network](https://seanmelia.files.wordpress.com/2016/07/ssrf-to-pivot-internal-networks.pdf) by seanmelia
 - [ESEA Server-Side Request Forgery and Querying AWS Meta Data](https://buer.haus/2016/04/18/esea-server-side-request-forgery-and-querying-aws-meta-data/) by Brett Buerhaus
