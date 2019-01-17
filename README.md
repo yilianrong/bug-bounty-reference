@@ -103,52 +103,32 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Server Side Request Forgery (SSRF)
 
-- [SSRF to query google internal server](https://www.rcesecurity.com/2017/03/ok-google-give-me-all-your-internal-dns-information/) by rcesecurity
-  - A SSRF vulnerability on `toolbox.googleapps.com` which could be used to discover and query internal Google DNS servers to extract all kinds of corporate information like used internal IP addresses across the company as well as A and NS records exposing all kinds of hosts like Google's Active Directory structures and also a fancy Minecraft server.
-  - "G-Suite Toolbox" can be used to perform all kinds of trouble-shooting. Among all the availabe tools, there is one called "Dig" which on Linux can be used to query a DNS server for its records of a given domain, just like A- or MX records.
-  - If you filled "Name server" with `127.0.0.1`, you were trying to query `127.0.0.1` for DNS records, the web application simply responds with a "Server did not respond" message. So it really looks like the tool is trying to connect to `127.0.0.1:53` to fetch the DNS information for his domain, this smells like a SSRF (Think twice on error message).
-  - Used Burpsuite's intruder to brute-force IP addresses ("nameserver" in POST parameter), the author found one promising internal IP, which responded to the request, however just with an empty A recored for his domain. Since the author knew about his own domain very well, it's even more interesting to find out whether it's possible to extract some internal information from Google, which are not publicly available.
-  - Google is using `corp.google.com` as their corporate domain. Now you could brute-force all subdomains of `corp.google.com` using the very sam POST request to discover more subdomains.
-  - The author used his own domain to brute-forece IP address and found a Google internal DNS, then used the Google internal DNS to extract Google internal information.
-  - The product feature is related to this vulnerability.
-- [Into the Borg – SSRF inside Google production network](https://opnsec.com/2018/07/into-the-borg-ssrf-inside-google-production-network/) by Enguerran Gillier
-- [Yahoo! When Server Side Request Forgery combine with Cross Site Scripting](http://web.archive.org/web/20170218205059/http://ngailong.com/what-could-happen-when-server-side-request-forgery-combine-with-cross-site-scripting/) by Ron Chan
-  - `GET /d/xxxxxxxx/xxxxxxx?appid=YMail&crumb=kPun5CrTk1R&wssid=&clientId=mailsearch&timezone=Asia%2FHong_Kong&allowGoogleDocs=1&ymreqid=a5551380-75ce-13d6-1c16-c00001016500&url=http%3A%2F%2Fprod.mail.bf1.yahoo.com%2Fglasd%3f%2F%3FaccountIds%3D1%26timezone%3DAsia%252FHong_Kong%26mailboxid%3DBjJ-0j4oSqYSwadMXdzKCqzxjQ0gZZDkccM7CRStMSDerKbSfJwDAjhyiIZLOLd5xlNdGH4nkLovJSeSm65J69qU1w%26appid%3DYMail%26query%3Dis%253Aunread%26limit%3D50%26excludefolders%3DARCHIVE%26threads%3Dtrue%26vertical%3DMESSAGES%26order%3Dtime%2Bdesc%26cursor%3D49&listContentType=IMAGE`
-    - The author could control the destination of the URL, by changing `http%3A%2F%2Fprod.mail.bf1.yahoo.com%2F` to `http%3Amysite.com`. A request from Yahoo owned server made to his server, and included all of Yahoo header in the request.
-    - This is vulnerable to internal scanning as well, `http://127.0.0` didn't work, but `http://::80` worked, this is ivp6, bypassed the `127.0.0.1` check.
-  - I think this is an open redirection lead to SSRF.
-- [How i found an SSRF in Yahoo! Guesthouse (Recon Wins)](https://medium.com/@th3g3nt3l/how-i-found-an-ssrf-in-yahoo-guesthouse-recon-wins-8722672e41d4) by Th3G3nt3lman
-  - "Yahoo Guesthouse" is a set of administration tools use by Yahoo on a daily basis. They allow Yahoo administrators to control all aspects of the Yahoo network, from mail and hosting accounts to server settings and hosting management. Certain parts of the system, such as error reporting tools, are also available to Yahoo's customer services team.
-  - The auhor found a subdomain `https://alpha.keyserver.yahoo.com/`, when opened it got "Not Found" response. So he did "dirsearch" and found a SAML endpoint `https://alpha.keyserver.yahoo.com/saml` that redirected him to the "Yahoo Guesthouse" login page. The author couldn't break the SAML, but he decided to stay and dig more and mor in this.
-  - When the author checked the request in burp, he found something special in the GET request for the above endpoint. There was a cookie `BouncerSAMLRemoteSessionHost=bouncer12-os.gh.bf2.yahoo.com;`, the cookie value was a website / yahoo subdomain, so ther was a high chance for an SSRF here. The auhor added his own server IP address in the `BouncerSAMLRemoteSessionHost` cookie, then received a request from `dip2.gq1.yahoo.com`.
-  - The author tried to read files or escalate this SSRF but he couldn't.
-- [Airbnb – Chaining Third-Party Open Redirect into Server-Side Request Forgery (SSRF) via LivePerson Chat](https://buer.haus/2017/03/09/airbnb-chaining-third-party-open-redirect-into-server-side-request-forgery-ssrf-via-liveperson-chat/) by Brett Buerhaus
-  - The author found some endpoints in a JS file.
-  - A a bit of fuzzing, he discovered
-- [SSRF tips from BugBountyHQ of Images - Open Graph Protocol is a good case for Blind SSRF / Extract of Meta Data](https://twitter.com/BugBountyHQ/status/868242771617792000) by BugBountyHQ
-  - [The Open Graph protocol](http://ogp.me/)
-- [SSRF to LFI](https://seanmelia.wordpress.com/2015/12/23/various-server-side-request-forgery-issues/) by seanmelia
-- [SSRF to pivot internal network](https://seanmelia.files.wordpress.com/2016/07/ssrf-to-pivot-internal-networks.pdf) by seanmelia
-- [ESEA Server-Side Request Forgery and Querying AWS Meta Data](https://buer.haus/2016/04/18/esea-server-side-request-forgery-and-querying-aws-meta-data/) by Brett Buerhaus
-- [Pivoting fromm Blind SSRF to RCE](http://www.kernelpicnic.net/2017/05/29/Pivoting-from-blind-SSRF-to-RCE-with-Hashicorp-Consul.html) by Peter Adkins
-- [Plotly AWS EC2 Metadata Disclosure via SSRF and a Stored XSS via Presentation Link)](https://ysx.me.uk/a-pair-of-plotly-bugs-stored-xss-and-aws-metadata-ssrf/) by Yasin Soliman
+- [Pivoting from blind SSRF to RCE with HashiCorp Consul](http://www.kernelpicnic.net/2017/05/29/Pivoting-from-blind-SSRF-to-RCE-with-Hashicorp-Consul.html) by Peter Adkins
+  - Complicated.
 - [Blog post: Cracking the Lens: Targeting HTTP’s Hidden Attack-Surface ](https://portswigger.net/blog/cracking-the-lens-targeting-https-hidden-attack-surface) by James Kettle
-- [Server-Side Request Forgery (SSRF) Attacks - Part 1: The basics](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-attacks-part-1-the-basics-a42ba5cc244a) by Maxime Leblanc
-  - The author made a "Web App" implemented neat features suchh as a "REST API" adn cunstom "WebHook". For the "WebHook" interface, if the user entered `https://yourhandler.io/events` and had a REST API listening on `https://yourhandler.io/events`, he or she would receive a test event and have some degugging information.
-  - If we are in the positon of an attacker, we now have a server willing to make HTTP requests on out behalf to an arbitrary location, and give us the response it got. If it doesn't make sure the URL we input is actually an external Internet address, we could input something like `http://127.0.0.1:8080`, we could also try to scan internal addreses `10.0.0.0/8` subnet.
-  - How could we know the actual subnet of the vulnerable host? If WHOIS request tells us that the public IP address of the vulnerable Web Application is part of the AWS infrastructure, just ask the "AWS metadata service". It could reveal the address space of the VPC for our Web APP. The "metadata service" can be full of other very useful informtion ("AWS metadata service" is worth to study).
-  - The structure of a URL: `scheme://user:pass@host:port/path?query=value#fragment`,
-- [Server-Side Request Forgery (SSRF) Attacks — Part 2: Fun with IPv4 addresses](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-attacks-part-2-fun-with-ipv4-addresses-eb51971e476d) by Maxime Leblanc
-- [Server-Side Request Forgery (SSRF) — Part 3: Other advanced techniques](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-part-3-other-advanced-techniques-3f48cbcad27e) by Maxime Leblanc
+  - Complicated.
 - [SSRF bible. Cheatsheet](https://docs.google.com/document/d/1v1TkWZtrhzRLy0bYXBcdLUedXGb9njTNIJXa3u9akHM/mobilebasic) by d0znpp
-- [Bypassing SSRF](http://www.infosec-research.com/bypassing-ssrf-bugbounty-tip/) by infosec
-- [SSRF on DigitalOcean site](http://www.infosec-research.com/ssrf-on-digitalocean-site-bugbounty-tip/) by infosec
 - [Exploiting a Single Parameter](https://medium.com/@hisham.mir/exploiting-a-single-parameter-6f4ba2acf523) by Hisham Mir
 - [Piercing the Veil: Server Side Request Forgery to NIPRNet access](https://medium.com/bugbountywriteup/piercing-the-veil-server-side-request-forgery-to-niprnet-access-c358fd5e249a) by Alyssa Herrera
 - [How i converted SSRF TO XSS in jira](https://medium.com/@D0rkerDevil/how-i-convert-ssrf-to-xss-in-a-ssrf-vulnerable-jira-e9f37ad5b158) by Ashish Kunwar
 - [How I found XSS via SSRF vulnerability](https://medium.com/@adeshkolte/how-i-found-xss-via-ssrf-vulnerability-adesh-kolte-873b30a6b89f) by Adesh Kolte
 - [GETTING READ ACCESS ON EDMODO PRODUCTION SERVER BY EXPLOITING SSRF](https://www.shawarkhan.com/2018/05/getting-read-access-on-edmodo.html) by SHAWAR KHAN
+  - While exploring Edmodo's services and dubdomains, the author came across a subdomain `partnerships.edmodo.com`. This domain had a registration area where publisher could register by submitting a form. Using Burpsuite, the author found that while writing data to the from a POST requst was being sent to the following URL:
+    - `https://partnerships.edmodo.com/wp-content/themes/edmodo-developers/form-proxy.php?url=https://www.edmodo.com/index/ajax-check-in-db`
+    - Seemed like the `form-proxy.php` was somehow sending data to the file `ajax-check-in-db`.
+  - The author tried replacing `url` parameter value to `http://my-ip-address`, worked, he got a GET request to his server.
+  - Using `http://127.0.0.1:80`, didn't worked.
+  - Tried `http://localhost:22`, negative response, indicated this proc worked.
+    - Tried "SMTP service" (`http://localhost:25`), worked, grabbed the SMTP banner.
+    - The author was able to do an internal port scan and grabbed banners of ohter services.
+  - The author ran another Burpsuite Intruder and detected different schemes being  used, he found `Gopher`. "SMTP" can be exploited if we have "Gropher protocol" enabled.
+    - The author showed the proc to exploit "SMTP".
+  - There were other schemes available as well such as "ftp" and some other. Used "file" scheme to read files on their server:
+    - Tried `file:///etc/hosts`, worked.
+    - Tried `file:///etc/passwd`, didn't work, there might be some kind of firewall.
+    - Tried `file:///etc/./passwd`, worked.
 - [AWS takeover through SSRF in JavaScript](http://10degres.net/aws-takeover-ssrf-javascript/) by Gwen
+  - Javascript code reviewing wins.
 
 ### XML External Entity (XXE)
 
