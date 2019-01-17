@@ -12,7 +12,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Cross-Site Scripting (XSS)](#cross-site-scripting-xss) done
 - [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf) done
 - [Cross-Site Script Inclusion (XSSI)](#cross-site-script-inclusion-xssi)
-- [Server Side Request Forgery (SSRF)](#server-site-request-forgery-ssrf)
+- [Server Side Request Forgery (SSRF)](#server-site-request-forgery-ssrf) done
 - [XML External Entity (XXE)](#xml-external-entify-xxe) done
 - [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor) done
 - [Sensitive Information Exposure](#sensitive-information-exposure)
@@ -107,28 +107,14 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Complicated.
 - [Blog post: Cracking the Lens: Targeting HTTP’s Hidden Attack-Surface ](https://portswigger.net/blog/cracking-the-lens-targeting-https-hidden-attack-surface) by James Kettle
   - Complicated.
-- [SSRF bible. Cheatsheet](https://docs.google.com/document/d/1v1TkWZtrhzRLy0bYXBcdLUedXGb9njTNIJXa3u9akHM/mobilebasic) by d0znpp
 - [Exploiting a Single Parameter](https://medium.com/@hisham.mir/exploiting-a-single-parameter-6f4ba2acf523) by Hisham Mir
-- [Piercing the Veil: Server Side Request Forgery to NIPRNet access](https://medium.com/bugbountywriteup/piercing-the-veil-server-side-request-forgery-to-niprnet-access-c358fd5e249a) by Alyssa Herrera
-- [How i converted SSRF TO XSS in jira](https://medium.com/@D0rkerDevil/how-i-convert-ssrf-to-xss-in-a-ssrf-vulnerable-jira-e9f37ad5b158) by Ashish Kunwar
-- [How I found XSS via SSRF vulnerability](https://medium.com/@adeshkolte/how-i-found-xss-via-ssrf-vulnerability-adesh-kolte-873b30a6b89f) by Adesh Kolte
-- [GETTING READ ACCESS ON EDMODO PRODUCTION SERVER BY EXPLOITING SSRF](https://www.shawarkhan.com/2018/05/getting-read-access-on-edmodo.html) by SHAWAR KHAN
-  - While exploring Edmodo's services and dubdomains, the author came across a subdomain `partnerships.edmodo.com`. This domain had a registration area where publisher could register by submitting a form. Using Burpsuite, the author found that while writing data to the from a POST requst was being sent to the following URL:
-    - `https://partnerships.edmodo.com/wp-content/themes/edmodo-developers/form-proxy.php?url=https://www.edmodo.com/index/ajax-check-in-db`
-    - Seemed like the `form-proxy.php` was somehow sending data to the file `ajax-check-in-db`.
-  - The author tried replacing `url` parameter value to `http://my-ip-address`, worked, he got a GET request to his server.
-  - Using `http://127.0.0.1:80`, didn't worked.
-  - Tried `http://localhost:22`, negative response, indicated this proc worked.
-    - Tried "SMTP service" (`http://localhost:25`), worked, grabbed the SMTP banner.
-    - The author was able to do an internal port scan and grabbed banners of ohter services.
-  - The author ran another Burpsuite Intruder and detected different schemes being  used, he found `Gopher`. "SMTP" can be exploited if we have "Gropher protocol" enabled.
-    - The author showed the proc to exploit "SMTP".
-  - There were other schemes available as well such as "ftp" and some other. Used "file" scheme to read files on their server:
-    - Tried `file:///etc/hosts`, worked.
-    - Tried `file:///etc/passwd`, didn't work, there might be some kind of firewall.
-    - Tried `file:///etc/./passwd`, worked.
+  - The author bypassed many restrictions, but didn't explain in details, or maybe it is too abstract for me to understand.
 - [AWS takeover through SSRF in JavaScript](http://10degres.net/aws-takeover-ssrf-javascript/) by Gwen
   - Javascript code reviewing wins.
+- [Server-Side Request Forgery (SSRF) Attacks - Part 1: The basics](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-attacks-part-1-the-basics-a42ba5cc244a) by Maxime Leblanc
+- [Server-Side Request Forgery (SSRF) Attacks — Part 2: Fun with IPv4 addresses](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-attacks-part-2-fun-with-ipv4-addresses-eb51971e476d) by Maxime Leblanc
+- [Server-Side Request Forgery (SSRF) — Part 3: Other advanced techniques](https://medium.com/poka-techblog/server-side-request-forgery-ssrf-part-3-other-advanced-techniques-3f48cbcad27e) by Maxime Leblanc
+ - This series is not as helpful as it seems.
 
 ### XML External Entity (XXE)
 
