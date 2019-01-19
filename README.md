@@ -11,7 +11,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 - [Cross-Site Scripting (XSS)](#cross-site-scripting-xss) done
 - [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf) done
-- [Cross-Site Script Inclusion (XSSI)](#cross-site-script-inclusion-xssi)
 - [Server Side Request Forgery (SSRF)](#server-site-request-forgery-ssrf) done
 - [XML External Entity (XXE)](#xml-external-entify-xxe) done
 - [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor) done
@@ -95,12 +94,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How i Hacked your Beats account ? Apple Bug Bounty](https://aadityapurani.com/2016/07/20/how-i-hacked-your-beats-account-apple-bug-bounty/) by Additya Purani
   - Complicated.
 
-## Cross-Site Script Inclusion (XSSI)
-
-- [OWASP XSSI](https://www.owasp.org/images/f/f3/Your_Script_in_My_Page_What_Could_Possibly_Go_Wrong_-_Sebastian_Lekies%2BBen_Stock.pdf) by Sebastian Lekies and Ben Stock
-- [Backdoor of All Flickr API Calls by XSSI](https://ngailong.wordpress.com/2017/08/11/open-door-to-all-flickr-api-calls-by-xssi/) by Ron Chan
-- [Yahoo — Two XSSi vulnerabilities chained to steal user information](https://medium.com/@0xHyde/yahoo-two-xssi-vulnerabilities-chained-to-steal-user-information-750-bounty-e9bc6a41a40a) by hyde
-
 ### Server Side Request Forgery (SSRF)
 
 - [Pivoting from blind SSRF to RCE with HashiCorp Consul](http://www.kernelpicnic.net/2017/05/29/Pivoting-from-blind-SSRF-to-RCE-with-Hashicorp-Consul.html) by Peter Adkins
@@ -154,16 +147,18 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Sensitive Information Exposure
 
-- [FB users birth year disclosed via FB Timeline profile source code “data attribute”](https://medium.com/@rajsek/curiosity-and-passion-to-your-profession-might-lead-to-make-your-dream-come-true-7d9be3c6029a) by Raja Sekar Durairaj
-- [FB user birth year Disclosure via "IDOR in m.facebook.com"](https://medium.com/@rajsek/my-2nd-facebook-bounty-poc-fb-data-of-birth-disclosure-d02e1bec50) by Raja Sekar Durairaj
-- [DOB disclosed using "Facebook Graph API Reverse Engineering"](https://medium.com/@rajsek/my-3rd-facebook-bounty-hat-trick-chennai-tcs-er-name-listed-in-facebook-hall-of-fame-47f57f2a4f71#.9gbtbv42q) by Raja Sekar Durairaj
-- [Facebook's Bug - Fooling Graph Search to Bypass Privacy Restrictions & Extract Private Information](https://pranavhivarekar.in/2016/02/20/facebooks-bug-fooling-graph-search-to-bypass-privacy-restrictions/) by PRANAV HIVAREKAR
 - [Facebook: Unauthorized access to credit/prepaid card details (limited) of any user](https://pranavhivarekar.in/2017/02/11/facebooks-bug-unauthorized-access-to-credit-card-details-limited-of-any-user/) by PRANAV HIVAREKAR
+  - The author exploited this by using GraphQL. This method is not applicable for me at this time.
 - [Getting any Facebook User's Friend List and Partial Payment Card Details](https://www.josipfranjkovic.com/blog/facebook-friendlist-paymentcard-leak) by JOSIP FRANJKOVIĆ
-- [Responsible disclosure: retrieving a user's private Facebook friends](https://rpadovani.com/facebook-responsible-disclosure) by Riccardo Padovani
-- [FACEBOOK BUG BOUNTY: "GETTING ACCESS TO PROMPT DEBUG DIALOG AND SERIALIZED TOOL ON MAIN WEBSITE FACEBOOK.COM"](http://omespino.com/facebook-bug-bounty-getting-access-to-prompt-debug-dialog-and-serialized-tool-on-main-website-facebook-com/) by OMESPINO
+  - The author exploited this by using GraphQL. This method is not applicable for me at this time.
 - [Facebook Source Code Disclosure in ads API](https://www.amolbaikar.com/facebook-source-code-disclosure-in-ads-api/) by Amol Baikar
+  - The author exploited this by using GraphQL. This method is not applicable for me at this time.
+
 - [Facebook BugBounty — Disclosing page members](https://medium.com/@tnirmalz/facebook-bugbounty-disclosing-page-members-1178595cc520) by Nirmal Thapa
+  - Because of some privacy reasons, identify of "page members" (admins / mods / analysts) is kept secret by Facebook and normal page visitors cannot find the details about these members. But the author found multiple ways to disclosed members of a "Facebook page".
+  - "Get Messages" is available in "Facebook Pages" when uploading posts and stuffs. Mainly e-commerce and online shopping websites use this feature with one of their product, so whenever a visitor wants to know more about that particular product, they can simply click on "Send Message" button.
+    - If clicked on "Send Message" button, "profile ID" of the creator was leaked in one of the responses coming from `https://x-edge-chat.facebook.com` (checked the response in Burpsuite).
+  - The author sent a message to the page as a normal visitor, when he received a message from the page, response in Burpsuite revealed the "profile ID" of "page member" who replied the message.
 - [An interesting Google vulnerability that got me 3133.7 reward](http://www.sec-down.com/wordpress/?p=809) by zigoo
 - [Exploiting Directory Traversal to View Customer Credit Card Information on Yahoo’s Small Business Platform](https://samcurry.net/exploiting-directory-traversal-on-a-yahoo-acquisition/) by samwcyo
 - [Chaining Bugs (an XSS and a CORS misconfiguration) to Steal Yahoo Contacts](http://web.archive.org/web/20180112014611/https://www.sxcurity.pro/2018/01/11/chaining-yahoo-bugs/) by sxcurity
