@@ -124,6 +124,33 @@ Some specific topics about bug hunting.
     - `embed` (in the `src` attribute)
     - `object` (in the `data` attribute)
 
+#### XSSI
+
+- [Your Script in My Page: What Could Possibley Go Wrong?](https://www.owasp.org/images/f/f3/Your_Script_in_My_Page_What_Could_Possibly_Go_Wrong_-_Sebastian_Lekies%2BBen_Stock.pdf) by Sebastian Lekies and Ben Stock
+  - XSSI is a class of vulnerability that we could use to leak sensitive data from dynamic Javacript files. "Same-Origin Policy" relaxed for script inclusion, included code inherits origin of including site, both work on same global scope. So if there are dynamic Javascript files containing sensitive user data, we probably could get these user data by including these Javascript files in our own website.
+  - Two methods to leak data:
+    - Leaking data stored in global variables.
+    - Leaking data via global functions.
+  - Prevent XSSI Vulnerabilities;
+    - Prevent script files from being included by a third-party (for example, use secret token).
+    - Separate Javascript code from sensitive data (for example, create static Javascipt files and load data dynamically at run time, the data service can be protected via the SOP).
+- [Backdoor of All Flickr API Calls by XSSI](https://ngailong.wordpress.com/2017/08/11/open-door-to-all-flickr-api-calls-by-xssi/) by Ron Chan
+  - The author noticed a request in the traffic: `https://api.flickr.com/services/rest?page=1&per_page=6&sample_photos_count=8&viewerNSID=67364537%40N02&method=flickr.groups.recommendations&csrf=1502485507%3Ahzg1234451c92j4i%3A285a4685e2ebc8d7a4b4555a54d77395&api_key=b0faaf195123123cf44a4a14e9dabf&format=json&hermes=1&hermesClient=1&reqId=75e70106&nojsoncallback=1`
+    - Two parameters got his attention, `format` and `nojsoncallback`, because seems like we can control the response format, if somehow we can change the format from JSON to XML, or HTML, or JSONP.
+    - Then we can further investigate for XSS or XSSI.
+  - Changed the parameter `nojsoncallback=1` to `nojsoncallback=0`, the response: `jsonFlickrApi({"groups":{"page":1,"pages":17,"perpage":6,"total":100,"group":[{"nsid":"42097308@N00","name":"Less Is More..."......})`.
+    - This was obviously an XSSI, but it seemed there was a few protection in place that prevented the XSSI attack, they were `api_key` and `csrf`.
+    - The author found out the `api_key` was used universally, not bounded to any user session. Only obstacle is `csrf`.
+  - The author dug deeper to see where does this `csrf` came from. He scrolled through the Burpsuite traffic and finally he saw a request, the method name of the request was just amazing: `https://api.flickr.com/services/rest?method=flickr.site.getCsrf&csrf=a&api_key=3b5d2007fe2f131c60ae514fb65221b4&format=json&hermes=1&hermesClient=1&reqId=&nojsoncallback=0a`
+    - The method name was `flickr.site.getCsrf`. But how do we got a "csrf token" without a "csrf token" (take some time to understand the sentence).
+    - It turned out indeed the user didn't need any "csrf token" to get a "csrf token".
+  - The proc in this writeup is worth to study.
+- [Yahoo — Two XSSi vulnerabilities chained to steal user information](https://medium.com/@0xHyde/yahoo-two-xssi-vulnerabilities-chained-to-steal-user-information-750-bounty-e9bc6a41a40a) by hyde
+  - While intercepting requests using Burpsuite, the author came across a JSONP endpint, he immediately knew this could potentially be an XSSI vulenrability. However he noticed that this protected by a `.crumb` parameter. So he realized that if he could somehow steal the victims valid `.crumb` value, he could successfully steal information about their account.
+  - The author then searched all requests he intercepted in BurpSuite for his valid `.crumb` and he quickly found it in a dynamic Javascript file located at `https://messenger.yahoo.com/embed/app.js`.
+  - The author created a proc which steals tha valid `.crumb` value from the dynamic Javascript file at `https://messenger.yahoo.com/embed/app.js` and then places the valid `.crumb` in the GET parameter as seen here `https://jsapi.login.yahoo.com/w/device_users?.crumb=POR1.kRjsx.` which returns a proper response containing information about the user.
+    - The proc is worth to study.
+
 ### CORS
 
 - [The Complete Guide to CORS (In)Security](https://www.bedefended.com/papers/cors-security-guide) by  Davide Danelon
