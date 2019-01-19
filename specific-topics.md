@@ -225,6 +225,15 @@ Some specific topics about bug hunting.
   - Every time the author tried to extract anything from the site, it was not possible, since connections were being made by sockets that only worked once. It is not possible to reuse the same URL, or if it was possible, but you had to wait about 10 minutes for that socket connection to die to be able to use it again, and therefore that does not make sense (if we put ourselves on the attacker's side).
   - Modifying the URI by any other value, it was possible to use the socket again as a new one.
   - The poc in this writeup is worth to learn.
+- [Chaining Bugs (an XSS and a CORS misconfiguration) to Steal Yahoo Contacts](http://web.archive.org/web/20180112014611/https://www.sxcurity.pro/2018/01/11/chaining-yahoo-bugs/) by sxcurity
+  - The author was browsing through various requests made to `*.yahoo.com` subdomains logged in the "Target" tab of Burpsuite. He came across the subdomain `proddata.xobni.yahoo.com` and was intrigued by the name (any thing special?).
+  - There were only a few requests logged, but all to the same endpoint: `https://proddata.xobni.yahoo.com/v4/contacts`. This endpoint contained every contact you have in your "Contact Book" via a single GET request.
+  - The author noticed the `origin: https://mail.yahoo.com` was being reflected back in the `Access-Control-Allow-Origin` with `Access-Control-Allow-Credentials: true` header.
+    - He tried modifying the `origin` to many different payloads, however none were reflected back.
+    - He then tried to send a different Yahoo subdomain as the `origin`, rather then the `mail.yahoo.com`, worked.
+    - It accepted any `*.yahoo.com` subdomain in the `origin` and reflected it back in the `Access-Control-Allow-Origin` with `Access-Control-Allow-Credentials: true`. This meant if he could find an XSS on `*.yahoo.com`, he could leverage it to steal contacts.
+  - A few days passed and the author still hadn't found an XSS. Then he saw a tweet regarding a wontfix Copy+Paste XSS in Yahoo Mail. Things get easy.
+  - The author gave a proc, that required a logged in user to copy the proc and paste it into Yahoo Mail.
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
