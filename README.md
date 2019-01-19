@@ -153,16 +153,11 @@ My intention is to make a full and complete list of common vulnerability that ar
   - The author exploited this by using GraphQL. This method is not applicable for me at this time.
 - [Facebook Source Code Disclosure in ads API](https://www.amolbaikar.com/facebook-source-code-disclosure-in-ads-api/) by Amol Baikar
   - The author exploited this by using GraphQL. This method is not applicable for me at this time.
-
-- [Facebook BugBounty — Disclosing page members](https://medium.com/@tnirmalz/facebook-bugbounty-disclosing-page-members-1178595cc520) by Nirmal Thapa
-  - Because of some privacy reasons, identify of "page members" (admins / mods / analysts) is kept secret by Facebook and normal page visitors cannot find the details about these members. But the author found multiple ways to disclosed members of a "Facebook page".
-  - "Get Messages" is available in "Facebook Pages" when uploading posts and stuffs. Mainly e-commerce and online shopping websites use this feature with one of their product, so whenever a visitor wants to know more about that particular product, they can simply click on "Send Message" button.
-    - If clicked on "Send Message" button, "profile ID" of the creator was leaked in one of the responses coming from `https://x-edge-chat.facebook.com` (checked the response in Burpsuite).
-  - The author sent a message to the page as a normal visitor, when he received a message from the page, response in Burpsuite revealed the "profile ID" of "page member" who replied the message.
 - [An interesting Google vulnerability that got me 3133.7 reward](http://www.sec-down.com/wordpress/?p=809) by zigoo
+  - Complicated.
 - [Exploiting Directory Traversal to View Customer Credit Card Information on Yahoo’s Small Business Platform](https://samcurry.net/exploiting-directory-traversal-on-a-yahoo-acquisition/) by samwcyo
-- [Chaining Bugs (an XSS and a CORS misconfiguration) to Steal Yahoo Contacts](http://web.archive.org/web/20180112014611/https://www.sxcurity.pro/2018/01/11/chaining-yahoo-bugs/) by sxcurity
-- [How I was able to list some internal information from PayPal](https://medium.com/@adrien_jeanneau/how-i-was-able-to-list-some-internal-information-from-paypal-bugbounty-ca8d217a397c) by Adrien
+  - The author managed to guesse how developer coding. Something about "Node.js".
+
 - [Sensitive data exposure by requesting a resource with a different content type](https://medium.com/@yogendra_h1/sensitive-data-exposure-by-requesting-a-resource-with-a-different-content-type-27412a9d6e2f) by Yogendra Jaiswal
 - [How I used a simple Google query to mine passwords from dozens of public Trello boards](https://medium.freecodecamp.org/discovering-the-hidden-mine-of-credentials-and-sensitive-information-8e5ccfef2724) by Kushagra Pathak
 - [Find Leaked Sensitive Data](https://sites.google.com/securifyinc.com/rojanrijal/finding-leaked-sensitive-data) by Rojan Rijal
