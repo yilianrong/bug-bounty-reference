@@ -59,6 +59,18 @@ Some specific topics about bug hunting.
   - `https://datax.yahooapis.com/v2/taxonomy?active=7*7`, this displayed a "Whitelabel Error Page", but the parameter vaules were reflected within the error. The author tried some XSS payloads, but couldn't work.
   - `https://datax.yahooapis.com/v2/taxonomy?active=${7*7}`, the arithmetic expression was successfully evaluated within the response. This can usually indicates that some sort of template engine / server side evaluation is involved when processing the expression.
   - After a bit more research, the author guessed that was the "Spring Engine Template". He finally found a payload to retrieve system information from the vulnerability.
+- [How I was able to list some internal information from PayPal](https://medium.com/@adrien_jeanneau/how-i-was-able-to-list-some-internal-information-from-paypal-bugbounty-ca8d217a397c) by Adrien
+  - A page on domain `manager.paypal.com` was vulnerable to "Expression Language Injection" (JSTL) and the author was able to extract some internal information like internal IP, internal port, internal class and more.
+  - The scope of "Paypal Bug Bounty" is quite wide (`*.paypal.com`), so the author started to do the usual reconnaissance: list subdomains, list directories, etc.
+  - After some days, he finally discovered an interesting page which had several fields but no button to submit, the page seems "old" so he tried to do something.
+  - "WappAlyzer" didn't give much information, the author started to study the source code if certain elements could be interesting. He noted if he put the name of the fields in GET parameters, the value would be reflected in the fields.
+    - Tried a reflected XSS. PayPal has a relatively efficient WAF, and he has not managed to find a bypass.
+    - Tried to inject data (`{7*7}`, `{{7*7}}`, `${7*7}`). The last payload worked. So he decided to find information about Java and how work `${param}`.
+  - The JSTL implicit objects have one more feature to explore: accessing servlet and JSP properties, such as a request's protocol or server port, or the major and minor versions of the servlet API your container suppoerts. You can find out that information and much more with the `pageContext` implicit object, which gives you access to the request, response, session, and application (also known as the servlet context).
+    - Useful properties for the `pageContext` implicit object: `pageContext.request`, `pageContext.response`, `pageContext.properties`, `pageContext.page`, `pageContext.servletConfig`, `pageContext.servletContext`.
+    - Injected them into "Burpsuite Intruder", it was possible to extract internal information from PayPal like a SSRF.
+    - With fuzzing a parameter he didn't find in documentation: `${pageContext.servletContext.docRoot}`, this "implict object" display the relative path where the compiled WAR file was hosted on server.
+  - After this discovery, the author tried to use this "Expression Language Injection" for a "Remote Code Execution" vulnerability, but it was not successful.
 
 ### CSP
 
@@ -241,3 +253,4 @@ Some specific topics about bug hunting.
 ### S3 Bucket
 
 - [S3 Bucket Misconfiguration: From Basics to Pawn](https://bugbountypoc.com/s3-bucket-misconfiguration-from-basics-to-pawn/) by JAY JANI
+- [AWS S3 added to my "Bucket" list](https://medium.com/bugbountywriteup/bugbounty-aws-s3-added-to-my-bucket-list-f68dd7d0d1ce) by Avinash Jain
