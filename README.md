@@ -14,7 +14,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Server Side Request Forgery (SSRF)](#server-site-request-forgery-ssrf) done
 - [XML External Entity (XXE)](#xml-external-entify-xxe) done
 - [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor) done
-- [Sensitive Information Exposure](#sensitive-information-exposure)
+- [Sensitive Information Exposure](#sensitive-information-exposure) done
 - [Authentication Bypass](#authentication-bypass)
 - [Stealing Access Token](#stealing-access-token)
 - [Business Logic Flaw](#business-logic-flaw)
@@ -157,16 +157,14 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Complicated.
 - [Exploiting Directory Traversal to View Customer Credit Card Information on Yahoo’s Small Business Platform](https://samcurry.net/exploiting-directory-traversal-on-a-yahoo-acquisition/) by samwcyo
   - The author managed to guesse how developer coding. Something about "Node.js".
-
 - [Sensitive data exposure by requesting a resource with a different content type](https://medium.com/@yogendra_h1/sensitive-data-exposure-by-requesting-a-resource-with-a-different-content-type-27412a9d6e2f) by Yogendra Jaiswal
-- [How I used a simple Google query to mine passwords from dozens of public Trello boards](https://medium.freecodecamp.org/discovering-the-hidden-mine-of-credentials-and-sensitive-information-8e5ccfef2724) by Kushagra Pathak
-- [Find Leaked Sensitive Data](https://sites.google.com/securifyinc.com/rojanrijal/finding-leaked-sensitive-data) by Rojan Rijal
-- [Misconfigured JSON endpoint on ads.twitter.com lead to Access control issue and Information Disclosure of role privileged users](https://medium.com/@zk34911/twitter-bug-bounty-misconfigured-json-endpoint-on-ads-twitter-com-2771ec83a82) by zk34911
+  - I didn't see what the author did (Atom? What's that?).
 - [Twitter's OAuth Mistakes - $3k Bug Bounty](https://shkspr.mobi/blog/2018/12/twitter-bug-bounty/) [hackerone report](https://hackerone.com/reports/434763) by edent
-- [How I was able to read chat of users in an Indian Online travel portal](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-read-chat-of-users-in-an-online-travel-portal-c55a1787f999) by Avinash Jain
-- [How I was able to download the Source Code of India’s Largest Telecom Service Provider including dozens of more popular websites](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-download-the-source-code-of-indias-largest-telecom-service-52cf5c5640a1) by Avinash Jain
+  - I don't understand this writeup at this point.
 - [How I could download the source code of an Indian e-commerce website](https://medium.com/bugbountywriteup/how-i-could-download-the-source-code-of-an-indian-e-commerce-website-30cb8310b6e4) by Minali Arora
-- [AWS S3 added to my "Bucket" list](https://medium.com/bugbountywriteup/bugbounty-aws-s3-added-to-my-bucket-list-f68dd7d0d1ce) by Avinash Jain
+  - 
+- [How I was able to download the Source Code of India’s Largest Telecom Service Provider including dozens of more popular websites](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-download-the-source-code-of-indias-largest-telecom-service-52cf5c5640a1) by Avinash Jain
+  - 
 - [Directory Listing To Sensitive Files Exposure](https://blog.hx01.me/2018/04/directory-listing-to-sensitive-files.html) by Hx01
 - [From an error message to DB disclosure](https://medium.com/@YumiSec/from-an-error-message-to-db-diclosure-1af879c74474) by Yumi
 - [Reading ASP secrets for $17,000](https://samcurry.net/reading-asp-secrets-for-17000/) by samwcyo
