@@ -267,14 +267,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I Could Steal Money from Instagram, Google and Microsoft](https://www.arneswinnen.net/2016/07/how-i-could-steal-money-from-instagram-google-and-microsoft/) by Arne Swinnen
   - Complicated.
 
-- [How anyone could have used Uber to ride for free](http://www.anandpraka.sh/2017/03/how-anyone-could-have-used-uber-to-ride.html) by Anand Prakash
 - [Security Questions are not secure](https://labs.detectify.com/2017/12/20/security-questions-are-not-secure/) by Linus Särud
 - [The Unknown Hero-App Logic Bugs](https://medium.com/bug-bounty-hunting/application-logic-bugs-600245fb5bf0) by Circle Ninja
-- ["How I was able to shop for free!"- Payment Price Manipulation](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-shop-for-free-payment-price-manipulation-b29355a8e68e) by Avinash Jain
-- [How I was able to get subscription of $120/year For Free](https://blog.securitybreached.org/2018/05/18/get-subscription-of-120-year-for-free-bug-bounty-poc/) by babayaga47
-- [Reject a to-be users invitation via their notification](https://medium.com/@absstbh/simple-idor-to-reject-a-to-be-users-invitation-via-their-notification-ae3b919b0fef) by Abss TBH
-- [How I booked a rental house for just 1.00 INR — Price Manipulation in Citrus Pay](https://medium.com/@raghav2039/bug-bounty-how-i-booked-a-rental-house-for-just-1-00-inr-price-manipulation-in-citrus-pay-318ff6e0d8a8) by Raghavendra
-- [How I got paid premium plan for free on many popular websites](https://medium.com/@khaled.hassan/how-i-got-paid-premium-plan-for-free-on-many-popular-websites-90e62a52416a) by Khaled Hassan
+- [Simple IDOR to reject a to-be users invitation via their notification](https://medium.com/@absstbh/simple-idor-to-reject-a-to-be-users-invitation-via-their-notification-ae3b919b0fef) by Abss TBH
 
 ### HTTP Header Injection
 
