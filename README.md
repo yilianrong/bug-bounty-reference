@@ -161,12 +161,8 @@ My intention is to make a full and complete list of common vulnerability that ar
   - I didn't see what the author did (Atom? What's that?).
 - [Twitter's OAuth Mistakes - $3k Bug Bounty](https://shkspr.mobi/blog/2018/12/twitter-bug-bounty/) [hackerone report](https://hackerone.com/reports/434763) by edent
   - I don't understand this writeup at this point.
-- [How I could download the source code of an Indian e-commerce website](https://medium.com/bugbountywriteup/how-i-could-download-the-source-code-of-an-indian-e-commerce-website-30cb8310b6e4) by Minali Arora
-  - 
-- [How I was able to download the Source Code of India’s Largest Telecom Service Provider including dozens of more popular websites](https://medium.com/@logicbomb_1/bugbounty-how-i-was-able-to-download-the-source-code-of-indias-largest-telecom-service-52cf5c5640a1) by Avinash Jain
-  - 
 - [Directory Listing To Sensitive Files Exposure](https://blog.hx01.me/2018/04/directory-listing-to-sensitive-files.html) by Hx01
-- [From an error message to DB disclosure](https://medium.com/@YumiSec/from-an-error-message-to-db-diclosure-1af879c74474) by Yumi
+  - Too easy?
 - [Reading ASP secrets for $17,000](https://samcurry.net/reading-asp-secrets-for-17000/) by samwcyo
 
 ### Authentication Bypass
@@ -268,17 +264,13 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Business Logic Flaw
 
-- [Facebook - bypass ads account's roles vulnerability 2015](https://blog.darabi.me/2015/03/facebook-bypass-ads-account-roles.html) by POUYA DARABI
 - [How I Could Steal Money from Instagram, Google and Microsoft](https://www.arneswinnen.net/2016/07/how-i-could-steal-money-from-instagram-google-and-microsoft/) by Arne Swinnen
-- [Abusing Multistage Logic Flaw to Buy Anything for Free at hk.deals.yahoo.com](http://web.archive.org/web/20161024050917/http://ngailong.com/abusing-multistage-logic-flaw-to-buy-anything-for-free-at-hk-deals-yahoo-com/) by Ron Chan
+  - Complicated.
+
 - [How anyone could have used Uber to ride for free](http://www.anandpraka.sh/2017/03/how-anyone-could-have-used-uber-to-ride.html) by Anand Prakash
 - [Security Questions are not secure](https://labs.detectify.com/2017/12/20/security-questions-are-not-secure/) by Linus Särud
 - [The Unknown Hero-App Logic Bugs](https://medium.com/bug-bounty-hunting/application-logic-bugs-600245fb5bf0) by Circle Ninja
 - ["How I was able to shop for free!"- Payment Price Manipulation](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-shop-for-free-payment-price-manipulation-b29355a8e68e) by Avinash Jain
-- [How I Could Have Promoted Any Facebook Page For Free](https://medium.com/bugbountywriteup/how-i-could-have-promoted-any-facebook-page-for-free-70b0f4fc0feb) by AneesKhan
-- [How I could change your eBay password](http://yasserali.com/how-i-could-change-your-ebay-password/) by Yaaser Ali
-  - When generated a "Reset Password Link", `reqinput` was contained in the request (actually the `reqinput` was sent by the server in a hidden input field of the "enter user info" page). When you reset your password, the POST request containing this `reqinput` as "Secret". So you could reset other users' password by only kowning their registered email.
-  - But the user have to click on the link sent to the email to the server to unlock the change password process and this is the only user interaction that has to be taken to make the attack succeed. After the user clicked on the "Reset Password Link", the attacker was able to change his password.
 - [How I was able to get subscription of $120/year For Free](https://blog.securitybreached.org/2018/05/18/get-subscription-of-120-year-for-free-bug-bounty-poc/) by babayaga47
 - [Reject a to-be users invitation via their notification](https://medium.com/@absstbh/simple-idor-to-reject-a-to-be-users-invitation-via-their-notification-ae3b919b0fef) by Abss TBH
 - [How I booked a rental house for just 1.00 INR — Price Manipulation in Citrus Pay](https://medium.com/@raghav2039/bug-bounty-how-i-booked-a-rental-house-for-just-1-00-inr-price-manipulation-in-citrus-pay-318ff6e0d8a8) by Raghavendra
