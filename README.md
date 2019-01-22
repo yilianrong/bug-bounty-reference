@@ -266,10 +266,20 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 - [How I Could Steal Money from Instagram, Google and Microsoft](https://www.arneswinnen.net/2016/07/how-i-could-steal-money-from-instagram-google-and-microsoft/) by Arne Swinnen
   - Complicated.
-
 - [Security Questions are not secure](https://labs.detectify.com/2017/12/20/security-questions-are-not-secure/) by Linus Särud
+  - This is a security research paper.
 - [The Unknown Hero-App Logic Bugs](https://medium.com/bug-bounty-hunting/application-logic-bugs-600245fb5bf0) by Circle Ninja
+  - The author "Inspect Element" and enabled a button. I don't think this was a business logic flaw.
+
 - [Simple IDOR to reject a to-be users invitation via their notification](https://medium.com/@absstbh/simple-idor-to-reject-a-to-be-users-invitation-via-their-notification-ae3b919b0fef) by Abss TBH
+  - "WePay" allows an organization / individual create custom payment integration by creating custom application associated with the "WePay account". The platform also allows for collaborators to join in:
+    - Moderators: They can add / remove users.
+    - Members: They can just view and have no state-change privileges.
+    - The "members" role was the least privileged, so the author thought of aiming for it first and then deviate to other roles.
+  - The author tried to find if there were vulnerabilities when trying to define a state-changing action via a members account. But he couldn't find any. The requests performed actions based on "session" with "csrf-tokens" in place, meaning the application derives the user attributes from the "session" and then verifies if the user can or cannot define the state-changing action.
+  - Just to try various things out, as the "admin" the author removed the "member" from the organization and added the member back again. He received a notification in the "members" account asking him to accept / reject the invitation.
+    - A user when invited, accepts invitation to create an account but later has to confirm the account email by visiting the link in the confirmation email sent.
+    - From this
 
 ### HTTP Header Injection
 
