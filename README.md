@@ -17,8 +17,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Sensitive Information Exposure](#sensitive-information-exposure) done
 - [Authentication Bypass](#authentication-bypass)
 - [Stealing Access Token](#stealing-access-token)
-- [Business Logic Flaw](#business-logic-flaw)
-- [HTTP Header Injection](#http-header-injection)
+- [Business Logic Flaw](#business-logic-flaw) done
+- [HTTP Header Injection](#http-header-injection) done
 - [Subdomain Takeover](#subdomain-takeover)
 - [Local File Inclusion](#local-file-inclusion) done
 - [Unrestricted File Upload](#unrestricted-file-upload) done
@@ -270,24 +270,28 @@ My intention is to make a full and complete list of common vulnerability that ar
   - This is a security research paper.
 - [The Unknown Hero-App Logic Bugs](https://medium.com/bug-bounty-hunting/application-logic-bugs-600245fb5bf0) by Circle Ninja
   - The author "Inspect Element" and enabled a button. I don't think this was a business logic flaw.
-
-- [Simple IDOR to reject a to-be users invitation via their notification](https://medium.com/@absstbh/simple-idor-to-reject-a-to-be-users-invitation-via-their-notification-ae3b919b0fef) by Abss TBH
-  - "WePay" allows an organization / individual create custom payment integration by creating custom application associated with the "WePay account". The platform also allows for collaborators to join in:
-    - Moderators: They can add / remove users.
-    - Members: They can just view and have no state-change privileges.
-    - The "members" role was the least privileged, so the author thought of aiming for it first and then deviate to other roles.
-  - The author tried to find if there were vulnerabilities when trying to define a state-changing action via a members account. But he couldn't find any. The requests performed actions based on "session" with "csrf-tokens" in place, meaning the application derives the user attributes from the "session" and then verifies if the user can or cannot define the state-changing action.
-  - Just to try various things out, as the "admin" the author removed the "member" from the organization and added the member back again. He received a notification in the "members" account asking him to accept / reject the invitation.
-    - A user when invited, accepts invitation to create an account but later has to confirm the account email by visiting the link in the confirmation email sent.
-    - From this
+- [RECAPTCHA BYPASS VIA HTTP PARAMETER POLLUTION](https://andresriancho.com/recaptcha-bypass-via-http-parameter-pollution/) by andresriancho
+  - Unusual.
+- [How a simple readout of Peter Yaworski’s Web Hacking 101 got me into Microsoft Hall of fame](https://medium.com/bug-bounty-hunting/microsoft-hall-of-fame-by-reading-web-hacking-101-217d7838e3bf) by Circle Ninja
+  - This was a HTTP parameter pollution vulnerability.
 
 ### HTTP Header Injection
 
-- [RECAPTCHA BYPASS VIA HTTP PARAMETER POLLUTION](https://andresriancho.com/recaptcha-bypass-via-http-parameter-pollution/) by andresriancho
 - [CRLF injection on Twitter or why blacklists fail](https://blog.innerht.ml/twitter-crlf-injection/) by filedescriptor
+  - CRLF injection attack usually occurs when there is an input being reflected in a header field of a HTTP response. If the output is not properly sanitized, attackers can inject arbitrary headers or contents into the response.
+  - Twitter setup a page for ads haters to report ads vialations. In the page, there are a couple of inputs being reflected in `Set-Cookie`.
+  - After a bit fiddling, the author discovered that non-printable control characters were not encoded which they should be.
+    - However, this issue alone did not lead to big problems because two critical control characters (CR and LF) were sanitized.
+    - "LR" was replaced with a space and "CR" would result in HTTP 400 ("Bad Request Error").
+  - Complicated.
 - [Twitter Overflow Trilogy in Twitter](https://blog.innerht.ml/overflow-trilogy/) by filedescriptor
-- [How a simple readout of Peter Yaworski’s Web Hacking 101 got me into Microsoft Hall of fame](https://medium.com/bug-bounty-hunting/microsoft-hall-of-fame-by-reading-web-hacking-101-217d7838e3bf) by Circle Ninja
+  - Complicated.
 - [Exploiting CRLF Injection can lands into a nice bounty](https://medium.com/bugbountywriteup/bugbounty-exploiting-crlf-injection-can-lands-into-a-nice-bounty-159525a9cb62) by Avinash Jain
+  - An online food delivery company of India. In their home page, there are a couple of inputs being reflected into the HTTP headers.
+  - After a bit fiddling, the author discovered that non-printable control characters were not encoded which they should be.
+    - So he tried for CRLF and he tried to add `Location` header to see whether it was getting redirected.
+    - Payload `/%0d%0aLacation:%20http://www.evilzone.org`, worked.
+  - Fixed: a simple solution for CRLF injection is to sanitise the CRLF characters before passing into the header or to encode the data which will prevent the CRLF sequences entering the header.
 
 ### Subdomain Takeover
 
