@@ -296,7 +296,37 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Subdomain Takeover
 
 - [Hostile Subdomain Takeover using Heroku/Github/Desk + more](https://labs.detectify.com/2014/10/21/hostile-subdomain-takeover-using-herokugithubdesk-more/) by detectify
+  - Attack scenario:
+    - Your company starts using a new service, e.g. an external "support ticketing service".
+    - Your company points a subdomain to the "support ticketing service", e.g. `support.your-domain.com`.
+    - Your company stops using this service but does not remove the subdomain redirection pointing to the "ticketing system".
+    - Attackers signs up for the "service" and claims the domain as theirs. No verification is done by the "service provider", and the DNS-setup is already correctly setup.
+    - Attacker can now build complete clone of the real site, add a login form, redirect the user, steal credential (e.g. admin accounts), cookies and / or completely destroy business credibility for your company.
 - [Hijacking of abandoned subdomains part 2](https://labs.detectify.com/2014/12/08/hijacking-of-abandoned-subdomains-part-2/) by detectify
+  - Since the registration of `msnbrickyardsweeps.com` has expired, the author could buy it and suddenly `racing.msn.com` starts showing his content since `racing.msn.com` has a CNAME record pointing to `msnbrickyardsweeps.com`.
+  - MX records are fetched from the CNAME, so `racing.msn.com` gets the same MX records as `msnbrickyardsweeps.com`. Now you could set up email accounts with `@racing.msn.com` and receive all emails sent to this domain.
+- [Subdomain Takeover: Basics](https://0xpatrik.com/subdomain-takeover-basics/) by Patrik Hudak
+  - Subdomain takeover is a process of registering a non-existing domain name to gain control over another domain. The most common scenario:
+    - Domain name (e.g. `sub.example.com`) uses a CNAME record to another domain (e.g. `sub.example.com` CNAME `anotherdomain.com`).
+    - At some point in time, `anotherdomain.com` expires and is available for registration by anyone.
+    - Since the CNAME record is not deleted from `example.com` DNS zone, anyone who registers `anotherdomain.com` has full control over `sub.example.com` until the DNS record is present.
+  - Subdomain takeover is not limited to CNAME records. NS, MX and even A record are affected as well.
+  - Using a subdomain takeover, attackers can send phishing emails from legistimate domain, perform XSS, or damage the reputation of the brand which is associated with the domain.
+  - The concept of "CNAME subdomain takeover" / "NS subdomain takeover" / "MX subdomain takeover".
+  - Something about "Cloud Providers".
+  - Something about "Amazon CloudFront".
+  - Other cloud services which work very similarly to "Amazon CloudFront": "Amazon S3" / "Heroku" / "Shopify" / "GitHub" / "Microsoft Azure".
+- [Subdomain Takeover: Going beyond CNAME](https://0xpatrik.com/subdomain-takeover-ns/) by Patrik Hudak
+  - The author talked something about NS subdomain takeover.
+- [Subdomain Takeover: Thoughts on Risks](https://0xpatrik.com/subdomain-takeover/) by Patrik Hudak
+  - Transparency to a browser.
+  - SSL certificates.
+  - Cookie Stealing.
+  - Emails.
+- [Subdomain Takeover: Starbucks points to Azure](https://0xpatrik.com/subdomain-takeover-starbucks/) by Patrik Hudak
+  - 
+- [Subdomain Takeover: Finding Candidates](https://0xpatrik.com/subdomain-takeover-candidates/) by Patrik Hudak
+- [Subdomain Takeover: Second Order Bugs](https://0xpatrik.com/second-order-bugs/) by Patrik Hudak
 - [Hijacking tons of Instapage expired users Domains & Subdomains](http://www.geekboy.ninja/blog/hijacking-tons-of-instapage-expired-users-domains-subdomains/) by geekboy
 - [Reading Uber’s Internal Emails - Uber Bug Bounty report worth $10,000](http://blog.pentestnepal.tech/post/149985438982/reading-ubers-internal-emails-uber-bug-bounty) by whitehatnepal
 - [How I took over a uber subdomain by doing recon](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
@@ -305,9 +335,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Netlify - Subdomain Takeover worth 200$](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe) by Ali Razzaq
 - [Shopify - How to do 55.000+ Subdomain Takeover in a Blink of an Eye](https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75) by buckhacker
 - [$4500 Bounty — How I got lucky](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
-- [Subdomain Takeover: Starbucks points to Azure](https://0xpatrik.com/subdomain-takeover-starbucks/) by Patrik Hudak
-- [Subdomain Takeover: Finding Candidates](https://0xpatrik.com/subdomain-takeover-candidates/) by Patrik Hudak
-- [Subdomain Takeover: Second Order Bugs](https://0xpatrik.com/second-order-bugs/) by Patrik Hudak
 
 ### Local File Inclusion
 
