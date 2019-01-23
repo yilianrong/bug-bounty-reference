@@ -328,13 +328,40 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Subdomain Takeover: Finding Candidates](https://0xpatrik.com/subdomain-takeover-candidates/) by Patrik Hudak
 - [Subdomain Takeover: Second Order Bugs](https://0xpatrik.com/second-order-bugs/) by Patrik Hudak
 - [Hijacking tons of Instapage expired users Domains & Subdomains](http://www.geekboy.ninja/blog/hijacking-tons-of-instapage-expired-users-domains-subdomains/) by geekboy
-- [Reading Uber’s Internal Emails - Uber Bug Bounty report worth $10,000](http://blog.pentestnepal.tech/post/149985438982/reading-ubers-internal-emails-uber-bug-bounty) by whitehatnepal
-- [How I took over a uber subdomain by doing recon](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
-- [How I snooped into your private Slack messages - Slack Bug bounty worth $2,500](http://blog.pentestnepal.tech/post/150381068912/how-i-snooped-into-your-private-slack-messages) by uranium238
+- [How I took over a Uber subdomain by doing recon - how I got lucky](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
+  - The author used `aquatone` to identify the vulnerable subdomain. Luckily he encountered the vulnerable domain the first day.
+  - After running `aquatone-takeover-domain {{target}}.com`, he saw a domain vulnerable to takeover on AWS Cloudfront. At first he wasn't excited because most of the time you get a CNAME already in use error when trying to claim a subdomain. However to his great surprise the company had forgotten to remove the CNAME and he was able to claim it.
+- [Reading Uber’s Internal Emails - Uber Bug Bounty report worth $10,000](http://web.archive.org/web/20180902023519/http://blog.pentestnepal.tech/post/149985438982/reading-ubers-internal-emails-uber-bug-bounty) by whitehatnepal
+  - After recent finding about one of the Uber's subdomain takeover was publicly disclosed, the author looked into Uber to find similar bug. `em.uber.com` also had CNAME pointing to "SendGrid" and could be vulnerable to similar kind of issue.
+  - The author had limited experience using "SendGrid", so he signed up on "SendGrid", a transactional and marketing email service used by uber, to see what was possible.
+  - He looked around to understand how to claim a domain through "SendGrid". He could not edit contents of the domain, like hackers would normally do to demonstrate a subdomain hijacking, because it wasn't possible through "SendGrid".
+    - There was an option calle "while-label", which would allow emails to be sent through a verified domain and this caught his eye.
+  - Meanwhile, the author forgot his Uber account's password. So, he reset it and realized that the reset email Uber sent had reply email set to `@em.uber.com`. So, he knew that MX record for `em.uber.com` was being used somehow.
+    - A quick look into MX through `dnsgoodies.com` showed that MX was pointing to `mx.sendgrid.net`.
+  - After he figured that he could play arount with MX records for Uber subdomains, he started to research more about "SendGrid" workflow. He realized that he could claim `em.uber.com` in the "Inbound Parse Webhook", a medium for email interception, which wasn't yet claimed by Uber.
+    - He looked around for API and found a python program wwitten by "SendGrid" which could be used in "Inbound Parse Webhook".
+    - He tweaked the program so that it would display the email in his terminal.
+    - Then he ran the python web application, which would setup a local http server on port 5000.
+    - He used "ngrok" to tunnel that to a web address to that "Inbound Parse" could get a receiver domain where it could send POST requests.
+  - Soon, the author was able to receive emails in `em.uber.com`.
+  - This was also true with all of Uber's subdomain. One of them was `www.uber.com`, which was also used in "sentry" (a crash reporter) plugin. This allowed him to receive "sentry" logs from `www.uber.com` because they were sent as email. This was a significant information disclosure for Uber.
+  - Fixed: Uber claimed the domain; "SendGrid" added extra verification which forces you to have a verified domain before adding a "Inbound Parse Webhook".
+- [How I snooped into your private Slack messages - Slack Bug bounty worth $2,500](http://web.archive.org/web/20180902030648/http://blog.pentestnepal.tech/post/150381068912/how-i-snooped-into-your-private-slack-messages) by uranium238
+  - When researching about MX records of `slack.com`, the author noticed that they used a 3rd party email service. In that service, however `slack.com` was already claimed.
+  - After a little more research, he found that all the sub-domains of `slack.com` like `teamname.slack.com` also had MX set to the same service. These team domains were not claimed, so the emails for these domains could also be intercepted.
+    - What is the major issue with this? Could you send a message to your team from an email?
+  - To do further research on the question and gather relevant information, the author looked for any way that these emails were being used by "Slack".
+    - While browsing the "HackerOne page" for "Slack", he noticed that they stated about the "email app" that could be used as a way to send a message to a channel throuth the email.
+    - This service however was only applicable to member plans "Standard" and above. So he upgraded his plan to "Standard" and started to research on it.
+  - After he installed the "email app" on his channel he was provided with an email in the form `{hashedtext}@uraniumsecteam.slack.com` (the `{hashedtext}` was randomly generated to make sure they cannot be enumerated because someone could use that to spam the channel).
+    - The email had `uraniumsecteam.slack.com` as the email domain, it had MX, which could be claimed.
+    - He proceeded with the plan and set the route in a way that all emails coming to `@uraniumsecteam.slack.com` would arrive to his inbox.
 - [Hundreds of hundreds sub-secdomains hack3d! (including Hacker0ne)](https://medium.com/bugbountywriteup/hundreds-of-hundreds-subdomains-hack3d-including-hacker0ne-ad3acd1c0a44) by Ak1T4
-- [Netlify - Subdomain Takeover worth 200$](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe) by Ali Razzaq
 - [Shopify - How to do 55.000+ Subdomain Takeover in a Blink of an Eye](https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75) by buckhacker
-- [$4500 Bounty — How I got lucky](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
+- [Netlify - Subdomain Takeover worth 200$](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe) by Ali Razzaq
+  - "Netlify" is platform for web developers to upload their web projects and showcase to world. "Netlify" allow web developers to add custom domain or subdomain to their projects.
+  - The author used `findsubdomains.com` to get some subdomains. He found one when open it just showing "Not Found".
+  - He just checked
 
 ### Local File Inclusion
 
