@@ -19,7 +19,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Stealing Access Token](#stealing-access-token)
 - [Business Logic Flaw](#business-logic-flaw) done
 - [HTTP Header Injection](#http-header-injection) done
-- [Subdomain Takeover](#subdomain-takeover)
+- [Subdomain Takeover](#subdomain-takeover) done
 - [Local File Inclusion](#local-file-inclusion) done
 - [Unrestricted File Upload](#unrestricted-file-upload) done
 - [Brute Force](#brute-force)
@@ -295,85 +295,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Subdomain Takeover
 
-- [Hostile Subdomain Takeover using Heroku/Github/Desk + more](https://labs.detectify.com/2014/10/21/hostile-subdomain-takeover-using-herokugithubdesk-more/) by detectify
-  - Attack scenario:
-    - Your company starts using a new service, e.g. an external "support ticketing service".
-    - Your company points a subdomain to the "support ticketing service", e.g. `support.your-domain.com`.
-    - Your company stops using this service but does not remove the subdomain redirection pointing to the "ticketing system".
-    - Attackers signs up for the "service" and claims the domain as theirs. No verification is done by the "service provider", and the DNS-setup is already correctly setup.
-    - Attacker can now build complete clone of the real site, add a login form, redirect the user, steal credential (e.g. admin accounts), cookies and / or completely destroy business credibility for your company.
-- [Hijacking of abandoned subdomains part 2](https://labs.detectify.com/2014/12/08/hijacking-of-abandoned-subdomains-part-2/) by detectify
-  - Since the registration of `msnbrickyardsweeps.com` has expired, the author could buy it and suddenly `racing.msn.com` starts showing his content since `racing.msn.com` has a CNAME record pointing to `msnbrickyardsweeps.com`.
-  - MX records are fetched from the CNAME, so `racing.msn.com` gets the same MX records as `msnbrickyardsweeps.com`. Now you could set up email accounts with `@racing.msn.com` and receive all emails sent to this domain.
-- [Subdomain Takeover: Basics](https://0xpatrik.com/subdomain-takeover-basics/) by Patrik Hudak
-  - Subdomain takeover is a process of registering a non-existing domain name to gain control over another domain. The most common scenario:
-    - Domain name (e.g. `sub.example.com`) uses a CNAME record to another domain (e.g. `sub.example.com` CNAME `anotherdomain.com`).
-    - At some point in time, `anotherdomain.com` expires and is available for registration by anyone.
-    - Since the CNAME record is not deleted from `example.com` DNS zone, anyone who registers `anotherdomain.com` has full control over `sub.example.com` until the DNS record is present.
-  - Subdomain takeover is not limited to CNAME records. NS, MX and even A record are affected as well.
-  - Using a subdomain takeover, attackers can send phishing emails from legistimate domain, perform XSS, or damage the reputation of the brand which is associated with the domain.
-  - The concept of "CNAME subdomain takeover" / "NS subdomain takeover" / "MX subdomain takeover".
-  - Something about "Cloud Providers".
-  - Something about "Amazon CloudFront".
-  - Other cloud services which work very similarly to "Amazon CloudFront": "Amazon S3" / "Heroku" / "Shopify" / "GitHub" / "Microsoft Azure".
-- [Subdomain Takeover: Going beyond CNAME](https://0xpatrik.com/subdomain-takeover-ns/) by Patrik Hudak
-  - The author talked something about NS subdomain takeover.
-- [Subdomain Takeover: Thoughts on Risks](https://0xpatrik.com/subdomain-takeover/) by Patrik Hudak
-  - Transparency to a browser.
-  - SSL certificates.
-  - Cookie Stealing.
-  - Emails.
-- [Subdomain Takeover: Starbucks points to Azure](https://0xpatrik.com/subdomain-takeover-starbucks/) by Patrik Hudak
-  - 
-- [Subdomain Takeover: Finding Candidates](https://0xpatrik.com/subdomain-takeover-candidates/) by Patrik Hudak
-- [Subdomain Takeover: Second Order Bugs](https://0xpatrik.com/second-order-bugs/) by Patrik Hudak
-- [Hijacking tons of Instapage expired users Domains & Subdomains](http://www.geekboy.ninja/blog/hijacking-tons-of-instapage-expired-users-domains-subdomains/) by geekboy
-- [How I took over a Uber subdomain by doing recon - how I got lucky](https://medium.com/bugbountywriteup/4500-bounty-how-i-got-lucky-99d8bc933f75) by Eray Mitrani
-  - The author used `aquatone` to identify the vulnerable subdomain. Luckily he encountered the vulnerable domain the first day.
-  - After running `aquatone-takeover-domain {{target}}.com`, he saw a domain vulnerable to takeover on AWS Cloudfront. At first he wasn't excited because most of the time you get a CNAME already in use error when trying to claim a subdomain. However to his great surprise the company had forgotten to remove the CNAME and he was able to claim it.
-- [Reading Uber’s Internal Emails - Uber Bug Bounty report worth $10,000](http://web.archive.org/web/20180902023519/http://blog.pentestnepal.tech/post/149985438982/reading-ubers-internal-emails-uber-bug-bounty) by whitehatnepal
-  - After recent finding about one of the Uber's subdomain takeover was publicly disclosed, the author looked into Uber to find similar bug. `em.uber.com` also had CNAME pointing to "SendGrid" and could be vulnerable to similar kind of issue.
-  - The author had limited experience using "SendGrid", so he signed up on "SendGrid", a transactional and marketing email service used by uber, to see what was possible.
-  - He looked around to understand how to claim a domain through "SendGrid". He could not edit contents of the domain, like hackers would normally do to demonstrate a subdomain hijacking, because it wasn't possible through "SendGrid".
-    - There was an option calle "while-label", which would allow emails to be sent through a verified domain and this caught his eye.
-  - Meanwhile, the author forgot his Uber account's password. So, he reset it and realized that the reset email Uber sent had reply email set to `@em.uber.com`. So, he knew that MX record for `em.uber.com` was being used somehow.
-    - A quick look into MX through `dnsgoodies.com` showed that MX was pointing to `mx.sendgrid.net`.
-  - After he figured that he could play arount with MX records for Uber subdomains, he started to research more about "SendGrid" workflow. He realized that he could claim `em.uber.com` in the "Inbound Parse Webhook", a medium for email interception, which wasn't yet claimed by Uber.
-    - He looked around for API and found a python program wwitten by "SendGrid" which could be used in "Inbound Parse Webhook".
-    - He tweaked the program so that it would display the email in his terminal.
-    - Then he ran the python web application, which would setup a local http server on port 5000.
-    - He used "ngrok" to tunnel that to a web address to that "Inbound Parse" could get a receiver domain where it could send POST requests.
-  - Soon, the author was able to receive emails in `em.uber.com`.
-  - This was also true with all of Uber's subdomain. One of them was `www.uber.com`, which was also used in "sentry" (a crash reporter) plugin. This allowed him to receive "sentry" logs from `www.uber.com` because they were sent as email. This was a significant information disclosure for Uber.
-  - Fixed: Uber claimed the domain; "SendGrid" added extra verification which forces you to have a verified domain before adding a "Inbound Parse Webhook".
-- [How I snooped into your private Slack messages - Slack Bug bounty worth $2,500](http://web.archive.org/web/20180902030648/http://blog.pentestnepal.tech/post/150381068912/how-i-snooped-into-your-private-slack-messages) by uranium238
-  - When researching about MX records of `slack.com`, the author noticed that they used a 3rd party email service. In that service, however `slack.com` was already claimed.
-  - After a little more research, he found that all the sub-domains of `slack.com` like `teamname.slack.com` also had MX set to the same service. These team domains were not claimed, so the emails for these domains could also be intercepted.
-    - What is the major issue with this? Could you send a message to your team from an email?
-  - To do further research on the question and gather relevant information, the author looked for any way that these emails were being used by "Slack".
-    - While browsing the "HackerOne page" for "Slack", he noticed that they stated about the "email app" that could be used as a way to send a message to a channel throuth the email.
-    - This service however was only applicable to member plans "Standard" and above. So he upgraded his plan to "Standard" and started to research on it.
-  - After he installed the "email app" on his channel he was provided with an email in the form `{hashedtext}@uraniumsecteam.slack.com` (the `{hashedtext}` was randomly generated to make sure they cannot be enumerated because someone could use that to spam the channel).
-    - The email had `uraniumsecteam.slack.com` as the email domain, it had MX, which could be claimed.
-    - He proceeded with the plan and set the route in a way that all emails coming to `@uraniumsecteam.slack.com` would arrive to his inbox.
-- [Hundreds of hundreds sub-secdomains hack3d! (including Hacker0ne)](https://medium.com/bugbountywriteup/hundreds-of-hundreds-subdomains-hack3d-including-hacker0ne-ad3acd1c0a44) by Ak1T4
-  - The author looked to takeover some subdomains at "HackerOne", he found one that took his attention, was `info.hacker.one` (was this subdomain special?). The DNS was pointing to `unbouncespages.com`, a landing pages app services. Looking at the API he tried to add the "HackerOne" domain, but when he tried the output was "domain is already claimed".
-  - He tried to find another way to bypass this (claimed domain could bypass?). For hours looking endpoints, trying with different requests and changing some params, he could hack & bypass the filter domain (?), this hack gave him the power to add any domain managed by the DNS of `unbouncespages.com`.
-  - Looking "unbouncespages servers", the author decide to do a "Reverse Dns" to `54.225.142.127` and saw which others domains could be compromised with this bypass. Hundreds.
-  - Unlike other subdomain takeover vulnerabilities which the company didn't claim the domain, this was a vulnerability in `unbouncespages.com` that attackers could claim any domain.
-- [Shopify - How to do 55.000+ Subdomain Takeover in a Blink of an Eye](https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75) by buckhacker
-  - "Shopify" is a cloud service provider that allows you to create an e-commerce website in a super easy way.
-  - The author gave two web pages on "Shopify" that you could do a "Subdomain Takeover".
-  - You can do a Subdomain Takeover on "Shopify" with two types of DNS records:
-    - Mapping with application name (CNAMEs pointing to `myshopname.myshopify.com`).
-    - Mapping with DNS (CNAMEs pointing to `shops.myshopify.com`).
-  - The second Type of DNS records (CNAMEs pointing to `shops.myshopify.com`) could be used to identify large scale Subdomain Takeover on Shopify.
-  - The author showed how we can check if a shop name was claimed or not.
-- [Netlify - Subdomain Takeover worth 200$](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe) by Ali Razzaq
-  - "Netlify" is platform for web developers to upload their web projects and showcase to world. "Netlify" allow web developers to add custom domain or subdomain to their projects.
-  - The author used `findsubdomains.com` to get some subdomains. He found one when open it just showing "Not Found".
-  - He just checked the CNAME record of this subdomain (because CNAME would tell you on which 3rd party site the subdomain was mapped). He got the CNAME `hootsuite-directory.netlify.com`.
-  - He registered on `netlify.com` and upload the web project, then it asked him to add custom subdomain, he added `hootsuite-directory.netlify.com`. Done.
+- [Hijacking tons of Instapage expired users Domains & Subdomains](http://www.geekboy.ninja/blog/hijacking-tons-of-instapage-expired-users-domains-subdomains/) by Geekboy
+  - Nothing new.
 
 ### Local File Inclusion
 
@@ -393,6 +316,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Brute Force
 
 - [How I could have hacked all Facebook accounts](http://www.anandpraka.sh/2016/03/how-i-could-have-hacked-your-facebook.html) by Anand Prakash
+  - The author found a simple vulnerability on "Facebook" that could gave him full access of another users account by setting a new password.
+  - 
 - [Facebook Account Take Over by using SMS verification code](https://arunsureshkumar.me/index.php/2016/04/24/facebook-account-take-over/) by Arun Sureshkumar
 - [How I Could Compromise 4% (Locked) Instagram Accounts](https://www.arneswinnen.net/2016/03/how-i-could-compromise-4-locked-instagram-accounts/) by Arne Swinnen
 - [InstaBrute: Two Ways to Brute-force Instagram Account Credentials](https://www.arneswinnen.net/2016/05/instabrute-two-ways-to-brute-force-instagram-account-credentials/) by Arne Swinnen
