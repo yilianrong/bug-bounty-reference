@@ -357,11 +357,23 @@ My intention is to make a full and complete list of common vulnerability that ar
     - The email had `uraniumsecteam.slack.com` as the email domain, it had MX, which could be claimed.
     - He proceeded with the plan and set the route in a way that all emails coming to `@uraniumsecteam.slack.com` would arrive to his inbox.
 - [Hundreds of hundreds sub-secdomains hack3d! (including Hacker0ne)](https://medium.com/bugbountywriteup/hundreds-of-hundreds-subdomains-hack3d-including-hacker0ne-ad3acd1c0a44) by Ak1T4
+  - The author looked to takeover some subdomains at "HackerOne", he found one that took his attention, was `info.hacker.one` (was this subdomain special?). The DNS was pointing to `unbouncespages.com`, a landing pages app services. Looking at the API he tried to add the "HackerOne" domain, but when he tried the output was "domain is already claimed".
+  - He tried to find another way to bypass this (claimed domain could bypass?). For hours looking endpoints, trying with different requests and changing some params, he could hack & bypass the filter domain (?), this hack gave him the power to add any domain managed by the DNS of `unbouncespages.com`.
+  - Looking "unbouncespages servers", the author decide to do a "Reverse Dns" to `54.225.142.127` and saw which others domains could be compromised with this bypass. Hundreds.
+  - Unlike other subdomain takeover vulnerabilities which the company didn't claim the domain, this was a vulnerability in `unbouncespages.com` that attackers could claim any domain.
 - [Shopify - How to do 55.000+ Subdomain Takeover in a Blink of an Eye](https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75) by buckhacker
+  - "Shopify" is a cloud service provider that allows you to create an e-commerce website in a super easy way.
+  - The author gave two web pages on "Shopify" that you could do a "Subdomain Takeover".
+  - You can do a Subdomain Takeover on "Shopify" with two types of DNS records:
+    - Mapping with application name (CNAMEs pointing to `myshopname.myshopify.com`).
+    - Mapping with DNS (CNAMEs pointing to `shops.myshopify.com`).
+  - The second Type of DNS records (CNAMEs pointing to `shops.myshopify.com`) could be used to identify large scale Subdomain Takeover on Shopify.
+  - The author showed how we can check if a shop name was claimed or not.
 - [Netlify - Subdomain Takeover worth 200$](https://medium.com/@alirazzaq/subdomain-takeover-worth-200-ed73f0a58ffe) by Ali Razzaq
   - "Netlify" is platform for web developers to upload their web projects and showcase to world. "Netlify" allow web developers to add custom domain or subdomain to their projects.
   - The author used `findsubdomains.com` to get some subdomains. He found one when open it just showing "Not Found".
-  - He just checked
+  - He just checked the CNAME record of this subdomain (because CNAME would tell you on which 3rd party site the subdomain was mapped). He got the CNAME `hootsuite-directory.netlify.com`.
+  - He registered on `netlify.com` and upload the web project, then it asked him to add custom subdomain, he added `hootsuite-directory.netlify.com`. Done.
 
 ### Local File Inclusion
 
