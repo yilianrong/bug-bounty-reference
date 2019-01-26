@@ -239,7 +239,7 @@ My intention is to make a full and complete list of common vulnerability that ar
   - This was an old writeup.
 
 - [Stealing Facebook access_tokens Using CSRF in Device Login Flow](https://www.josipfranjkovic.com/blog/hacking-facebook-csrf-device-login-flow) by JOSIP FRANJKOVIĆ
-- [Steal Oculus Nonce and Oauth Flow Bypass](https://medium.com/@lokeshdlk77/bypass-oauth-nonce-and-steal-oculus-response-code-faa9cc8d0d37)
+- [Facebook: Bypass OAuth nonce and steal oculus response code](https://medium.com/@lokeshdlk77/bypass-oauth-nonce-and-steal-oculus-response-code-faa9cc8d0d37)
 - [A tale about appengine.google.com authentication and life](https://proximasec.blogspot.com/2017/02/a-tale-about-appengines-authentication.html) by Andrey's Ramblings
 - [Vulnerability in Hangouts Chat a.k.a. how Electron makes open redirect great again](https://blog.bentkowski.info/2018/07/vulnerability-in-hangouts-chat-aka-how.html) by Michal Bentkowski
 - [Steal Google Oauth in Microsoft](http://blog.intothesymmetry.com/2015/06/on-oauth-token-hijacks-for-fun-and.html) by Antonio Sanso
@@ -322,6 +322,9 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Credentials oracle in web registration endpoint.
   - Not applicable for me.
 - [How I was able to enumerate Instagram Accounts who had enabled 2FA (Two Step Verification) for additional protection](https://medium.com/@zk34911/facebook-bug-bounty-how-i-was-able-to-enumerate-instagram-accounts-who-had-enabled-2fa-two-step-fddba9e9741c) by zk34911
+  - "Instagram" only used to use text messaging code based 2FA unlike supporting a strong 2FA based authentication system such as "Authy". It only used to send a six digit code to a user's mobile number after logging in with the email and password to authorize the login attempt.
+  - The author realized that if he changed the `username` to any ohter valid Instagram username in use, he could figure out if the following Instagram account has enabled 2FA for its additional protection by comparing the body of the HTTP responses (note, the author didn't bypass the 2FA).
+  - The author was awarded a bounty by Facebook.
 
 ### Race Condition
 
