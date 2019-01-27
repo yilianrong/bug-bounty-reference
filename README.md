@@ -237,13 +237,35 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 - [Stealing Facebook Access Tokens with a Double Submit](https://whitton.io/articles/stealing-facebook-access-tokens-with-a-double-submit/) by Jack Whitton
   - This was an old writeup.
-
 - [Stealing Facebook access_tokens Using CSRF in Device Login Flow](https://www.josipfranjkovic.com/blog/hacking-facebook-csrf-device-login-flow) by JOSIP FRANJKOVIĆ
 - [Facebook: Bypass OAuth nonce and steal oculus response code](https://medium.com/@lokeshdlk77/bypass-oauth-nonce-and-steal-oculus-response-code-faa9cc8d0d37)
+  - Facebook made a "OAuth login feature" for "Oculus", that meant the user could directly login to "Oculus" using Facebook account, but there was a `nonce` parameter in the URL that the author never seen in any other OAuth flow. So he started to dig deeper on it.
+  - OAuth authorisation URL for "Facebook Oculus":
+    - Request: `https://www.facebook.com/v2.8/dialog/oauth?app_id=1517832211847102&client_id=1517832211847102&domain=auth.oculus.com&locale=en_GB&origin=1&redirect_uri=https://auth.oculus.com/login/&response_type=code&sdk=joey&version=v2.8&nonce=AXRr8eBAjDTBkzQ7&state=d916afa3-3dc1-bab7-fc9d-3c8f44bf757`
+    - Response: `https://auth.oculus.com/login/?code=AQDtxcP7I--AWqEvE-LjcPIjkimy7Z-oQHvLMtGNB8sdKSqhvvv5KFO1KNXgPw4nEewmFsOKsq1GIAcEqJq09rLHlsGQVBxq-HwqbvlE-_unfTayj2HdGp5GGEqsNLlK2zerCpKbBHbiDRW4tr7ZBnxcgebywDbd,lonbrqie5fdwjD-x6jsnI5wnZ4XaDIRMixFoRqtQSne406BwOo2nSVS2o1MmmXkLW_zaW5Vy0SW6&state=d916afa3-3dc1-bab8-fc9d-3c8f44bfe7b7#_=_`
+  - The `nonce` acted as "CSRF token" to prevent the user from CSRF attack, if the `nonce` value is not matched, the OAuth request would get aborted and did not follow the `redirect_uri`. So this OAuth flow had two challenges:
+    - Bypass `nonce`.
+    - Bypass `redirect_uri`.
+  - "CORS Proxy" is a free service for developers who need to bypass same-origin policy related to performing standard "AJAX requests" to 3rd party services (the author listed some online proxy servers).
+  - When the author passed the OAuth URL in the "CORS Proxy" server, it responded the source code of the given URL. When he searched for "nonce" in the source code, he saw that both of the "nonce" value in "real request" and using this "cors request" are same. So he bypassed the `nonce`.
+  - It's time to bypass `redirect_uri`. It made easy then he thought. The below URL redirected the response `code` to his app domain using "referer leakage":
+    - `https://auth.oculus.com/login/?redirect_uri=https://www.facebook.com/dialog/send?client_id=1933886253534366&next=https://www.whatismyreferer.com&from_post=1&error_ok=OK`
+  - Fixed: the leakage of "nonce" value in "CORS Proxy" and the `redirect_uri` in Oculus to Facebok was fixed.
+  - The poc in this writeup is worth to study.
 - [A tale about appengine.google.com authentication and life](https://proximasec.blogspot.com/2017/02/a-tale-about-appengines-authentication.html) by Andrey's Ramblings
-- [Vulnerability in Hangouts Chat a.k.a. how Electron makes open redirect great again](https://blog.bentkowski.info/2018/07/vulnerability-in-hangouts-chat-aka-how.html) by Michal Bentkowski
+  - `appengine.google.com` used to have a site attached to it, but it's been shutdown in favor of "Google Cloud". Anyway, the only function that this subdomain has is to authenticate users on third party domains. Except for some reason one subdomain on Google itself. To summarize, here are the sites that use this authentication:
+    - Anything on `.withgoogle.com` domain, including the bug hunter dashboard.
+    - `enterprise.google.com`, which is some sort of administration panel for "Gsuite accounts" and even "Google Partners".
+    - `.appspot.com` sites, which are user generated.
+  - I don't understand this writeup.
+- [Google - Vulnerability in Hangouts Chat: from open redirect to code execution](https://blog.bentkowski.info/2018/07/vulnerability-in-hangouts-chat-aka-how.html) by Michal Bentkowski
+  - "Hangout Chat" is an answer to "Slack". It might be used both in browser (at `https://chat.google.com`, requires "GSuite account") and as a desktop or mobile application.
+  - The author found an "open redirect" vulnerability in desktop app.
 - [Steal Google Oauth in Microsoft](http://blog.intothesymmetry.com/2015/06/on-oauth-token-hijacks-for-fun-and.html) by Antonio Sanso
+  - Complicated.
 - [Holy redirect_uri Batman, Google tokens leak](http://blog.intothesymmetry.com/2016/05/holy-redirecturi-batman.html) by Antonio Sanso
+  - There were some links between the previous writeup and this one. Complicated.
+
 - [Obtaining Login Tokens for an Outlook, Office or Azure Account](https://whitton.io/articles/obtaining-tokens-outlook-office-azure-account/) by Jack Whitton
 - [Yahoo Bug Bounty: Exploiting OAuth Misconfiguration To Takeover Flickr Accounts](https://mishresec.wordpress.com/2017/10/12/yahoo-bug-bounty-exploiting-oauth-misconfiguration-to-takeover-flickr-accounts/) by mishre
 - [Flickr ATO Fix Bypass](https://ngailong.wordpress.com/2017/08/07/flickr-ato-fix-bypass/) by Ron Chan
@@ -254,12 +276,32 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Uber - redirect_uri is difficult to do it right](https://ngailong.wordpress.com/2017/11/22/uber-redirect_uri-is-difficult-to-do-it-right/) by Ron Chan
 - [Authentication bypass on Airbnb via OAuth tokens theft](https://www.arneswinnen.net/2017/06/authentication-bypass-on-airbnb-via-oauth-tokens-theft/) by Arne Swinnen
 - [All your Paypal OAuth tokens belong to me - localhost for the win](http://blog.intothesymmetry.com/2016/11/all-your-paypal-tokens-belong-to-me.html) by Antonio Sanso
+  - Basically like many online internet services "Paypal" offers the option to register you own "Paypal" application via a Dashboard. The better news (for "Paypal") is that they actually employs an "exact matching policy" for `redirect_uri`.
+  - While testing hhis own OAuth client, the author have noticed something a bit fishy. The easier way to describe it is using an OAuth application from "Paypal" itself. Basically "Paypal" has setup a "Demo Paypal application" to showcase their OAuth functionalities.
+  - The inital OAuth request:
+    - `https://www.paypal.com/signin/authorize?client_id=AdcKahCXxhLAuoIeOotpvizsVOX5k2A0VZGHxZnQHoo1Ap9ChOV0XqPdZXQt&response_type=code&scope=openid%20profile%20email%20address%20phone%20https://uri.paypal.com/services/paypalattributes%20https://uri.paypal.com/services/paypalattributes/business%20https://uri.paypal.com/services/expresscheckout&redirect_uri=https://demo.paypal.com/loginsuccessful&nonce=&newUI=Y`
+  - The author found out that the "Paypal authorization server" was also accepting `localhost` as `redirect_uri`. So:
+    - `https://www.paypal.com/signin/authorize?client_id=AdcKahCXxhLAuoIeOotpvizsVOX5k2A0VZGHxZnQHoo1Ap9ChOV0XqPdZXQt&response_type=code&scope=openid%20profile%20email%20address%20phone%20https://uri.paypal.com/services/paypalattributes%20https://uri.paypal.com/services/paypalattributes/business%20https://uri.paypal.com/services/expresscheckout&redirect_uri=https://localhost&nonce=&newUI=Y`
+    - This was still a valid request and the authorization code was then delivered back to `localhost`. But not a vulnerability.
+  - The next natural step was to creat a DNS entry for his website looking like `http://localhost.intothesymmetry.com/` and tried:
+    - `https://www.paypal.com/signin/authorize?client_id=AdcKahCXxhLAuoIeOotpvizsVOX5k2A0VZGHxZnQHoo1Ap9ChOV0XqPdZXQt&response_type=code&scope=openid%20profile%20email%20address%20phone%20https://uri.paypal.com/services/paypalattributes%20https://uri.paypal.com/services/paypalattributes/business%20https://uri.paypal.com/services/expresscheckout&redirect_uri=http://localhost.intothesymmetry.com/&nonce=&newUI=Y`. Worked.
 - [How I made LastPass give me all your passwords](https://labs.detectify.com/2016/07/27/how-i-made-lastpass-give-me-all-your-passwords/) by Mathias Karlsson
 - [Hacking Slack using postMessage and WebSocket-reconnect to steal your precious token](https://labs.detectify.com/2017/02/28/hacking-slack-using-postmessage-and-websocket-reconnect-to-steal-your-precious-token/) by Frans Rosén
 - [Chaining Self XSS with UI Redressing is Leading to Session Hijacking (PWN users like a boss)](https://medium.com/bugbountywriteup/chaining-self-xss-with-ui-redressing-is-leading-to-session-hijacking-pwn-users-like-a-boss-efb46249cd14) by Armaan Pathan
+  - While the author was testing the web application he found a self-XSS which had no impact. But he wanted to exploit this vulenrability, so he decided to chain the self-XSS with some other vulnerability.
+  - So he started looking for CSRF attack, but he didn't get CSRF on the vulnerable page.
+  - The author noticed that application was not using the `x-frame` header, so he thought "click jacking".
+  - The author changed self-XSS with "click jacking" to grab victim's cookies and gave the poc.
 - [Hacking OAuth2.0 For Fun And Profit](https://drive.google.com/file/d/1Qw3hhValdRAWNGJtLbbFYfKtaevkw4fQ/view) by Pranav Hivarekar
+  - OAuth 2.0 basics:
+    - authorization code grant
+    - implicit grant
+  - Attacks on OAuth 2.0 integrations:
+    - token / code stealing - case study
+    - CSRF (missing `state` param) - case study
+    - token impersonation - case study
 - [Oauth 2.0 redirection bypass cheat sheet](http://nbsriharsha.blogspot.com/2016/04/oauth-20-redirection-bypass-cheat-sheet.html) by nbsriharsha
-- [CVV #2: Open Redirect](https://medium.com/bugbountywriteup/cvv-2-open-redirect-213555765607) by SI9INT
+  - The author gave a list of payloads used in `redirect_uri` (could try, but I don't think very useful).
 - [How I find Open-Redirect Vulnerability in redacted.com (One of the top online payment processing service website)](https://medium.com/@protector47/how-i-find-open-redirect-vulnerability-in-redacted-com-one-of-the-top-payment-gateway-e9b92afdc114) by M.Asim Shahzad
 - [Full Account Takeover via Referer Header (OAuth token Steal, Open Redirect Vulnerability Chaining)](https://medium.com/@protector47/full-account-takeover-via-referrer-header-oauth-token-steal-open-redirect-vulnerability-chaining-324a14a1567) by M.Asim Shahzad
 
