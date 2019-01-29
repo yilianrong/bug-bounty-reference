@@ -2,6 +2,16 @@
 
 Some specific topics about bug hunting.
 
+- AngularJS
+- SSTI
+- CSP
+- JSONP
+  - XSSI
+- CORS
+- OAuth
+- JSON Web Token
+- S3 Bucket
+
 ### AngularJS
 
 - [XSS without HTML: Client-Side Template Injection with AngularJS](https://portswigger.net/blog/xss-without-html-client-side-template-injection-with-angularjs) by Gareth Heyes
@@ -490,7 +500,13 @@ Some specific topics about bug hunting.
   - However, there are some additional problems:
     - If we want to retrieve "URL fragments" from the "identity providers" to steal later on, we must be able to modify the OAuth request call to the provider (add `token` to the `response_type` parameter). However, this request is sent only after the initiating call to Airbnb OAuth endpoint `https://www.airbnb.cat/oauth_connect` in which the "open redirect via HTTP referer header exists", which is necessary for the overall attack.
     - Airbnb's callback endpoint expects an authorization `code` via a URL GET parameter from the "identity provider". However, when receiving a "URL fragment" instead, it will consider the authentication attempt invalid and hen not perform the final redirect, since we are not logged in.
-  - These two issues were both solved by exploiting a "login CSRF" vulnerability via the same O
+  - These two issues were both solved by exploiting a "login CSRF" vulnerability via the same OAuth endpoint, as an "OAuth login" is initiated via a forgeable GET call to `https://www.airbnb.cat/oauth_connect`. An attacker first transparently logs in his / her victim unkowningly to their own "Airbnb account" via an "identity provider", hereby planting the redirection seed via the "HTTP referer header". Now the victim is authenticated to Airbnb.
+    - Note that there was proper "OAuth CSRF protection" in place (`state` parameter), but since we are authenticating the victim into his / her own account, this doesn't prevent anything here.
+  - Now, when the attacker again forces the victim to make an additional Login via  Facebook / Google but with `response_type` `code,token` as opposed to the normal `code`, the redirection flow of earlier will still work. Concretely, since we are still logged in, a redirect to the arbitrary "HTTP referer header" planted earlier will occur, this time with the "URL fragments" containing the victim's identity provider "OAuth tokens".
+  - An attacker now gained two things:
+    - `code`, which can be used to authenticate to `airbnb.com` as the victim. This is because the `redirect_uri` has not been changed during our attack, we only changed the communication of it from a GET parameter to an "URL fragment".
+    - `access_token`, which can be used to query information of the victim at the "indentity provider" and authenticated as the victim user on the Airbnb mobile application.
+  - The Poc in this writeup is worth to study.
 - [All your Paypal OAuth tokens belong to me - localhost for the win](http://blog.intothesymmetry.com/2016/11/all-your-paypal-tokens-belong-to-me.html) by Antonio Sanso
   - Basically like many online internet services "Paypal" offers the option to register you own "Paypal" application via a Dashboard. The better news (for "Paypal") is that they actually employs an "exact matching policy" for `redirect_uri`.
   - While testing hhis own OAuth client, the author have noticed something a bit fishy. The easier way to describe it is using an OAuth application from "Paypal" itself. Basically "Paypal" has setup a "Demo Paypal application" to showcase their OAuth functionalities.
@@ -501,6 +517,10 @@ Some specific topics about bug hunting.
     - This was still a valid request and the authorization code was then delivered back to `localhost`. But not a vulnerability.
   - The next natural step was to creat a DNS entry for his website looking like `http://localhost.intothesymmetry.com/` and tried:
     - `https://www.paypal.com/signin/authorize?client_id=AdcKahCXxhLAuoIeOotpvizsVOX5k2A0VZGHxZnQHoo1Ap9ChOV0XqPdZXQt&response_type=code&scope=openid%20profile%20email%20address%20phone%20https://uri.paypal.com/services/paypalattributes%20https://uri.paypal.com/services/paypalattributes/business%20https://uri.paypal.com/services/expresscheckout&redirect_uri=http://localhost.intothesymmetry.com/&nonce=&newUI=Y`. Worked.
+- [Full Account Takeover via Referer Header (OAuth token Steal, Open Redirect Vulnerability Chaining)](https://medium.com/@protector47/full-account-takeover-via-referrer-header-oauth-token-steal-open-redirect-vulnerability-chaining-324a14a1567) by M.Asim Shahzad
+  - The author was able to steal "OAuth token" via "open redirect" chaining. "session tokens" / "access tokens" / "OAuth token" are highly sensitive data because if an attacker gets this information then he can log in your account without knowing your account password. Usually this vulnerability found on those applications who use third-party login methods like login with Facebook, Google, Twitter etc.
+  - "Redacted" has a login with Facebook, Google, Twitter functionality. When the author was trying to log in his account and then he checed his Burpsuite "History", he got an endpoint containing "OAuth token" and there was another parameter called `redirect_uri` for redirecting.
+    - `https://redacted.com/?oauth=gfhju76554678ggfr576898gfhj&redirect_uri=https://test.com`
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
