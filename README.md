@@ -26,8 +26,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Race Condition](#race-condition) done
 - [SQL Injection](#sql-injection) done
 - [Remote Code Execution](#remote-code-execution) done
-- [Miscellaneous](#miscellaneous)
-- [Exclusive Bugbounty Writeup Blog](#exclusive-bugbounty-writeup-blog)
+- [Miscellaneous](#miscellaneous) done
+- [Exclusive Bugbounty Writeup Blog](#exclusive-bugbounty-writeup-blog) done
 - [Interesting but Seems Not Applicable Now](#interesting-but-seems-not-applicable-now) done
 
 
@@ -244,24 +244,8 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Complicated.
 - [Holy redirect_uri Batman, Google tokens leak](http://blog.intothesymmetry.com/2016/05/holy-redirecturi-batman.html) by Antonio Sanso
   - There were some links between the previous writeup and this one. Complicated.
-
 - [How I made LastPass give me all your passwords](https://labs.detectify.com/2016/07/27/how-i-made-lastpass-give-me-all-your-passwords/) by Mathias Karlsson
-- [Hacking Slack using postMessage and WebSocket-reconnect to steal your precious token](https://labs.detectify.com/2017/02/28/hacking-slack-using-postmessage-and-websocket-reconnect-to-steal-your-precious-token/) by Frans Rosén
-- [Chaining Self XSS with UI Redressing is Leading to Session Hijacking (PWN users like a boss)](https://medium.com/bugbountywriteup/chaining-self-xss-with-ui-redressing-is-leading-to-session-hijacking-pwn-users-like-a-boss-efb46249cd14) by Armaan Pathan
-  - While the author was testing the web application he found a self-XSS which had no impact. But he wanted to exploit this vulenrability, so he decided to chain the self-XSS with some other vulnerability.
-  - So he started looking for CSRF attack, but he didn't get CSRF on the vulnerable page.
-  - The author noticed that application was not using the `x-frame` header, so he thought "click jacking".
-  - The author changed self-XSS with "click jacking" to grab victim's cookies and gave the poc.
-
-- [How I find Open-Redirect Vulnerability in redacted.com (One of the top online payment processing service website)](https://medium.com/@protector47/how-i-find-open-redirect-vulnerability-in-redacted-com-one-of-the-top-payment-gateway-e9b92afdc114) by M.Asim Shahzad
-  - The author found an "open redirect" on `site.com`. "open redirect" is basically not a high impact vulnerability, but his opinion for a site like `https://site.com`, "open redirect" can high-level impact because `https://site.com` is a payment processing service. If an attacker can redirect the user to any malicious website, then the attacker can also maintain a phishing website for the victim to get the credentials of `https://site.com` account or their "API keys".
-  - This was an "open redirect" in login service.
-    - Normal: `https://www.site.com/login?service=https%3A%2F%2Fwww.site.com%2Fva`.
-    - Poc: `https://www.site.com/login?service=https%3A%2F%2Fwww.google.com%2Fva`, worked.
-- [Full Account Takeover via Referer Header (OAuth token Steal, Open Redirect Vulnerability Chaining)](https://medium.com/@protector47/full-account-takeover-via-referrer-header-oauth-token-steal-open-redirect-vulnerability-chaining-324a14a1567) by M.Asim Shahzad
-  - The author was able to steal "OAuth token" via "open redirect" chaining. "session tokens" / "access tokens" / "OAuth token" are highly sensitive data because if an attacker gets this information then he can log in your account without knowing your account password. Usually this vulnerability found on those applications who use third-party login methods like login with Facebook, Google, Twitter etc.
-  - "Redacted" has a login with Facebook, Google, Twitter functionality. When the author was trying to log in his account and then he checed his Burpsuite "History", he got an endpoint containing "OAuth token" and there was another parameter called `redirect_uri` for redirecting.
-    - `https://redacted.com/?oauth=gfhju76554678ggfr576898gfhj&redirect_uri=https://test.com`
+  - This vulnerability was in "LastPass browser extension".
 
 ### Business Logic Flaw
 
@@ -402,11 +386,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Miscellaneous
 
-- [Top 10 Web Hacking Techniques of 2017 - Nominations Open](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2017-nominations-open) by James Kettle
-- [Top 10 Web Hacking Techniques of 2017](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2017)  by James Kettle
-- [Top 10 web hacking techniques of 2018 - nominations open](https://portswigger.net/blog/top-10-web-hacking-techniques-of-2018-nominations-open) by James Kettle
 - [Web Application Penetration Testing Course](https://docs.google.com/document/d/101EsKlu41ICdeE7mEv189SS8wMtcdXfRtua0ClYjP1M/edit)
-- [List of bug bounty writeups](https://pentester.land/list-of-bug-bounty-writeups.html)
 - [CTF write up, Great for Bug Bounty](https://ctftime.org/writeups?tags=web200&hidden-tags=web%2cweb100%2cweb200)
 - [Smart Contract Vulnerabilities](http://www.dasp.co/)
 - [Tutorials](https://securityidiots.com/) by Security Idiots
@@ -432,17 +412,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Exclusive Bugbounty Writeup Blog
 
-- [10 Interesting Vulnerabilities in Instagram](https://www.arneswinnen.net/2016/02/the-tales-of-a-bug-bounty-hunter-10-interesting-vulnerabilities-in-instagram/) by Arne Swinnen
-- [A list of FB writeup collected by phwd](http://web.archive.org/web/20171220084758/https://www.facebook.com/notes/phwd/facebook-bug-bounties/707217202701640) by phwd
-- [Facebook Bugbounty Writeup Blog](https://philippeharewood.com) by phwd
-- [Google Bugbouty Writeup](https://www.ezequiel.tech/) by eze2307
-- [Clickjackings in Google](https://medium.com/@raushanraj_65039/google-clickjacking-6a04132b918a) by Raushan Raj
-- [Clickjacking in Google Docs and Voice typing feature](https://medium.com/@raushanraj_65039/clickjacking-in-google-docs-and-voice-typing-feature-c481d00b020a) by Raushan Raj
-- [Clickjacking on Google MyAccount Worth 7,500$](https://apapedulimu.click/clickjacking-on-google-myaccount-worth-7500/) by Apapedulimu
-- [Google VRP Writeups](https://sites.google.com/securifyinc.com/vrp-writeups/home?authuser=0) by securifyinc
 - [XS-Searching Google’s bug tracker to find out vulnerable source code](https://medium.com/@luanherrera/xs-searching-googles-bug-tracker-to-find-out-vulnerable-source-code-50d8135b7549) by Luan Herrera
-- [Uber - Another "TicketTrick" story](https://sites.google.com/securifyinc.com/secblogs/uber-business-support-bug?authuser=0) by securifyinc
-- [Shopify Athena Bug](https://sites.google.com/securifyinc.com/secblogs/shopify-athena-bug?authuser=0) by securifyinc
 - [Bug Bounty: Fastmail](https://medium.com/bugbountywriteup/bug-bounty-fastmail-feeda67905f5) by hyde
 
 ### Interesting but Seems Not Applicable Now
