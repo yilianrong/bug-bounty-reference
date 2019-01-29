@@ -172,6 +172,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Hacking Facebook’s Legacy API, Part 2: Stealing User Sessions](https://stephensclafani.com/2014/07/29/hacking-facebooks-legacy-api-part-2-stealing-user-sessions/) by Stephen Sclafani
 - [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/blog-facebook-originull/) by cynet
 - [How I hacked Tinder accounts using Facebook’s Account Kit](https://medium.freecodecamp.org/hacking-tinder-accounts-using-facebook-accountkit-d5cc813340d1) by Anand Prakash
+  - The author discovered an "account takeover vulnerability" in Tinder's application. By exploiting this, an attacker could have gained access to the victim's "Tinder account", who must have used their "phone number" to log in. This could have been exploited through a vulnerability in "Facebook Account Kit".
+  - Both
 - [How I Was Able to Takeover Facebook Account](https://blog.securitybreached.org/2017/12/10/how-i-was-able-to-takeover-facebook-account-bug-bounty-poc/) by Ameer Hamza
 - [Bypass Admin approval, Mute Member and Posting Permissions for Only admins in Facebook groups](https://medium.com/bugbountywriteup/bypass-admin-approval-mute-member-and-posting-permissions-for-only-admins-in-facebook-groups-ef476cb3d524) by Sarmad Hassan
 - [Facebook Bug Bounty! {Permission Bug}](https://medium.com/@alicanact60/facebook-bug-bounty-permission-bug-19c9358d2297) by alicanact60
@@ -387,7 +389,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Miscellaneous
 
 - [Web Application Penetration Testing Course](https://docs.google.com/document/d/101EsKlu41ICdeE7mEv189SS8wMtcdXfRtua0ClYjP1M/edit)
-- [CTF write up, Great for Bug Bounty](https://ctftime.org/writeups?tags=web200&hidden-tags=web%2cweb100%2cweb200)
 - [Smart Contract Vulnerabilities](http://www.dasp.co/)
 - [Tutorials](https://securityidiots.com/) by Security Idiots
 - [HACKING NODEJS AND MONGODB](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html) by websecurify
@@ -395,23 +396,17 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Jumping to The Hell With 10 Attempts to Bypass Devil's WAF](https://medium.com/bugbountywriteup/jumping-to-the-hell-with-10-attempts-to-bypass-devils-waf-4275bfe679dd) by Ak1T4
 - [High Risk Vulnerabilities within the DoD - Exploiting Coldfusion, Dotnet Nuke, Oracle, and more](https://medium.com/@alyssa.o.herrera/high-risk-vulnerabilities-within-the-dod-from-coldfusion-dotnet-nuke-oracle-and-more-cc730f748c69) by Alyssa Herrera
 - [A penetration tester’s guide to sub-domain enumeration](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) by Bharath
-- [Static Analysis of Client-Side JavaScript for pen testers and bug bounty hunters](https://blog.appsecco.com/static-analysis-of-client-side-javascript-for-pen-testers-and-bug-bounty-hunters-f1cb1a5d5288) by Bharath
 - [Escalating low severity bugs to high](https://www.noob.ninja/2018/07/escalating-low-severity-bugs-to-high.html) by Noob Ninja
-- [How I earned 60K+ from private program](https://medium.com/@sivakrishnasamireddi/how-i-earned-60k-from-private-program-71bd51554490) by Siva Krishna Samireddi
-- [Just another tale of severe bugs on a private program](https://medium.com/@sivakrishnasamireddi/just-another-tale-of-severe-bugs-on-a-private-program-405870b03532) by Siva Krishna Samireddi
 - [How to Hack WebSockets and Socket.io](https://www.blackhillsinfosec.com/how-to-hack-websockets-and-socket-io/) by Ethan Robish
-- [How to perform the static analysis of website source code with the browser — the beginner’s bug bounty hunters guide](https://medium.com/@_bl4de/how-to-perform-the-static-analysis-of-website-source-code-with-the-browser-the-beginners-bug-d674828c8d9a) by bl4de
 - [ZERO-DAY RCE VIA XXE & SSRF ON NETGEAR STORA, SEAGATE HOME, AND MEDION LIFECLOUD NAS](http://www.paulosyibelo.com/2018/11/zero-day-rce-via-xxe-ssrf-on-netgear.html) by Paulos Yibelo
 - [Google bug bounty for security exploit that influences search results](http://www.tomanthony.co.uk/blog/google-xml-sitemap-auth-bypass-black-hat-seo-bug-bounty/) by Tom
-- [Why Facebook's api starts with a for loop](https://dev.to/antogarand/why-facebooks-api-starts-with-a-for-loop-1eob) by Antony Garand
-- [Whitepaper: HTTP Security Headers and How They Work](https://www.netsparker.com/whitepaper-http-security-headers/) by Ziyahan Albeniz, Sven Morgenroth, Umran Yildirimkaya
 - [WEB APPLICATION PENETRATION TESTING NOTES](https://techvomit.net/web-application-penetration-testing-notes/) by Tech Vomit
-- [Extreme details in vulnerablities detecting](https://medium.com/@jonathanbouman) by Jonathan Bouman
-- [Advanced JavaScript Injections](https://brutelogic.com.br/blog/advanced-javascript-injections/) by Brute
 - [Bypass CSP by Abusing XSS Filter in Edge](https://medium.com/bugbountywriteup/bypass-csp-by-abusing-xss-filter-in-edge-43e9106a9754) by Xiaoyin Liu
 
 ### Exclusive Bugbounty Writeup Blog
 
+- [How I earned 60K+ from private program](https://medium.com/@sivakrishnasamireddi/how-i-earned-60k-from-private-program-71bd51554490) by Siva Krishna Samireddi
+- [Just another tale of severe bugs on a private program](https://medium.com/@sivakrishnasamireddi/just-another-tale-of-severe-bugs-on-a-private-program-405870b03532) by Siva Krishna Samireddi
 - [XS-Searching Google’s bug tracker to find out vulnerable source code](https://medium.com/@luanherrera/xs-searching-googles-bug-tracker-to-find-out-vulnerable-source-code-50d8135b7549) by Luan Herrera
 - [Bug Bounty: Fastmail](https://medium.com/bugbountywriteup/bug-bounty-fastmail-feeda67905f5) by hyde
 
