@@ -11,6 +11,7 @@ Some specific topics about bug hunting.
 - OAuth
 - JSON Web Token
 - S3 Bucket
+- Tools
 
 ### AngularJS
 
@@ -521,6 +522,8 @@ Some specific topics about bug hunting.
   - The author was able to steal "OAuth token" via "open redirect" chaining. "session tokens" / "access tokens" / "OAuth token" are highly sensitive data because if an attacker gets this information then he can log in your account without knowing your account password. Usually this vulnerability found on those applications who use third-party login methods like login with Facebook, Google, Twitter etc.
   - "Redacted" has a login with Facebook, Google, Twitter functionality. When the author was trying to log in his account and then he checed his Burpsuite "History", he got an endpoint containing "OAuth token" and there was another parameter called `redirect_uri` for redirecting.
     - `https://redacted.com/?oauth=gfhju76554678ggfr576898gfhj&redirect_uri=https://test.com`
+  - The author tried to bypass `redirect_uri`. He simply started with by injecting his server URL but no lucky. He then started "intruder" and tried "open redirect payloads".
+    - After 300 attempts he got a 301 response from targetted server meant to "redirect filter" has been bypassed and then he got the "OAuth token" via "referer header" after redirecting victim on his server.
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
@@ -530,3 +533,10 @@ Some specific topics about bug hunting.
 - [S3 Bucket Misconfiguration: From Basics to Pawn](https://bugbountypoc.com/s3-bucket-misconfiguration-from-basics-to-pawn/) by JAY JANI
 - [AWS S3 added to my "Bucket" list](https://medium.com/bugbountywriteup/bugbounty-aws-s3-added-to-my-bucket-list-f68dd7d0d1ce) by Avinash Jain
 
+### Tools
+
+- [Static Analysis of Client-Side JavaScript for pen testers and bug bounty hunters](https://blog.appsecco.com/static-analysis-of-client-side-javascript-for-pen-testers-and-bug-bounty-hunters-f1cb1a5d5288) by Bharath
+- [How to perform the static analysis of website source code with the browser — the beginner’s bug bounty hunters guide](https://medium.com/@_bl4de/how-to-perform-the-static-analysis-of-website-source-code-with-the-browser-the-beginners-bug-d674828c8d9a) by bl4de
+- [Why Facebook's api starts with a for loop](https://dev.to/antogarand/why-facebooks-api-starts-with-a-for-loop-1eob) by Antony Garand
+- [Whitepaper: HTTP Security Headers and How They Work](https://www.netsparker.com/whitepaper-http-security-headers/) by Ziyahan Albeniz, Sven Morgenroth, Umran Yildirimkaya
+- [Advanced JavaScript Injections](https://brutelogic.com.br/blog/advanced-javascript-injections/) by Brute
