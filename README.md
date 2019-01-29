@@ -311,7 +311,14 @@ My intention is to make a full and complete list of common vulnerability that ar
   - The author changed self-XSS with "click jacking" to grab victim's cookies and gave the poc.
 
 - [How I find Open-Redirect Vulnerability in redacted.com (One of the top online payment processing service website)](https://medium.com/@protector47/how-i-find-open-redirect-vulnerability-in-redacted-com-one-of-the-top-payment-gateway-e9b92afdc114) by M.Asim Shahzad
+  - The author found an "open redirect" on `site.com`. "open redirect" is basically not a high impact vulnerability, but his opinion for a site like `https://site.com`, "open redirect" can high-level impact because `https://site.com` is a payment processing service. If an attacker can redirect the user to any malicious website, then the attacker can also maintain a phishing website for the victim to get the credentials of `https://site.com` account or their "API keys".
+  - This was an "open redirect" in login service.
+    - Normal: `https://www.site.com/login?service=https%3A%2F%2Fwww.site.com%2Fva`.
+    - Poc: `https://www.site.com/login?service=https%3A%2F%2Fwww.google.com%2Fva`, worked.
 - [Full Account Takeover via Referer Header (OAuth token Steal, Open Redirect Vulnerability Chaining)](https://medium.com/@protector47/full-account-takeover-via-referrer-header-oauth-token-steal-open-redirect-vulnerability-chaining-324a14a1567) by M.Asim Shahzad
+  - The author was able to steal "OAuth token" via "open redirect" chaining. "session tokens" / "access tokens" / "OAuth token" are highly sensitive data because if an attacker gets this information then he can log in your account without knowing your account password. Usually this vulnerability found on those applications who use third-party login methods like login with Facebook, Google, Twitter etc.
+  - "Redacted" has a login with Facebook, Google, Twitter functionality. When the author was trying to log in his account and then he checed his Burpsuite "History", he got an endpoint containing "OAuth token" and there was another parameter called `redirect_uri` for redirecting.
+    - `https://redacted.com/?oauth=gfhju76554678ggfr576898gfhj&redirect_uri=https://test.com`
 
 ### Business Logic Flaw
 
