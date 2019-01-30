@@ -168,8 +168,19 @@ My intention is to make a full and complete list of common vulnerability that ar
 ### Authentication Bypass
 
 - [Taking over Facebook Accounts using Free Basics Partner Portal](https://www.josipfranjkovic.com/blog/facebook-partners-portal-account-takeover) by JOSIP FRANJKOVIĆ
+  - The author found a vulnerability leadking email address of any Facebook user tuned out to be an "account takeover" with no user interaction needed.
+  - One of the author's website was approved to participate in the "Free Basics project" by Facebook and he have gained access to their partners portal.
+  - After poking around a bit, the author have realised adding a new "admin user" leaked their address in subsequent notification emails. Reproduce:
+    - Using your "admin account", go to `https://partners.facebook.com/fbs/settings/`.
+    - Input anything as the name, in the "email field" input an email you control.
+    - Click "Add" and intercept the POST request to `/mobile/settings/requirements/save/`.
+    - Change the `values[settings.users.userstablecontainer.user_id]` GET parameter to an "ID" of the victim whose email you want to get and forward the request.
+    - An email will arrive to your controlled address, which will contain the victim's "primary mail" as part of `<a href link>`.
+  - Basically, the author have added a new "admin", and set its partner notifications email to one he controlled. The notification email itself would leak the "admin's primary Facebook email" through a `n_m` GET parameter in one of the links.
+  - Facebook's team then explained that another parameter from the "email link" could potentially be used to login to the user's account (with some restrictions), the author's test account didn't have the feature enabled.
 - [Hacking Facebook’s Legacy API, Part 1: Making Calls on Behalf of Any User](https://stephensclafani.com/2014/07/08/hacking-facebooks-legacy-api-part-1-making-calls-on-behalf-of-any-user/) by Stephen Sclafani
 - [Hacking Facebook’s Legacy API, Part 2: Stealing User Sessions](https://stephensclafani.com/2014/07/29/hacking-facebooks-legacy-api-part-2-stealing-user-sessions/) by Stephen Sclafani
+  - Awsome
 - [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/blog-facebook-originull/) by cynet
 - [How I hacked Tinder accounts using Facebook’s Account Kit](https://medium.freecodecamp.org/hacking-tinder-accounts-using-facebook-accountkit-d5cc813340d1) by Anand Prakash
   - The author discovered an "account takeover vulnerability" in Tinder's application. By exploiting this, an attacker could have gained access to the victim's "Tinder account", who must have used their "phone number" to log in. This could have been exploited through a vulnerability in "Facebook Account Kit".
