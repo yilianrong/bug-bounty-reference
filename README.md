@@ -170,14 +170,13 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Hacking Facebook’s Legacy API, Part 1: Making Calls on Behalf of Any User](https://stephensclafani.com/2014/07/08/hacking-facebooks-legacy-api-part-1-making-calls-on-behalf-of-any-user/) by Stephen Sclafani
 - [Hacking Facebook’s Legacy API, Part 2: Stealing User Sessions](https://stephensclafani.com/2014/07/29/hacking-facebooks-legacy-api-part-2-stealing-user-sessions/) by Stephen Sclafani
   - Awesome.
-
-- [How I hacked Tinder accounts using Facebook’s Account Kit](https://medium.freecodecamp.org/hacking-tinder-accounts-using-facebook-accountkit-d5cc813340d1) by Anand Prakash
-  - The author discovered an "account takeover vulnerability" in Tinder's application. By exploiting this, an attacker could have gained access to the victim's "Tinder account", who must have used their "phone number" to log in. This could have been exploited through a vulnerability in "Facebook Account Kit".
-  - Both
 - [Bypass Admin approval, Mute Member and Posting Permissions for Only admins in Facebook groups](https://medium.com/bugbountywriteup/bypass-admin-approval-mute-member-and-posting-permissions-for-only-admins-in-facebook-groups-ef476cb3d524) by Sarmad Hassan
-- [Facebook Bug Bounty! {Permission Bug}](https://medium.com/@alicanact60/facebook-bug-bounty-permission-bug-19c9358d2297) by alicanact60
+  - The author could make "Watch Party post" in another group that he was member in it by just changing `group_id` parameter.
+  - Changing `group_id` also works even if the admin of victim group muted the attacker he still be able to make watch party video and bypass mute option.
+  - The author used "Graph API".
+
 - [Add comment on a private Oculus Developer bug report](https://medium.com/bugbountywriteup/add-comment-on-a-private-oculus-developer-bug-report-93f35bc80b2c) by Sarmad Hassan
-- [Instagram Multi-factor authentication Bypass](https://medium.com/@vishnu0002/instagram-multi-factor-authentication-bypass-924d963325a1) by vishnuraj
+  - 
 - [How I was able to generate Access Tokens for any Facebook user](https://medium.com/bugbountywriteup/how-i-was-able-to-generate-access-tokens-for-any-facebook-user-6b84392d0342) by Samm0uda
 - [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
 - [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
