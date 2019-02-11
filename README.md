@@ -167,54 +167,40 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 ### Authentication Bypass
 
-- [Taking over Facebook Accounts using Free Basics Partner Portal](https://www.josipfranjkovic.com/blog/facebook-partners-portal-account-takeover) by JOSIP FRANJKOVIĆ
-  - The author found a vulnerability leadking email address of any Facebook user tuned out to be an "account takeover" with no user interaction needed.
-  - One of the author's website was approved to participate in the "Free Basics project" by Facebook and he have gained access to their partners portal.
-  - After poking around a bit, the author have realised adding a new "admin user" leaked their address in subsequent notification emails. Reproduce:
-    - Using your "admin account", go to `https://partners.facebook.com/fbs/settings/`.
-    - Input anything as the name, in the "email field" input an email you control.
-    - Click "Add" and intercept the POST request to `/mobile/settings/requirements/save/`.
-    - Change the `values[settings.users.userstablecontainer.user_id]` GET parameter to an "ID" of the victim whose email you want to get and forward the request.
-    - An email will arrive to your controlled address, which will contain the victim's "primary mail" as part of `<a href link>`.
-  - Basically, the author have added a new "admin", and set its partner notifications email to one he controlled. The notification email itself would leak the "admin's primary Facebook email" through a `n_m` GET parameter in one of the links.
-  - Facebook's team then explained that another parameter from the "email link" could potentially be used to login to the user's account (with some restrictions), the author's test account didn't have the feature enabled.
 - [Hacking Facebook’s Legacy API, Part 1: Making Calls on Behalf of Any User](https://stephensclafani.com/2014/07/08/hacking-facebooks-legacy-api-part-1-making-calls-on-behalf-of-any-user/) by Stephen Sclafani
 - [Hacking Facebook’s Legacy API, Part 2: Stealing User Sessions](https://stephensclafani.com/2014/07/29/hacking-facebooks-legacy-api-part-2-stealing-user-sessions/) by Stephen Sclafani
-  - Awsome
-- [Critical Issue Opened Private Chats of Facebook Messenger Users Up to Attackers](https://www.cynet.com/blog-facebook-originull/) by cynet
+  - Awesome.
+
 - [How I hacked Tinder accounts using Facebook’s Account Kit](https://medium.freecodecamp.org/hacking-tinder-accounts-using-facebook-accountkit-d5cc813340d1) by Anand Prakash
   - The author discovered an "account takeover vulnerability" in Tinder's application. By exploiting this, an attacker could have gained access to the victim's "Tinder account", who must have used their "phone number" to log in. This could have been exploited through a vulnerability in "Facebook Account Kit".
   - Both
-- [How I Was Able to Takeover Facebook Account](https://blog.securitybreached.org/2017/12/10/how-i-was-able-to-takeover-facebook-account-bug-bounty-poc/) by Ameer Hamza
 - [Bypass Admin approval, Mute Member and Posting Permissions for Only admins in Facebook groups](https://medium.com/bugbountywriteup/bypass-admin-approval-mute-member-and-posting-permissions-for-only-admins-in-facebook-groups-ef476cb3d524) by Sarmad Hassan
 - [Facebook Bug Bounty! {Permission Bug}](https://medium.com/@alicanact60/facebook-bug-bounty-permission-bug-19c9358d2297) by alicanact60
 - [Add comment on a private Oculus Developer bug report](https://medium.com/bugbountywriteup/add-comment-on-a-private-oculus-developer-bug-report-93f35bc80b2c) by Sarmad Hassan
 - [Instagram Multi-factor authentication Bypass](https://medium.com/@vishnu0002/instagram-multi-factor-authentication-bypass-924d963325a1) by vishnuraj
 - [How I was able to generate Access Tokens for any Facebook user](https://medium.com/bugbountywriteup/how-i-was-able-to-generate-access-tokens-for-any-facebook-user-6b84392d0342) by Samm0uda
-- [Use XSS and Bug Chain to Bypass Google Account Recovery Restriction](https://sites.google.com/site/bughunteruniversity/best-reports/account-recovery-xss) by Ramzes
-- [Bypassing Google Authentication on Periscope's Administration Panel](https://whitton.io/articles/bypassing-google-authentication-on-periscopes-admin-panel/) By Jack Whitton
 - [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
-- [I got emails - G Suite Vulnerability](http://blog.pentestnepal.tech/post/156707088037/i-got-emails-g-suite-vulnerability) by uranium238
-- [This domain is my domain - G Suite A record vulnerability](http://blog.pentestnepal.tech/post/156959105292/this-domain-is-my-domain-g-suite-a-record) by uranium238
 - [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
 - [How I hacked Google’s bug tracking system itself for $15,600 in bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
 - [I bypassed "How I hacked Google’s bug tracking system itself for $15,600 in bounties." Here’s how](https://medium.freecodecamp.org/i-bypassed-how-i-hacked-googles-bug-tracking-system-itself-for-15-600-in-bounties-here-s-how-3355c8c63955) by Gopal Singh
+
 - [Bypassing Firebase authorization to create custom goo.gl subdomains](https://blog.thomasorlita.cz/vulns/bypassing-firebase-authorization-to-create-custom-goo-gl-subdomains/) by ThomasOrlita
-- [How I could have stolen your photos from Google - my first 3 bug bounty writeups](https://blog.avatao.com/How-I-could-steal-your-photos-from-Google/) by Gergő Turcsányi
-- [Office365 Auth Bypass - The road to hell is paved with SAML Assertions](http://www.economyofmechanism.com/office365-authbypass.html) by Yiannis Kakavas
-- [Github SAML - The road to your codebase is paved with forged assertions](http://www.economyofmechanism.com/github-saml.html) by Yiannis Kakavas
+  - Since the support of `goo.gl` has already ended, the author have been looking for ways to shorten URLs using Google services. Some time ago he has found a bug that allowed him to shorten links using Google's official `g.co` shortener. This time he took a look at [Firebase Dynamic Links](https://firebase.google.com/docs/dynamic-links/).
+  - A regular user can create custom subdomains on `app.goo.gl` via "Firebase Console". This should be possible to do only by Google.
+  - Not that interesting.
+
 - [Using a GitHub app to escalate to an organization owner for a $10,000 bounty](https://medium.com/@cachemoney/using-a-github-app-to-escalate-to-an-organization-owner-for-a-10-000-bounty-4ec307168631) by Tanner
 - [Unauthorized Access to Unisphere Management Server Debugging Facility on https://bf1-uaddbcx-002.data.bf1.yahoo.com/Debug/](https://medium.com/@zk34911/yahoo-bug-bounty-unauthorized-access-to-unisphere-management-server-debugging-facility-on-448aeb6d0c94) by zk34911
 - [Yahoo! Luminate Internal Privilege Escalation — Admin to Owner](https://medium.com/@rojanrijal/luminate-internal-privilege-escalation-admin-to-owner-2ca28e575985) by Rojan Rijal
 - [Source Code Analysis in YSurvey — Luminate bug](https://medium.com/@rojanrijal/source-code-analysis-in-ysurvey-luminate-bug-c86dc29b70c4) by Rojan Rijal
-- [Authentication bypass on Uber’s Single Sign-On via subdomain takeover](https://www.arneswinnen.net/2017/06/authentication-bypass-on-ubers-sso-via-subdomain-takeover/) by Arne Swinnen
-- [Uber Bug Bounty: Gaining Access To An Internal Chat System](https://mishresec.wordpress.com/2017/10/13/uber-bug-bounty-gaining-access-to-an-internal-chat-system/) by mishre
+
+
 - [Twitter's Vine Source code dump - $10080](https://avicoder.me/2016/07/22/Twitter-Vine-Source-code-dump/) by avicoder
 - [How I gained access to chef, docker, AWS, and MongoDB instances in a single request](https://samcurry.net/how-i-gained-access-to-chef-docker-aws-and-mongodb-instances-in-a-single-request/) by samwcyo
 - [2FA PayPal Bypass](https://henryhoggard.co.uk/blog/Paypal-2FA-Bypass) by henryhoggard
 - [Bypassing the Current Password Protection at PayPal TechSupport Portal](https://medium.com/@YoKoKho/bypassing-the-current-password-protection-at-techsupport-portal-b9005ee17e64) by YoKo Kho
 - [Decoding a .htpasswd to Earn a Payload of Money](https://blog.it-securityguard.com/bugbounty-decoding-a-%F0%9F%98%B1-00000-htpasswd-bounty/) by Patrik Fehrenbach
-- [Slack SAML authentication bypass](http://blog.intothesymmetry.com/2017/10/slack-saml-authentication-bypass.html) by Antonio Sanso
+
 - [From JS to another JS files lead to authentication bypass](http://c0rni3sm.blogspot.com/2017/06/from-js-to-another-js-files-lead-to.html) by c0rni3sm
 - [Accidentally typo to bypass administration access](http://c0rni3sm.blogspot.com/2017/08/accidentally-typo-to-bypass.html) by c0rni3sm
 - [How I hacked hundreds of companies through their helpdesk](https://medium.com/@intideceukelaire/how-i-hacked-hundreds-of-companies-through-their-helpdesk-b7680ddc2d4c) by Inti De Ceukelaire
@@ -223,8 +209,6 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [GraphQL abuse: Bypass account level permissions through parameter smuggling](https://labs.detectify.com/2018/03/14/graphql-abuse/) by Jon Bottarini
 - [Response To Request Injection (RTRI)](http://web.archive.org/web/20160907083447/https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?
   - be honest, thanks to this article, I have found quite a few bugs because of using his method, respect to the author!
-- [Attacking SSO: Common SAML Vulnerabilities and Ways to Find Them](https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/) by Jem Jensen
-- [Bypassing SAML 2.0 SSO with XML Signature Attacks](https://research.aurainfosec.io/bypassing-saml20-SSO/) by Tim Goddard
 - [How re-signing up for an account lead to account takeover](https://medium.com/@zseano/how-re-signing-up-for-an-account-lead-to-account-takeover-3a63a628fd9f) by Sean
 - [How I was able to compromise user account via HTTP Parameter Pollution(HPP)](https://medium.com/@logicbomb_1/bugbounty-compromising-user-account-how-i-was-able-to-compromise-user-account-via-http-4288068b901f) by Avinash Jain
 - [How to Detect HTTP Parameter Pollution Attacks](https://www.acunetix.com/blog/whitepaper-http-parameter-pollution/) by ?
