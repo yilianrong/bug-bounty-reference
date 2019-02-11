@@ -9,6 +9,7 @@ Some specific topics about bug hunting.
   - XSSI
 - CORS
 - OAuth
+- SAML
 - JSON Web Token
 - S3 Bucket
 - Tools
@@ -524,6 +525,21 @@ Some specific topics about bug hunting.
     - `https://redacted.com/?oauth=gfhju76554678ggfr576898gfhj&redirect_uri=https://test.com`
   - The author tried to bypass `redirect_uri`. He simply started with by injecting his server URL but no lucky. He then started "intruder" and tried "open redirect payloads".
     - After 300 attempts he got a 301 response from targetted server meant to "redirect filter" has been bypassed and then he got the "OAuth token" via "referer header" after redirecting victim on his server.
+
+### SAML
+
+- [Office365 Auth Bypass - The road to hell is paved with SAML Assertions](http://www.economyofmechanism.com/office365-authbypass.html) by Yiannis Kakavas
+  - Short SAML introduction.
+  - Excellent and complicated.
+- [Github SAML - The road to your codebase is paved with forged assertions](http://www.economyofmechanism.com/github-saml.html) by Yiannis Kakavas
+  - The author analysised the "Github Enterprise" source code. Complicated.
+- [Uber Bug Bounty: Gaining Access To An Internal Chat System](https://mishresec.wordpress.com/2017/10/13/uber-bug-bounty-gaining-access-to-an-internal-chat-system/) by mishre
+  - This vulnerability allowed the author to view the company's internal chat system by abusing their vulnerable SAML implementation.
+  - While searching for assets, the author came across an internal subdomain `https://uchat.uberinternal.com`. He was able to find this subdomain by using the `https://crt.sh` website with the `%.uberinternal.com` wildcard.
+  - 
+- [Slack SAML authentication bypass](http://blog.intothesymmetry.com/2017/10/slack-saml-authentication-bypass.html) by Antonio Sanso
+- [Attacking SSO: Common SAML Vulnerabilities and Ways to Find Them](https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/) by Jem Jensen
+- [Bypassing SAML 2.0 SSO with XML Signature Attacks](https://research.aurainfosec.io/bypassing-saml20-SSO/) by Tim Goddard
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
