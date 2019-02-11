@@ -536,8 +536,13 @@ Some specific topics about bug hunting.
 - [Uber Bug Bounty: Gaining Access To An Internal Chat System](https://mishresec.wordpress.com/2017/10/13/uber-bug-bounty-gaining-access-to-an-internal-chat-system/) by mishre
   - This vulnerability allowed the author to view the company's internal chat system by abusing their vulnerable SAML implementation.
   - While searching for assets, the author came across an internal subdomain `https://uchat.uberinternal.com`. He was able to find this subdomain by using the `https://crt.sh` website with the `%.uberinternal.com` wildcard.
-  - 
+  - After browsing the subdomain he was prompted with a button suggesting that he should login using the "OneLogin SSO". Since he already tested some Uber properties he guessed that this SSO was put in place in order to be used by Uber's employees, utilizing SAML. Confirmation for this guess was received when the login button forwarded him to the endpoint:
+    - `https://uchat.uberinternal.com/login/sso/saml`
+  - The only way he thought of attacking this implementation would be to create a simple SAML assertion and send it to the same endpoint by using a POST request.
+    - He then set out to send a simple XML with no signature at all, in order to check if their SAML implemention indeed verifies the signature (the author gave the PoC).
+  - The response was an error message indicated that username field was missing from the assertion. So the author added it. And after some more errors (Firstname, and Lastname were also missing), he was actually able to login to the system, without possessing an Uber employee account.
 - [Slack SAML authentication bypass](http://blog.intothesymmetry.com/2017/10/slack-saml-authentication-bypass.html) by Antonio Sanso
+  - Basically "SAML assertionss", between others contains an element called "Audience" and "AudienceRestriction". The "Assertion" also contains an "AudienceRestriction" element that defines that this "Assertion" is targeted for a specific "Service Provider" and cannot be used for any other "Service Provider".
 - [Attacking SSO: Common SAML Vulnerabilities and Ways to Find Them](https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/) by Jem Jensen
 - [Bypassing SAML 2.0 SSO with XML Signature Attacks](https://research.aurainfosec.io/bypassing-saml20-SSO/) by Tim Goddard
 
