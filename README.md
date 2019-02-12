@@ -176,8 +176,25 @@ My intention is to make a full and complete list of common vulnerability that ar
   - The author used "Graph API".
 
 - [Add comment on a private Oculus Developer bug report](https://medium.com/bugbountywriteup/add-comment-on-a-private-oculus-developer-bug-report-93f35bc80b2c) by Sarmad Hassan
-  - 
+  - The author already tested oculus couple months ago but didn't find any bug on it, then he decided to test it again.
+  - While poking around "Oculus Developer domain", the author noticed an option called "Report a Bug", where users can submit their bugs (not security bugs) to oculus support team. When he saw this option, he decided to test it.
+    - Users can submit their bugs with two ways, public bugs and private bugs.
+    - In public bugs, any one can add comments or reply to other comments.
+    - In private bugs, no one can add comments except the owner of the bug and the support team.
+    - Private bugs don't appears in the dashboard from other users perspective.
+  - The author created public bug and added comment to his bug, after that he replied to his comment and intercepted the request with burpsuite:
+    - POST request: `graph.oculus.com/graphql?locale=user`
+    - body: `access_token=My-Acces-Token&variables={"input":{"client_mutation_id":"1","comment_parent_id":"556190998150906","external_post_id":"548709645565708","message":"what ever"}}&blablabla`
+    - `comment_parent_id` refers to his "bug ID", `external_post_id` refers to "the ID of the comment" that he replied to it.
+  - When he saw the above request, two plans came to his mand:
+    - Plan A: he wanted to add comments on other users private bug by replacing his "bug ID" with their "bug ID". It didn't work.
+    - Plan B: he wanted to add comments on other users private bug by replacing `external_post_id` value to other users value which is their "comment ID" in their private bug. Worked.
+  - There was only one limitation in this bug, the question is how attacker can get other users "comment ID" from their private bugs since their bugs set as private and no one can see private bugs except the owner of the bug and the suppoert team.
+    - It is hard to find that but not impossible, let's say someone was able to disclose other users "comment ID" or attacker can make a list for random "comment ID" and can perform a random attack and will add his comment on random private bug.
 - [How I was able to generate Access Tokens for any Facebook user](https://medium.com/bugbountywriteup/how-i-was-able-to-generate-access-tokens-for-any-facebook-user-6b84392d0342) by Samm0uda
+  - The author found this bug by mistake when he was testing some Facebook endpoints used in the "Rights Manger dashboard" which is a dashboard targeting videos' publishers and editors.
+  - The vulnerable endpoint returns a page "Access Token" when making a POST request to it along with the parameter `page_id`. The issue here is that the endpoint didn't check if the provided value for the `page_id` was actually an ID of a "page" and not another object like "user". This allowed the author to make the request and change the `page_id` value to any "Facebook user ID" and as a response to this request he got the "Access Token" of that user.
+  - Impact: Due to the state of the "Access Token" (the scopes of the generated "Access Token" are for pages and not users), the author wasn't able to read and modify some data about the user (like see messages) and he wasn't able to full takeover the account. Nevertheless, he was able to read all private information like emails, credit cards, phones number, managed pages and their "Access Tokens", managed business / ad-accounts and private posts, photos and videos.
 - [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
 - [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
 - [How I hacked Google’s bug tracking system itself for $15,600 in bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
