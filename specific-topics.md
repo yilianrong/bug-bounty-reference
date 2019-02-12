@@ -543,8 +543,14 @@ Some specific topics about bug hunting.
   - The response was an error message indicated that username field was missing from the assertion. So the author added it. And after some more errors (Firstname, and Lastname were also missing), he was actually able to login to the system, without possessing an Uber employee account.
 - [Slack SAML authentication bypass](http://blog.intothesymmetry.com/2017/10/slack-saml-authentication-bypass.html) by Antonio Sanso
   - Basically "SAML assertionss", between others contains an element called "Audience" and "AudienceRestriction". The "Assertion" also contains an "AudienceRestriction" element that defines that this "Assertion" is targeted for a specific "Service Provider" and cannot be used for any other "Service Provider".
+    - This means that if we present to a "Service Provider A" an Assertion meant for "Service Provider B", then the "Service Provider A" should reject it.
+  - The author used an old and expired Github's Assertion he had saved somewhere in his archive that was signed for a subject different than his and he presented to Slack. Slack happily accepted it and he was logged in Slack channel with the username of this old and expired Assertion that was never meant to be a Slack one.
 - [Attacking SSO: Common SAML Vulnerabilities and Ways to Find Them](https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/) by Jem Jensen
+  - A simplified overview of SAML.
+  - Common implementation mistakes and testing tips.
 - [Bypassing SAML 2.0 SSO with XML Signature Attacks](https://research.aurainfosec.io/bypassing-saml20-SSO/) by Tim Goddard
+  - How to identify SAML Responses.
+  - How to use "SAML Raider".
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
