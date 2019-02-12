@@ -195,13 +195,35 @@ My intention is to make a full and complete list of common vulnerability that ar
 
 
 - [Twitter's Vine Source code dump - $10080](https://avicoder.me/2016/07/22/Twitter-Vine-Source-code-dump/) by avicoder
-- [How I gained access to chef, docker, AWS, and MongoDB instances in a single request](https://samcurry.net/how-i-gained-access-to-chef-docker-aws-and-mongodb-instances-in-a-single-request/) by samwcyo
+  - While discovering subdomains, `censys.io` gave the author an interesting URL `https://docker.vineapp.com` in its result.
+  - When he tried to access it via the browser, it shows `/* private docker registry */` in the response.
+    - If it is supposed to be private, then why is it publicly accessible? There has to be some thing else to going on here.
+    - On googling `/* private docker registry */`, the author get to know that the docker provides a functionality which allows a developer to host andshare images through the web.
+  - However, since he wasn't too familiar with docker APIs, he faced some trouble while accessing images endpoints. The ones he could access, unfortunately, were not giving any useful results.
+  - After figuring out that this "docker registry" is not using the latest version (V2) and the endpoints are different from previous ones, he needed to use V1 documentation to access them. Only after that was he able to get some useful response from the server.
+  - The author also showed how he downloaded the source code.
 - [2FA PayPal Bypass](https://henryhoggard.co.uk/blog/Paypal-2FA-Bypass) by henryhoggard
+  - Login with a valid username and password, click on the "Try another way" link.
+  - Enter any answer for security questions.
+  - Using a proxy, remove `securityQuestion0` and `securityQuestion1` from the POST data. Worked.
+  - So easy.
+
+- [YAHOO SMALL BUSINESS (LUMINATE) AND THE NOT-SO-SECRET KEYS](https://dos.sh/blog/2017/6/21/yahoo-small-business-luminate-and-the-not-so-secret-keys) by Tommy DeVoss
+  - "Luminate Small Business" allows users to list local businesses, create websites (and host them on Yahoo servers), create stores / shops, and purchase various things such as domains etc.
+  - After spending some time looking at the "free" portions of the sites, the author decided that it would be best if he purchased accounts to get access to more functionality to test.
+  - Not much clear.
+- [How I gained access to chef, docker, AWS, and MongoDB instances in a single request](https://samcurry.net/how-i-gained-access-to-chef-docker-aws-and-mongodb-instances-in-a-single-request/) by samwcyo
+  - The author detailed the successful exploitation of a server sided request forgery vulnerability in Yahoo's small business platform.
+  - The writeup maybe have some relationship with the previous one. Not much clear.
+
 - [Bypassing the Current Password Protection at PayPal TechSupport Portal](https://medium.com/@YoKoKho/bypassing-the-current-password-protection-at-techsupport-portal-b9005ee17e64) by YoKo Kho
 - [Decoding a .htpasswd to Earn a Payload of Money](https://blog.it-securityguard.com/bugbounty-decoding-a-%F0%9F%98%B1-00000-htpasswd-bounty/) by Patrik Fehrenbach
-
-- [From JS to another JS files lead to authentication bypass](http://c0rni3sm.blogspot.com/2017/06/from-js-to-another-js-files-lead-to.html) by c0rni3sm
-- [Accidentally typo to bypass administration access](http://c0rni3sm.blogspot.com/2017/08/accidentally-typo-to-bypass.html) by c0rni3sm
+  - A private bug bounty program had a globally readable `.htpasswd` file. The author cracked the DES hash, got access to development and staging environments.
+  - The author showed how to crack the DES.
+- [From JS to another JS files lead to authentication bypass](https://blog.yappare.com/2017/06/from-js-to-another-js-files-lead-to.html) by yappare
+  - This was found in a private bug bounty. The scope was limited to a few of features that available to the public. Based on the previous reported issues, seemed it was hard to find a new issue. It also mentioned in the bounty details that: "If you manage to get into Administration page, report immediately and do not pivot or further testing in `/admin`". Restricted.
+  - However, there
+- [Accidentally typo to bypass administration access](https://blog.yappare.com/2017/08/accidentally-typo-to-bypass.html) by yappare
 - [How I hacked hundreds of companies through their helpdesk](https://medium.com/@intideceukelaire/how-i-hacked-hundreds-of-companies-through-their-helpdesk-b7680ddc2d4c) by Inti De Ceukelaire
 - [How i hacked help desk of a Company](https://medium.com/@alirazzaq/how-i-hacked-help-desk-of-a-company-55dc22448446) by Ali Razzaq
 - [How signing up for an account with an @company.com email can have unexpected results](https://medium.com/@zseano/how-signing-up-for-an-account-with-an-company-com-email-can-have-unexpected-results-7f1b700976f5) by Sean
