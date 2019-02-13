@@ -551,6 +551,8 @@ Some specific topics about bug hunting.
 - [Bypassing SAML 2.0 SSO with XML Signature Attacks](https://research.aurainfosec.io/bypassing-saml20-SSO/) by Tim Goddard
   - How to identify SAML Responses.
   - How to use "SAML Raider".
+- [ORACLE WEBLOGIC - MULTIPLE SAML VULNERABILITIES (CVE-2018-2998/CVE-2018-2933)](https://pulsesecurity.co.nz/advisories/WebLogic-SAML-Vulnerabilities) by Denis Andzakovic
+  - This could be used as a PoC.
 
 ### JSON Web Token
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
@@ -559,6 +561,7 @@ Some specific topics about bug hunting.
 
 - [S3 Bucket Misconfiguration: From Basics to Pawn](https://bugbountypoc.com/s3-bucket-misconfiguration-from-basics-to-pawn/) by JAY JANI
 - [AWS S3 added to my "Bucket" list](https://medium.com/bugbountywriteup/bugbounty-aws-s3-added-to-my-bucket-list-f68dd7d0d1ce) by Avinash Jain
+- [Bypassing and exploiting Bucket Upload Policies and Signed URLs](https://labs.detectify.com/2018/08/02/bypassing-exploiting-bucket-upload-policies-signed-urls/) by Frans Rosén
 
 ### Tools
 
@@ -567,3 +570,5 @@ Some specific topics about bug hunting.
 - [Why Facebook's api starts with a for loop](https://dev.to/antogarand/why-facebooks-api-starts-with-a-for-loop-1eob) by Antony Garand
 - [Whitepaper: HTTP Security Headers and How They Work](https://www.netsparker.com/whitepaper-http-security-headers/) by Ziyahan Albeniz, Sven Morgenroth, Umran Yildirimkaya
 - [Advanced JavaScript Injections](https://brutelogic.com.br/blog/advanced-javascript-injections/) by Brute
+- [GraphQL abuse: Bypass account level permissions through parameter smuggling](https://labs.detectify.com/2018/03/14/graphql-abuse/) by Jon Bottarini
+- [How to Detect HTTP Parameter Pollution Attacks](https://www.acunetix.com/blog/whitepaper-http-parameter-pollution/) by ?
