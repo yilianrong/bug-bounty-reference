@@ -174,57 +174,10 @@ My intention is to make a full and complete list of common vulnerability that ar
   - The author could make "Watch Party post" in another group that he was member in it by just changing `group_id` parameter.
   - Changing `group_id` also works even if the admin of victim group muted the attacker he still be able to make watch party video and bypass mute option.
   - The author used "Graph API".
-
-- [Add comment on a private Oculus Developer bug report](https://medium.com/bugbountywriteup/add-comment-on-a-private-oculus-developer-bug-report-93f35bc80b2c) by Sarmad Hassan
-  - The author already tested oculus couple months ago but didn't find any bug on it, then he decided to test it again.
-  - While poking around "Oculus Developer domain", the author noticed an option called "Report a Bug", where users can submit their bugs (not security bugs) to oculus support team. When he saw this option, he decided to test it.
-    - Users can submit their bugs with two ways, public bugs and private bugs.
-    - In public bugs, any one can add comments or reply to other comments.
-    - In private bugs, no one can add comments except the owner of the bug and the support team.
-    - Private bugs don't appears in the dashboard from other users perspective.
-  - The author created public bug and added comment to his bug, after that he replied to his comment and intercepted the request with burpsuite:
-    - POST request: `graph.oculus.com/graphql?locale=user`
-    - body: `access_token=My-Acces-Token&variables={"input":{"client_mutation_id":"1","comment_parent_id":"556190998150906","external_post_id":"548709645565708","message":"what ever"}}&blablabla`
-    - `comment_parent_id` refers to his "bug ID", `external_post_id` refers to "the ID of the comment" that he replied to it.
-  - When he saw the above request, two plans came to his mand:
-    - Plan A: he wanted to add comments on other users private bug by replacing his "bug ID" with their "bug ID". It didn't work.
-    - Plan B: he wanted to add comments on other users private bug by replacing `external_post_id` value to other users value which is their "comment ID" in their private bug. Worked.
-  - There was only one limitation in this bug, the question is how attacker can get other users "comment ID" from their private bugs since their bugs set as private and no one can see private bugs except the owner of the bug and the suppoert team.
-    - It is hard to find that but not impossible, let's say someone was able to disclose other users "comment ID" or attacker can make a list for random "comment ID" and can perform a random attack and will add his comment on random private bug.
-- [How I was able to generate Access Tokens for any Facebook user](https://medium.com/bugbountywriteup/how-i-was-able-to-generate-access-tokens-for-any-facebook-user-6b84392d0342) by Samm0uda
-  - The author found this bug by mistake when he was testing some Facebook endpoints used in the "Rights Manger dashboard" which is a dashboard targeting videos' publishers and editors.
-  - The vulnerable endpoint returns a page "Access Token" when making a POST request to it along with the parameter `page_id`. The issue here is that the endpoint didn't check if the provided value for the `page_id` was actually an ID of a "page" and not another object like "user". This allowed the author to make the request and change the `page_id` value to any "Facebook user ID" and as a response to this request he got the "Access Token" of that user.
-  - Impact: Due to the state of the "Access Token" (the scopes of the generated "Access Token" are for pages and not users), the author wasn't able to read and modify some data about the user (like see messages) and he wasn't able to full takeover the account. Nevertheless, he was able to read all private information like emails, credit cards, phones number, managed pages and their "Access Tokens", managed business / ad-accounts and private posts, photos and videos.
-- [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
-- [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
-- [How I hacked Google’s bug tracking system itself for $15,600 in bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
-- [I bypassed "How I hacked Google’s bug tracking system itself for $15,600 in bounties." Here’s how](https://medium.freecodecamp.org/i-bypassed-how-i-hacked-googles-bug-tracking-system-itself-for-15-600-in-bounties-here-s-how-3355c8c63955) by Gopal Singh
-
 - [Bypassing Firebase authorization to create custom goo.gl subdomains](https://blog.thomasorlita.cz/vulns/bypassing-firebase-authorization-to-create-custom-goo-gl-subdomains/) by ThomasOrlita
   - Since the support of `goo.gl` has already ended, the author have been looking for ways to shorten URLs using Google services. Some time ago he has found a bug that allowed him to shorten links using Google's official `g.co` shortener. This time he took a look at [Firebase Dynamic Links](https://firebase.google.com/docs/dynamic-links/).
   - A regular user can create custom subdomains on `app.goo.gl` via "Firebase Console". This should be possible to do only by Google.
   - Not that interesting.
-
-- [Using a GitHub app to escalate to an organization owner for a $10,000 bounty](https://medium.com/@cachemoney/using-a-github-app-to-escalate-to-an-organization-owner-for-a-10-000-bounty-4ec307168631) by Tanner
-- [Unauthorized Access to Unisphere Management Server Debugging Facility on https://bf1-uaddbcx-002.data.bf1.yahoo.com/Debug/](https://medium.com/@zk34911/yahoo-bug-bounty-unauthorized-access-to-unisphere-management-server-debugging-facility-on-448aeb6d0c94) by zk34911
-- [Yahoo! Luminate Internal Privilege Escalation — Admin to Owner](https://medium.com/@rojanrijal/luminate-internal-privilege-escalation-admin-to-owner-2ca28e575985) by Rojan Rijal
-- [Source Code Analysis in YSurvey — Luminate bug](https://medium.com/@rojanrijal/source-code-analysis-in-ysurvey-luminate-bug-c86dc29b70c4) by Rojan Rijal
-
-
-- [Twitter's Vine Source code dump - $10080](https://avicoder.me/2016/07/22/Twitter-Vine-Source-code-dump/) by avicoder
-  - While discovering subdomains, `censys.io` gave the author an interesting URL `https://docker.vineapp.com` in its result.
-  - When he tried to access it via the browser, it shows `/* private docker registry */` in the response.
-    - If it is supposed to be private, then why is it publicly accessible? There has to be some thing else to going on here.
-    - On googling `/* private docker registry */`, the author get to know that the docker provides a functionality which allows a developer to host andshare images through the web.
-  - However, since he wasn't too familiar with docker APIs, he faced some trouble while accessing images endpoints. The ones he could access, unfortunately, were not giving any useful results.
-  - After figuring out that this "docker registry" is not using the latest version (V2) and the endpoints are different from previous ones, he needed to use V1 documentation to access them. Only after that was he able to get some useful response from the server.
-  - The author also showed how he downloaded the source code.
-- [2FA PayPal Bypass](https://henryhoggard.co.uk/blog/Paypal-2FA-Bypass) by henryhoggard
-  - Login with a valid username and password, click on the "Try another way" link.
-  - Enter any answer for security questions.
-  - Using a proxy, remove `securityQuestion0` and `securityQuestion1` from the POST data. Worked.
-  - So easy.
-
 - [YAHOO SMALL BUSINESS (LUMINATE) AND THE NOT-SO-SECRET KEYS](https://dos.sh/blog/2017/6/21/yahoo-small-business-luminate-and-the-not-so-secret-keys) by Tommy DeVoss
   - "Luminate Small Business" allows users to list local businesses, create websites (and host them on Yahoo servers), create stores / shops, and purchase various things such as domains etc.
   - After spending some time looking at the "free" portions of the sites, the author decided that it would be best if he purchased accounts to get access to more functionality to test.
@@ -232,33 +185,42 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I gained access to chef, docker, AWS, and MongoDB instances in a single request](https://samcurry.net/how-i-gained-access-to-chef-docker-aws-and-mongodb-instances-in-a-single-request/) by samwcyo
   - The author detailed the successful exploitation of a server sided request forgery vulnerability in Yahoo's small business platform.
   - The writeup maybe have some relationship with the previous one. Not much clear.
-
-- [Bypassing the Current Password Protection at PayPal TechSupport Portal](https://medium.com/@YoKoKho/bypassing-the-current-password-protection-at-techsupport-portal-b9005ee17e64) by YoKo Kho
 - [Decoding a .htpasswd to Earn a Payload of Money](https://blog.it-securityguard.com/bugbounty-decoding-a-%F0%9F%98%B1-00000-htpasswd-bounty/) by Patrik Fehrenbach
   - A private bug bounty program had a globally readable `.htpasswd` file. The author cracked the DES hash, got access to development and staging environments.
   - The author showed how to crack the DES.
 - [From JS to another JS files lead to authentication bypass](https://blog.yappare.com/2017/06/from-js-to-another-js-files-lead-to.html) by yappare
   - This was found in a private bug bounty. The scope was limited to a few of features that available to the public. Based on the previous reported issues, seemed it was hard to find a new issue. It also mentioned in the bounty details that: "If you manage to get into Administration page, report immediately and do not pivot or further testing in `/admin`". Restricted.
-  - However, there
-- [Accidentally typo to bypass administration access](https://blog.yappare.com/2017/08/accidentally-typo-to-bypass.html) by yappare
+  - However, there is an "administration page" which was restricted to unauthenticated and unauthorised users. Browsing to `/login` or `/admin` will redirect us to `https://bountysite.com/admin/dashboard?redirect=/`.
+    - Look at the source page, nothing much useful.
+  - The author started looking on the application's structure. It seems the JS files were located in few directories such as `/lib`, `/js`, `application` and etc.
+    - He ran the Burpsuite and ran the "Intruder" to identify any accessible JS files in these directories. One of the accessible JS files was `/login.js`.
+    - Accessing the JS file `https://bountysite.com/admin/dashboard/js/login.js` redirect him to the "administration page". But he had no permission to view it.
+  - It seems weird why the page is loaded as an HTML while he browsed to a JS file. After playing around, he noticed that the actual reason that allowed him to get into this "administration page" was because the `login` word. As long the request after `/dashboard` contains a word with the string of `login` will allow him to get into this "administration page" without a right authorisation.
+  - "Javascript analysis" wins.
+
+- [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
+- [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
+- [How I hacked Google’s bug tracking system itself for $15,600 in bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
+- [I bypassed "How I hacked Google’s bug tracking system itself for $15,600 in bounties." Here’s how](https://medium.freecodecamp.org/i-bypassed-how-i-hacked-googles-bug-tracking-system-itself-for-15-600-in-bounties-here-s-how-3355c8c63955) by Gopal Singh
+- [Using a GitHub app to escalate to an organization owner for a $10,000 bounty](https://medium.com/@cachemoney/using-a-github-app-to-escalate-to-an-organization-owner-for-a-10-000-bounty-4ec307168631) by Tanner
+- [Unauthorized Access to Unisphere Management Server Debugging Facility on https://bf1-uaddbcx-002.data.bf1.yahoo.com/Debug/](https://medium.com/@zk34911/yahoo-bug-bounty-unauthorized-access-to-unisphere-management-server-debugging-facility-on-448aeb6d0c94) by zk34911
+- [Yahoo! Luminate Internal Privilege Escalation — Admin to Owner](https://medium.com/@rojanrijal/luminate-internal-privilege-escalation-admin-to-owner-2ca28e575985) by Rojan Rijal
+- [Source Code Analysis in YSurvey — Luminate bug](https://medium.com/@rojanrijal/source-code-analysis-in-ysurvey-luminate-bug-c86dc29b70c4) by Rojan Rijal
+- [Bypassing the Current Password Protection at PayPal TechSupport Portal](https://medium.com/@YoKoKho/bypassing-the-current-password-protection-at-techsupport-portal-b9005ee17e64) by YoKo Kho
 - [How I hacked hundreds of companies through their helpdesk](https://medium.com/@intideceukelaire/how-i-hacked-hundreds-of-companies-through-their-helpdesk-b7680ddc2d4c) by Inti De Ceukelaire
 - [How i hacked help desk of a Company](https://medium.com/@alirazzaq/how-i-hacked-help-desk-of-a-company-55dc22448446) by Ali Razzaq
 - [How signing up for an account with an @company.com email can have unexpected results](https://medium.com/@zseano/how-signing-up-for-an-account-with-an-company-com-email-can-have-unexpected-results-7f1b700976f5) by Sean
-- [GraphQL abuse: Bypass account level permissions through parameter smuggling](https://labs.detectify.com/2018/03/14/graphql-abuse/) by Jon Bottarini
 - [Response To Request Injection (RTRI)](http://web.archive.org/web/20160907083447/https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?
   - be honest, thanks to this article, I have found quite a few bugs because of using his method, respect to the author!
 - [How re-signing up for an account lead to account takeover](https://medium.com/@zseano/how-re-signing-up-for-an-account-lead-to-account-takeover-3a63a628fd9f) by Sean
 - [How I was able to compromise user account via HTTP Parameter Pollution(HPP)](https://medium.com/@logicbomb_1/bugbounty-compromising-user-account-how-i-was-able-to-compromise-user-account-via-http-4288068b901f) by Avinash Jain
-- [How to Detect HTTP Parameter Pollution Attacks](https://www.acunetix.com/blog/whitepaper-http-parameter-pollution/) by ?
 - [Bypassing Captcha Like a Boss](https://medium.com/bugbountywriteup/bypassing-captcha-like-a-boss-d0edcc3a1c1) by Ak1T4
-- [Chaining Multiple Vulnerabilities to Gain Admin Access](https://nahamsec.com/chaining-multiple-vulnerabilities-to-gain-admin-access/) by NahamSec
-- [ORACLE WEBLOGIC - MULTIPLE SAML VULNERABILITIES (CVE-2018-2998/CVE-2018-2933)](https://pulsesecurity.co.nz/advisories/WebLogic-SAML-Vulnerabilities) by Denis Andzakovic
-- [Bypassing and exploiting Bucket Upload Policies and Signed URLs](https://labs.detectify.com/2018/08/02/bypassing-exploiting-bucket-upload-policies-signed-urls/) by Frans Rosén
 - [How I hijacked your account when you opened my cat picture](https://medium.com/intigriti/how-i-hijacked-your-account-when-you-opened-my-cat-picture-9a0a0acca9e8) by Matti Bijnens
 - [How could I completely takeover any user’s account in an online classified ads company](https://medium.com/bugbountywriteup/bugbounty-i-dont-need-your-current-password-to-login-into-your-account-how-could-i-e51a945b083d) by Avinash Jain
 - [How I could book cab using your wallet money in India’s largest auto transportation company](https://medium.com/bugbountywriteup/bugbounty-how-i-could-book-cab-using-your-wallet-money-in-indias-largest-auto-transportation-e0c4252ca1a3) by Avinash Jain
 - [How I was able to Compromise any User Account via Reset Password Functionality](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-compromise-any-user-account-via-reset-password-functionality-a11bb5f863b3) by Avinash Jain
 - [How I was able to hack any user account via password reset](https://medium.com/@BgxDoc/bugbounty-how-i-was-able-to-hack-any-user-account-via-password-reset-9009d84d94ff) by Bikash Gupta
+
 - [How i was able to get admin panel on a private program](http://cybristerboy.blogspot.com/2018/05/how-i-was-able-to-get-admin-panel-on.html) by CybristerBoy
 - [Password reset to full account takeover](https://medium.com/@hamzabet/password-reset-to-full-account-takeover-8a1e0a395987) by Hamza Bettache
 - [User Account Takeover-I just need your email id to login into your shopping portal account](https://medium.com/@logicbomb_1/bugbounty-user-account-takeover-i-just-need-your-email-id-to-login-into-your-shopping-portal-7fd4fdd6dd56) by Avinash Jain
