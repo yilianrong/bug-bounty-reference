@@ -198,9 +198,23 @@ My intention is to make a full and complete list of common vulnerability that ar
   - It seems weird why the page is loaded as an HTML while he browsed to a JS file. After playing around, he noticed that the actual reason that allowed him to get into this "administration page" was because the `login` word. As long the request after `/dashboard` contains a word with the string of `login` will allow him to get into this "administration page" without a right authorisation.
   - "Javascript analysis" wins.
 
-- [Bypassing Google Email Domain Check to Deliver Spam Email on Google’s Behalf](http://web.archive.org/web/20161209085817/http://ngailong.com/bypassing-google-email-domain-check-to-deliver-spam-email-on-googles-behalf/) by Ron Chan
 - [Bypassing Google’s authentication to access their Internal Admin panels](https://medium.com/bugbountywriteup/bypassing-googles-fix-to-access-their-internal-admin-panels-12acd3d821e3) by Vishnu Prasad P G
+  - The author found a bug in Google that enables anyone to access "the internal admin panel" of YouTube's Broadcasting Satellite & YouTube TV.
+  - One day, while searching for new bugs in Google, the author got some of Google's IP addresses from some disclosure of their internal issues (he had no idea what to do with these IP addresses).
+  - He checked the IP addresses and could understand that the list contained some internal Google IP also. Recently, a similar bug was reported by his friend regarding their internal IP and also another one by his another good friend who had found a subdomain with access to the admin panels.
+    - However, these issues had already been fixed. And Google had also blocked the public access to these entire IP ranges.
+    - But now, the author had some similar IP address and he somehow had to find a way to bypass this restriction.
+  - As he kept thinking how to move forward, he asked himself: Why not ask Google about how to bypass Google's restriction.
+    - Every article / blog / forum / comments he read told him that we need their proxy (Google Access Proxy) to access the IP addresses.
+    - He kept searching and searching new ways, and then all of a sudden, his power supply went off. He had already decided that he would somehow find a way to bypass this and that he was not ready to quit.
+    - He took out his mobile phone and started searching in Google again. As he searched, just out of curiosity, he tried to open one of those IP addresses in his Google Chrome mobile browser. A page with "HTTP login" appeared in front of him.
+    - However, he needed a username and password to get into it. He tried clicking the "Login" button without entering any credentials at all.
+    - To his surprise, a page with many buttons and options appeared in front of him. It took him a minute to realize that he was inside a Google product's "admin panel".
+    - After a few minutes, the power was back and he tried to open the same IP in his computer. But it wouldn't open. The "login page" never showed up.
+  - Why was it working in his mobile phone browser and not in his laptop browser?
+    - It was "Google's Data sever" that helped him to access their internal IPs. It was turned on in his Chrome mobile browser. This proxy acts as their access proxy and gave him access to their internal page. So after adding this proxy to his computer he was able to access the "admin panel" from his laptop browser as well.
 - [How I hacked Google’s bug tracking system itself for $15,600 in bounties](https://medium.freecodecamp.org/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5) by Alex Birsan
+  - 
 - [I bypassed "How I hacked Google’s bug tracking system itself for $15,600 in bounties." Here’s how](https://medium.freecodecamp.org/i-bypassed-how-i-hacked-googles-bug-tracking-system-itself-for-15-600-in-bounties-here-s-how-3355c8c63955) by Gopal Singh
 - [Using a GitHub app to escalate to an organization owner for a $10,000 bounty](https://medium.com/@cachemoney/using-a-github-app-to-escalate-to-an-organization-owner-for-a-10-000-bounty-4ec307168631) by Tanner
 - [Unauthorized Access to Unisphere Management Server Debugging Facility on https://bf1-uaddbcx-002.data.bf1.yahoo.com/Debug/](https://medium.com/@zk34911/yahoo-bug-bounty-unauthorized-access-to-unisphere-management-server-debugging-facility-on-448aeb6d0c94) by zk34911
