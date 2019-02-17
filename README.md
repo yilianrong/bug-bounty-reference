@@ -15,7 +15,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [XML External Entity (XXE)](#xml-external-entify-xxe) done
 - [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference-idor) done
 - [Sensitive Information Exposure](#sensitive-information-exposure) done
-- [Authentication Bypass](#authentication-bypass)
+- [Authentication Bypass](#authentication-bypass) done
 - [Stealing Access Token](#stealing-access-token) done
 - [Business Logic Flaw](#business-logic-flaw) done
 - [HTTP Header Injection](#http-header-injection) done
@@ -197,17 +197,18 @@ My intention is to make a full and complete list of common vulnerability that ar
     - Accessing the JS file `https://bountysite.com/admin/dashboard/js/login.js` redirect him to the "administration page". But he had no permission to view it.
   - It seems weird why the page is loaded as an HTML while he browsed to a JS file. After playing around, he noticed that the actual reason that allowed him to get into this "administration page" was because the `login` word. As long the request after `/dashboard` contains a word with the string of `login` will allow him to get into this "administration page" without a right authorisation.
   - "Javascript analysis" wins.
-
 - [Source Code Analysis in YSurvey — Luminate bug](https://medium.com/@rojanrijal/source-code-analysis-in-ysurvey-luminate-bug-c86dc29b70c4) by Rojan Rijal
   - When analyzing a web application add-on that Yahoo has for Luminate, the author decided to check YSurvey by checking its source code as well.
-  - 
-- [Bypassing the Current Password Protection at PayPal TechSupport Portal](https://medium.com/@YoKoKho/bypassing-the-current-password-protection-at-techsupport-portal-b9005ee17e64) by YoKo Kho
-- [How I hacked hundreds of companies through their helpdesk](https://medium.com/@intideceukelaire/how-i-hacked-hundreds-of-companies-through-their-helpdesk-b7680ddc2d4c) by Inti De Ceukelaire
-- [How i hacked help desk of a Company](https://medium.com/@alirazzaq/how-i-hacked-help-desk-of-a-company-55dc22448446) by Ali Razzaq
-- [How signing up for an account with an @company.com email can have unexpected results](https://medium.com/@zseano/how-signing-up-for-an-account-with-an-company-com-email-can-have-unexpected-results-7f1b700976f5) by Sean
+  - YSurvey allows website owners to create surveys for their visitors. Based on how it is designed, there is only one "admin" in YSurvey which will be the website owner. Users filling the survey have no user accounts.
+  - During the analysis, the author found out that when accessing the "admin panel", there was a cookie that was identifying if user was an admin. This code simply checked if the cookie was set to `cid=1` or not. So he added `cid=1` and gained access to `admin panel` of that website.
+  - The author then analysed the source code and got a SQL injection.
+  - This vulnerability is about an add-on, which I am not interested in at this stage.
+
 - [Response To Request Injection (RTRI)](http://web.archive.org/web/20160907083447/https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?
-  - be honest, thanks to this article, I have found quite a few bugs because of using his method, respect to the author!
+  - 
 - [How re-signing up for an account lead to account takeover](https://medium.com/@zseano/how-re-signing-up-for-an-account-lead-to-account-takeover-3a63a628fd9f) by Sean
+  - When testing a site you will be surprised at how many act different depending on user agent, device, language, session (logged in / out). When testing you should test from as many different angles as possible to check if anything is different / dicover new endpoints. Some responses will display different links, ads, sections of the site, etc.
+  - 
 - [How I was able to compromise user account via HTTP Parameter Pollution(HPP)](https://medium.com/@logicbomb_1/bugbounty-compromising-user-account-how-i-was-able-to-compromise-user-account-via-http-4288068b901f) by Avinash Jain
 - [Bypassing Captcha Like a Boss](https://medium.com/bugbountywriteup/bypassing-captcha-like-a-boss-d0edcc3a1c1) by Ak1T4
 - [How I hijacked your account when you opened my cat picture](https://medium.com/intigriti/how-i-hijacked-your-account-when-you-opened-my-cat-picture-9a0a0acca9e8) by Matti Bijnens
