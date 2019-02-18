@@ -205,7 +205,22 @@ My intention is to make a full and complete list of common vulnerability that ar
   - This vulnerability is about an add-on, which I am not interested in at this stage.
 
 - [Response To Request Injection (RTRI)](http://web.archive.org/web/20160907083447/https://www.bugbountyhq.com/front/latestnews/dWRWR0thQ2ZWOFN5cTE1cXQrSFZmUT09/) by ?
-  - 
+  - Whilst looking over the target, there was an option to become an affiliate. The author figured he may as well try and register because if accepted it would open up the scope of the target for him. Sure enough, an email dropped in 24 hours later.
+  - Once he was logged into his new affiliate account, he immediately noticed in the top right corner: "version 5.5.10.7".
+  - So instead of playing around with the target, he immediately looked to see if he could download the product so he could determine things on a local and therefore more informed basis. Unfortunately a download was not available, but the next best thing was, an online demo on the vendor's site: `http://demo.postaffiliatepro.com/affiliates/`.
+  - The first thing to try was the "Merchant Login".
+    - Wherever possible he always start with the highest privilege account he can, then work backwards.
+    - Whenever he can, some of the first things he always focus on from an application administrator point of view are: "adding a low privileged user", "adding an admin user".
+  - As he was logged in as the "admin" account, he created an "affiliate account". The POST data for create the "affiliate account":
+    - In the request: `["rstatus","A"]`, this is clearly the value for a user being approved.
+    - In the response: `["rtype","A",null,""]`, at this point he assume this is setting the account type as `A` for "Affiliate".
+  - Now move on to create a "Merchant (admin) account":
+    - In the request: `["roleid","pap_merc"]`, self explanatory.
+    - In the response: `["rtype","M",null,""]`, this is clearly setting the account type, with `M` being "Merchant".
+  - For his final test, he now self-registers an account as an unauthenticated user. In the bug bounty target's scenario, the "affiliate registration" required manual approval by the target "Admin", or in this case the target "Merchant Account". The POST data:
+    - In the request: nothing exactly interesting.
+    - In the response: `["rtype","A",null,""]`, it has set us as "Affiliate". `["roleid","pap_aff",null,""]`, it has allocated us with the role of "Affiliate". `["rstatus","P",null,""]`, it has set our account in a "pending sate" as it requires manual approval by the "Merchant".
+  - We are going to self-register an account again, but
 - [How re-signing up for an account lead to account takeover](https://medium.com/@zseano/how-re-signing-up-for-an-account-lead-to-account-takeover-3a63a628fd9f) by Sean
   - When testing a site you will be surprised at how many act different depending on user agent, device, language, session (logged in / out). When testing you should test from as many different angles as possible to check if anything is different / dicover new endpoints. Some responses will display different links, ads, sections of the site, etc.
   - 
