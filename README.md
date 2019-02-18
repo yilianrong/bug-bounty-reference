@@ -216,15 +216,23 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How I could book cab using your wallet money in India’s largest auto transportation company](https://medium.com/bugbountywriteup/bugbounty-how-i-could-book-cab-using-your-wallet-money-in-indias-largest-auto-transportation-e0c4252ca1a3) by Avinash Jain
 - [How I was able to Compromise any User Account via Reset Password Functionality](https://medium.com/bugbountywriteup/bugbounty-how-i-was-able-to-compromise-any-user-account-via-reset-password-functionality-a11bb5f863b3) by Avinash Jain
 - [How I was able to hack any user account via password reset](https://medium.com/@BgxDoc/bugbounty-how-i-was-able-to-hack-any-user-account-via-password-reset-9009d84d94ff) by Bikash Gupta
-
 - [How i was able to get admin panel on a private program](http://cybristerboy.blogspot.com/2018/05/how-i-was-able-to-get-admin-panel-on.html) by CybristerBoy
 - [Password reset to full account takeover](https://medium.com/@hamzabet/password-reset-to-full-account-takeover-8a1e0a395987) by Hamza Bettache
 - [User Account Takeover-I just need your email id to login into your shopping portal account](https://medium.com/@logicbomb_1/bugbounty-user-account-takeover-i-just-need-your-email-id-to-login-into-your-shopping-portal-7fd4fdd6dd56) by Avinash Jain
 - [Authentication bypass in NodeJS application — a bug bounty story](https://medium.com/bugbountywriteup/authentication-bypass-in-nodejs-application-a-bug-bounty-story-d34960256402) by bl4de
+
 - [Bypassing Authentication Using Javascript Debugger](https://mohitdabas.wordpress.com/2018/09/18/bypassing-authentication-using-javascript-debugger/) by mohitdabas
+  - The author targeted the login mechanism. He saw while clicking on it, it generated javascript events.
+  - So the hunt began for this function, he saw every JS files and found the function was in a `facebook.js`.
+  - Putting a breakpoint on data variable comparison, modifying the data value in the console. Authentication was bypassed.
 - [How I was Able To Bypass Email Verification](https://blog.securitybreached.org/2018/12/08/how-i-was-able-to-bypass-email-verification/) by Muzammil Kayani
+  - While testing a private site for finding some basic issue, the author found that the site have email verification mechanism. The main function of this mechanism is to send a 4 digit verification code and email link to the user provided email. He thought how could he bypass it.
+  - Tried to brute force verification code but failed, they had rate limit there.
+  - He then went through Burpsuite "HTTP History" and found a request which was used for adding email, the repsponse to this request leaked "verification link".
 - [How i was able to pwned application by Bypassing Cloudflare WAF](https://medium.com/bugbountywriteup/bypass-cloudflare-waf-to-pwned-application-2c9e4f862319) by Gujjuboy10x00
 - [How we tookover shopify accounts with one single click](https://wesecureapp.com/blog/how-we-tookover-shopify-accounts-with-one-single-click/) by Akhil Reni
+  - When a customer purchases any product from a shop in Shopify, they will be redirected to a "checkout page". While redirected the request is sent with two other parameters. In those two parameters there is an interesting parameter called `referrer`. This `referrer` parameter tracks the customers, for example if there is a "buy now" button embedded on `http://example.com` and a customer clicks on it to buy a product then this `referrer` value is reflected in the "admin panel" of the shop.
+  - So to takeover the shop,
 
 ### Stealing Access Token
 
