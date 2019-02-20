@@ -311,6 +311,10 @@ My intention is to make a full and complete list of common vulnerability that ar
   - The author was working on a private program. When a user requests to reset his password throuth "forgot password" using his email, he gets redirected to `https://www.redacted.com/en/reset-password/reset/CbagrB45USRBLQb30xt2QiLnKrkFBQzD` and a "verification code" is sent to the user's inbox.
   - So the author created another account, requested a "verification code" and used it on the first reset form (assuming it as a victim account), and he reset the victim's password successfully.
 - [User Account Takeover-I just need your email id to login into your shopping portal account](https://medium.com/@logicbomb_1/bugbounty-user-account-takeover-i-just-need-your-email-id-to-login-into-your-shopping-portal-7fd4fdd6dd56) by Avinash Jain
+  - The most crucial part in software development when it comes to security is the integration. Majority of security hack / loopholes happen mostly due to incorrect implementation while integrating third party services / modules with the application. Developers should not leave any misconfiguration open while implementing these services.
+  - The author went to the "login section" of the site and as every site has the option to "sign in with Google / Facebook" apart from usual "OTP and password" login, it had the same functionality. He tried to login with "Google signin" and "Oauth2 signing authorization" service was in use.
+    - There were 2 parameters which was being used for login verification: `accessToken` parameter which is carrying Google oauth2 signin token and `login` parameter which is carrying user's email.
+    - He changed the `login` value to his friend's email, then successfully login into his friend's account.
 - [Authentication bypass in NodeJS application — a bug bounty story](https://medium.com/bugbountywriteup/authentication-bypass-in-nodejs-application-a-bug-bounty-story-d34960256402) by bl4de
   - Complicated.
 
