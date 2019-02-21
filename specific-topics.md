@@ -12,6 +12,7 @@ Some specific topics about bug hunting.
 - SAML
 - JSON Web Token
 - S3 Bucket
+- Web Cache
 - Tools
 
 ### AngularJS
@@ -555,6 +556,8 @@ Some specific topics about bug hunting.
   - This could be used as a PoC.
 
 ### JSON Web Token
+
+- [5 Easy Steps to Understanding JSON Web Tokens (JWT)](https://medium.com/vandium-software/5-easy-steps-to-understanding-json-web-tokens-jwt-1164c0adfcec) by Mikey Stecky-Efantis
 - [How I got access to millions of -redacted- accounts](https://bitquark.co.uk/blog/2016/02/09/how_i_got_access_to_millions_of_redacted_accounts) by Bitquark
 
 ### S3 Bucket
@@ -562,6 +565,14 @@ Some specific topics about bug hunting.
 - [S3 Bucket Misconfiguration: From Basics to Pawn](https://bugbountypoc.com/s3-bucket-misconfiguration-from-basics-to-pawn/) by JAY JANI
 - [AWS S3 added to my "Bucket" list](https://medium.com/bugbountywriteup/bugbounty-aws-s3-added-to-my-bucket-list-f68dd7d0d1ce) by Avinash Jain
 - [Bypassing and exploiting Bucket Upload Policies and Signed URLs](https://labs.detectify.com/2018/08/02/bypassing-exploiting-bucket-upload-policies-signed-urls/) by Frans Rosén
+
+### Web Cache
+
+- [Web Caching](https://si9int.sh/article/6) by SI9INT
+- [Web Cache Deception Attack](https://omergil.blogspot.com/2017/02/web-cache-deception-attack.html) by Omer Gil
+- [Practical Web Cache Poisoning](https://portswigger.net/blog/practical-web-cache-poisoning) by James Kettle
+- [Bypassing Web Cache Poisoning Countermeasures](https://portswigger.net/blog/bypassing-web-cache-poisoning-countermeasures) by James Kettle
+- [Defacement of catalog.data.gov via web cache poisoning to stored DOMXSS ](https://www.bugbountynotes.com/explore/viewbug?id=5870) by albinowax
 
 ### Tools
 
