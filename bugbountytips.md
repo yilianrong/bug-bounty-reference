@@ -79,6 +79,11 @@
 - sometimes you find those PATHs that forwards to a login page & you can't see the content inside them (ex: `/path/to/secret` --> Google login).
   - Take all these PATHs, prepend `/public/` to all of them as: `/public/path/to/secret`, got access to a Jenkins instance.
 
+### Cloudflare bypass
+
+- If you are searching for cloudflaire origin IP servers, look first at SSL certificates, then DNS historical records, or scrap unique HTTP headers and body unique tags like google analytics or similar.
+  - There is a case: [How i was able to pwned application by Bypassing Cloudflare WAF](https://medium.com/bugbountywriteup/bypass-cloudflare-waf-to-pwned-application-2c9e4f862319).
+
 ### HTTP Methods
 
 - If server only allows GET and POST method, then try adding "X-HTTP-Method -Override: PUT to achieve RCE via PUT method.
