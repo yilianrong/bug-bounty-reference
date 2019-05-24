@@ -345,6 +345,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [RCE in Hubspot with EL injection in HubL](https://www.betterhacker.com/2018/12/rce-in-hubspot-with-el-injection-in-hubl.html) by Aditya Gujar
 - [Pwning JBoss Seam 2 like a boss](https://medium.com/@r0t1v/pwning-jboss-seam-2-like-a-boss-da5a43da6998) by Vitor"r0t"Oliveira
 - [Server-Side Spreadsheet Injection – Formula Injection to Remote Code Execution](https://www.bishopfox.com/blog/2018/06/server-side-spreadsheet-injections/) by Jake Miller
+- [Hacking Jenkins Part 1 - Play with Dynamic Routing](https://blog.orange.tw/2019/01/hacking-jenkins-part-1-play-with-dynamic-routing.html) by Orange
+- [Hacking Jenkins Part 2 - Abusing Meta Programming for Unauthenticated RCE!](https://blog.orange.tw/2019/02/abusing-meta-programming-for-unauthenticated-rce.html) by Orange
 
 ####  Deserialization
 
