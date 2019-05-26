@@ -84,6 +84,10 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Cookie Based Self-XSS to Good XSS](https://medium.com/@0xHyde/cookie-based-self-xss-to-good-xss-d0d1ca16dd0e) by hyde
   - The parenthesis characters were being filtered - bypass.
   - The payload couldn't be too many characters - bypass.
+- [XSS "403 forbidden" bypass write up](https://medium.com/@bughunter.sec7/xss-403-forbidden-bypass-akamai-security-write-up-b341f588efb5) by Security Executions Code BugHunter
+  - The author found a cookie injection in a private site that is reflected something in a cookie parameter.
+  - `=` and `()` were block.
+  - ``"-prompt `1`-"//``, worked.
 
 ### Cross-Site Request Forgery (CSRF)
 
@@ -157,6 +161,10 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Complicated.
 - [Exploiting Directory Traversal to View Customer Credit Card Information on Yahoo’s Small Business Platform](https://samcurry.net/exploiting-directory-traversal-on-a-yahoo-acquisition/) by samwcyo
   - The author managed to guesse how developer coding. Something about "Node.js".
+- [Gaining access to Uber's user data through AMPScript evaluation](https://blog.assetnote.io/bug-bounty/2019/01/14/gaining-access-to-ubers-user-data-through-ampscript-evaluation/) by Shubham Shah
+  - `exacttarget-web-hook.uber.com`, seemed to be a comprehensive internal test bed for Uber's message personalization system.
+  - An attacker could have crafted AMPScript to extract data in the messages or to search up specific people in Uber's data by first name to extract their UUID and email address.
+  - A little complicated.
 - [Sensitive data exposure by requesting a resource with a different content type](https://medium.com/@yogendra_h1/sensitive-data-exposure-by-requesting-a-resource-with-a-different-content-type-27412a9d6e2f) by Yogendra Jaiswal
   - I didn't see what the author did (Atom? What's that?).
 - [Twitter's OAuth Mistakes - $3k Bug Bounty](https://shkspr.mobi/blog/2018/12/twitter-bug-bounty/) [hackerone report](https://hackerone.com/reports/434763) by edent
