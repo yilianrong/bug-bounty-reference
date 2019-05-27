@@ -44,6 +44,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [App Maker and Colaboratory: a stored Google XSS double-bill](https://ysx.me.uk/app-maker-and-colaboratory-a-stored-google-xss-double-bill/) by Yasin Soliman
 - [Stored XSS at Google firebase via Google Cloud IAM](http://panchocosil.blogspot.com/2017/04/stored-xss-at-google-firebase-via.html) by panchocosil
   - Two google products: `console.cloud.google.com` and `console.firebase.google.com`.
+- [WRITE UP – $1,000 USD IN 5 MINUTES, XSS STORED IN OUTLOOK.COM (IOS BROWSERS)](https://omespino.com/write-up-1000-usd-in-5-minutes-xss-stored-in-outlook-com-ios-browsers/) by OMESPINO
+  - The author found a stored XSS in `outlook.live.com` in iOS browsers via msoffice (ppt) file.
 - [900$ XSS in yahoo ( Recon Wins )](https://medium.com/bugbountywriteup/900-xss-in-yahoo-recon-wins-65ee6d4bfcbd) by Th3G3nt3lman
   - Don't stop when you see the response forbidden/not found on the target you are testing, run dirsearch or any tool you prefer to find endpoints.
   - The author used Knoxss to identify the this XSS.
@@ -119,6 +121,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [How we got read access on Google’s production servers](https://blog.detectify.com/2014/04/11/how-we-got-read-access-on-googles-production-servers/) by  detectify
 - [Blind OOB XXE At UBER 26+ Domains Hacked](http://nerdint.blogspot.hk/2016/08/blind-oob-xxe-at-uber-26-domains-hacked.html) by Raghav Bisht
 - [0day in Code42 - XXE in uber.com to read local files](https://httpsonly.blogspot.com/2017/01/0day-writeup-xxe-in-ubercom.html) by httpsonly
+- [Blind XML External Entities Out-Of-Band Channel Vulnerability : PayPal Case Study](https://r00thunt.com/2018/10/05/blind-xml-external-entities-out-of-band-channel-vulnerability-paypal-case-study/) by r007hunt
+  - `python -m SimpleHTTPSever 80`.
 - [Out of Band XML External Entity Injection via SAML SSO](https://seanmelia.files.wordpress.com/2016/01/out-of-band-xml-external-entity-injection-via-saml-redacted.pdf) by seanmelia
 - [XXE by SVG in Lithium Community Platform](http://esoln.net/Research/2017/03/30/xxe-in-lithium-community-platform/) by Vibhuti Nath
 - [Gainning Filesystem Access Via Blind OOB XXE](https://hawkinsecurity.com/2018/03/24/gaining-filesystem-access-via-blind-oob-xxe/) by tghawkins
@@ -157,6 +161,8 @@ My intention is to make a full and complete list of common vulnerability that ar
   - The author exploited this by using GraphQL. This method is not applicable for me at this time.
 - [Facebook Source Code Disclosure in ads API](https://www.amolbaikar.com/facebook-source-code-disclosure-in-ads-api/) by Amol Baikar
   - The author exploited this by using GraphQL. This method is not applicable for me at this time.
+- [Facebook’s Burglary Shopping List](https://www.7elements.co.uk/resources/blog/facebooks-burglary-shopping-list/) by John Moss
+  - NOT very intresting.
 - [An interesting Google vulnerability that got me 3133.7 reward](http://www.sec-down.com/wordpress/?p=809) by zigoo
   - Complicated.
 - [Exploiting Directory Traversal to View Customer Credit Card Information on Yahoo’s Small Business Platform](https://samcurry.net/exploiting-directory-traversal-on-a-yahoo-acquisition/) by samwcyo
@@ -190,6 +196,8 @@ My intention is to make a full and complete list of common vulnerability that ar
   - "Luminate Small Business" allows users to list local businesses, create websites (and host them on Yahoo servers), create stores / shops, and purchase various things such as domains etc.
   - After spending some time looking at the "free" portions of the sites, the author decided that it would be best if he purchased accounts to get access to more functionality to test.
   - Not much clear.
+- [Bug Bounty: Tumblr reCAPTCHA vulnerability write up](https://leigh-annegalloway.com/tumblr/) by Leigh-Anne Galloway
+  - The server didn't check for the parameter `g-recaptch-response` to have a value. Not that intresting.
 - [How I gained access to chef, docker, AWS, and MongoDB instances in a single request](https://samcurry.net/how-i-gained-access-to-chef-docker-aws-and-mongodb-instances-in-a-single-request/) by samwcyo
   - The author detailed the successful exploitation of a server sided request forgery vulnerability in Yahoo's small business platform.
   - The writeup maybe have some relationship with the previous one. Not much clear.
