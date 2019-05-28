@@ -250,6 +250,11 @@ My intention is to make a full and complete list of common vulnerability that ar
   - Unusual.
 - [How a simple readout of Peter Yaworski’s Web Hacking 101 got me into Microsoft Hall of fame](https://medium.com/bug-bounty-hunting/microsoft-hall-of-fame-by-reading-web-hacking-101-217d7838e3bf) by Circle Ninja
   - This was a HTTP parameter pollution vulnerability.
+- [An Unusual Bug on Braintree - PayPal](https://medium.com/@princechaddha/an-unusal-bug-on-braintree-paypal-b8d3ec662414) by PRince CHaddha
+  - The author was reviewing the source code of `braintreepayments.com` and found this strange JavaScript snippet: `var targetLocale = window.location.href.match(/locale=(.{5})/) ? window.location.href.match(/locale=(.{5})/)[1] : null;`.
+  - After reading the JS code, he found out if the users sends a request with `locale` parameter and the value is not equals to `en-us(currentLocale)`, it will be saved in `storedLocale` using `window.localStorage.setItem('locale', targetLocale);`. After that whenever an user visits `braintreepayments.com` and `currentLocale!=storedLocale`, then he will be redirected to `https://braintreepayments.com/{locale}` even if he tries to click on any hyperlink on `https://braintreepayments.com`. But the limitation was only 5 alphabets of `locale` parameter are saved in localstorage of the browser but that was enough to create annoying PoC.
+  - PoC: `https://www.braintreepayments.com/legal/policy-updates?utm_campaign=BT_EMEA_LUX_SafeHarborUpdate_20160413&utm_medium=email&utm_source=Eloqua&elq_cid=5230793&locale=fword`. After visting this URL once users were redirected to `https://braintreepayments.com/fword` even if they try to click on "Log in" of try "Sign up" for "Sandbox Account".
+  - The issue could have mass exploited if the attacker would have created a public ad campaign with PoC, then users will not be able to use braintreepayment. The users will be redirected to the `/fword` until they clear the browser’s JavaScript cache.
 
 ### HTTP Header Injection
 
@@ -363,6 +368,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Server-Side Spreadsheet Injection – Formula Injection to Remote Code Execution](https://www.bishopfox.com/blog/2018/06/server-side-spreadsheet-injections/) by Jake Miller
 - [Hacking Jenkins Part 1 - Play with Dynamic Routing](https://blog.orange.tw/2019/01/hacking-jenkins-part-1-play-with-dynamic-routing.html) by Orange
 - [Hacking Jenkins Part 2 - Abusing Meta Programming for Unauthenticated RCE!](https://blog.orange.tw/2019/02/abusing-meta-programming-for-unauthenticated-rce.html) by Orange
+- [From RCE to LDAP Access](https://medium.com/@thibeaultchenu/from-rce-to-ldap-access-9ce4f9d2fd78) by Thibeault Chenu
+  - `phpinfo`.
 
 ####  Deserialization
 
@@ -393,6 +400,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Google bug bounty for security exploit that influences search results](http://www.tomanthony.co.uk/blog/google-xml-sitemap-auth-bypass-black-hat-seo-bug-bounty/) by Tom
 - [WEB APPLICATION PENETRATION TESTING NOTES](https://techvomit.net/web-application-penetration-testing-notes/) by Tech Vomit
 - [Bypass CSP by Abusing XSS Filter in Edge](https://medium.com/bugbountywriteup/bypass-csp-by-abusing-xss-filter-in-edge-43e9106a9754) by Xiaoyin Liu
+- [Google Books X-Hacking](https://medium.com/bugbountywriteup/google-books-x-hacking-29c249862f19) by terjanq.
 
 ### Exclusive Bugbounty Writeup Blog
 
