@@ -401,6 +401,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [WEB APPLICATION PENETRATION TESTING NOTES](https://techvomit.net/web-application-penetration-testing-notes/) by Tech Vomit
 - [Bypass CSP by Abusing XSS Filter in Edge](https://medium.com/bugbountywriteup/bypass-csp-by-abusing-xss-filter-in-edge-43e9106a9754) by Xiaoyin Liu
 - [Google Books X-Hacking](https://medium.com/bugbountywriteup/google-books-x-hacking-29c249862f19) by terjanq.
+- [Finding Unlisted Public Bounty and Vulnerability Disclosure Programs with Google Dorks](https://wwws.nightwatchcybersecurity.com/2019/05/04/finding-unlisted-public-bounty-programs-with-google-dorks/) by nightwatchcyber
 
 ### Exclusive Bugbounty Writeup Blog
 
