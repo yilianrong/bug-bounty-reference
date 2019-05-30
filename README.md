@@ -334,6 +334,9 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Facebaook Acquisition: Popping a shell on the Oculus developer portal](https://bitquark.co.uk/blog/2014/08/31/popping_a_shell_on_the_oculus_developer_portal) by Bitquark
 - [How I Hacked Facebook, and Found Someone's Backdoor Script](http://devco.re/blog/2016/04/21/how-I-hacked-facebook-and-found-someones-backdoor-script-eng-ver/) by Orange Tsai
 - [Remote Code Execution on a Facebook server](https://blog.scrt.ch/2018/08/24/remote-code-execution-on-a-facebook-server/) by Daniel Le Gall
+  - While scanning an IP range that belongs to Facebook (`199.201.65.0/24`), the author found a "Sentry" service hosted on `199.201.65.36`, with the hostname `sentryagreements.thefacebook.com`. "Sentry" is a log collection web application, written in Python with the Django framework.
+  - The author writen a simple proof of concept; it took the content of an existing `sentryid` cookie, and replaces its content with an arbitrary object that would run `os.osytem("sleep 30")` when unserialized. When using this cookie, the page actually takes an additional 30 seconds to load, which confirms the presence of the flaw.
+  - The PoC in this writeup is worth to study.
 - [GitHub Enterprise Remote Code Execution](https://www.exablue.de/blog/2017-03-15-github-enterprise-remote-code-execution.html) by iblue
 - [How I Chained 4 vulnerabilities on GitHub Enterprise, From SSRF Execution Chain to RCE](http://blog.orange.tw/2017/07/how-i-chained-4-vulnerabilities-on.html) by Orange Tsai
 - [Yahoo! Remote Command Execution Vulnerability](http://www.sec-down.com/wordpress/?p=87) by Ebrahim Hegazy
