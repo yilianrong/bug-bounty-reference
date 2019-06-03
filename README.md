@@ -130,6 +130,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Exploiting XXE with local DTD files](https://mohemiv.com/all/exploiting-xxe-with-local-dtd-files/) by Arseniy Sharoglazov
 - [From blind XXE to root-level file read access](https://www.honoki.net/2018/12/from-blind-xxe-to-root-level-file-read-access/) by Honoki
 - [Exploitation: XML External Entity (XXE) Injection](https://depthsecurity.com/blog/exploitation-xml-external-entity-xxe-injection) by Faisal Tameesh
+- [XML external entity (XXE) injection](https://portswigger.net/web-security/xxe) by 
   - I can't understand this type vulnerability so far.
 
 ### Insecure Direct Object Reference (IDOR)
