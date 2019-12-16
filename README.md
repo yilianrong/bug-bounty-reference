@@ -132,6 +132,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Exploitation: XML External Entity (XXE) Injection](https://depthsecurity.com/blog/exploitation-xml-external-entity-xxe-injection) by Faisal Tameesh
 - [XML external entity (XXE) injection](https://portswigger.net/web-security/xxe) by 
   - I can't understand this type vulnerability so far.
+- [SPILLING LOCAL FILES VIA XXE WHEN HTTP OOB FAILS](https://www.noob.ninja/2019/12/spilling-local-files-via-xxe-when-http.html) by noob ninja
+  - There are some useful reference in this writeup.
 
 ### Insecure Direct Object Reference (IDOR)
 
