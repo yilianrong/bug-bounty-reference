@@ -181,6 +181,7 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Directory Listing To Sensitive Files Exposure](https://blog.hx01.me/2018/04/directory-listing-to-sensitive-files.html) by Hx01
   - Too easy?
 - [Reading ASP secrets for $17,000](https://samcurry.net/reading-asp-secrets-for-17000/) by samwcyo
+- [Pixel that steals your data](https://medium.com/@iframe_h1/a-picture-that-steals-data-ff604ba1012) by Sergey Kashatov
 
 ### Authentication Bypass
 
@@ -240,6 +241,8 @@ My intention is to make a full and complete list of common vulnerability that ar
   - There were some links between the previous writeup and this one. Complicated.
 - [How I made LastPass give me all your passwords](https://labs.detectify.com/2016/07/27/how-i-made-lastpass-give-me-all-your-passwords/) by Mathias Karlsson
   - This vulnerability was in "LastPass browser extension".
+- [Facebook OAuth Framework Vulnerability](https://www.amolbaikar.com/facebook-oauth-framework-vulnerability/) by Amol Baikar
+  - A little complicated.
 
 ### Business Logic Flaw
 
@@ -376,6 +379,8 @@ My intention is to make a full and complete list of common vulnerability that ar
 - [Hacking Jenkins Part 2 - Abusing Meta Programming for Unauthenticated RCE!](https://blog.orange.tw/2019/02/abusing-meta-programming-for-unauthenticated-rce.html) by Orange
 - [From RCE to LDAP Access](https://medium.com/@thibeaultchenu/from-rce-to-ldap-access-9ce4f9d2fd78) by Thibeault Chenu
   - `phpinfo`.
+- [How to get RCE on AEM instance without Java knowledge](https://medium.com/@byq/how-to-get-rce-on-aem-instance-without-java-knowledge-a995ceab0a83) by byq
+- [Remote Code Execution (RCE) on Microsoft's 'signout.live.com'](http://www.kernelpicnic.net/2016/07/24/Microsoft-signout.live.com-Remote-Code-Execution-Write-Up.html) by Peter Adkins
 
 ####  Deserialization
 
